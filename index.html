@@ -104,6 +104,14 @@ html{scroll-behavior:auto;scroll-padding-top:22px}body{background:#f5f8fc;color:
 @media(max-width:860px){.landing h1.text-first-title{font-size:29px}}
 @media(max-width:650px){.landing h1.text-first-title{font-size:30px}}
 @media(max-width:360px){.landing h1.text-first-title{font-size:26px}}
+.landing-play{min-width:330px;min-height:88px;padding:18px 30px;font-size:23px;gap:17px;border-radius:16px}
+.landing-play .play-disk{width:48px;height:48px}.landing-play .play-disk svg{width:25px;height:25px}
+#flow-toolbar{scroll-margin-top:8px}#flow-fit-toggle{min-height:42px;color:#315cde;border-color:#a8bce9;background:#eef3ff;white-space:nowrap}
+#flow-scale{margin-left:0;min-width:34px;font:11px Consolas,monospace;color:#607693}
+.flow-fit>.prep-disclosure,.flow-fit>.scrollhint{display:none}.flow-fit .tree-scroll{overflow:hidden}.flow-fit .tree{margin-inline:auto}
+.tree-panel.flow-fit{scroll-margin-top:0}.flow-fit>.panelbar{padding:10px 22px;align-items:center}.flow-fit .panel-kicker{display:none}.flow-fit .panelbar h2{font-size:16px}
+@media(max-width:860px){.landing-play{min-width:290px;min-height:80px;font-size:20px;padding:15px 22px}}
+@media(max-width:650px){.landing-play{width:100%;min-width:0;min-height:82px;font-size:22px}.landing-actions{gap:13px}#flow-toolbar{gap:6px}#flow-fit-toggle{min-height:38px;font-size:11px;padding:7px 9px}#flow-scale{min-width:28px;font-size:10px}}
 
 </style>
 <!-- Lucide static 1.63.0 icon license
@@ -298,7 +306,7 @@ SOFTWARE.
 <div class="workspace">
 <section id="simulation-panel" class="tree-panel" aria-label="위에서 아래로 진행하는 상품 분류 나무">
 <div class="panelbar"><div><p class="panel-kicker">분류 흐름</p><h2>상품이 지나가는 경로</h2></div><small>9개 예시 분야 · 상품을 누르면 현재 상태 확인</small></div>
-<div class="quick-controls"><button type="button" class="primary" id="quick-play">▶ 재생</button><button type="button" id="quick-step">한 장면 ↓</button><button type="button" id="quick-reset">처음부터</button><div class="quick-seek"><label for="quick-timeline">진행 장면</label><input type="range" id="quick-timeline" min="0" max="100" value="0" step="1" aria-label="진행 장면 선택"><output id="quick-time" aria-label="현재 진행 장면">0 / 100</output></div><label class="quick-speed-label" for="quick-speed">속도 <select id="quick-speed"><option value="0.6">느리게</option><option value="1" selected>보통</option><option value="1.8">빠르게</option></select></label></div>
+<div class="quick-controls" id="flow-toolbar"><button type="button" class="primary" id="quick-play">▶ 재생</button><button type="button" id="quick-step">한 장면 ↓</button><button type="button" id="quick-reset">처음부터</button><button type="button" id="flow-fit-toggle" aria-pressed="false" aria-controls="tree">전체 보기</button><output id="flow-scale" aria-label="분류도 배율"></output><div class="quick-seek"><label for="quick-timeline">진행 장면</label><input type="range" id="quick-timeline" min="0" max="100" value="0" step="1" aria-label="진행 장면 선택"><output id="quick-time" aria-label="현재 진행 장면">0 / 100</output></div><label class="quick-speed-label" for="quick-speed">속도 <select id="quick-speed"><option value="0.6">느리게</option><option value="1" selected>보통</option><option value="1.8">빠르게</option></select></label></div>
 <details class="prep-disclosure"><summary>판매자 정보 보강 설정<span>바코드 일치 · 부족 정보 질문 · 가상 보상 제안</span></summary><section class="seller-panel" aria-labelledby="seller-title">
  <div class="seller-top"><div><h3 id="seller-title">분류 전 · 판매자 정보 보강</h3><p>기존 상품을 처리하면서 판매자가 제공한 정보를 함께 사용합니다. 이 화면은 응답이 도착했거나 오지 않은 상태를 가정합니다.</p></div><label class="seller-switch"><input id="seller-incentive" type="checkbox" checked> 가상 보상 제안 켜기</label></div>
  <div class="seller-flow"><div class="seller-flow-step"><b>① 바코드 · 모델명</b><span>판매자가 아는 상품 식별 정보를 입력합니다.</span></div><div class="seller-flow-step"><b>② 기존 정보 자동 채움</b><span>같은 상품과 옵션이 맞으면 부족한 정보를 가져옵니다.</span></div><div class="seller-flow-step"><b>③ 부족한 정보 보강</b><span>필요한 질문을 하고, 답변을 보강하면 가상 크레딧을 제안합니다.</span></div></div>
@@ -851,13 +859,37 @@ $('quick-play').addEventListener('click',()=>$('play').click());$('quick-step').
 $('show-parallel').addEventListener('click',()=>{pause();time=12;setStatus('동시 진행 장면 12 · 새 묶음이 1단계로 계속 들어오며 앞선 묶음이 2·3단계를 진행합니다.');render();});
 ['parallel-stages','flow-scores','seller-current'].forEach(id=>$(id).addEventListener('click',event=>{const target=event.target.closest('[data-focus]');if(target){if(id==='seller-current'){pause();setStatus('판매자 정보 확인을 위해 일시정지했습니다.');}selected=target.dataset.focus;render();}}));
 $('seller-current').addEventListener('focusin',event=>{if(playing&&event.target.closest('[data-focus]')){pause();setStatus('판매자 상품을 살펴보는 동안 일시정지했습니다.');render();}});
-function fitTree(){const viewport=$('tree').parentElement;const available=viewport.clientWidth;if(available>0)$('tree').style.setProperty('--fit-scale',String(available<=650?1:Math.min(1,available/2025)));}
 window.addEventListener('resize',()=>{fitTree();render();});document.addEventListener('visibilitychange',()=>{if(document.hidden&&playing){pause();setStatus('화면을 벗어나 재생을 멈췄습니다.');render();}});
 function frame(stamp){if(playing){if(!lastStamp)lastStamp=stamp;accumulated+=Math.min(stamp-lastStamp,100)*speed;lastStamp=stamp;if(accumulated>=1200){accumulated-=1200;time=Math.min(time+1,MAX_TIME);if(time===MAX_TIME){pause();setStatus(MAX_TIME+'장면에 도착했습니다. 500개의 가상 상품은 분류 완료 또는 사람 확인 대기 상태입니다.');}render();}}requestAnimationFrame(frame);}
 if(params.has('t')){time=Math.max(0,Math.min(MAX_TIME,Math.floor(Number(params.get('t'))||0)));setStatus('고정 장면 '+time+' · 재생을 누르면 이어집니다.');}
 if(params.has('threshold')){threshold=Math.max(60,Math.min(85,Number(params.get('threshold'))||70));$('threshold').value=threshold;updateTimelineLimit();}
 window.classificationDemo={simulate,routeFor,scoreFor,rootDecisionStats,canExpress,setExpressThreshold,setSellerIncentive,getSellerStats,products:PRODUCTS,categories:CATEGORIES,get maxTime(){return MAX_TIME;},getScalePlan:()=>scalePlan,setScaleOptions,getState:()=>({time,threshold,expressThreshold,playing,reduced,autoscaleEnabled,autoscaleMax,sellerIncentiveEnabled}),seek:(t)=>{pause();time=Math.max(0,Math.min(MAX_TIME,Math.floor(t)));render();}};
 // The overview reads the existing engine's counts and shares its single player.
+let fitWholeFlow=false;
+function fitTree(){
+ const tree=$('tree'),available=tree.parentElement.clientWidth;
+ if(available<=0)return;
+ let scale=available<=650?1:Math.min(1,available/2025);
+ if(fitWholeFlow){
+  const screenHeight=window.visualViewport?.height||window.innerHeight;
+  const controlsHeight=$('flow-toolbar').offsetHeight;
+  const headingHeight=$('simulation-panel').querySelector('.panelbar').offsetHeight;
+  const availableHeight=Math.max(1,screenHeight-controlsHeight-headingHeight-44);
+  scale=Math.min(1,available/2025,availableHeight/tree.offsetHeight);
+ }
+ tree.style.setProperty('--fit-scale',String(scale));
+ $('flow-scale').textContent=Math.round(scale*100)+'%';
+}
+function setFlowView(fit){
+ fitWholeFlow=fit;
+ $('simulation-panel').classList.toggle('flow-fit',fit);
+ $('flow-fit-toggle').textContent=fit?'크게 보기':'전체 보기';
+ $('flow-fit-toggle').setAttribute('aria-pressed',String(fit));
+ fitTree();
+ $('simulation-panel').scrollIntoView({behavior:'auto',block:'start'});
+}
+$('flow-fit-toggle').addEventListener('click',()=>setFlowView(!fitWholeFlow));
+window.visualViewport?.addEventListener('resize',fitTree);
 function renderLanding(counts){
  $('hero-play-label').textContent=playing?'분류 과정 일시정지':time===MAX_TIME?'처음부터 다시 재생':time>0?'분류 과정 이어보기':'분류 과정 재생';
  $('hero-play').setAttribute('aria-pressed',String(playing));
@@ -868,7 +900,11 @@ function renderLanding(counts){
  $('hero-done').textContent=counts.done;
  $('hero-human').textContent=counts.human;
 }
-$('hero-play').addEventListener('click',()=>$('play').click());
+$('hero-play').addEventListener('click',()=>{
+ setFlowView(true);
+ $('play').click();
+ $('quick-play').focus({preventScroll:true});
+});
 $('hero-reset').addEventListener('click',()=>$('reset').click());
 
 // This is intentionally a separate, authored teaching example, not model output.
