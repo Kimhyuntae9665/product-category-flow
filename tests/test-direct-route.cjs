@@ -286,5 +286,39 @@ for (const enabled of [true, false]) {
 demo.setScaleOptions(true, 20);
 demo.setExpressThreshold(95);
 demo.seek(demo.maxTime);
+// The landing must operate the same engine, including replay and paused seeking.
+assert.match(getElement('hero-play-label').textContent, /다시 재생/);
+getElement('hero-play').click();
+assert.equal(demo.getState().time, 0);
+assert.equal(demo.getState().playing, true);
+assert.equal(getElement('hero-play')['aria-pressed'], 'true');
+assert.match(getElement('hero-play-label').textContent, /일시정지/);
+getElement('hero-play').click();
+assert.equal(demo.getState().playing, false);
+demo.seek(35);
+assert.equal(getElement('hero-time').textContent, getElement('quick-time').textContent);
+assert.equal(+getElement('hero-done').textContent, +getElement('count-done').textContent);
+assert.equal(+getElement('hero-human').textContent, +getElement('count-human').textContent);
+assert.equal(+getElement('hero-active').textContent, +getElement('count-active').textContent + +getElement('count-review').textContent);
+getElement('hero-reset').click();
+assert.equal(demo.getState().time, 0);
+assert.equal(demo.getState().playing, false);
+assert.equal(getElement('hero-progress').style.width, '0%');
+
+// Authored discussion scenes remain independent from the classification engine.
+const unchangedState = JSON.stringify(demo.getState());
+getElement('case-supported').click();
+getElement('debate-next').click();
+assert.equal(getElement('debate-stage-1')['aria-pressed'], 'true');
+getElement('debate-next').click();
+assert.match(getElement('debate-result').textContent, /보호 케이스/);
+getElement('case-missing').click();
+assert.equal(getElement('debate-stage-0')['aria-pressed'], 'true');
+getElement('debate-stage-2').click();
+assert.match(getElement('debate-result').textContent, /사람 확인 대기.*미확정/);
+getElement('debate-next').click();
+assert.equal(getElement('debate-stage-0')['aria-pressed'], 'true');
+assert.equal(JSON.stringify(demo.getState()), unchangedState);
+console.log('PASS: landing play/pause/replay/reset shares engine; hero counters match; both authored discussion outcomes and reset; discussion does not mutate simulated products.');
 console.log(JSON.stringify({ passed: true, products: 500, positions, scenarios: summaries }, null, 2));
 console.log('PASS: real inline application; three routes; evidence gates; exact product IDs and counters; persistent final baskets; ten inputs per scene; autoscale 10/15/20 on/off; threshold slider; actual DOM movement.');
