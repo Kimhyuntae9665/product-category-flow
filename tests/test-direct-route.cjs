@@ -26,7 +26,7 @@ function getElement(id) {
   const classes = new Set();
   const element = {
     id, handlers, innerHTML: '', textContent: '', className: '', value: 0, disabled: false,
-    clientWidth: id === 'tree' ? 4200 : 1100, parentElement: { clientWidth: 1100 },
+    clientWidth: id === 'tree' ? 5000 : 1100, parentElement: { clientWidth: 1100 },
     offsetHeight: id === 'tree' ? 1540 : id === 'flow-toolbar' ? 80 : 32,
     style: { setProperty(k, v) { this[k] = v; } },
     classList: {
@@ -167,6 +167,10 @@ function verifyTimeline(renderEveryFrame) {
   assert(sawExpress && sawHierarchy && sawImage && sawConcurrent, 'all routes are visible while upstream and downstream work overlap');
   const final = demo.simulate(demo.maxTime, 70);
   assert(final.every(e => ['done', 'human'].includes(e.state.kind)), 'the actual last scene must show all 500 terminal states');
+  for(const e of final.filter(e=>e.state.kind==='human')){
+    assert(demo.maxTime>=e.state.start+demo.treeGeometry.humanTransitFrames,'every autoscale mode includes the last human arrival');
+    assert(demo.humanTransferFor(e,demo.treeGeometry.width,demo.maxTime).arrived,'no human flight is left unfinished at the final scene');
+  }
   expectIds(demo.simulate(demo.maxTime + 100, 70).filter(e => e.state.kind === 'done'), final.filter(e => e.state.kind === 'done'), 'final baskets persist after the timeline');
 }
 

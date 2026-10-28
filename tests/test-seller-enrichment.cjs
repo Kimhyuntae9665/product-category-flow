@@ -20,7 +20,7 @@ function getElement(id) {
   const element = {
     id, handlers, innerHTMLWrites: 0, textContent: '', className: '', value: 0,
     checked: /\bchecked(?:\s|=|>)/.test(staticTags.get(id) || ''),
-    disabled: false, clientWidth: id === 'tree' ? 4200 : 1100,
+    disabled: false, clientWidth: id === 'tree' ? 5000 : 1100,
     parentElement: { clientWidth: 1100 }, style: { setProperty(k, v) { this[k] = v; } },
     classList: {
       toggle(k, enabled) { if (enabled ?? !classes.has(k)) classes.add(k); else classes.delete(k); },

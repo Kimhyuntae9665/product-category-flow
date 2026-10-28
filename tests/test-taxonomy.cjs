@@ -26,7 +26,7 @@ function getElement(id) {
   const classes = new Set();
   const element = {
     id, handlers, innerHTML: '', textContent: '', className: '', value: 0, disabled: false,
-    clientWidth: id === 'tree' ? 4200 : 1100, parentElement: { clientWidth: 1100 },
+    clientWidth: id === 'tree' ? 5000 : 1100, parentElement: { clientWidth: 1100 },
     offsetHeight: id === 'tree' ? 1540 : id === 'flow-toolbar' ? 80 : 32,
     style: { setProperty(k, v) { this[k] = v; } },
     classList: {
@@ -72,7 +72,8 @@ assert.equal(demo.getState().expressThreshold, 95, 'default direct-leaf threshol
 // Taxonomy assertions run against the shipped engine and actual rendered baskets.
 const nodes=new Map(Array.from(demo.nodes,n=>[n.id,n]));
 const leaves=new Map(Array.from(demo.leaves,l=>[l.id,l]));
-assert.equal(demo.treeGeometry.width,4200);
+assert.equal(demo.treeGeometry.width,5000);
+assert.equal(demo.treeGeometry.contentWidth,4200);
 assert.equal(demo.categories.length,10);
 assert.equal(new Set(Array.from(demo.categories,c=>c.name)).size,10);
 assert(demo.categories.some(c=>c.name==='반려동물용품'));
@@ -87,7 +88,7 @@ for(const c of demo.categories){
 }
 for(const node of demo.nodes){
  assert(node.children.length===0||node.children.length>=2,node.name+': no single-child chains');
- assert(node.width>=88&&node.px-node.width/2>=0&&node.px+node.width/2<=4200);
+ assert(node.width>=88&&node.px-node.width/2>=0&&node.px+node.width/2<=demo.treeGeometry.contentWidth);
  const siblings=Array.from(node.children,id=>nodes.get(id));
  assert.equal(new Set(siblings.map(n=>n.name)).size,siblings.length,'siblings have distinct names');
  for(const child of siblings){assert.equal(child.parentId,node.id);assert.equal(child.stage,node.stage+1);assert.equal(child.cat,node.cat);}
@@ -130,7 +131,7 @@ for(const leaf of demo.leaves){
  assert(expected.length>0,leaf.id+': actual products complete in every branch');
  const actual=[...getElement('basket-list-'+leaf.id).innerHTML.matchAll(/<li>(P\d+)\s*·/g)].map(m=>m[1]).sort();
  assert.deepEqual(actual,Array.from(expected),leaf.id+': exact persistent basket IDs');renderedIds.push(...actual);
- assert(leaf.x-44>=0&&leaf.x+44<=4200);
+ assert(leaf.x-44>=0&&leaf.x+44<=demo.treeGeometry.contentWidth);
  assert([484,688,928,1168][leaf.path.length-1]+180+132<=1540);
 }
 assert.equal(new Set(renderedIds).size,done.length,'no product appears in multiple baskets');
@@ -146,28 +147,29 @@ const checkedLandingDepths=new Set();
 for(let t=0;t<=demo.maxTime;t++){
  context.testEntries=demo.simulate(t,70);
  const visible=vm.runInContext('selectVisible(testEntries)',context),occupied=new Set();
- assert(visible.every(e=>e.state.kind!=='human'),'held products stay in the human monitor instead of covering basket counts');
+ assert(visible.filter(e=>e.state.kind==='human').every(e=>{const transfer=demo.humanTransferFor(e,demo.treeGeometry.width,t);return transfer.moving||transfer.arrived&&transfer.point.x-44>=demo.treeGeometry.humanSector.x;}),'human tickets move toward or arrive inside their separate sector');
  for(const e of visible){
   const state=e.state;
   if(!['queue','classify','quality','image','average','review','reviewResult'].includes(state.kind)||state.stage===0&&state.kind!=='queue')continue;
   const node=nodes.get(e.product.nodeIds[state.stage]);
   assert(!occupied.has(node.id),'each actual node shows only one moving representative');occupied.add(node.id);
   context.testEntry=e;context.testVisible=visible;
-  const point=vm.runInContext('position(testEntry,4200,testVisible)',context);
+  const point=vm.runInContext('position(testEntry,window.classificationDemo.treeGeometry.width,testVisible)',context);
   assert(Math.abs(point.x+44-node.px)<.001,'compact ticket centers on its actual branch');
   assert(point.y>=nodeTop[state.stage]+76-1,'moving ticket clears the full two-line category title');
   assert(point.y+34<=nodeTop[state.stage]+112,'moving ticket clears score pills immediately below the node');
-  assert(point.x>=0&&point.x+88<=4200);
+  assert(point.x>=0&&point.x+88<=demo.treeGeometry.contentWidth);
  }
  const landing=visible.find(e=>e.state.kind==='expressLand'&&!checkedLandingDepths.has(e.product.path.length));
  if(landing){
   demo.seek(t);context.testEntry=landing;context.testVisible=visible;
-  const point=vm.runInContext('position(testEntry,4200,testVisible)',context);
-  const endpoint=nodes.get(landing.product.nodeIds.at(-1)).x*9;
-  const segments=[...getElement('express-lines').innerHTML.matchAll(/class="express-to-bin" d="M862 ([\d.]+) H([\d.]+)"/g)];
-  const segment=segments.find(m=>Math.abs(Number(m[2])-endpoint)<.001);
+  const point=vm.runInContext('position(testEntry,window.classificationDemo.treeGeometry.width,testVisible)',context);
+  const endpoint=nodes.get(landing.product.nodeIds.at(-1)).px;
+  const segments=[...getElement('express-lines').innerHTML.matchAll(/class="express-to-bin" d="M([\d.]+) ([\d.]+) H([\d.]+)"/g)];
+  const segment=segments.find(m=>Math.abs(Number(m[3])-endpoint)<.001);
   assert(segment,'direct route has an arrow to the actual final basket');
-  assert(Math.abs(point.y+17-Number(segment[1]))<=12.001,'direct token lands on its rendered arrow, including ticket stacking offset');
+  assert.equal(Number(segment[1]),demo.treeGeometry.expressX,'arrow uses reserved express lane');
+  assert(Math.abs(point.y+17-Number(segment[2]))<=12.001,'direct token lands on its rendered arrow, including ticket stacking offset');
   checkedLandingDepths.add(landing.product.path.length);
  }
 }

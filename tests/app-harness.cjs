@@ -26,7 +26,7 @@ function getElement(id) {
   const classes = new Set();
   const element = {
     id, handlers, innerHTML: '', textContent: '', className: '', value: 0, disabled: false,
-    clientWidth: id === 'tree' ? 4200 : 1100, parentElement: { clientWidth: 1100 },
+    clientWidth: id === 'tree' ? 5000 : 1100, parentElement: { clientWidth: 1100 },
     offsetHeight: id === 'tree' ? 1540 : id === 'flow-toolbar' ? 80 : 32,
     style: { setProperty(k, v) { this[k] = v; } },
     classList: {

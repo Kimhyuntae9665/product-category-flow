@@ -76,6 +76,23 @@ button{border-color:#cbdedb;border-radius:7px;color:#284e4b}button:hover{backgro
 .tree .node{padding:9px 6px}.tree .node strong{font-size:15px;line-height:1.4;overflow-wrap:anywhere;word-break:keep-all;margin:5px 0}.tree .node .level,.tree .node small,.tree .model-link{font-size:10px}.tree .node:has(.count) strong{font-size:20px}.tree .node small{display:block;line-height:1.4}.tree .resultbin{padding:6px 4px}.tree .resultbin small{line-height:1.35;overflow-wrap:anywhere}.tree .model-link{padding:2px 4px}.tree .flow-score{padding:3px 4px;z-index:5}.tree .flow-score .score-head{flex-wrap:wrap;gap:1px}.tree .flow-score .score-head b{font-size:10px}.tree .flow-score .score-mode{font-size:8px}.tree .flow-score .score-values{font-size:9px;white-space:normal}.node.pets{background:#fdf4eb;border-color:#d7b99a;color:#8c602d}.token.pets{border-color:#b89165;border-left-color:#8c602d}
 /* Compact tickets stay below category names and above the score pills. */
 .tree .node.is-active small{visibility:hidden}.tree .token:not(.ingress){width:88px;height:34px;min-height:34px;padding:3px 4px;border-left-width:3px;overflow:hidden}.tree .token:not(.ingress) b{font-size:10px;line-height:12px}.tree .token:not(.ingress) span{font-size:9px;line-height:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.tree .token:not(.ingress) .tokenid{font-size:7px;line-height:11px;margin-left:2px}
+
+/* Dedicated space outside the 4,200 px category field. */
+.tree-workers{right:auto;width:var(--content-width)}
+.tree .model-a-bus{left:var(--bus-left);width:var(--bus-width)}
+.decision-card{width:var(--decision-width)}.decision-card.text-route{left:var(--text-left)}.decision-card.image-route{left:var(--image-left)}
+.express-corridor{position:absolute;left:calc(var(--express-x) - 90px);top:429px;width:180px;height:1065px;border:2px dashed #95cbb3;background:#effaf380;border-radius:16px;pointer-events:none}
+.express-rail-label{left:var(--express-x);width:174px;top:300px;font-size:22px;padding:9px 5px;z-index:4}
+.express-lines .express-rail,.express-lines .express-to-bin{stroke-width:6;stroke-dasharray:18 13}
+.human-sector{position:absolute;left:var(--human-left);top:var(--human-top);width:var(--human-width);height:880px;z-index:3;background:#fff6f3;border:3px solid #cf8174;border-radius:20px;padding:25px 26px;color:#77362d;box-shadow:0 8px 24px #8b392012}
+.human-sector h3{margin:0 0 8px;font-size:38px;line-height:1.25;letter-spacing:-.04em}.human-sector h3 svg{width:36px;height:36px;vertical-align:-5px;margin-right:8px;stroke:currentColor;fill:none;stroke-width:1.8}
+.human-sector>p{font-size:18px;margin:0;line-height:1.6}.human-sector-stats{display:flex;justify-content:space-between;margin-top:17px;gap:10px;font-size:17px}.human-sector-stats b{display:block;font:800 39px/1.2 Consolas,monospace;color:#a24434}.human-sector-stats span{min-width:0;text-align:center}
+.human-dock{position:absolute;left:20px;right:20px;top:222px;height:140px;border:2px dashed #e6a393;border-radius:14px;background:#fffdfb}.human-dock>span{position:absolute;left:14px;top:-14px;font-size:17px;background:#fff6f3;padding:0 7px;color:#9b5d51}
+.human-sector-queue{position:absolute;left:26px;right:26px;top:388px}.human-sector-queue>strong{font-size:22px}.human-sector-list{display:grid;gap:10px;margin-top:12px}.human-sector-list button{text-align:left;display:block;min-height:69px;border-color:#e4b9af;color:#77362d;padding:8px 12px;background:#fffdfc}.human-sector-list button.active{border-color:#ad4b39;background:#ffe4dc}.human-sector-list b{display:block;font-size:19px;line-height:1.35}.human-sector-list span{display:block;font-size:16px;line-height:1.35;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.human-sector-list p{font-size:16px;line-height:1.4;color:#9c7165;margin:8px 0}.human-sector .human-sector-note{position:absolute;bottom:24px;left:26px;right:26px;font-size:16px;color:#9b6256;border-top:1px solid #edc9bf;padding-top:12px}
+.human-transfer-lines{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:4}.human-transfer-lines>path{fill:none;stroke:#cc6550;stroke-width:6;stroke-dasharray:17 12;opacity:.72;stroke-linejoin:round}
+.token.human-flight{z-index:9;background:#ffe2d8;border-color:#b84b35;border-left-color:#a73722;box-shadow:0 0 0 5px #f5b29a55;transition:transform .94s cubic-bezier(.25,.65,.35,1),opacity .2s}.reduce .token.human-flight{transition:none!important}
+#human-transfer-demo{border-color:#d18c7e;color:#9c4231;background:#fff1e9;font-weight:800}.review-monitor-top{flex-wrap:wrap}
+@media(prefers-reduced-motion:reduce){.token.human-flight{transition:none!important}}
 /* Submission landing: the diagram is the introduction, not a decorative cover. */
 .assignment-banner{display:grid;grid-template-columns:minmax(0,1fr) 285px;gap:25px;margin-top:22px;padding:22px 25px;background:#eef3ff;border:1px solid #c8d6f2;border-radius:14px;color:#213e6c}.assignment-scope{display:grid;grid-template-columns:auto 1fr;column-gap:12px;row-gap:3px;align-items:center}.scope-eyebrow{font-size:11px;font-weight:750;color:#526d96}.assignment-scope>strong{font-size:18px;letter-spacing:-.035em;line-height:1.5}.assignment-scope .demo-scope{font-size:24px;color:#214fca}.scope-arrow{display:none}.assignment-scope>p{grid-column:1/-1;font-size:12px;color:#5c7294;line-height:1.6;margin:7px 0 0;word-break:keep-all}.assignment-budget{align-self:center;padding-left:25px;border-left:1px solid #b9c9e8}.assignment-budget>strong,.assignment-budget>b{display:block}.assignment-budget>strong{font-size:28px;letter-spacing:-.05em;line-height:1.2;color:#1c43ac}.assignment-budget>b{font-size:15px;margin-top:6px}.assignment-budget>p{font-size:11px;line-height:1.6;margin:6px 0 0;color:#5c7294;word-break:keep-all}@media(max-width:860px){.assignment-banner{grid-template-columns:minmax(0,1fr) 225px;gap:18px;padding:19px}.assignment-budget{padding-left:18px}.assignment-scope>strong{font-size:16px}.assignment-scope .demo-scope{font-size:21px}.assignment-budget>strong{font-size:25px}}@media(max-width:650px){.assignment-banner{grid-template-columns:1fr;gap:15px;margin-top:16px;padding:17px 16px;border-radius:11px}.assignment-scope{grid-template-columns:1fr;gap:3px}.scope-eyebrow{font-size:10px}.assignment-scope>strong{font-size:17px}.assignment-scope .demo-scope{font-size:22px}.assignment-scope .scope-eyebrow:nth-of-type(3){margin-top:7px}.assignment-scope>p{font-size:11px;margin-top:5px}.assignment-budget{padding:13px 0 0;border-left:0;border-top:1px solid #c6d3eb;display:grid;grid-template-columns:1fr auto;column-gap:10px;align-items:center}.assignment-budget>strong{font-size:24px}.assignment-budget>b{font-size:12px;margin:0}.assignment-budget>p{grid-column:1/-1;margin-top:4px;font-size:10px}}@media(max-width:360px){.assignment-budget{grid-template-columns:1fr}.assignment-budget>b{margin-top:5px}.assignment-scope .demo-scope{font-size:20px}}
 :root{--landing-ink:#152b46;--landing-muted:#586d85;--landing-blue:#315cde;--landing-green:#16846a;--landing-amber:#b96b24;--landing-violet:#7656ac}
@@ -372,7 +389,7 @@ SOFTWARE.
 <div class="panelbar"><div><p class="panel-kicker">분류 흐름</p><h2>상품이 지나가는 경로</h2></div><small>10개 예시 분야 · 상품을 누르면 현재 상태 확인</small></div>
 <div class="quick-controls" id="flow-toolbar"><button type="button" class="primary" id="quick-play">▶ 재생</button><button type="button" id="quick-step">한 장면 ↓</button><button type="button" id="quick-reset">처음부터</button><button type="button" id="flow-fit-toggle" aria-pressed="false" aria-controls="tree">전체 보기</button><output id="flow-scale" aria-label="분류도 배율"></output><label class="category-focus-label">분야 확대 <select id="category-focus" aria-label="분야를 골라 크게 보기"><option value="">분야 선택</option></select></label><div class="quick-seek"><label for="quick-timeline">진행 장면</label><input type="range" id="quick-timeline" min="0" max="100" value="0" step="1" aria-label="진행 장면 선택"><output id="quick-time" aria-label="현재 진행 장면">0 / 100</output></div><label class="quick-speed-label" for="quick-speed">속도 <select id="quick-speed"><option value="0.6">느리게</option><option value="1" selected>보통</option><option value="1.8">빠르게</option></select></label></div>
 <section class="review-monitor" aria-label="복구와 누적 검수 점수">
- <div class="review-monitor-top"><strong>복구 <b id="recovery-count">0</b>건 <span>·</span> 사람 검수 <b id="review-queue-count">0</b>건</strong><div class="review-samples"><button type="button" data-review-example="resolved">독립 비교 해결 · 1점</button><button type="button" data-review-example="conflict">복구 + 프론티어 · 2점</button><button type="button" data-review-example="low">독립 비교 미해결 · 3점</button></div></div>
+ <div class="review-monitor-top"><strong>복구 <b id="recovery-count">0</b>건 <span>·</span> 사람 검수 <b id="review-queue-count">0</b>건</strong><div class="review-samples"><button type="button" id="human-transfer-demo">2점 → 검수 이동 재생</button><button type="button" data-review-example="resolved">독립 비교 해결 · 1점</button><button type="button" data-review-example="conflict">복구 + 프론티어 · 2점</button><button type="button" data-review-example="low">독립 비교 미해결 · 3점</button></div></div>
  <div class="review-current"><b id="review-focus">P001 · 0 / 2점</b><span id="review-focus-detail">복구 +1 · 프론티어 미해결 +1 · 독립 비교 미해결 추가 +2</span></div>
 </section>
 <details class="prep-disclosure"><summary>판매자 정보 보강 설정<span>바코드 일치 · 부족 정보 질문 · 가상 보상 제안</span></summary><section class="seller-panel" aria-labelledby="seller-title">
@@ -395,7 +412,7 @@ SOFTWARE.
 </section></details><p class="scrollhint">아래 사각형은 같은 모델 A의 최대 20개 실행 슬롯입니다. 색이 진한 슬롯은 준비된 복제본, 흐린 슬롯은 미사용입니다.<span class="mobile-tree-hint">분류도가 넓습니다. 화면을 좌우로 움직여 분야별 경로를 살펴보세요.</span></p>
 <div class="tree-scroll"><div class="tree" id="tree">
 <svg class="tree-lines" viewBox="0 0 900 1540" preserveAspectRatio="none" aria-hidden="true"><defs><marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" markerUnits="userSpaceOnUse" orient="auto"><path d="M1 1 L8 5 L1 9" style="stroke:#9bb6ca;fill:none;stroke-width:1.5"/></marker></defs><path d="M450 151 V225 H90 V261" marker-end="url(#arrow)"/><path class="foodline" d="M450 225 H270 V261" marker-end="url(#arrow)"/><path class="beautyline" d="M450 151 V261" marker-end="url(#arrow)"/><path d="M450 225 H630 V261" marker-end="url(#arrow)"/><path d="M450 225 H810 V261" marker-end="url(#arrow)"/><path d="M90 373 V465 M90 575 V705 M90 815 V987" marker-end="url(#arrow)"/><path class="foodline" d="M270 373 V465 M270 575 V705 M270 815 V987" marker-end="url(#arrow)"/><path class="beautyline" d="M450 373 V465 M450 575 V705 M450 815 V987" marker-end="url(#arrow)"/><path d="M630 373 V465 M630 575 V705 M630 815 V987" marker-end="url(#arrow)"/><path d="M810 373 V465 M810 575 V705 M810 815 V987" marker-end="url(#arrow)"/></svg>
-<svg class="recovery-lines" id="recovery-lines" viewBox="0 0 900 1540" preserveAspectRatio="none" aria-hidden="true"></svg><div class="recovery-callout" id="recovery-callout" hidden></div><svg class="express-lines" id="express-lines" viewBox="0 0 900 1540" preserveAspectRatio="none" aria-hidden="true"></svg><div class="express-rail-label">최종 직행 ↓</div><div class="tree-workers" aria-label="1단계 공통 텍스트 모델 복제본 병렬 작업"><div class="worker-legend"><span id="input-now">장면 0 · 새 상품 10개 투입</span> <span id="input-total">누적 10 / 500</span></div><div class="worker-flow"><div class="worker-root">상품명 · 설명 입력 ↓ 같은 텍스트 모델 A의 실행 복제본</div><div class="worker-branch"></div><div id="worker-lanes" class="worker-lanes"></div><div class="worker-bus"></div><div class="worker-out">각 결과를 기다림 없이 분야별 다음 단계로 ↓</div></div></div><div class="model-a-bus">공통 모델 · 텍스트 대분류와 최종 후보를 함께 예측 <small>최종 세부 분류 충분하면 직행 · 미해결만 이미지 → 프론티어 → 독립 비교</small></div>
+<svg class="recovery-lines" id="recovery-lines" viewBox="0 0 900 1540" preserveAspectRatio="none" aria-hidden="true"></svg><div class="recovery-callout" id="recovery-callout" hidden></div><div class="express-corridor" id="express-corridor" aria-hidden="true"></div><svg class="express-lines" id="express-lines" viewBox="0 0 5000 1540" preserveAspectRatio="none" aria-hidden="true"></svg><div class="express-rail-label">최종 직행 ↓</div><div class="tree-workers" aria-label="1단계 공통 텍스트 모델 복제본 병렬 작업"><div class="worker-legend"><span id="input-now">장면 0 · 새 상품 10개 투입</span> <span id="input-total">누적 10 / 500</span></div><div class="worker-flow"><div class="worker-root">상품명 · 설명 입력 ↓ 같은 텍스트 모델 A의 실행 복제본</div><div class="worker-branch"></div><div id="worker-lanes" class="worker-lanes"></div><div class="worker-bus"></div><div class="worker-out">각 결과를 기다림 없이 분야별 다음 단계로 ↓</div></div></div><div class="model-a-bus">공통 모델 · 텍스트 대분류와 최종 후보를 함께 예측 <small>최종 세부 분류 충분하면 직행 · 미해결만 이미지 → 프론티어 → 독립 비교</small></div>
 <section class="decision-card text-route" id="text-route" aria-label="텍스트로 최종 세부 분류 확인">
  <div class="decision-head"><strong>텍스트로 최종 세부 분류 확인 ↓</strong><b id="root-text-count">0</b></div>
  <p>최종 세부 분류 근거 충분 → 사진·API 없이 완료</p>
@@ -407,7 +424,14 @@ SOFTWARE.
  <small id="root-image-counts">화질 검사 0 · 이미지 모델 호출 0</small><div class="decision-items" id="root-image-items">판단한 상품을 기다리는 중</div>
 </section>
 <span class="level-label l1">상위 분류 ↓</span><span class="level-label l2">2단계 ↓</span><span class="level-label l3">3단계 ↓</span>
-<div id="nodes"></div><div id="model-links" aria-label="상품 분류의 계층 깊이"></div><div class="flow-pulses" id="flow-pulses" aria-hidden="true"></div><div id="tokens"></div><div class="flow-scores" id="flow-scores" aria-label="화살표 옆 상품별 현재 단계 점수"></div>
+<div id="nodes"></div><div id="model-links" aria-label="상품 분류의 계층 깊이"></div><div class="flow-pulses" id="flow-pulses" aria-hidden="true"></div><svg class="human-transfer-lines" id="human-transfer-lines" viewBox="0 0 5000 1540" preserveAspectRatio="none" aria-hidden="true"></svg>
+<section class="human-sector" id="human-sector" aria-label="사람 검수 구역">
+ <h3><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="7" r="4"/><path d="M2 21v-3a7 7 0 0 1 12-5M16 18l2 2 4-5"/></svg>사람 검수</h3><p>누적 2점 이상 → 분류 즉시 중단</p>
+ <div class="human-sector-stats"><span><b id="human-sector-total">0</b>검수 전환</span><span><b id="human-sector-moving">0</b>이동 중</span><span><b id="human-sector-arrived">0</b>도착</span></div>
+ <div class="human-dock"><span>대표 상품 도착 구역</span></div>
+ <div class="human-sector-queue"><strong>도착한 상품 · 검토 대기</strong><div class="human-sector-list" id="human-sector-list"><p>검수로 전환되는 상품을 기다립니다.</p></div></div>
+ <p class="human-sector-note">사진 불량·복구 실패도 별도 보류<br>검수 완료나 정답 확정을 뜻하지 않습니다.</p>
+</section><div id="tokens"></div><div class="flow-scores" id="flow-scores" aria-label="화살표 옆 상품별 현재 단계 점수"></div>
 </div></div>
 <div class="route-note"><strong>주황 화살표: 상위로 돌아가 후보 재탐색</strong> 복구 +1 · 프론티어 미해결 +1 · 독립 비교 근거 부족/충돌은 추가 +2. <b>합계 2점 이상 → 사람 검수.</b><span>같은 원인은 중복 가산하지 않습니다. 0~1점도 최종 근거를 확인해야 통과합니다. 사진 불량은 별도 보류합니다. 점수는 가상 예시입니다.</span></div>
 <section class="resource-strip" aria-label="최종 카테고리 직행 현황"><div><strong>텍스트로 최종 바스켓에 직행</strong><small>초록 점선이 직행 경로입니다. 실제 상품·모델이 아닌 가상 시나리오입니다.</small></div><div class="express-summary">직행 결정 <b id="express-count">0</b> · 이동 중 <b id="express-active">0</b> · 바스켓 도착 <b id="express-completed">0</b><small>누적 결정에는 이동 중이 포함됩니다.</small></div></section>
@@ -452,7 +476,7 @@ const CATEGORIES=[
  {id:'pets',name:'반려동물용품',css:'pets',branches:[['사료·간식','반려동물 사료'],['사료·간식','반려동물 간식'],['위생·생활용품','배변패드'],['위생·생활용품','반려동물 장난감']]}
 ];
 const NODE_TOP=[484,688,928,1168],TREE_NODES=[],LEAVES=[],NODE_BY_ID=new Map();
-const TREE_GEOMETRY={width:4200,height:1540,leafSlot:100,categoryGap:30,margin:65};
+const TREE_GEOMETRY={width:5000,height:1540,contentWidth:4200,expressX:4320,humanLaneX:4440,humanSector:{x:4510,y:484,width:450,height:880},humanTransitFrames:3,leafSlot:100,categoryGap:30,margin:65};
 let leafCursor=TREE_GEOMETRY.margin;
 CATEGORIES.forEach((category,cat)=>{
  category.paths=category.branches.map(branch=>[category.name,...branch]);
@@ -785,7 +809,7 @@ function simulate(time,threshold=70){return PRODUCTS.map(product=>{
 });}
 const $=id=>document.getElementById(id);let time=0,threshold=70,expressThreshold=95,playing=false,speed=1,selected='P001',lastStamp=0,accumulated=0,sellerCardsKey='';
 function updateTimelineLimit(){
- MAX_TIME=Math.max(100,...PRODUCTS.map(product=>{const route=routeFor(product,threshold);return route[route.length-1].start;}));
+ MAX_TIME=Math.max(100,...PRODUCTS.map(product=>{const route=routeFor(product,threshold),last=route.at(-1);return last.start+(last.kind==='human'?TREE_GEOMETRY.humanTransitFrames:0);}));
  time=Math.min(time,MAX_TIME);$('timeline').max=MAX_TIME;$('quick-timeline').max=MAX_TIME;
 }
 updateTimelineLimit();
@@ -795,11 +819,14 @@ $('timeline').max=MAX_TIME;$('quick-timeline').max=MAX_TIME;$('autoscale-enabled
 $('batches').innerHTML=Array.from({length:25},(_,i)=>String.fromCharCode(65+i)).map((name,i)=>'<span class="batch" id="batch-'+i+'">묶음 '+name+' · 예시 20개</span>').join('');
 // Shared prefixes render once. Every visible fork is backed by product targets.
 $('tree').style.width=TREE_GEOMETRY.width+'px';$('tree').style.minWidth=TREE_GEOMETRY.width+'px';
+const diagramVars={'--content-width':TREE_GEOMETRY.contentWidth,'--bus-left':TREE_GEOMETRY.contentWidth*.03,'--bus-width':TREE_GEOMETRY.contentWidth*.94,'--decision-width':TREE_GEOMETRY.contentWidth*.37,'--text-left':TREE_GEOMETRY.contentWidth*.09,'--image-left':TREE_GEOMETRY.contentWidth*.54,'--express-x':TREE_GEOMETRY.expressX,'--human-left':TREE_GEOMETRY.humanSector.x,'--human-top':TREE_GEOMETRY.humanSector.y,'--human-width':TREE_GEOMETRY.humanSector.width};
+Object.entries(diagramVars).forEach(([key,value])=>$('tree').style.setProperty(key,value+'px'));
+const rootSvgScale=TREE_GEOMETRY.contentWidth/TREE_GEOMETRY.width;
 $('tree').querySelector('.tree-lines').innerHTML='<defs><marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" markerUnits="userSpaceOnUse" orient="auto"><path d="M1 1 L8 5 L1 9" style="stroke:#9bb6ca;fill:none;stroke-width:1.5"/></marker></defs>'+
- '<path d="M450 198 V218 H247 V236" marker-end="url(#arrow)"/><path d="M450 218 H653 V236" marker-end="url(#arrow)"/>'+
- '<path d="M247 366 V402 H450 M653 366 V402 H450"/>'+
+ '<path d="M'+(450*rootSvgScale)+' 198 V218 H'+(247.5*rootSvgScale)+' V236" marker-end="url(#arrow)"/><path d="M'+(450*rootSvgScale)+' 218 H'+(652.5*rootSvgScale)+' V236" marker-end="url(#arrow)"/>'+
+ '<path d="M'+(247.5*rootSvgScale)+' 366 V402 H'+(450*rootSvgScale)+' M'+(652.5*rootSvgScale)+' 366 V402 H'+(450*rootSvgScale)+'"/>'+
  TREE_NODES.map(node=>{const x=node.x*9,parent=node.parentId?NODE_BY_ID.get(node.parentId):null;
-  return parent?'<path d="M'+(parent.x*9)+' '+(NODE_TOP[parent.stage]+110)+' V'+(NODE_TOP[node.stage]-45)+' H'+x+' V'+(NODE_TOP[node.stage]-3)+'" marker-end="url(#arrow)"/>':'<path d="M450 402 V445 H'+x+' V481" marker-end="url(#arrow)"/>';
+  return parent?'<path d="M'+(parent.x*9)+' '+(NODE_TOP[parent.stage]+110)+' V'+(NODE_TOP[node.stage]-45)+' H'+x+' V'+(NODE_TOP[node.stage]-3)+'" marker-end="url(#arrow)"/>':'<path d="M'+(450*rootSvgScale)+' 402 V445 H'+x+' V481" marker-end="url(#arrow)"/>';
  }).join('');
 $('nodes').innerHTML=TREE_NODES.map(node=>{const c=CATEGORIES[node.cat],last=!node.children.length;
  return '<div id="'+nodeDomId(node)+'" class="node '+c.css+(last?' leaf-node':'')+'" style="left:'+node.x+'%;top:'+NODE_TOP[node.stage]+'px;width:'+node.width+'px"><div class="level">'+(node.stage+1)+'단계'+(node.stage===0?' <span class="count" id="lane-count-'+node.cat+'">0</span>':' · '+(last?'최종':'분류'))+'</div><strong>'+node.name+'</strong><small>'+(last?'이 단계에서 분류 완료':node.children.length+'개 하위 분류 ↓')+'</small></div>';
@@ -815,8 +842,22 @@ function stateLabel(state){
  if(state.kind==='image')return(state.stage+1)+'단계 · 이미지 모델 분석';if(state.kind==='average')return'이미지 분석 · 예시 평균';
  if(state.kind==='recoverStart')return'후보 의심 · 복구 준비';if(state.kind==='recoverUp')return'상위로 복구 ↑';if(state.kind==='recoverSearch')return'대체 후보 재탐색';if(state.kind==='recoverDown')return'새 후보로 다시 진입 ↓';if(state.kind==='reviewResult')return'토론 결과 · '+state.reviewScore+'점';if(state.kind==='review')return'AI 근거 대조 · 토론';if(state.kind==='human')return(state.stage+1)+'단계 · 사람 확인 대기';return'세부 분류 도착';
 }
+function humanTransferFor(entry,width=TREE_GEOMETRY.width,now=time){
+ const {product:p,state:s}=entry,g=TREE_GEOMETRY,scale=width/g.width,sector=g.humanSector;
+ const slot=(Number(p.id.replace(/\D/g,''))||0)%6,elapsed=Math.max(0,now-s.start);
+ const source={x:(s.stage===0?g.contentWidth*.72:targetNode(p,s.stage).px)*scale,y:s.stage===0?390:NODE_TOP[s.stage]+92};
+ const departure={x:source.x,y:s.stage===0?445:NODE_TOP[s.stage]+166};
+ const waypoint={x:g.humanLaneX*scale,y:departure.y};
+ const destination={x:(sector.x+85+(slot%3)*140)*scale,y:sector.y+260+Math.floor(slot/3)*62};
+ const progress=reduced?g.humanTransitFrames:Math.min(g.humanTransitFrames,elapsed);
+ const points=[source,departure,waypoint,destination],step=Math.min(2,Math.floor(progress)),fraction=Math.min(1,progress-step);
+ const point={x:points[step].x+(points[step+1].x-points[step].x)*fraction,y:points[step].y+(points[step+1].y-points[step].y)*fraction};
+ return{source,departure,waypoint,destination,point,elapsed,slot,moving:progress<g.humanTransitFrames,arrived:progress>=g.humanTransitFrames};
+}
 function position(entry,width,all){
  const{product:p,state:s}=entry;let x=targetNode(p,Math.max(0,s.stage)).x/100*width,y=0;
+ const contentWidth=width*TREE_GEOMETRY.contentWidth/TREE_GEOMETRY.width;
+ if(s.kind==='human'){const flight=humanTransferFor(entry,width);return{x:flight.point.x-44,y:flight.point.y-17};}
  if(RECOVERY_KINDS.includes(s.kind)){
   const node=targetNode(p,s.stage),parent=node.parentId?NODE_BY_ID.get(node.parentId):null;
   const fromX=NODE_BY_ID.get(s.fromNodeId).x/100*width,targetX=node.x/100*width,parentX=parent?parent.x/100*width:width/2,parentY=s.stage===0?435:NODE_TOP[s.stage-1]+92;
@@ -829,15 +870,15 @@ function position(entry,width,all){
  let rank=same.findIndex(e=>e.product.id===p.id);
  if(EXPRESS_KINDS.includes(s.kind)){
   const destY=NODE_TOP[p.path.length-1]+274;
-  if(s.kind==='expressStart'){const spread=Math.min(90,width*.36/Math.max(1,same.length-1));x=width*.275+(rank-(same.length-1)/2)*spread;y=390;}
-  else if(s.kind==='expressEntry'){x=width*(862/900);y=409+rank*14;}
-  else if(s.kind==='expressDescend'){x=width*(862/900);y=destY+(rank%3-1)*12;}
+  if(s.kind==='expressStart'){const spread=Math.min(90,contentWidth*.36/Math.max(1,same.length-1));x=contentWidth*.275+(rank-(same.length-1)/2)*spread;y=390;}
+  else if(s.kind==='expressEntry'){x=width*TREE_GEOMETRY.expressX/TREE_GEOMETRY.width;y=409+rank*14;}
+  else if(s.kind==='expressDescend'){x=width*TREE_GEOMETRY.expressX/TREE_GEOMETRY.width;y=destY+(rank%3-1)*12;}
   else{x=targetLeaf(p).x/TREE_GEOMETRY.width*width;y=destY+(rank%3-1)*12;}
   return{x:x-44,y:y-17};
  }
  if(s.stage===0&&s.kind!=='queue'){
-  if(s.kind==='classify'){const workerIndex=scalePlan.snapshots[time].workerStatus.findIndex(w=>w.id===p.rootWorker);x=(Math.max(0,workerIndex)+.5)*width/20;y=128;}
-  else{x=width*(s.kind==='textpass'?.275:.72)+(rank-(same.length-1)/2)*135;y=s.kind==='human'?420:390;}
+  if(s.kind==='classify'){const workerIndex=scalePlan.snapshots[time].workerStatus.findIndex(w=>w.id===p.rootWorker);x=(Math.max(0,workerIndex)+.5)*contentWidth/20;y=128;}
+  else{x=contentWidth*(s.kind==='textpass'?.275:.72)+(rank-(same.length-1)/2)*135;y=390;}
  }else{
   if(s.kind==='queue')y=NODE_TOP[0]+92;else if(s.kind==='classify')y=NODE_TOP[s.stage]+92;
   else if(['average','review','reviewResult','quality','image',...CASCADE_KINDS].includes(s.kind))y=NODE_TOP[s.stage]+92;else if(s.kind==='human')y=NODE_TOP[s.stage]+198;
@@ -895,6 +936,8 @@ function selectVisible(entries){
  const quotas=new Map(),chosen=[];
  for(const e of active){const s=e.state,p=e.product;if(s.kind==='rootwait')continue;if(EXPRESS_KINDS.includes(s.kind)){chosen.push(e);continue;}if(s.stage===0&&s.kind==='classify'){chosen.push(e);continue;}
  const key=s.stage===0&&s.kind!=='queue'?'root-'+s.kind:p.nodeIds[Math.max(0,s.stage)]+'-'+(s.kind==='done'?'done':s.kind==='human'?'human':'active');const limit=s.stage===0&&s.kind!=='queue'?3:1;const n=quotas.get(key)||0;if(n<limit){quotas.set(key,n+1);chosen.push(e);}}
+ const flights=entries.filter(e=>e.state.kind==='human'&&humanTransferFor(e).elapsed<=TREE_GEOMETRY.humanTransitFrames).sort((a,b)=>(b.product.id===selected)-(a.product.id===selected)||a.state.start-b.state.start||a.product.id.localeCompare(b.product.id));
+ const slots=new Set();for(const entry of flights){const slot=humanTransferFor(entry).slot;if(!slots.has(slot)){slots.add(slot);chosen.push(entry);}}
  return chosen;
 }
 function basketItems(entries,leafId){return entries.filter(e=>e.product.leafId===leafId&&e.state.kind==='done').sort((a,b)=>a.route.find(r=>r.kind==='done').start-b.route.find(r=>r.kind==='done').start||a.product.id.localeCompare(b.product.id));}
@@ -961,6 +1004,24 @@ function renderScalePanel(entries){
   return '<div class="worker-lane '+kind+'" title="'+title+'"><strong>'+label+'</strong><span>'+status+'</span><i class="worker-light" aria-hidden="true"></i></div>';
  }).join('');
 }
+function renderHumanSector(entries,visible){
+ const assigned=entries.filter(e=>e.state.kind==='human');
+ const moving=assigned.filter(e=>humanTransferFor(e).moving);
+ const arrived=assigned.filter(e=>humanTransferFor(e).arrived).sort((a,b)=>(b.product.id===selected)-(a.product.id===selected)||b.state.start-a.state.start||a.product.id.localeCompare(b.product.id));
+ $('human-sector-total').textContent=assigned.length;$('human-sector-moving').textContent=moving.length;$('human-sector-arrived').textContent=arrived.length;
+ $('human-sector-list').innerHTML=arrived.slice(0,4).map(e=>'<button type="button" class="'+(e.product.id===selected?'active':'')+'" data-focus="'+e.product.id+'"><b>'+e.product.id+' · '+e.state.reviewScore+'점'+(e.state.reviewScore<2?' · 별도 보류':'')+'</b><span>'+e.product.name+'</span></button>').join('')+(arrived.length>4?'<p>외 '+(arrived.length-4)+'개 상품 대기</p>':'')||'<p>아직 도착한 상품이 없습니다.</p>';
+ const flight=visible.find(e=>e.state.kind==='human'&&e.product.id===selected&&humanTransferFor(e).moving)||visible.find(e=>e.state.kind==='human'&&humanTransferFor(e).moving);
+ if(!flight){$('human-transfer-lines').innerHTML='';return;}
+ const f=humanTransferFor(flight);
+ $('human-transfer-lines').innerHTML='<defs><marker id="human-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="15" markerHeight="15" markerUnits="userSpaceOnUse" orient="auto"><path d="M1 1 L8 5 L1 9" fill="none" stroke="#bd513c" stroke-width="2"/></marker></defs><path d="M'+f.source.x+' '+f.source.y+' V'+f.departure.y+' H'+f.waypoint.x+' L'+f.destination.x+' '+f.destination.y+'" marker-end="url(#human-arrow)"/>';
+}
+function showHumanTransferExample(){
+ const match=PRODUCTS.map(product=>({product,route:routeFor(product,threshold)})).find(e=>e.route.at(-1).kind==='human'&&e.route.at(-1).reviewScore===2);
+ if(!match)return;
+ pause();selected=match.product.id;time=Math.max(0,match.route.at(-1).start-1);playing=true;lastStamp=0;
+ setStatus(selected+' · 2점이 되면 추가 분류를 멈추고 오른쪽 사람 검수 구역으로 이동합니다.');render();
+ if(typeof setFlowView==='function')setFlowView(true);
+}
 function renderRecovery(entries,visible,focus){
  const p=focus.product,s=focus.state,score=s.reviewScore||0,events=s.reviewEvents||[];
  const recovered=entries.filter(e=>e.route.some(r=>r.kind==='recoverUp'&&r.start<=time));
@@ -999,11 +1060,12 @@ function showReviewExample(kind){
 function render(){const entries=simulate(time,threshold),visible=selectVisible(entries),visibleIds=new Set(visible.map(e=>e.product.id)),counts={waiting:0,rootwait:0,active:0,review:0,done:0,human:0};let checks=0;entries.forEach(e=>{const k=e.state.kind;counts[k==='waiting'?'waiting':k==='rootwait'?'rootwait':k==='done'?'done':k==='human'?'human':['review','reviewResult','frontier','frontierResult','blind','compare','blindResult',...RECOVERY_KINDS].includes(k)?'review':'active']++;checks+=e.state.checks||0;});for(const key of Object.keys(counts))$('count-'+key.replace('waiting','wait')).textContent=counts[key];$('count-checks').textContent=checks;$('time-value').textContent=time+' / '+MAX_TIME;$('timeline').value=time;$('quick-timeline').value=time;$('threshold-value').textContent='≤ '+threshold;$('express-threshold-value').textContent='≥ '+expressThreshold;$('play').textContent=playing?'Ⅱ 일시정지':time===MAX_TIME?'↻ 다시 재생':'▶ 재생';$('step').disabled=time===MAX_TIME;$('quick-play').textContent=$('play').textContent;$('quick-step').disabled=time===MAX_TIME;$('quick-time').textContent=time+' / '+MAX_TIME;renderLanding(counts);
  $('input-now').textContent=time<50?'장면 '+time+' · 새 상품 10개 동시 투입':'장면 '+time+' · 500개 투입 완료 · 남은 처리 진행';$('input-total').textContent='누적 '+PRODUCTS.filter(p=>p.start<=time).length+' / 500';
  renderSellerPanel();renderScalePanel(entries);
+ renderHumanSector(entries,visible);
  const landedRoutes=visible.filter(e=>e.state.kind==='expressLand');
  const destinations=[...new Map(landedRoutes.map(e=>[e.product.leafId,e])).values()];
- $('express-lines').innerHTML='<defs><marker id="express-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" markerUnits="userSpaceOnUse" orient="auto"><path d="M1 1 L8 5 L1 9" fill="none" stroke="#118c60" stroke-width="1.5"/></marker></defs><path class="express-rail" d="M247 366 V409 H862 V1460"/>'+
-  destinations.map(e=>{const c=targetNode(e.product,e.product.path.length-1),y=NODE_TOP[e.product.path.length-1]+274;return '<path class="express-to-bin" d="M862 '+y+' H'+(c.x*9)+'" marker-end="url(#express-arrow)"/>';}).join('');
- document.documentElement.classList.toggle('is-playing',playing);renderLiveScores(visible,entries);TREE_NODES.forEach(node=>{const active=entries.some(e=>e.product.nodeIds[e.state.stage]===node.id&&['classify','textpass','quality','image','average','review','reviewResult','queue',...RECOVERY_KINDS,...CASCADE_KINDS,...EXPRESS_KINDS].includes(e.state.kind));$(nodeDomId(node)).classList.toggle('is-active',active);$('flow-'+node.id).classList.toggle('active',active);});document.querySelector('.tree-workers').classList.toggle('is-active',entries.some(e=>e.state.stage===0&&['classify','textpass','quality','image','average','review',...CASCADE_KINDS,...EXPRESS_KINDS].includes(e.state.kind)));const width=$('tree').clientWidth;entries.forEach(entry=>{const p=entry.product,s=entry.state,el=$('token-'+p.id),c=CATEGORIES[p.cat];if(!el)return;el.className='token '+c.css+(!visibleIds.has(p.id)?' hidden':'')+(s.stage===0&&s.kind==='classify'?' ingress':'')+(s.kind==='textpass'?' text-pass':'')+(EXPRESS_KINDS.includes(s.kind)?' express':'')+((['review','quality','specialist','frontier','blind','compare'].includes(s.kind))?' reviewing':'')+(RECOVERY_KINDS.includes(s.kind)?' recovering':'')+(s.kind==='human'?' human':'')+(s.kind==='done'?' done':'')+(selected===p.id?' selected':'');el.setAttribute('title',p.id+' · '+p.name+' · '+stateLabel(s));const pt=position(entry,width,visible);el.style.transform='translate('+pt.x+'px,'+pt.y+'px)';el.querySelector('span').textContent=stateLabel(s)+(s.reviewScore?' · '+s.reviewScore+'점':'');el.setAttribute('aria-pressed',String(selected===p.id));el.setAttribute('aria-label',p.name+' · '+stateLabel(s));});
+ $('express-lines').innerHTML='<defs><marker id="express-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="14" markerHeight="14" markerUnits="userSpaceOnUse" orient="auto"><path d="M1 1 L8 5 L1 9" fill="none" stroke="#118c60" stroke-width="2"/></marker></defs><path class="express-rail" d="M'+(TREE_GEOMETRY.contentWidth*.275)+' 366 V409 H'+TREE_GEOMETRY.expressX+' V1460"/>'+
+  destinations.map(e=>{const c=targetNode(e.product,e.product.path.length-1),y=NODE_TOP[e.product.path.length-1]+274;return '<path class="express-to-bin" d="M'+TREE_GEOMETRY.expressX+' '+y+' H'+c.px+'" marker-end="url(#express-arrow)"/>';}).join('');
+ document.documentElement.classList.toggle('is-playing',playing);renderLiveScores(visible,entries);TREE_NODES.forEach(node=>{const active=entries.some(e=>e.product.nodeIds[e.state.stage]===node.id&&['classify','textpass','quality','image','average','review','reviewResult','queue',...RECOVERY_KINDS,...CASCADE_KINDS,...EXPRESS_KINDS].includes(e.state.kind));$(nodeDomId(node)).classList.toggle('is-active',active);$('flow-'+node.id).classList.toggle('active',active);});document.querySelector('.tree-workers').classList.toggle('is-active',entries.some(e=>e.state.stage===0&&['classify','textpass','quality','image','average','review',...CASCADE_KINDS,...EXPRESS_KINDS].includes(e.state.kind)));const width=$('tree').clientWidth;entries.forEach(entry=>{const p=entry.product,s=entry.state,el=$('token-'+p.id),c=CATEGORIES[p.cat];if(!el)return;el.className='token '+c.css+(!visibleIds.has(p.id)?' hidden':'')+(s.stage===0&&s.kind==='classify'?' ingress':'')+(s.kind==='textpass'?' text-pass':'')+(EXPRESS_KINDS.includes(s.kind)?' express':'')+((['review','quality','specialist','frontier','blind','compare'].includes(s.kind))?' reviewing':'')+(RECOVERY_KINDS.includes(s.kind)?' recovering':'')+(s.kind==='human'?' human human-flight':'')+(s.kind==='done'?' done':'')+(selected===p.id?' selected':'');el.setAttribute('title',p.id+' · '+p.name+' · '+stateLabel(s));const pt=position(entry,width,visible);el.style.transform='translate('+pt.x+'px,'+pt.y+'px)';el.querySelector('span').textContent=(s.kind==='human'?(humanTransferFor(entry).moving?'사람 검수로 이동 →':'검수 구역 도착'):stateLabel(s))+(s.reviewScore?' · '+s.reviewScore+'점':'');el.setAttribute('aria-pressed',String(selected===p.id));el.setAttribute('aria-label',p.name+' · '+stateLabel(s));});
  for(let batch=0;batch<25;batch++){const group=entries.filter(e=>e.product.batch===batch),finished=group.every(e=>['done','human'].includes(e.state.kind));$('batch-'+batch).className='batch'+(finished?' finished':group.some(e=>e.state.kind!=='waiting')?' active':'');}
  CATEGORIES.forEach((cat,i)=>{const group=entries.filter(e=>e.product.cat===i);$('lane-count-'+i).textContent=group.filter(e=>e.state.kind!=='waiting'&&e.state.stage>=0&&!(e.state.stage===0&&e.state.kind!=='queue')).length;});
  LEAVES.forEach(leaf=>{const completed=basketItems(entries,leaf.id),done=completed.length;$('result-'+leaf.id).textContent='담긴 상품 '+done;
@@ -1043,12 +1105,14 @@ $('show-parallel').addEventListener('click',()=>{pause();time=12;setStatus('동�
 ['parallel-stages','flow-scores','seller-current'].forEach(id=>$(id).addEventListener('click',event=>{const target=event.target.closest('[data-focus]');if(target){if(id==='seller-current'){pause();setStatus('판매자 정보 확인을 위해 일시정지했습니다.');}selected=target.dataset.focus;render();}}));
 $('seller-current').addEventListener('focusin',event=>{if(playing&&event.target.closest('[data-focus]')){pause();setStatus('판매자 상품을 살펴보는 동안 일시정지했습니다.');render();}});
 document.querySelectorAll('[data-review-example]').forEach(button=>button.addEventListener('click',()=>showReviewExample(button.dataset.reviewExample)));
+$('human-transfer-demo').addEventListener('click',showHumanTransferExample);
+$('human-sector-list').addEventListener('click',event=>{const target=event.target.closest('[data-focus]');if(target){pause();selected=target.dataset.focus;render();}});
 $('human-queue-list').addEventListener('click',event=>{const target=event.target.closest('[data-focus]');if(target){pause();selected=target.dataset.focus;render();}});
 window.addEventListener('resize',()=>{fitTree();render();});document.addEventListener('visibilitychange',()=>{if(document.hidden&&playing){pause();setStatus('화면을 벗어나 재생을 멈췄습니다.');render();}});
 function frame(stamp){if(playing){if(!lastStamp)lastStamp=stamp;accumulated+=Math.min(stamp-lastStamp,100)*speed;lastStamp=stamp;if(accumulated>=1200){accumulated-=1200;time=Math.min(time+1,MAX_TIME);if(time===MAX_TIME){pause();setStatus(MAX_TIME+'장면에 도착했습니다. 500개의 가상 상품은 분류 완료 또는 사람 확인 대기 상태입니다.');}render();}}requestAnimationFrame(frame);}
 if(params.has('t')){time=Math.max(0,Math.min(MAX_TIME,Math.floor(Number(params.get('t'))||0)));setStatus('고정 장면 '+time+' · 재생을 누르면 이어집니다.');}
 if(params.has('threshold')){threshold=Math.max(60,Math.min(85,Number(params.get('threshold'))||70));$('threshold').value=threshold;updateTimelineLimit();}
-window.classificationDemo={simulate,routeFor,reviewLedger,cascadeFixtureFor,policy:CASCADE_POLICY,validLeaf,showReviewExample,scoreFor,rootDecisionStats,canExpress,setExpressThreshold,setSellerIncentive,getSellerStats,products:PRODUCTS,categories:CATEGORIES,nodes:TREE_NODES,leaves:LEAVES,treeGeometry:TREE_GEOMETRY,get maxTime(){return MAX_TIME;},getScalePlan:()=>scalePlan,setScaleOptions,getState:()=>({time,threshold,expressThreshold,playing,reduced,autoscaleEnabled,autoscaleMax,sellerIncentiveEnabled}),seek:(t)=>{pause();time=Math.max(0,Math.min(MAX_TIME,Math.floor(t)));render();}};
+window.classificationDemo={simulate,routeFor,humanTransferFor,position,showHumanTransferExample,reviewLedger,cascadeFixtureFor,policy:CASCADE_POLICY,validLeaf,showReviewExample,scoreFor,rootDecisionStats,canExpress,setExpressThreshold,setSellerIncentive,getSellerStats,products:PRODUCTS,categories:CATEGORIES,nodes:TREE_NODES,leaves:LEAVES,treeGeometry:TREE_GEOMETRY,get maxTime(){return MAX_TIME;},getScalePlan:()=>scalePlan,setScaleOptions,getState:()=>({time,threshold,expressThreshold,playing,reduced,autoscaleEnabled,autoscaleMax,sellerIncentiveEnabled}),seek:(t)=>{pause();time=Math.max(0,Math.min(MAX_TIME,Math.floor(t)));render();}};
 // The overview reads the existing engine's counts and shares its single player.
 let fitWholeFlow=false;
 let categoryZoomed=false;
@@ -1056,6 +1120,7 @@ function fitTree(){
  const tree=$('tree'),available=tree.parentElement.clientWidth;
  if(available<=0)return;
  let scale=categoryZoomed||available<=650?1:Math.min(1,available/2025);
+ if(categoryZoomed&&$('category-focus')?.value==='human')scale=Math.min(1,(available-32)/TREE_GEOMETRY.humanSector.width);
  if(fitWholeFlow){
   const screenHeight=window.visualViewport?.height||window.innerHeight;
   const controlsHeight=$('flow-toolbar').offsetHeight;
@@ -1079,8 +1144,15 @@ function setFlowView(fit){
 }
 $('flow-fit-toggle').addEventListener('click',()=>setFlowView(!fitWholeFlow));
 const categoryFocus=$('category-focus');
-categoryFocus.innerHTML='<option value="">분야 선택</option>'+CATEGORIES.map((category,index)=>'<option value="'+index+'">'+category.name+'</option>').join('');
+categoryFocus.innerHTML='<option value="">분야 선택</option>'+CATEGORIES.map((category,index)=>'<option value="'+index+'">'+category.name+'</option>').join('')+'<option value="human">사람 검수 구역</option>';
 categoryFocus.addEventListener('change',()=>{
+ if(categoryFocus.value==='human'){
+  categoryZoomed=true;setFlowView(false);
+  const tree=$('tree'),viewport=tree.parentElement,scale=Number(tree.style.getPropertyValue('--fit-scale'))||1;
+  viewport.scrollLeft=Math.max(0,(TREE_GEOMETRY.humanSector.x+TREE_GEOMETRY.humanSector.width/2)*scale-viewport.clientWidth/2);
+  window.scrollTo({top:window.scrollY+$('human-sector').getBoundingClientRect().top-$('flow-toolbar').offsetHeight-20,behavior:'auto'});
+  return;
+ }
  const category=CATEGORIES[Number(categoryFocus.value)];
  if(categoryFocus.value===''||!category)return;
  categoryZoomed=true;
