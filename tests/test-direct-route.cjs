@@ -73,97 +73,32 @@ const expressKinds = ['expressStart', 'expressEntry', 'expressDescend', 'express
 const isExpress = route => route.some(r => r.kind === 'expressStart');
 const ids = entries => Array.from(entries, e => e.product.id).sort();
 const expectIds = (actual, expected, message) => assert.deepEqual(ids(actual), ids(expected), message);
-const rootNeedsImage = p => !p.textEnough || p.sol[0] < 90;
-const qualifies = p => Boolean(p.textEnough && p.sol[0] >= 90 && p.leafConsistent && p.leafScore >= demo.getState().expressThreshold);
-const summaries = [];
-
-function checkRoutes() {
-  const counts = { express: 0, hierarchicalText: 0, quality: 0, human: 0 };
-  for (const p of demo.products) {
-    assert.equal(typeof p.leafScore, 'number', `${p.id}: final-leaf evidence score`);
-    assert.equal(typeof p.leafConsistent, 'boolean', `${p.id}: parent/leaf consistency evidence`);
-    assert.equal(demo.canExpress(p), qualifies(p), `${p.id}: all direct conditions must be required`);
-    const route = demo.routeFor(p, 70);
-    assert.equal(route[0].kind, 'classify');
-    assert.equal(route[0].stage, 0);
-    assert.equal(route[0].start, p.rootStart);
-    for (let i = 1; i < route.length; i++) assert.equal(route[i].start, route[i - 1].end, `${p.id}: contiguous route`);
-    assert.equal(route.at(-1).end, Infinity, `${p.id}: final state persists`);
-    if (qualifies(p)) {
-      counts.express++;
-      assert.deepEqual(Array.from(route, r => r.kind), ['classify', ...expressKinds, 'done'], `${p.id}: direct means skipping every intermediate/image/queue call`);
-      assert.equal(route.at(-1).stage, p.path.length - 1, `${p.id}: land in the actual category's final basket`);
-    } else if (rootNeedsImage(p)) {
-      counts.quality++;
-      const quality = route.find(r => r.stage === 0 && r.kind === 'quality');
-      assert(quality, `${p.id}: insufficient root text must keep its quality gate`);
-      assert(!isExpress(route), `${p.id}: insufficient evidence cannot use the direct route`);
-      const image = route.find(r => r.stage === 0 && ['average', 'image'].includes(r.kind));
-      if (p.imageBad) {
-        assert(!image, `${p.id}: a poor image must not call the image classifier`);
-        assert.equal(route.at(-1).kind, 'human');
-      } else assert(image && image.start >= quality.end, `${p.id}: image analysis must follow image quality`);
-    } else {
-      counts.hierarchicalText++;
-      assert(route.some(r => r.kind === 'textpass' && r.stage === 0), `${p.id}: keep the text-only hierarchical branch`);
-      assert(route.some(r => r.kind === 'classify' && r.stage > 0), `${p.id}: continue intermediate classification`);
-      assert(!route.some(r => r.kind === 'quality' && r.stage === 0));
-      assert(!isExpress(route));
-    }
-    if (!qualifies(p) && route.at(-1).kind === 'done') {
-      const lastStage = p.path.length - 1;
-      const finalImage = route.find(r => r.stage === lastStage && ['image', 'average'].includes(r.kind));
-      assert(finalImage, `${p.id}: every non-direct completed product needs final-leaf image validation`);
-      assert(route.some(r => r.kind === 'quality' && r.end <= finalImage.start), `${p.id}: final-leaf image validation follows a completed quality check`);
-      assert.equal(p.imageBad, false, `${p.id}: bad images cannot auto-complete`);
-      assert(p.agree[lastStage], `${p.id}: conflicting final-leaf evidence cannot auto-complete`);
-    }
-    for (const image of route.filter(r => ['image', 'average'].includes(r.kind))) {
-      assert(route.some(r => r.kind === 'quality' && r.end <= image.start), `${p.id}: every image call must follow image quality`);
-    }
-    if (route.at(-1).kind === 'human') counts.human++;
+const rootNeedsImage = p => !demo.canExpress(p);
+const qualifies = p => Boolean(p.textEnough && p.leafConsistent && p.leafScore >= demo.getState().expressThreshold && demo.validLeaf(p));
+const summaries=[];
+function checkRoutes(){
+ const counts={express:0,quality:0,specialist:0,frontier:0,blind:0,human:0};
+ for(const p of demo.products){
+  assert.equal(demo.canExpress(p),qualifies(p));
+  const r=demo.routeFor(p,70);assert.equal(r[0].kind,'classify');assert.equal(r[0].start,p.rootStart);
+  for(let i=1;i<r.length;i++)assert.equal(r[i].start,r[i-1].end,'contiguous route');
+  assert.equal(r.at(-1).end,Infinity);
+  if(qualifies(p)){counts.express++;assert.deepEqual(Array.from(r,s=>s.kind),['classify',...expressKinds,'done']);}
+  else{counts.quality++;assert.equal(r[1].kind,'quality');
+   if(p.imageBad){assert.equal(r.at(-1).kind,'human');assert(!r.some(s=>s.kind==='specialist'));}
+   else {assert.equal(r[2].kind,'specialist');assert.equal(r.filter(s=>s.kind==='specialist').length,1);counts.specialist++;}
   }
-  assert(counts.express && counts.hierarchicalText && counts.quality, 'all three distinct routing paths must exist');
-  return counts;
+  for(const k of ['frontier','blind'])if(r.some(s=>s.kind===k))counts[k]++;
+  if(r.at(-1).kind==='human')counts.human++;
+  if(r.at(-1).kind==='done'){assert.equal(r.at(-1).stage,p.path.length-1);assert(r.at(-1).reviewScore<2);assert.equal(r.at(-1).candidateLeafId,p.leafId);}
+  assert(!r.some(s=>s.kind==='average'),'raw scores must never be averaged');
+ }
+ for(const n of Object.values(counts))assert(n>0,'all routes are represented');return counts;
 }
-
-const base = demo.products.find(p => qualifies(p));
-assert(base, 'the synthetic data must include a direct-route product');
-
-// Even an all-high-score hierarchical route still validates its final leaf by image.
-const finalStage = base.path.length - 1;
-const leafProbe = {
-  ...base, leafScore: 94, textEnough: true, imageBad: false,
-  sol: Array.from(base.sol, () => 99), image: Array.from(base.image, () => 98),
-  agree: Array.from(base.agree, () => true)
-};
-const validatedLeafRoute = demo.routeFor(leafProbe, 70);
-assert.equal(validatedLeafRoute.at(-1).kind, 'done');
-assert(validatedLeafRoute.some(r => r.stage === finalStage && r.kind === 'quality'));
-assert(validatedLeafRoute.some(r => r.stage === finalStage && r.kind === 'image'));
-const badLeafRoute = demo.routeFor({ ...leafProbe, imageBad: true }, 70);
-assert.equal(badLeafRoute.at(-1).kind, 'human', 'a bad final-leaf image stops hierarchical automatic completion');
-assert.equal(badLeafRoute.at(-1).stage, finalStage);
-assert(!badLeafRoute.some(r => ['image', 'average'].includes(r.kind)), 'a failed quality check prevents all image-model calls');
-const conflictAgree = Array.from(leafProbe.agree);
-conflictAgree[finalStage] = false;
-const conflictLeafRoute = demo.routeFor({ ...leafProbe, agree: conflictAgree }, 70);
-assert.equal(conflictLeafRoute.at(-1).kind, 'human', 'conflicting final-leaf image evidence stops automatic completion');
-assert.equal(conflictLeafRoute.at(-1).stage, finalStage);
-assert(conflictLeafRoute.some(r => r.stage === finalStage && r.kind === 'image'));
-
-// A high root score alone never establishes the final leaf.
-for (const [label, patch] of [
-  ['missing text', { textEnough: false }],
-  ['inconsistent leaf', { leafConsistent: false }],
-  ['weak leaf', { leafScore: 94 }],
-  ['weak root', { sol: [89, ...base.sol.slice(1)] }]
-]) {
-  const synthetic = { ...base, sol: [99, ...base.sol.slice(1)], ...patch };
-  assert.equal(demo.canExpress(synthetic), false, label);
-  assert(!isExpress(demo.routeFor(synthetic, 70)), `${label}: must not secretly take the direct route`);
-}
-
+const base=demo.products.find(qualifies);assert(base);
+for(const patch of [{textEnough:false},{leafConsistent:false},{leafScore:94},{leafId:'missing-leaf'}])assert(!demo.canExpress({...base,...patch}));
+// High top-level evidence is insufficient without actual final-leaf evidence.
+assert(!demo.canExpress({...base,leafScore:94,sol:[99,99,99,99]}));
 function verifyTimeline(renderEveryFrame) {
   const plan = demo.getScalePlan();
   const previousDone = new Set();
@@ -181,7 +116,7 @@ function verifyTimeline(renderEveryFrame) {
     expectIds(stats.hierText, decided.filter(e => !qualifies(e.product) && !rootNeedsImage(e.product)), `t=${t}: hierarchy text counter`);
     expectIds(stats.needs, decided.filter(e => rootNeedsImage(e.product)), `t=${t}: image-needed counter`);
     expectIds(stats.quality, entries.filter(e => e.route.some(r => r.stage === 0 && r.kind === 'quality' && r.start <= t)), `t=${t}: quality counter`);
-    expectIds(stats.image, entries.filter(e => e.route.some(r => r.stage === 0 && ['image', 'average'].includes(r.kind) && r.start <= t)), `t=${t}: actual image-call counter`);
+    expectIds(stats.image, entries.filter(e => e.route.some(r => r.stage === 0 && ['specialist'].includes(r.kind) && r.start <= t)), `t=${t}: actual image-call counter`);
     assert.equal(stats.direct.length, stats.express.length + stats.hierText.length);
     assert.equal(stats.decided.length, stats.direct.length + stats.needs.length);
     assert.equal(new Set([...ids(stats.direct), ...ids(stats.needs)]).size, stats.decided.length);
@@ -207,9 +142,9 @@ function verifyTimeline(renderEveryFrame) {
       previousDone.add(e.product.id);
     });
     sawExpress ||= entries.some(e => expressKinds.includes(e.state.kind));
-    sawHierarchy ||= entries.some(e => e.state.stage > 0 && e.state.kind === 'classify');
-    sawImage ||= entries.some(e => e.state.stage === 0 && ['image', 'average'].includes(e.state.kind));
-    sawConcurrent ||= entries.some(e => e.state.stage === 0 && e.state.kind === 'classify') && entries.some(e => expressKinds.includes(e.state.kind) || e.state.stage > 0 && e.state.kind === 'classify');
+    sawHierarchy ||= entries.some(e => e.state.stage > 0 && e.state.kind === 'descend');
+    sawImage ||= entries.some(e => e.state.stage === 0 && ['specialist'].includes(e.state.kind));
+    sawConcurrent ||= entries.some(e => e.state.stage === 0 && e.state.kind === 'classify') && entries.some(e => expressKinds.includes(e.state.kind) || e.state.stage > 0 && e.state.kind === 'descend');
     if (renderEveryFrame) {
       demo.seek(t);
       assert.equal(String(getElement('express-count').textContent), String(stats.express.length));
@@ -218,7 +153,7 @@ function verifyTimeline(renderEveryFrame) {
       assert.equal(+getElement('express-count').textContent, +getElement('express-active').textContent + +getElement('express-completed').textContent, 'all decided direct products are either moving or in final baskets');
       assert.equal(String(getElement('root-text-count').textContent), stats.direct.length + '개');
       assert.equal(String(getElement('root-need-count').textContent), stats.needs.length + '개');
-      assert(getElement('root-image-counts').textContent.includes('이미지 모델 호출 ' + stats.image.length));
+      assert(getElement('root-image-counts').textContent.includes('전용 이미지 ' + stats.image.length));
       assert.equal(+getElement('scale-queued').textContent, snapshot.queued.length);
       assert.equal(+getElement('scale-busy').textContent, snapshot.busy);
       for (const leaf of demo.leaves) {
@@ -328,17 +263,17 @@ getElement('case-supported').click();
 getElement('debate-next').click();
 assert.equal(getElement('debate-stage-1')['aria-pressed'], 'true');
 getElement('debate-next').click();
-assert.match(getElement('debate-result').textContent, /보호 케이스/);
+assert.match(getElement('debate-result').textContent, /불확실 \+1.*해결 \+0 = 1점.*최종 분류/);
 getElement('case-missing').click();
 assert.equal(getElement('debate-stage-0')['aria-pressed'], 'true');
 getElement('debate-stage-2').click();
-assert.match(getElement('debate-result').textContent, /복구 \+1.*충돌 \+1 = 2점.*사람 검수/);
+assert.match(getElement('debate-result').textContent, /불확실 \+1.*미해결 \+2 = 3점.*사람 검수/);
 getElement('debate-next').click();
 assert.equal(getElement('debate-stage-0')['aria-pressed'], 'true');
 assert.equal(JSON.stringify(demo.getState()), unchangedState);
 // Model turns advance separately, stop after the final turn, and reset on scenario changes.
 getElement('case-supported').click();
-const speakerNames = ['Qwen3.8 27B', 'Nemotron 3 Ultra', 'North Mini Code'];
+const speakerNames = ['모델 A', '모델 B', '모델 C'];
 for (let turn = 0; turn < 9; turn++) {
   assert(getElement('debate-turn-label').textContent.includes(`${turn + 1} / 9`));
   assert(getElement('debate-turn-label').textContent.includes(speakerNames[turn % 3]));
@@ -362,4 +297,4 @@ assert.equal(JSON.stringify(demo.getState()), unchangedState);
 console.log('PASS: nine model turns; one active speaker/card; autoplay completes; case changes stop and reset dialogue; product engine unchanged.');
 console.log('PASS: landing play/pause/replay/reset shares engine; hero counters match; both authored discussion outcomes and reset; discussion does not mutate simulated products.');
 console.log(JSON.stringify({ passed: true, products: 500, positions, scenarios: summaries }, null, 2));
-console.log('PASS: real inline application; three routes; evidence gates; exact product IDs and counters; persistent final baskets; ten inputs per scene; autoscale 10/15/20 on/off; threshold slider; actual DOM movement.');
+console.log('PASS: real inline application; text / specialist / frontier / blind cascade; evidence gates; exact product IDs and counters; persistent final baskets; ten inputs per scene; autoscale 10/15/20 on/off; threshold slider; actual DOM movement.');
