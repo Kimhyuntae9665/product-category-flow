@@ -319,6 +319,30 @@ assert.match(getElement('debate-result').textContent, /사람 확인 대기.*미
 getElement('debate-next').click();
 assert.equal(getElement('debate-stage-0')['aria-pressed'], 'true');
 assert.equal(JSON.stringify(demo.getState()), unchangedState);
+// Model turns advance separately, stop after the final turn, and reset on scenario changes.
+getElement('case-supported').click();
+const speakerNames = ['Qwen3.8 27B', 'Nemotron 3 Ultra', 'North Mini Code'];
+for (let turn = 0; turn < 9; turn++) {
+  assert(getElement('debate-turn-label').textContent.includes(`${turn + 1} / 9`));
+  assert(getElement('debate-turn-label').textContent.includes(speakerNames[turn % 3]));
+  for (let speaker = 0; speaker < 3; speaker++) {
+    assert.equal(getElement(`speech-${speaker}`).classList.contains('current-speaker'), speaker === turn % 3);
+    assert.equal(getElement(`model-card-${speaker}`).classList.contains('current-speaker'), speaker === turn % 3);
+  }
+  if (turn < 8) getElement('debate-speaker-next').click();
+}
+getElement('debate-autoplay').click();
+assert.equal(getElement('debate-autoplay')['aria-pressed'], 'true');
+assert.match(getElement('debate-turn-label').textContent, /1 \/ 9/);
+for (let tick = 1; tick <= 9; tick++) animationFrames.at(-1)(tick * 4200);
+assert.equal(getElement('debate-autoplay')['aria-pressed'], 'false');
+assert.match(getElement('debate-turn-label').textContent, /9 \/ 9/);
+getElement('debate-autoplay').click();
+getElement('case-missing').click();
+assert.equal(getElement('debate-autoplay')['aria-pressed'], 'false');
+assert.match(getElement('debate-turn-label').textContent, /1 \/ 9/);
+assert.equal(JSON.stringify(demo.getState()), unchangedState);
+console.log('PASS: nine model turns; one active speaker/card; autoplay completes; case changes stop and reset dialogue; product engine unchanged.');
 console.log('PASS: landing play/pause/replay/reset shares engine; hero counters match; both authored discussion outcomes and reset; discussion does not mutate simulated products.');
 console.log(JSON.stringify({ passed: true, products: 500, positions, scenarios: summaries }, null, 2));
 console.log('PASS: real inline application; three routes; evidence gates; exact product IDs and counters; persistent final baskets; ten inputs per scene; autoscale 10/15/20 on/off; threshold slider; actual DOM movement.');
