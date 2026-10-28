@@ -4,9 +4,9 @@
 
 **[▶ 웹에서 직접 실행하기](https://product-category-flow.pages.dev/)**
 
-![가상 상품이 병렬 작업자와 계층별 카테고리를 지나가는 실제 데모 화면](assets/classification-flow.gif)
+![가상 상품이 병렬 작업자부터 아홉 분야의 최종 바스켓까지 이동하는 전체 분류 흐름](assets/classification-flow-full.gif)
 
-> 위 GIF는 실행 중인 데모 화면을 캡처한 것입니다. 아래 내용과 화면의 상품·점수·작업자 수는 모두 **설명을 위한 가상 예시**입니다.
+> 위 GIF는 시뮬레이션의 시작부터 마지막 장면까지를 캡처해 빠르게 재생합니다. 아래 내용과 화면의 상품·점수·작업자 수는 모두 **설명을 위한 가상 예시**입니다. 작은 글씨를 자세히 보려면 [웹 데모](https://product-category-flow.pages.dev/)를 열어 주세요.
 
 ## 어떤 문제를 살펴보나요?
 
@@ -86,7 +86,8 @@ node tests/test-seller-enrichment.cjs
 
 ```text
 index.html                   단일 파일 웹 데모 (HTML · CSS · JavaScript)
-assets/classification-flow.gif  실제 데모의 재생 화면
+assets/classification-flow-full.gif  전체 분류 흐름의 재생 화면
+assets/classification-flow.gif       분류 흐름의 기존 확대 화면
 assets/overview.jpg             데모 첫 화면
 assets/seller-enrichment.jpg    판매자 정보 보강 화면
 assets/classification.jpg       분류 진행 화면
