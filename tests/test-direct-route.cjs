@@ -331,7 +331,7 @@ assert.match(getElement('debate-result').textContent, /보호 케이스/);
 getElement('case-missing').click();
 assert.equal(getElement('debate-stage-0')['aria-pressed'], 'true');
 getElement('debate-stage-2').click();
-assert.match(getElement('debate-result').textContent, /사람 확인 대기.*미확정/);
+assert.match(getElement('debate-result').textContent, /복구 \+1.*충돌 \+1 = 2점.*사람 검수/);
 getElement('debate-next').click();
 assert.equal(getElement('debate-stage-0')['aria-pressed'], 'true');
 assert.equal(JSON.stringify(demo.getState()), unchangedState);
