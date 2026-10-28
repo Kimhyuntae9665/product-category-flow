@@ -14,7 +14,7 @@ function element(id) {
   const handlers = {};
   return {
     id, handlers, innerHTML:'', textContent:'', className:'', value:0, disabled:false,
-    clientWidth:id==='tree'?2025:1100, parentElement:{clientWidth:1100},
+    clientWidth:id==='tree'?4200:1100, parentElement:{clientWidth:1100},
     style:{setProperty(k,v){this[k]=v}},
     classList:{toggle(){}}, addEventListener(type,fn){handlers[type]=fn}, setAttribute(){},
     querySelector(selector){return getElement(id+'|'+selector)},
@@ -29,7 +29,7 @@ new vm.Script(script[1],{filename:'inline-animation.js'}).runInContext(context);
 const demo=window.classificationDemo;
 assert.equal(demo.products.length,500);
 assert.equal(new Set(demo.products.map(p=>p.id)).size,500);
-assert.equal(demo.categories.length,9);
+assert.equal(demo.categories.length,10);
 assert.equal(demo.maxTime,100);
 assert.equal(+getElement('tree').style['--fit-scale'],1100/2025);
 assert(html.includes('https://arxiv.org/html/2508.20013v2'));
@@ -47,7 +47,7 @@ for(const p of demo.products){
 }
 assert(foundDirect&&foundImage&&foundBad&&foundHighMissing&&foundLaterImage);
 
-const prior=Array.from({length:9},()=>[]);let overlap=false;
+const prior=Array.from({length:10},()=>[]);let overlap=false;
 for(let t=0;t<=100;t++){
  const entries=demo.simulate(t,70),stats=demo.rootDecisionStats(entries,t);
  assert.equal(entries.length,500);
@@ -61,7 +61,7 @@ for(let t=0;t<=100;t++){
  assert(snapshot.busy<=snapshot.replicas);
  const active=entries.filter(e=>['classify','textpass','quality','image','average','review','queue'].includes(e.state.kind));
  if(active.some(e=>e.state.stage===0)&&active.some(e=>e.state.stage>=1))overlap=true;
- for(let c=0;c<9;c++){
+ for(let c=0;c<10;c++){
   const current=entries.filter(e=>e.product.cat===c&&e.state.kind==='done').map(e=>e.product.id);
   assert(prior[c].every(id=>current.includes(id)),`basket ${c}: a completed item disappeared at ${t}`);prior[c]=current;
  }
@@ -73,7 +73,7 @@ const visible=vm.runInContext('selectVisible(simulate(2,70))',context);
 const textToken=visible.find(e=>e.state.kind==='textpass'),qualityToken=visible.find(e=>e.state.kind==='quality');
 assert(textToken&&qualityToken,'both text-only and quality branches should be visible together');
 const xFor=e=>+getElement('token-'+e.product.id).style.transform.match(/translate\(([-\d.]+)px/)[1];
-assert(xFor(textToken)<2025/2&&xFor(qualityToken)>2025/2,'products must move to distinct left and right branches');
+assert(xFor(textToken)<4200/2&&xFor(qualityToken)>4200/2,'products must move to distinct left and right branches');
 demo.seek(3);
 const highButMissing=demo.simulate(3,70).find(e=>e.product.id==='P001');
 assert(highButMissing.product.sol[0]>=90&&!highButMissing.product.textEnough&&highButMissing.state.kind==='average');
@@ -85,14 +85,14 @@ assert(!conflictRoute.some(r=>r.kind==='queue'),'a disagreement must not enter a
 const conflictState=conflictRoute.find(r=>r.stage===0&&r.kind==='review');
 assert.equal(demo.scoreFor({product:conflicted,route:conflictRoute,state:conflictState}).mode,'후보 불일치 → 교차 검토','the active review card must describe the disagreement');
 const synthetic={...conflicted,leafScore:80,textEnough:true,leafConsistent:true,imageBad:false,sol:[99,99,99,99],image:[1,1,1,1],agree:[true,true,true,true]};
-const lowImageRoute=demo.routeFor(synthetic,70),lastStage=demo.categories[synthetic.cat].path.length-1;
+const lowImageRoute=demo.routeFor(synthetic,70),lastStage=synthetic.path.length-1;
 assert(lowImageRoute.some(r=>r.stage===lastStage&&r.kind==='image')&&lowImageRoute.some(r=>r.stage===lastStage&&r.kind==='review'));
 assert.equal(lowImageRoute.at(-1).kind,'human','a very low final image score requires human review');
 assert.equal(demo.scoreFor({product:synthetic,route:lowImageRoute,state:lowImageRoute.find(r=>r.stage===lastStage&&r.kind==='review')}).mode,'추가 교차 검토','final image review must be labeled as review');
 const moderateImageRoute=demo.routeFor({...synthetic,image:[65,65,65,65]},70);
 assert(moderateImageRoute.some(r=>r.stage===lastStage&&r.kind==='review')&&moderateImageRoute.at(-1).kind==='done');
 const expressEntry=demo.simulate(2,70).find(e=>e.state.kind==='expressStart');
-assert(expressEntry&&demo.scoreFor(expressEntry).values.includes(String(expressEntry.product.leafScore))&&demo.scoreFor(expressEntry).values.includes(demo.categories[expressEntry.product.cat].leaf),'express cards must display the final-leaf score and destination');
+assert(expressEntry&&demo.scoreFor(expressEntry).values.includes(String(expressEntry.product.leafScore))&&demo.scoreFor(expressEntry).values.includes(expressEntry.product.leaf),'express cards must display the final-leaf score and destination');
 demo.seek(30);
 const stats=demo.rootDecisionStats(demo.simulate(30,70),30);
 assert.equal(getElement('root-text-count').textContent,stats.direct.length+'개');
@@ -112,7 +112,7 @@ assert.equal((getElement('worker-lanes').innerHTML.match(/worker-lane warming/g)
 assert.equal((getElement('worker-lanes').innerHTML.match(/worker-lane reserved/g)||[]).length,20-snapshot.replicas-snapshot.warming);
 assert.equal((getElement('arrival-list').innerHTML.match(/<span>/g)||[]).length,10);
 demo.seek(100);
-for(let c=0;c<9;c++)assert.equal(+getElement('basket-summary-'+c).textContent.match(/\((\d+)\)/)[1],prior[c].length);
+for(const leaf of demo.leaves)assert.equal(+getElement('basket-summary-'+leaf.id).textContent.match(/\((\d+)\)/)[1],demo.simulate(100,70).filter(e=>e.product.leafId===leaf.id&&e.state.kind==='done').length);
 getElement('quick-reset').click();assert.equal(demo.getState().time,0);
 getElement('quick-step').click();assert.equal(demo.getState().time,1);
 getElement('quick-timeline').handlers.input({target:{value:'45'}});assert.equal(demo.getState().time,45);
@@ -128,7 +128,7 @@ getElement('autoscale-enabled').handlers.change({target:{checked:true}});
 getElement('autoscale-max').handlers.change({target:{value:'15'}});assert.equal(demo.getState().autoscaleMax,15);
 assert(demo.getScalePlan().snapshots.every(s=>s.replicas+s.warming<=15));
 demo.setScaleOptions(true,20);assert.equal(demo.maxTime,100);
-const width=2025,height=1540,nodeWidth=204,nodeTop=[484,688,928,1168];
+const width=4200,height=1540,nodeWidth=204,nodeTop=[484,688,928,1168];
 for(let i=0;i<demo.categories.length;i++){
  const x=demo.categories[i].x*width/100;
  assert(x-nodeWidth/2>=0&&x+nodeWidth/2<=width,`category ${i} must fit inside the tree`);
@@ -141,7 +141,7 @@ for(let t=0;t<=demo.maxTime;t++){
  for(const entry of demo.simulate(t,70).filter(e=>['expressStart','expressEntry','expressDescend','expressLand'].includes(e.state.kind))){
   const token=getElement('token-'+entry.product.id),match=token.style.transform.match(/translate\(([-\d.]+)px,\s*([-\d.]+)px\)/);
   assert(match&&!/\bhidden\b/.test(token.className),`${entry.product.id}: express item must remain visible`);
-  const x=+match[1],y=+match[2];assert(x>=0&&x+124<=width&&y>=0&&y+47<=height,`${entry.product.id}: express item must fit in the tree`);
+  const x=+match[1],y=+match[2];assert(x>=0&&x+88<=width&&y>=0&&y+34<=height,`${entry.product.id}: express item must fit in the tree`);
  }
 }
 demo.setExpressThreshold(95);
@@ -149,4 +149,4 @@ const expressedCategories=new Set(demo.products.filter(p=>demo.canExpress(p)).ma
 assert(expressedCategories.size>=5,'direct path should demonstrate at least five different category baskets');
 const finalStats=demo.rootDecisionStats(demo.simulate(100,70),100);
 console.log('Synthetic stage-1 totals:',JSON.stringify({decided:finalStats.decided.length,express:finalStats.express.length,expressCategories:expressedCategories.size,textOnly:finalStats.direct.length,quality:finalStats.quality.length,imageCalls:finalStats.image.length}));
-console.log('PASS: 500 products, 10 simultaneous inputs, text-only / quality / image / human routing, 9 persistent baskets, concurrent stages, controls and render counts.');
+console.log('PASS: 500 products, 10 simultaneous inputs, text-only / quality / image / human routing, 38 persistent leaf baskets, concurrent stages, controls and render counts.');

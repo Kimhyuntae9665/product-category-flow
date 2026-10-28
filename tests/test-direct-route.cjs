@@ -26,7 +26,7 @@ function getElement(id) {
   const classes = new Set();
   const element = {
     id, handlers, innerHTML: '', textContent: '', className: '', value: 0, disabled: false,
-    clientWidth: id === 'tree' ? 2025 : 1100, parentElement: { clientWidth: 1100 },
+    clientWidth: id === 'tree' ? 4200 : 1100, parentElement: { clientWidth: 1100 },
     offsetHeight: id === 'tree' ? 1540 : id === 'flow-toolbar' ? 80 : 32,
     style: { setProperty(k, v) { this[k] = v; } },
     classList: {
@@ -64,7 +64,7 @@ for (const name of ['simulate', 'routeFor', 'canExpress', 'rootDecisionStats', '
   assert.equal(typeof demo[name], 'function', `missing demo API: ${name}`);
 }
 assert.equal(demo.products.length, 500);
-assert.equal(demo.categories.length, 9);
+assert.equal(demo.categories.length, 10);
 const productIds = Array.from(demo.products, p => p.id).sort();
 assert.equal(new Set(productIds).size, 500);
 assert.equal(demo.getState().expressThreshold, 95, 'default direct-leaf threshold');
@@ -92,7 +92,7 @@ function checkRoutes() {
     if (qualifies(p)) {
       counts.express++;
       assert.deepEqual(Array.from(route, r => r.kind), ['classify', ...expressKinds, 'done'], `${p.id}: direct means skipping every intermediate/image/queue call`);
-      assert.equal(route.at(-1).stage, demo.categories[p.cat].path.length - 1, `${p.id}: land in the actual category's final basket`);
+      assert.equal(route.at(-1).stage, p.path.length - 1, `${p.id}: land in the actual category's final basket`);
     } else if (rootNeedsImage(p)) {
       counts.quality++;
       const quality = route.find(r => r.stage === 0 && r.kind === 'quality');
@@ -111,7 +111,7 @@ function checkRoutes() {
       assert(!isExpress(route));
     }
     if (!qualifies(p) && route.at(-1).kind === 'done') {
-      const lastStage = demo.categories[p.cat].path.length - 1;
+      const lastStage = p.path.length - 1;
       const finalImage = route.find(r => r.stage === lastStage && ['image', 'average'].includes(r.kind));
       assert(finalImage, `${p.id}: every non-direct completed product needs final-leaf image validation`);
       assert(route.some(r => r.kind === 'quality' && r.end <= finalImage.start), `${p.id}: final-leaf image validation follows a completed quality check`);
@@ -131,7 +131,7 @@ const base = demo.products.find(p => qualifies(p));
 assert(base, 'the synthetic data must include a direct-route product');
 
 // Even an all-high-score hierarchical route still validates its final leaf by image.
-const finalStage = demo.categories[base.cat].path.length - 1;
+const finalStage = base.path.length - 1;
 const leafProbe = {
   ...base, leafScore: 94, textEnough: true, imageBad: false,
   sol: Array.from(base.sol, () => 99), image: Array.from(base.image, () => 98),
@@ -203,7 +203,7 @@ function verifyTimeline(renderEveryFrame) {
     const doneIds = new Set(ids(completed));
     for (const id of previousDone) assert(doneIds.has(id), `${id} disappeared from its final basket at scene ${t}`);
     completed.forEach(e => {
-      assert.equal(e.state.stage, demo.categories[e.product.cat].path.length - 1);
+      assert.equal(e.state.stage, e.product.path.length - 1);
       previousDone.add(e.product.id);
     });
     sawExpress ||= entries.some(e => expressKinds.includes(e.state.kind));
@@ -221,8 +221,9 @@ function verifyTimeline(renderEveryFrame) {
       assert(getElement('root-image-counts').textContent.includes('이미지 모델 호출 ' + stats.image.length));
       assert.equal(+getElement('scale-queued').textContent, snapshot.queued.length);
       assert.equal(+getElement('scale-busy').textContent, snapshot.busy);
-      for (let c = 0; c < demo.categories.length; c++) {
-        const basketIds = completed.filter(e => e.product.cat === c).map(e => e.product.id).sort();
+      for (const leaf of demo.leaves) {
+        const c=leaf.id;
+        const basketIds = completed.filter(e => e.product.leafId === c).map(e => e.product.id).sort();
         const renderedIds = [...getElement('basket-list-' + c).innerHTML.matchAll(/<li>(P\d+)\s*·/g)].map(m => m[1]).sort();
         assert.deepEqual(renderedIds, Array.from(basketIds), `basket ${c} at scene ${t}: exact IDs are preserved in real DOM list`);
       }
@@ -257,8 +258,8 @@ for (const kind of [...expressKinds, 'done']) {
 }
 assert(new Set(positions.slice(0, 4).map(p => p.x + ',' + p.y)).size >= 3, 'direct-route animation must visibly move through distinct waypoints');
 assert(positions[3].y > positions[1].y, 'direct route must descend from its entry lane to the final basket');
-const categoryX = demo.categories[moving.cat].x / 100 * getElement('tree').clientWidth;
-assert(Math.abs(positions.at(-1).x + 62 - categoryX) < 100, 'completed token must align with its own actual category basket');
+const categoryX = demo.leaves.find(leaf=>leaf.id===moving.leafId).x / demo.treeGeometry.width * getElement('tree').clientWidth;
+assert(Math.abs(positions.at(-1).x + 44 - categoryX) < 100, 'completed token must align with its own actual category basket');
 assert(Math.abs(positions[3].y - positions.at(-1).y) < 200, 'landing animation must reach the actual final basket area');
 
 // Both API and actual slider must recalculate routes from unchanged products.
@@ -299,7 +300,7 @@ assert.equal(getElement('flow-fit-toggle')['aria-pressed'], 'true');
 assert.equal(getElement('simulation-panel').lastScroll.block, 'start');
 assert.equal(getElement('quick-play').lastFocus.preventScroll, true);
 const fittedScale=+getElement('tree').style['--fit-scale'];
-assert(fittedScale*2025<=1100 && fittedScale*1540+80+32+44<=720.001, 'whole flow must fit in both viewport dimensions');
+assert(fittedScale*demo.treeGeometry.width<=1100 && fittedScale*1540+80+32+44<=720.001, 'whole flow must fit in both viewport dimensions');
 assert.equal(getElement('hero-play')['aria-pressed'], 'true');
 assert.match(getElement('hero-play-label').textContent, /일시정지/);
 getElement('hero-play').click();

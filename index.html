@@ -72,7 +72,12 @@ button{border-color:#cbdedb;border-radius:7px;color:#284e4b}button:hover{backgro
 .seller-flow-step span,.seller-metric span,.seller-note,.seller-now-head span,.seller-selection,.seller-selected-inline{font-size:12px}.seller-ticket strong{font-size:12px}.seller-ticket span,.seller-ticket em{font-size:11px}
 @media(prefers-reduced-motion:reduce){.seller-ticket{animation:none}}
 .reduce .seller-ticket{animation:none}
+/* Taxonomy forks use independent 100 px leaf slots, with shared parent nodes. */
+.tree .node{padding:9px 6px}.tree .node strong{font-size:15px;line-height:1.4;overflow-wrap:anywhere;word-break:keep-all;margin:5px 0}.tree .node .level,.tree .node small,.tree .model-link{font-size:10px}.tree .node:has(.count) strong{font-size:20px}.tree .node small{display:block;line-height:1.4}.tree .resultbin{padding:6px 4px}.tree .resultbin small{line-height:1.35;overflow-wrap:anywhere}.tree .model-link{padding:2px 4px}.tree .flow-score{padding:3px 4px;z-index:5}.tree .flow-score .score-head{flex-wrap:wrap;gap:1px}.tree .flow-score .score-head b{font-size:10px}.tree .flow-score .score-mode{font-size:8px}.tree .flow-score .score-values{font-size:9px;white-space:normal}.node.pets{background:#fdf4eb;border-color:#d7b99a;color:#8c602d}.token.pets{border-color:#b89165;border-left-color:#8c602d}
+/* Compact tickets stay below category names and above the score pills. */
+.tree .node.is-active small{visibility:hidden}.tree .token:not(.ingress){width:88px;height:34px;min-height:34px;padding:3px 4px;border-left-width:3px;overflow:hidden}.tree .token:not(.ingress) b{font-size:10px;line-height:12px}.tree .token:not(.ingress) span{font-size:9px;line-height:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.tree .token:not(.ingress) .tokenid{font-size:7px;line-height:11px;margin-left:2px}
 /* Submission landing: the diagram is the introduction, not a decorative cover. */
+.assignment-banner{display:grid;grid-template-columns:minmax(0,1fr) 285px;gap:25px;margin-top:22px;padding:22px 25px;background:#eef3ff;border:1px solid #c8d6f2;border-radius:14px;color:#213e6c}.assignment-scope{display:grid;grid-template-columns:auto 1fr;column-gap:12px;row-gap:3px;align-items:center}.scope-eyebrow{font-size:11px;font-weight:750;color:#526d96}.assignment-scope>strong{font-size:18px;letter-spacing:-.035em;line-height:1.5}.assignment-scope .demo-scope{font-size:24px;color:#214fca}.scope-arrow{display:none}.assignment-scope>p{grid-column:1/-1;font-size:12px;color:#5c7294;line-height:1.6;margin:7px 0 0;word-break:keep-all}.assignment-budget{align-self:center;padding-left:25px;border-left:1px solid #b9c9e8}.assignment-budget>strong,.assignment-budget>b{display:block}.assignment-budget>strong{font-size:28px;letter-spacing:-.05em;line-height:1.2;color:#1c43ac}.assignment-budget>b{font-size:15px;margin-top:6px}.assignment-budget>p{font-size:11px;line-height:1.6;margin:6px 0 0;color:#5c7294;word-break:keep-all}@media(max-width:860px){.assignment-banner{grid-template-columns:minmax(0,1fr) 225px;gap:18px;padding:19px}.assignment-budget{padding-left:18px}.assignment-scope>strong{font-size:16px}.assignment-scope .demo-scope{font-size:21px}.assignment-budget>strong{font-size:25px}}@media(max-width:650px){.assignment-banner{grid-template-columns:1fr;gap:15px;margin-top:16px;padding:17px 16px;border-radius:11px}.assignment-scope{grid-template-columns:1fr;gap:3px}.scope-eyebrow{font-size:10px}.assignment-scope>strong{font-size:17px}.assignment-scope .demo-scope{font-size:22px}.assignment-scope .scope-eyebrow:nth-of-type(3){margin-top:7px}.assignment-scope>p{font-size:11px;margin-top:5px}.assignment-budget{padding:13px 0 0;border-left:0;border-top:1px solid #c6d3eb;display:grid;grid-template-columns:1fr auto;column-gap:10px;align-items:center}.assignment-budget>strong{font-size:24px}.assignment-budget>b{font-size:12px;margin:0}.assignment-budget>p{grid-column:1/-1;margin-top:4px;font-size:10px}}@media(max-width:360px){.assignment-budget{grid-template-columns:1fr}.assignment-budget>b{margin-top:5px}.assignment-scope .demo-scope{font-size:20px}}
 :root{--landing-ink:#152b46;--landing-muted:#586d85;--landing-blue:#315cde;--landing-green:#16846a;--landing-amber:#b96b24;--landing-violet:#7656ac}
 html{scroll-behavior:auto;scroll-padding-top:22px}body{background:#f5f8fc;color:var(--landing-ink)}.page{max-width:1500px;padding:25px 40px 50px}.landing-icon{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}.landing-nav{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #dce4ef;padding-bottom:18px;gap:20px}.landing-brand{display:flex;align-items:center;gap:10px;color:var(--landing-ink);text-decoration:none;font-size:15px;font-weight:800;letter-spacing:-.04em}.route-brand{width:35px;height:35px;display:grid;place-items:center;background:var(--landing-blue);color:#fff;border-radius:10px}.landing-nav nav{display:flex;gap:25px;align-items:center;font-size:12px;font-weight:700}.landing-nav nav a{color:#586d85;text-decoration:none}.landing-nav nav a:hover{color:var(--landing-blue)}.landing-nav .source-link{display:flex;align-items:center;gap:5px}.source-link svg{width:15px;height:15px}.skip-link{position:fixed;left:20px;top:-100px;background:white;color:#152b46;padding:12px;z-index:100}.skip-link:focus{top:15px}
 .landing{display:grid;grid-template-columns:0.88fr 1.12fr;gap:55px;align-items:center;margin:36px 0 25px}.landing-copy{min-width:0}.assignment-label{margin:0 0 15px;font-size:12px;letter-spacing:.025em;color:#5d7087;font-weight:700}.assignment-label b{color:var(--landing-blue)}.landing h1{font-size:clamp(36px,3.5vw,53px);font-weight:850;letter-spacing:-.065em;line-height:1.24;margin:0 0 20px;color:var(--landing-ink);word-break:keep-all}.landing h1 em{font-style:normal;color:var(--landing-blue)}.landing-lead{font-size:15px;line-height:1.8;color:var(--landing-muted);max-width:470px;word-break:keep-all;margin:0 0 23px}.landing-actions{display:flex;align-items:center;gap:14px;flex-wrap:wrap}.landing-play{min-width:246px;min-height:66px;border:0;border-radius:13px;background:var(--landing-blue);color:white;display:flex;align-items:center;justify-content:center;gap:13px;padding:13px 23px;font-size:17px;box-shadow:0 8px 22px #315cde22}.landing-play:hover{background:#234bc3}.play-disk{width:37px;height:37px;border:1px solid #ffffff5c;background:#ffffff19;border-radius:50%;display:grid;place-items:center}.play-disk svg{width:19px;height:19px;fill:currentColor;stroke-width:1.3}.play-disk .pause-symbol{display:none}.is-playing .play-disk .play-symbol{display:none}.is-playing .play-disk .pause-symbol{display:block}.landing-secondary{font-size:13px;font-weight:750;color:#425677;text-decoration:none;border-bottom:1px solid #adbed8;padding:7px 0}.demo-note{display:flex;align-items:center;gap:6px;font-size:11px;color:#65778d;margin:13px 0 0}.demo-note svg{width:14px;height:14px}.landing-scale{display:flex;gap:22px;margin:23px 0 0;padding-top:17px;border-top:1px solid #dce4ef;max-width:405px}.landing-scale div{font-size:11px;color:#65778d}.landing-scale b{display:block;color:#263f5d;font-size:14px;font-weight:750}.landing-scale span{display:block}
@@ -108,6 +113,8 @@ html{scroll-behavior:auto;scroll-padding-top:22px}body{background:#f5f8fc;color:
 .landing-play .play-disk{width:48px;height:48px}.landing-play .play-disk svg{width:25px;height:25px}
 #flow-toolbar{scroll-margin-top:8px}#flow-fit-toggle{min-height:42px;color:#315cde;border-color:#a8bce9;background:#eef3ff;white-space:nowrap}
 #flow-scale{margin-left:0;min-width:34px;font:11px Consolas,monospace;color:#607693}
+.category-focus-label{display:flex;align-items:center;gap:6px;font-size:11px;color:#506a86;font-weight:700}.category-focus-label select{max-width:125px;padding:7px;border-color:#bbcbe4;font-size:12px}.tree-panel{overflow:clip}.tree-panel .tree-scroll{overflow-x:auto}
+.tree .node{z-index:2}
 .flow-fit>.prep-disclosure,.flow-fit>.scrollhint{display:none}.flow-fit .tree-scroll{overflow:hidden}.flow-fit .tree{margin-inline:auto}
 .tree-panel.flow-fit{scroll-margin-top:0}.flow-fit>.panelbar{padding:10px 22px;align-items:center}.flow-fit .panel-kicker{display:none}.flow-fit .panelbar h2{font-size:16px}
 @media(max-width:860px){.landing-play{min-width:290px;min-height:80px;font-size:20px;padding:15px 22px}}
@@ -200,9 +207,12 @@ SOFTWARE.
   <path d="M7 7h10v10" />
   <path d="M7 17 17 7" />
 </svg></a></nav></header>
+<section class="assignment-banner" aria-label="과제 규모와 축소판 안내">
+ <div class="assignment-scope"><span class="scope-eyebrow">실제 과제</span><strong>상품 500만 건 · 카테고리 1만 개</strong><span class="scope-arrow" aria-hidden="true">→</span><span class="scope-eyebrow">이 화면은 축소판</span><strong class="demo-scope">상품 500개 · 대분류 10개</strong><p>애니메이션의 작동 구조를 보여주기 위해 규모를 줄였습니다. 각 대분류 아래에는 여러 하위 카테고리가 갈라집니다.</p></div>
+ <div class="assignment-budget"><strong>정확도 = 돈</strong><b>상품 1개당 예산 20원</b><p>AI 호출·사람 검수·오분류 비용을 함께 줄이는 설계</p></div>
+</section>
 <section class="landing" aria-labelledby="landing-title">
  <div class="landing-copy">
-  <p class="assignment-label"><b>500만 상품 → 1만 세부 카테고리</b> · 설계 과제</p>
   <h1 id="landing-title" class="text-first-title">텍스트로 빠르게 분류하고,<br>텍스트 정보가 부족하면<br><em>이미지와 텍스트를<br>함께 분석합니다.</em></h1>
   <p class="landing-lead">상품명과 설명으로 먼저 분류합니다. 경로가 어긋나면 복구하고, 판단이 어려우면 사진과 AI 토론으로 확인합니다.</p>
   <div class="landing-actions"><button type="button" class="landing-play" id="hero-play" aria-pressed="false"><span class="play-disk" aria-hidden="true"><span class="play-symbol"><svg class="landing-icon" viewBox="0 0 24 24" aria-hidden="true">
@@ -216,7 +226,7 @@ SOFTWARE.
   <path d="M12 16v-4" />
   <path d="M12 8h.01" />
 </svg> 설명용 시뮬레이션 · 실제 모델 호출 없음</p>
-  <div class="landing-scale"><div><b>500개 가상 상품</b><span>직접 조작하는 데모</span></div><div><b>9개 예시 분야</b><span>2~4단계의 분류 경로</span></div><div><b>필요한 곳에만 AI</b><span>선택적 추가 검토 설계</span></div></div>
+  <div class="landing-scale"><div><b>500개 가상 상품</b><span>직접 조작하는 데모</span></div><div><b>10개 대분류</b><span>여러 하위 분류로 분기</span></div><div><b>필요한 곳에만 AI</b><span>선택적 추가 검토 설계</span></div></div>
  </div>
  <section class="journey" aria-labelledby="journey-title">
   <div class="journey-head"><h2 id="journey-title">상품 하나가 분류되는 과정</h2><span class="journey-status"><i class="status-dot" aria-hidden="true"></i><span id="hero-status">재생 준비</span></span></div>
@@ -307,8 +317,8 @@ SOFTWARE.
 
 <div class="workspace">
 <section id="simulation-panel" class="tree-panel" aria-label="위에서 아래로 진행하는 상품 분류 나무">
-<div class="panelbar"><div><p class="panel-kicker">분류 흐름</p><h2>상품이 지나가는 경로</h2></div><small>9개 예시 분야 · 상품을 누르면 현재 상태 확인</small></div>
-<div class="quick-controls" id="flow-toolbar"><button type="button" class="primary" id="quick-play">▶ 재생</button><button type="button" id="quick-step">한 장면 ↓</button><button type="button" id="quick-reset">처음부터</button><button type="button" id="flow-fit-toggle" aria-pressed="false" aria-controls="tree">전체 보기</button><output id="flow-scale" aria-label="분류도 배율"></output><div class="quick-seek"><label for="quick-timeline">진행 장면</label><input type="range" id="quick-timeline" min="0" max="100" value="0" step="1" aria-label="진행 장면 선택"><output id="quick-time" aria-label="현재 진행 장면">0 / 100</output></div><label class="quick-speed-label" for="quick-speed">속도 <select id="quick-speed"><option value="0.6">느리게</option><option value="1" selected>보통</option><option value="1.8">빠르게</option></select></label></div>
+<div class="panelbar"><div><p class="panel-kicker">분류 흐름</p><h2>상품이 지나가는 경로</h2></div><small>10개 예시 분야 · 상품을 누르면 현재 상태 확인</small></div>
+<div class="quick-controls" id="flow-toolbar"><button type="button" class="primary" id="quick-play">▶ 재생</button><button type="button" id="quick-step">한 장면 ↓</button><button type="button" id="quick-reset">처음부터</button><button type="button" id="flow-fit-toggle" aria-pressed="false" aria-controls="tree">전체 보기</button><output id="flow-scale" aria-label="분류도 배율"></output><label class="category-focus-label">분야 확대 <select id="category-focus" aria-label="분야를 골라 크게 보기"><option value="">분야 선택</option></select></label><div class="quick-seek"><label for="quick-timeline">진행 장면</label><input type="range" id="quick-timeline" min="0" max="100" value="0" step="1" aria-label="진행 장면 선택"><output id="quick-time" aria-label="현재 진행 장면">0 / 100</output></div><label class="quick-speed-label" for="quick-speed">속도 <select id="quick-speed"><option value="0.6">느리게</option><option value="1" selected>보통</option><option value="1.8">빠르게</option></select></label></div>
 <section class="review-monitor" aria-label="복구와 누적 검수 점수">
  <div class="review-monitor-top"><strong>복구 <b id="recovery-count">0</b>건 <span>·</span> 사람 검수 <b id="review-queue-count">0</b>건</strong><div class="review-samples"><button type="button" data-review-example="resolved">복구 후 통과</button><button type="button" data-review-example="conflict">복구 후 충돌</button><button type="button" data-review-example="low">낮은 확신</button></div></div>
  <div class="review-current"><b id="review-focus">P001 · 0 / 2점</b><span id="review-focus-detail">복구 +1 · 토론 후 충돌 +1 · 최종 확신 낮음 +2</span></div>
@@ -332,7 +342,7 @@ SOFTWARE.
  <p class="scale-note">장면마다 10개가 도착하지만 바쁜 복제본이 있으면 대기열에 남습니다. 가상 설정: 처리 2장면, 추가 준비 2장면. 처리 완료가 늦어지는 설정에서는 마지막 장면이 100보다 늘어납니다. 복제본 하나가 GPU 한 대를 뜻하지는 않습니다. ‘복제본·장면’은 준비·실행 수를 누적한 예시로 실제 GPU 시간이나 요금이 아닙니다. 분야별·이미지 모델은 각각 별도 대기열로 확장하는 설계이며, 여기서는 1차만 용량을 계산합니다.</p>
 </section></details><p class="scrollhint">아래 사각형은 같은 모델 A의 최대 20개 실행 슬롯입니다. 색이 진한 슬롯은 준비된 복제본, 흐린 슬롯은 미사용입니다.<span class="mobile-tree-hint">분류도가 넓습니다. 화면을 좌우로 움직여 분야별 경로를 살펴보세요.</span></p>
 <div class="tree-scroll"><div class="tree" id="tree">
-<svg class="tree-lines" viewBox="0 0 900 1540" preserveAspectRatio="none" aria-hidden="true"><defs><marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M1 1 L8 5 L1 9" style="stroke:#9bb6ca;fill:none;stroke-width:1.5"/></marker></defs><path d="M450 151 V225 H90 V261" marker-end="url(#arrow)"/><path class="foodline" d="M450 225 H270 V261" marker-end="url(#arrow)"/><path class="beautyline" d="M450 151 V261" marker-end="url(#arrow)"/><path d="M450 225 H630 V261" marker-end="url(#arrow)"/><path d="M450 225 H810 V261" marker-end="url(#arrow)"/><path d="M90 373 V465 M90 575 V705 M90 815 V987" marker-end="url(#arrow)"/><path class="foodline" d="M270 373 V465 M270 575 V705 M270 815 V987" marker-end="url(#arrow)"/><path class="beautyline" d="M450 373 V465 M450 575 V705 M450 815 V987" marker-end="url(#arrow)"/><path d="M630 373 V465 M630 575 V705 M630 815 V987" marker-end="url(#arrow)"/><path d="M810 373 V465 M810 575 V705 M810 815 V987" marker-end="url(#arrow)"/></svg>
+<svg class="tree-lines" viewBox="0 0 900 1540" preserveAspectRatio="none" aria-hidden="true"><defs><marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" markerUnits="userSpaceOnUse" orient="auto"><path d="M1 1 L8 5 L1 9" style="stroke:#9bb6ca;fill:none;stroke-width:1.5"/></marker></defs><path d="M450 151 V225 H90 V261" marker-end="url(#arrow)"/><path class="foodline" d="M450 225 H270 V261" marker-end="url(#arrow)"/><path class="beautyline" d="M450 151 V261" marker-end="url(#arrow)"/><path d="M450 225 H630 V261" marker-end="url(#arrow)"/><path d="M450 225 H810 V261" marker-end="url(#arrow)"/><path d="M90 373 V465 M90 575 V705 M90 815 V987" marker-end="url(#arrow)"/><path class="foodline" d="M270 373 V465 M270 575 V705 M270 815 V987" marker-end="url(#arrow)"/><path class="beautyline" d="M450 373 V465 M450 575 V705 M450 815 V987" marker-end="url(#arrow)"/><path d="M630 373 V465 M630 575 V705 M630 815 V987" marker-end="url(#arrow)"/><path d="M810 373 V465 M810 575 V705 M810 815 V987" marker-end="url(#arrow)"/></svg>
 <svg class="recovery-lines" id="recovery-lines" viewBox="0 0 900 1540" preserveAspectRatio="none" aria-hidden="true"></svg><div class="recovery-callout" id="recovery-callout" hidden></div><svg class="express-lines" id="express-lines" viewBox="0 0 900 1540" preserveAspectRatio="none" aria-hidden="true"></svg><div class="express-rail-label">최종 직행 ↓</div><div class="tree-workers" aria-label="1단계 공통 텍스트 모델 복제본 병렬 작업"><div class="worker-legend"><span id="input-now">장면 0 · 새 상품 10개 투입</span> <span id="input-total">누적 10 / 500</span></div><div class="worker-flow"><div class="worker-root">상품명 · 설명 입력 ↓ 같은 텍스트 모델 A의 실행 복제본</div><div class="worker-branch"></div><div id="worker-lanes" class="worker-lanes"></div><div class="worker-bus"></div><div class="worker-out">각 결과를 기다림 없이 분야별 다음 단계로 ↓</div></div></div><div class="model-a-bus">모델 A · 텍스트 대분류와 최종 후보를 함께 예측 <small>최종 근거가 충분하면 직행 · 나머지는 계층 분류</small></div>
 <section class="decision-card text-route" id="text-route" aria-label="텍스트만으로 1차 통과">
  <div class="decision-head"><strong>텍스트만으로 1차 통과 ↓</strong><b id="root-text-count">0</b></div>
@@ -376,18 +386,52 @@ SOFTWARE.
 </main>
 <script>
 'use strict';
+// A small synthetic taxonomy: siblings share one parent; terminal nodes stop.
 const CATEGORIES=[
- {id:'electronics',name:'전자제품',path:['전자제품','음향기기','이어폰','무선 이어폰'],css:''},
- {id:'food',name:'가공식품',path:['가공식품','간식','과자'],css:'food'},
- {id:'beauty',name:'화장품',path:['화장품','스킨케어','보습 크림'],css:'beauty'},
- {id:'sports',name:'스포츠용품',path:['스포츠용품','운동용품','요가매트'],css:'sports'},
- {id:'home',name:'가정용품',path:['가정용품','청소용품'],css:'home'},
- {id:'fresh',name:'신선식품',path:['신선식품','과일','사과'],css:'fresh'},
- {id:'medicine',name:'의약품',path:['의약품','일반의약품'],css:'medicine'},
- {id:'clothes',name:'의류',path:['의류','상의','티셔츠','반소매 티셔츠'],css:'clothes'},
- {id:'other',name:'기타',path:['기타','기타 상품'],css:'other'}
-].map((c,i)=>({...c,x:(i+.5)*93/9,middle:c.path[1],leaf:c.path[c.path.length-1]}));
-const NODE_TOP=[484,688,928,1168];
+ {id:'electronics',name:'전자제품',css:'',branches:[['음향기기','이어폰','무선 이어폰'],['음향기기','이어폰','유선 이어폰'],['음향기기','스피커'],['컴퓨터 주변기기','키보드'],['컴퓨터 주변기기','마우스']]},
+ {id:'food',name:'가공식품',css:'food',branches:[['간식','과자'],['간식','초콜릿'],['음료','주스'],['음료','탄산음료']]},
+ {id:'beauty',name:'화장품',css:'beauty',branches:[['스킨케어','보습 크림'],['스킨케어','스킨 토너'],['메이크업','립스틱'],['메이크업','파운데이션']]},
+ {id:'sports',name:'스포츠용품',css:'sports',branches:[['실내 운동용품','요가매트'],['실내 운동용품','아령'],['야외 운동용품','축구공'],['야외 운동용품','배드민턴 라켓']]},
+ {id:'home',name:'가정용품',css:'home',branches:[['생활용품','수납함'],['생활용품','옷걸이'],['청소용품','청소솔'],['청소용품','쓰레기봉투']]},
+ {id:'fresh',name:'신선식품',css:'fresh',branches:[['과일','사과'],['과일','바나나'],['채소','당근'],['채소','오이']]},
+ {id:'medicine',name:'의약품',css:'medicine',branches:[['일반의약품'],['전문의약품']]},
+ {id:'clothes',name:'의류',css:'clothes',branches:[['상의','티셔츠','반소매 티셔츠'],['상의','티셔츠','긴소매 티셔츠'],['상의','셔츠'],['하의','청바지'],['하의','면바지']]},
+ {id:'other',name:'기타',css:'other',branches:[['공예 재료'],['수집용품']]},
+ {id:'pets',name:'반려동물용품',css:'pets',branches:[['사료·간식','반려동물 사료'],['사료·간식','반려동물 간식'],['위생·생활용품','배변패드'],['위생·생활용품','반려동물 장난감']]}
+];
+const NODE_TOP=[484,688,928,1168],TREE_NODES=[],LEAVES=[],NODE_BY_ID=new Map();
+const TREE_GEOMETRY={width:4200,height:1540,leafSlot:100,categoryGap:30,margin:65};
+let leafCursor=TREE_GEOMETRY.margin;
+CATEGORIES.forEach((category,cat)=>{
+ category.paths=category.branches.map(branch=>[category.name,...branch]);
+ category.path=category.paths[0]; // Legacy metadata only; products own their actual path.
+ category.nodes=[];category.leaves=[];
+ const prefixes=new Map();
+ category.paths.forEach((path,leafIndex)=>{
+  let parent=null;const nodeIds=[];
+  path.forEach((name,stage)=>{
+   const prefix=path.slice(0,stage+1).join(' / ');let node=prefixes.get(prefix);
+   if(!node){
+    node={id:category.id+'-n'+prefixes.size,cat,name,stage,parentId:parent?.id??null,children:[],leafXs:[],path:path.slice(0,stage+1)};
+    prefixes.set(prefix,node);category.nodes.push(node);TREE_NODES.push(node);NODE_BY_ID.set(node.id,node);
+    if(parent)parent.children.push(node.id);
+   }
+   nodeIds.push(node.id);node.leafXs.push(leafCursor+TREE_GEOMETRY.leafSlot/2);parent=node;
+  });
+  parent.leafId=category.id+'-leaf'+leafIndex;
+  const leaf={id:parent.leafId,nodeId:parent.id,cat,path,nodeIds,name:parent.name,x:leafCursor+TREE_GEOMETRY.leafSlot/2};
+  LEAVES.push(leaf);category.leaves.push(leaf);leafCursor+=TREE_GEOMETRY.leafSlot;
+ });
+ for(const node of category.nodes){
+  node.px=(Math.min(...node.leafXs)+Math.max(...node.leafXs))/2;node.x=node.px/TREE_GEOMETRY.width*100;
+  node.width=Math.min(204,node.leafXs.length*TREE_GEOMETRY.leafSlot-12);
+ }
+ const root=category.nodes[0];category.x=root.x;category.middle=category.path[1];category.leaf=category.path.at(-1);
+ leafCursor+=TREE_GEOMETRY.categoryGap;
+});
+function targetNode(product,stage){return NODE_BY_ID.get(product.nodeIds[Math.max(0,stage)]);}
+function targetLeaf(product){return LEAVES.find(leaf=>leaf.id===product.leafId);}
+function nodeDomId(node){return node.stage===0?'node-0-'+node.cat:'node-'+node.id;}
 const BASE_PRODUCTS=[
  {id:'A01',name:'무선 이어폰 A',cat:0,batch:0,start:0,sol:[96,93,94],image:[92,87,91],agree:[true,true,true]},
  {id:'A02',name:'바삭 과자 A',cat:1,batch:0,start:0,sol:[95,86,73],image:[91,82,65],agree:[true,true,true]},
@@ -409,18 +453,8 @@ BASE_PRODUCTS.push(
  {name:'기타 가상 상품',cat:8,sol:[90,85,80],image:[87,81,78],agree:[true,true,true]}
 );
 // 500개를 매 장면 10개씩 투입하고 작업자 10명이 각 1개를 동시에 처리하는 가상 장면입니다.
-const SAMPLE_DESCRIPTIONS=[
- '블루투스 무선 이어폰, 충전 케이스 포함', '곡물로 만든 봉지 과자, 간식용', '피부에 바르는 보습 크림',
- '실내 운동에 쓰는 요가 매트', '바닥 청소에 사용하는 청소도구', '생과일 사과 한 봉지',
- '사용법이 표시된 일반의약품', '면 소재 반소매 티셔츠', '기타 상품 안내'
-];
-const SAMPLE_ATTRIBUTES=[
- {name:'연결 방식',value:'무선'}, {name:'간식 종류',value:'과자'}, {name:'제품 용도',value:'보습 크림'},
- {name:'운동용품 종류',value:'요가 매트'}, {name:'용품 용도',value:'청소'}, {name:'과일 종류',value:'사과'},
- {name:'의약품 구분',value:'일반의약품'}, {name:'상의 소매',value:'반소매'}, {name:'상품 구분',value:'기타'}
-];
 const PRODUCTS=Array.from({length:500},(_,i)=>{
- const p=BASE_PRODUCTS[i%BASE_PRODUCTS.length],batch=Math.floor(i/20),slot=i%20,group=i%10,j=Math.floor(i/BASE_PRODUCTS.length);
+ const p=BASE_PRODUCTS[i%BASE_PRODUCTS.length],category=CATEGORIES[i%10],leaf=category.leaves[Math.floor(i/10)%category.leaves.length],batch=Math.floor(i/20),slot=i%20,group=i%10,j=Math.floor(i/BASE_PRODUCTS.length);
  const sol=[...p.sol,p.sol[2]].map((v,k)=>Math.max(40,Math.min(99,v+((j*(k+2))%9)-4)));
  const image=[...p.image,p.image[2]].map((v,k)=>Math.max(40,Math.min(99,v+((j*(k+3))%9)-4)));
  const textEnough=i%7!==0; // All evidence and seller outcomes are fixed synthetic examples.
@@ -431,9 +465,9 @@ const PRODUCTS=Array.from({length:500},(_,i)=>{
  const respondsWithoutReward=i%5===2,respondsWithReward=respondsWithoutReward||i%3!==0;
  const inputValue=inputType==='barcode'?'880'+String(i+1).padStart(10,'0'):inputType==='model'?'EX-M'+String(i+1).padStart(3,'0'):'';
  const seller={baseTextEnough:textEnough,inputType,inputValue,lookupMatched,catalogFilled,promptShown,respondsWithoutReward,respondsWithReward,responseUseful:i%11!==0,responded:false,supplemented:false,rewardGranted:false};
- return {...p,id:'P'+String(i+1).padStart(3,'0'),name:p.name+' '+(j+1),batch,worker:group,start:Math.floor(i/10),rep:slot===(batch*2)%20,
+ return {...p,cat:i%10,path:leaf.path,leafId:leaf.id,nodeIds:leaf.nodeIds,leaf:leaf.name,attribute:{name:category.name+' 종류',value:leaf.name},id:'P'+String(i+1).padStart(3,'0'),name:leaf.name+' 예시 '+(Math.floor(i/10)+1),batch,worker:group,start:Math.floor(i/10),rep:slot===(batch*2)%20,
   sol,image,textEnough,seller,reviewResults:i%16===3?{0:{confidence:87,agreed:true}}:{},imageBad:i%23===6,leafScore:88+(i*7%12),leafConsistent:i%19!==0,
-  description:textEnough?SAMPLE_DESCRIPTIONS[p.cat]:'판매자의 상세 설명이 부족한 가상 상품',
+  description:textEnough?leaf.path.join(' · ')+' 분류에 해당하는 가상 상품':'판매자의 상세 설명이 부족한 가상 상품',
   agree:[...p.agree,p.agree[2]].map((v,k)=>v&&((j+k+batch)%8!==0))};
 });
 let sellerIncentiveEnabled=true;
@@ -444,7 +478,7 @@ function applySellerIncentive(){
   s.supplemented=s.responded&&s.responseUseful;
   s.rewardGranted=sellerIncentiveEnabled&&s.supplemented;
   product.textEnough=s.baseTextEnough||s.catalogFilled||s.supplemented;
-  product.description=product.textEnough?SAMPLE_DESCRIPTIONS[product.cat]:'판매자의 상세 설명이 부족한 가상 상품';
+  product.description=product.textEnough?product.path.join(' · ')+' 분류에 해당하는 가상 상품':'판매자의 상세 설명이 부족한 가상 상품';
  }
 }
 applySellerIncentive();
@@ -608,9 +642,9 @@ function reviewLedger(productId){
  };
 }
 function routeFor(product,threshold){
- const route=[],ledger=reviewLedger(product.id),cat=CATEGORIES[product.cat];
+ const route=[],ledger=reviewLedger(product.id),cat=CATEGORIES[product.cat],path=product.path;
  let clock=product.rootStart,checks=0,qualityChecked=false;
- const lastStage=cat.path.length-1;
+ const lastStage=path.length-1;
  function add(kind,stage,duration,detail,extra={}){
   route.push({kind,stage,start:clock,end:clock+duration,detail,checks,reviewScore:ledger.score,reviewEvents:ledger.snapshot(),...extra});clock+=duration;
  }
@@ -624,16 +658,17 @@ function routeFor(product,threshold){
  }
  function recover(stage,cause){
   // One bounded alternative search. Revisiting the same cause cannot add points.
-  const fromCat=stage===0?(product.cat+1)%CATEGORIES.length:product.cat;
-  const fromLabel=stage===0?CATEGORIES[fromCat].name:cat.path[stage]+' 후보';
-  const parentLabel=stage===0?'전체 대분류':cat.path[stage-1];
-  const extra={cause,fromCat,parentStage:stage-1,fromLabel,parentLabel,targetLabel:cat.path[stage]};
+  const node=targetNode(product,stage),parent=node.parentId?NODE_BY_ID.get(node.parentId):null;
+  const siblingIds=parent?parent.children:TREE_NODES.filter(n=>n.stage===0).map(n=>n.id);
+  const alternative=NODE_BY_ID.get(siblingIds.find(id=>id!==node.id));
+  const fromCat=alternative.cat,fromLabel=alternative.name,parentLabel=parent?parent.name:'전체 대분류';
+  const extra={cause,fromCat,fromNodeId:alternative.id,targetNodeId:node.id,parentStage:stage-1,fromLabel,parentLabel,targetLabel:path[stage]};
   add('recoverStart',stage,1,'현재 후보 '+fromLabel+'의 근거가 부족해 확정을 멈춥니다.',extra);
   ledger.record('recovery',cause,1,'복구 경로 +1');
   add('recoverUp',stage,1,parentLabel+'로 돌아갑니다. 복구 이력 +1.',extra);
   if(!gate(stage))return false;
   add('recoverSearch',stage,2,parentLabel+' 안에서 기존 후보와 대체 후보를 다시 비교합니다.',extra);
-  add('recoverDown',stage,1,'재탐색 후보 '+cat.path[stage]+'를 선택하고 근거를 다시 검토합니다.',extra);
+  add('recoverDown',stage,1,'재탐색 후보 '+path[stage]+'를 선택하고 근거를 다시 검토합니다.',extra);
   return true;
  }
  function discuss(stage,cause,allowRecovery){
@@ -658,10 +693,10 @@ function routeFor(product,threshold){
   const sol=product.sol[stage],img=product.image[stage],cause='candidate-stage-'+stage;
   add('classify',stage,2,STAGE_NAMES[stage]+' · 텍스트 예시 점수 '+sol+'.');
   if(stage===0&&canExpress(product)){
-   add('expressStart',0,1,'최종 후보 '+cat.leaf+' · 예시 점수 '+product.leafScore+' ≥ '+expressThreshold+'.');
+   add('expressStart',0,1,'최종 후보 '+product.leaf+' · 예시 점수 '+product.leafScore+' ≥ '+expressThreshold+'.');
    add('expressEntry',0,1,'최종 카테고리 직행 경로에 진입합니다.');
-   add('expressDescend',0,2,'초록색 경로를 따라 '+cat.leaf+'로 이동합니다.');
-   add('expressLand',0,1,cat.path.join(' → ')+'에 도착합니다.');
+   add('expressDescend',0,2,'초록색 경로를 따라 '+product.leaf+'로 이동합니다.');
+   add('expressLand',0,1,path.join(' → ')+'에 도착합니다.');
    add('done',lastStage,Infinity,'텍스트 직행 완료 · 가상 분류 결과입니다.');return route;
   }
   const needsRootImage=stage===0&&(sol<90||!product.textEnough);
@@ -710,14 +745,19 @@ const params=new URLSearchParams(location.search);const motionMedia=matchMedia('
 function setReduced(){reduced=params.get('reduce')==='1'||motionMedia.matches;document.documentElement.classList.toggle('reduce',reduced);}setReduced();motionMedia.addEventListener('change',setReduced);
 $('timeline').max=MAX_TIME;$('quick-timeline').max=MAX_TIME;$('autoscale-enabled').checked=autoscaleEnabled;$('autoscale-max').value=String(autoscaleMax);
 $('batches').innerHTML=Array.from({length:25},(_,i)=>String.fromCharCode(65+i)).map((name,i)=>'<span class="batch" id="batch-'+i+'">묶음 '+name+' · 예시 20개</span>').join('');
-// 모델 A 결과가 8개 분야로 갈라지며, 각 분야는 서로 다른 깊이를 가집니다.
-$('tree').querySelector('.tree-lines').innerHTML='<defs><marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M1 1 L8 5 L1 9" style="stroke:#9bb6ca;fill:none;stroke-width:1.5"/></marker></defs>'+
+// Shared prefixes render once. Every visible fork is backed by product targets.
+$('tree').style.width=TREE_GEOMETRY.width+'px';$('tree').style.minWidth=TREE_GEOMETRY.width+'px';
+$('tree').querySelector('.tree-lines').innerHTML='<defs><marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" markerUnits="userSpaceOnUse" orient="auto"><path d="M1 1 L8 5 L1 9" style="stroke:#9bb6ca;fill:none;stroke-width:1.5"/></marker></defs>'+
  '<path d="M450 198 V218 H247 V236" marker-end="url(#arrow)"/><path d="M450 218 H653 V236" marker-end="url(#arrow)"/>'+
  '<path d="M247 366 V402 H450 M653 366 V402 H450"/>'+
- CATEGORIES.map(c=>{const x=c.x*9;return '<path d="M450 402 V445 H'+x+' V481" marker-end="url(#arrow)"/>'+c.path.slice(1).map((_,j)=>'<path d="M'+x+' '+(NODE_TOP[j]+110)+' V'+(NODE_TOP[j+1]-3)+'" marker-end="url(#arrow)"/>').join('');}).join('');
-$('nodes').innerHTML=CATEGORIES.map((c,i)=>c.path.map((name,stage)=>{const last=stage===c.path.length-1;return '<div id="node-'+stage+'-'+i+'" class="node '+c.css+'" style="left:'+c.x+'%;top:'+NODE_TOP[stage]+'px"><div class="level">'+(stage+1)+'단계 · '+(last?'최종 분류':'분류')+(stage===0?' <span class="count" id="lane-count-'+i+'">0</span>':'')+'</div><strong>'+name+'</strong><small>'+(last?'이 경로의 최종 분류':'아래 단계로 계속 ↓')+'</small></div>'+(stage>0&&!last?'<div class="pocket" id="pocket-'+stage+'-'+i+'" style="left:'+c.x+'%;top:'+(NODE_TOP[stage]+126)+'px"><strong>필요할 때만 교차 검토</strong><small>미해결은 사람에게</small></div>':'');}).join('')+'<div class="resultbin" style="left:'+c.x+'%;top:'+(NODE_TOP[c.path.length-1]+130)+'px"><strong id="result-'+i+'">도착 0 · 사람 대기 0</strong><small>'+c.path.length+'단계 · 완료 상품 보관</small><div class="basket-preview" id="basket-preview-'+i+'"><span>아직 도착한 상품 없음</span></div><details class="basket-details" id="basket-details-'+i+'"><summary id="basket-summary-'+i+'">전체 상품 보기 (0)</summary><ul id="basket-list-'+i+'"></ul></details></div>').join('');
-$('model-links').innerHTML=CATEGORIES.map(c=>c.path.map((name,stage)=>'<span class="model-link" style="left:'+c.x+'%;top:'+(NODE_TOP[stage]-29)+'px">모델 '+String.fromCharCode(65+stage)+' · '+(stage?c.path[stage-1]:'대분류')+'</span>').join('')).join('');
-$('flow-pulses').innerHTML=CATEGORIES.map((c,i)=>c.path.map((_,stage)=>'<i class="flow-pulse" id="flow-'+stage+'-'+i+'" style="left:'+c.x+'%;top:'+(NODE_TOP[stage]-18)+'px;animation-delay:-'+(i*.19+stage*.13)+'s"></i>').join('')).join('');
+ TREE_NODES.map(node=>{const x=node.x*9,parent=node.parentId?NODE_BY_ID.get(node.parentId):null;
+  return parent?'<path d="M'+(parent.x*9)+' '+(NODE_TOP[parent.stage]+110)+' V'+(NODE_TOP[node.stage]-45)+' H'+x+' V'+(NODE_TOP[node.stage]-3)+'" marker-end="url(#arrow)"/>':'<path d="M450 402 V445 H'+x+' V481" marker-end="url(#arrow)"/>';
+ }).join('');
+$('nodes').innerHTML=TREE_NODES.map(node=>{const c=CATEGORIES[node.cat],last=!node.children.length;
+ return '<div id="'+nodeDomId(node)+'" class="node '+c.css+(last?' leaf-node':'')+'" style="left:'+node.x+'%;top:'+NODE_TOP[node.stage]+'px;width:'+node.width+'px"><div class="level">'+(node.stage+1)+'단계'+(node.stage===0?' <span class="count" id="lane-count-'+node.cat+'">0</span>':' · '+(last?'최종':'분류'))+'</div><strong>'+node.name+'</strong><small>'+(last?'이 단계에서 분류 완료':node.children.length+'개 하위 분류 ↓')+'</small></div>';
+}).join('')+LEAVES.map(leaf=>'<div class="resultbin" style="left:'+(leaf.x/TREE_GEOMETRY.width*100)+'%;top:'+(NODE_TOP[leaf.path.length-1]+180)+'px;width:88px"><strong id="result-'+leaf.id+'">도착 0</strong><small>'+leaf.name+' 바스켓</small><div class="basket-preview" id="basket-preview-'+leaf.id+'"><span>아직 도착 없음</span></div><details class="basket-details" id="basket-details-'+leaf.id+'"><summary id="basket-summary-'+leaf.id+'">전체 상품 보기 (0)</summary><ul id="basket-list-'+leaf.id+'"></ul></details></div>').join('');
+$('model-links').innerHTML=TREE_NODES.filter(n=>n.stage>0).map(node=>'<span class="model-link" style="left:'+node.x+'%;top:'+(NODE_TOP[node.stage]-29)+'px">모델 '+String.fromCharCode(65+node.stage)+' · '+(node.stage+1)+'단계</span>').join('');
+$('flow-pulses').innerHTML=TREE_NODES.map(node=>'<i class="flow-pulse" id="flow-'+node.id+'" style="left:'+node.x+'%;top:'+(NODE_TOP[node.stage]-18)+'px;animation-delay:-'+(node.cat*.19+node.stage*.13)+'s"></i>').join('');
 $('tokens').innerHTML=PRODUCTS.map(p=>'<button type="button" class="token hidden" id="token-'+p.id+'" aria-label="'+p.name+' 상태 보기" data-product="'+p.id+'"><b data-id="'+p.id+'"><i class="tokenid">'+p.id+'</i>'+p.name+'</b><span></span></button>').join('');
 document.querySelectorAll('[data-product]').forEach(button=>button.addEventListener('click',()=>{selected=button.dataset.product;render();}));
 function stateLabel(state){
@@ -727,34 +767,35 @@ function stateLabel(state){
  if(state.kind==='recoverStart')return'후보 의심 · 복구 준비';if(state.kind==='recoverUp')return'상위로 복구 ↑';if(state.kind==='recoverSearch')return'대체 후보 재탐색';if(state.kind==='recoverDown')return'새 후보로 다시 진입 ↓';if(state.kind==='reviewResult')return'토론 결과 · '+state.reviewScore+'점';if(state.kind==='review')return'AI 근거 대조 · 토론';if(state.kind==='human')return(state.stage+1)+'단계 · 사람 확인 대기';return'세부 분류 도착';
 }
 function position(entry,width,all){
- const{product:p,state:s}=entry;let x=CATEGORIES[p.cat].x/100*width,y=0;
+ const{product:p,state:s}=entry;let x=targetNode(p,Math.max(0,s.stage)).x/100*width,y=0;
  if(RECOVERY_KINDS.includes(s.kind)){
-  const fromX=CATEGORIES[s.fromCat].x/100*width,targetX=CATEGORIES[p.cat].x/100*width,parentY=s.stage===0?435:NODE_TOP[s.stage-1]+65;
-  const currentY=NODE_TOP[s.stage]+60;
-  x=s.kind==='recoverStart'?fromX:s.kind==='recoverUp'?fromX-width*.035:s.kind==='recoverSearch'?targetX:targetX+width*.035;
+  const node=targetNode(p,s.stage),parent=node.parentId?NODE_BY_ID.get(node.parentId):null;
+  const fromX=NODE_BY_ID.get(s.fromNodeId).x/100*width,targetX=node.x/100*width,parentX=parent?parent.x/100*width:width/2,parentY=s.stage===0?435:NODE_TOP[s.stage-1]+92;
+  const currentY=NODE_TOP[s.stage]+92;
+  x=s.kind==='recoverStart'?fromX:s.kind==='recoverUp'?fromX-width*7/900:s.kind==='recoverSearch'?parentX:targetX+width*7/900;
   y=s.kind==='recoverStart'?currentY:s.kind==='recoverDown'?currentY:parentY;
-  return{x:Math.max(0,Math.min(width-124,x-62)),y:y-23};
+  return{x:Math.max(0,Math.min(width-88,x-44)),y:y-17};
  }
- const same=all.filter(e=>e.state.kind===s.kind&&e.state.stage===s.stage&&(s.stage===0&&s.kind!=='queue'?true:e.product.cat===p.cat));
+ const same=all.filter(e=>e.state.kind===s.kind&&e.state.stage===s.stage&&(s.stage===0&&s.kind!=='queue'?true:e.product.nodeIds[Math.max(0,s.stage)]===p.nodeIds[Math.max(0,s.stage)]));
  let rank=same.findIndex(e=>e.product.id===p.id);
  if(EXPRESS_KINDS.includes(s.kind)){
-  const destY=NODE_TOP[CATEGORIES[p.cat].path.length-1]+163;
+  const destY=NODE_TOP[p.path.length-1]+274;
   if(s.kind==='expressStart'){const spread=Math.min(90,width*.36/Math.max(1,same.length-1));x=width*.275+(rank-(same.length-1)/2)*spread;y=390;}
   else if(s.kind==='expressEntry'){x=width*(862/900);y=409+rank*14;}
   else if(s.kind==='expressDescend'){x=width*(862/900);y=destY+(rank%3-1)*12;}
-  else{x=CATEGORIES[p.cat].x/100*width;y=destY+(rank%3-1)*12;}
-  return{x:x-62,y:y-23};
+  else{x=targetLeaf(p).x/TREE_GEOMETRY.width*width;y=destY+(rank%3-1)*12;}
+  return{x:x-44,y:y-17};
  }
  if(s.stage===0&&s.kind!=='queue'){
   if(s.kind==='classify'){const workerIndex=scalePlan.snapshots[time].workerStatus.findIndex(w=>w.id===p.rootWorker);x=(Math.max(0,workerIndex)+.5)*width/20;y=128;}
   else{x=width*(s.kind==='textpass'?.275:.72)+(rank-(same.length-1)/2)*135;y=s.kind==='human'?420:390;}
  }else{
-  if(s.kind==='queue')y=NODE_TOP[0]+66;else if(s.kind==='classify')y=NODE_TOP[s.stage]+61;
-  else if(['average','review','reviewResult','quality','image'].includes(s.kind))y=NODE_TOP[s.stage]+147;else if(s.kind==='human')y=NODE_TOP[s.stage]+198;
-  else if(s.kind==='done')y=NODE_TOP[CATEGORIES[p.cat].path.length-1]+170+rank*24;
-  const spread=s.kind==='human'?29:26;if(s.kind!=='done')y+=(rank-(same.length-1)/2)*spread;x+=(rank%2===0?-1:1)*7;
+  if(s.kind==='queue')y=NODE_TOP[0]+92;else if(s.kind==='classify')y=NODE_TOP[s.stage]+92;
+  else if(['average','review','reviewResult','quality','image'].includes(s.kind))y=NODE_TOP[s.stage]+92;else if(s.kind==='human')y=NODE_TOP[s.stage]+198;
+  else if(s.kind==='done')y=NODE_TOP[p.path.length-1]+220+rank*24;
+  // Each actual node displays one representative; all 500 still contribute to counts.
  }
- return{x:x-(s.stage===0&&s.kind==='classify'?25:62),y:y-(s.stage===0&&s.kind==='classify'?10:23)};
+ return{x:x-(s.stage===0&&s.kind==='classify'?25:44),y:y-(s.stage===0&&s.kind==='classify'?10:17)};
 }
 function scoreFor(entry){
  const p=entry.product,s=entry.state,stage=Math.max(0,s.stage),sol=p.sol[stage],image=p.image[stage];
@@ -764,7 +805,7 @@ function scoreFor(entry){
  let mode=averaged?(!p.agree[stage]?'후보 불일치 → 교차 검토':average<=threshold?'평균 낮음 → 교차 검토':'이미지 확인 · 평균 기준 통과'):
   stage===0&&!p.textEnough?'정보 부족 → 사진 확인 예정':sol>=90?'텍스트 단독':sol<60?'복구·교차 검토 예정':sol<=70?'3개 이상 교차 검토':'이미지 비교 예정';
  if(RECOVERY_KINDS.includes(s.kind))mode='복구 재탐색 · 검수 '+s.reviewScore+'점';if(s.kind==='reviewResult')mode='토론 결과 · 검수 '+s.reviewScore+'점';if(EXPRESS_KINDS.includes(s.kind))mode='최종 카테고리 직행';if(s.kind==='quality')mode='사진 화질 검사';if(s.kind==='image')mode='이미지 모델 분석';if(s.kind==='review')mode=!p.agree[stage]?'후보 불일치 → 교차 검토':'추가 교차 검토';if(s.kind==='human')mode='중단 · 사람 확인';
- const values=EXPRESS_KINDS.includes(s.kind)?'최종 '+p.leafScore+' · '+CATEGORIES[p.cat].leaf:averaged?'텍스트 '+sol+' · 이미지 '+image+' · 평균 '+average:'텍스트 '+sol;
+ const values=EXPRESS_KINDS.includes(s.kind)?'최종 '+p.leafScore+' · '+p.leaf:averaged?'텍스트 '+sol+' · 이미지 '+image+' · 평균 '+average:'텍스트 '+sol;
  return{productId:p.id,batch:String.fromCharCode(65+p.batch),stage,sol,image:averaged?image:null,average,mode,values};
 }
 function rootDecisionStats(entries,now){
@@ -793,18 +834,20 @@ function renderRootDecision(entries){
 function renderLiveScores(entries,allEntries){
  const active=entries.filter(e=>['classify','textpass','quality','image','average','review','reviewResult','queue',...RECOVERY_KINDS,...EXPRESS_KINDS].includes(e.state.kind));
  $('parallel-stages').innerHTML=[0,1,2,3].map(stage=>{const rows=active.filter(e=>e.state.stage===stage).slice(0,4),total=allEntries.filter(e=>e.state.stage===stage&&['classify','textpass','quality','image','average','review','reviewResult','queue',...RECOVERY_KINDS,...EXPRESS_KINDS].includes(e.state.kind)).length;return '<section class="parallel-stage'+(total?' has-active':'')+'" data-stage="'+stage+'"><h4>'+['1단계 · 대분류','2단계 · 중분류','3단계 · 세부분류','4단계 · 추가 세분류'][stage]+'<span>'+total+'개 진행</span></h4>'+ (rows.length?rows.map(e=>{const score=scoreFor(e);return '<button type="button" class="parallel-item" data-focus="'+e.product.id+'" data-product-id="'+e.product.id+'" data-score-stage="'+stage+'"><b>'+e.product.id+' · 묶음 '+score.batch+' · '+e.product.name+'</b><span class="phase">'+stateLabel(e.state)+'</span><span class="metrics">'+score.values+' · '+score.mode+'</span></button>';}).join(''):'<p class="parallel-empty">표시할 대표 상품이 없습니다. 실제 예시 수는 위에 표시됩니다.</p>')+'</section>';}).join('');
- const groups=new Map();active.forEach(e=>{const key=e.product.cat+'-'+(e.state.kind==='queue'?1:e.state.stage);if(!groups.has(key))groups.set(key,[]);groups.get(key).push(e);});
- const seenScore=new Set();$('flow-scores').innerHTML=active.filter(e=>{if(e.state.stage===0)return false;const key=e.product.cat+'-'+e.state.stage;if(seenScore.has(key))return false;seenScore.add(key);return true;}).map(e=>{const score=scoreFor(e),c=CATEGORIES[e.product.cat],row=e.state.kind==='queue'?1:e.state.stage,group=groups.get(e.product.cat+'-'+row),rank=group.indexOf(e);let top=row===0?(group.length>1?170:215):row===1?609:row===2?865:1105;top+=rank*38;return '<button type="button" class="flow-score '+c.css+(e.state.kind==='review'?' review-score':'')+'" style="left:'+c.x+'%;top:'+top+'px" data-focus="'+e.product.id+'" data-product-id="'+e.product.id+'" data-score-stage="'+score.stage+'" data-sol="'+score.sol+'" data-image="'+(score.image===null?'':score.image)+'" data-average="'+(score.average===null?'':score.average)+'" aria-label="'+e.product.id+' 묶음 '+score.batch+' '+(score.stage+1)+'단계 '+score.values+' '+score.mode+'"><span class="score-head"><b>'+e.product.id+' · 묶음 '+score.batch+' · '+(score.stage+1)+'단계</b><span class="score-mode">'+(e.state.kind==='queue'?'다음 단계로 ↓':e.state.kind==='review'?'교차 검토':e.state.kind==='average'?'평균 계산':'판단 중')+'</span></span><span class="score-values">'+score.values+'</span></button>';}).join('');
+ const seenScore=new Set();$('flow-scores').innerHTML=active.filter(e=>{if(e.state.stage===0)return false;const key=e.product.nodeIds[e.state.stage];if(seenScore.has(key))return false;seenScore.add(key);return true;}).map(e=>{
+  const score=scoreFor(e),node=targetNode(e.product,e.state.stage),c=CATEGORIES[e.product.cat],top=NODE_TOP[e.state.stage]+114;
+  return '<button type="button" class="flow-score '+c.css+(e.state.kind==='review'?' review-score':'')+'" style="left:'+node.x+'%;top:'+top+'px;width:'+node.width+'px" data-focus="'+e.product.id+'" data-product-id="'+e.product.id+'" data-score-stage="'+score.stage+'" data-sol="'+score.sol+'" data-image="'+(score.image===null?'':score.image)+'" data-average="'+(score.average===null?'':score.average)+'" aria-label="'+e.product.id+' '+score.values+' '+score.mode+'"><span class="score-head"><b>'+e.product.id+'</b><span class="score-mode">'+(e.state.kind==='review'?'교차 검토':'판단 중')+'</span></span><span class="score-values">'+score.values+'</span></button>';
+ }).join('');
 }
 
 function selectVisible(entries){
- const active=entries.filter(e=>e.state.kind!=='waiting'&&e.state.kind!=='done').sort((a,b)=>(b.product.id===selected)-(a.product.id===selected)||b.product.start-a.product.start||a.product.id.localeCompare(b.product.id));
+ const active=entries.filter(e=>!['waiting','done','human'].includes(e.state.kind)).sort((a,b)=>(b.product.id===selected)-(a.product.id===selected)||b.product.start-a.product.start||a.product.id.localeCompare(b.product.id));
  const quotas=new Map(),chosen=[];
  for(const e of active){const s=e.state,p=e.product;if(s.kind==='rootwait')continue;if(EXPRESS_KINDS.includes(s.kind)){chosen.push(e);continue;}if(s.stage===0&&s.kind==='classify'){chosen.push(e);continue;}
- const key=s.stage===0?'root-'+s.kind:p.cat+'-'+s.stage+'-'+(s.kind==='done'?'done':s.kind==='human'?'human':'active');const limit=s.stage===0?3:(s.kind==='done'||s.kind==='human'?1:2);const n=quotas.get(key)||0;if(n<limit){quotas.set(key,n+1);chosen.push(e);}}
+ const key=s.stage===0&&s.kind!=='queue'?'root-'+s.kind:p.nodeIds[Math.max(0,s.stage)]+'-'+(s.kind==='done'?'done':s.kind==='human'?'human':'active');const limit=s.stage===0&&s.kind!=='queue'?3:1;const n=quotas.get(key)||0;if(n<limit){quotas.set(key,n+1);chosen.push(e);}}
  return chosen;
 }
-function basketItems(entries,categoryIndex){return entries.filter(e=>e.product.cat===categoryIndex&&e.state.kind==='done').sort((a,b)=>a.route.find(r=>r.kind==='done').start-b.route.find(r=>r.kind==='done').start||a.product.id.localeCompare(b.product.id));}
+function basketItems(entries,leafId){return entries.filter(e=>e.product.leafId===leafId&&e.state.kind==='done').sort((a,b)=>a.route.find(r=>r.kind==='done').start-b.route.find(r=>r.kind==='done').start||a.product.id.localeCompare(b.product.id));}
 function sellerInputLabel(s){
  if(s.inputType==='none')return'식별 정보 없음';
  return(s.inputType==='barcode'?'바코드':'모델명')+' · '+(s.lookupMatched?'기존 정보 일치':'일치 항목 없음');
@@ -817,7 +860,7 @@ function sellerOutcomeLabel(p){
  return s.responded?'답변 후에도 정보 부족':'응답 없음 · 정보 부족';
 }
 function sellerDetailLabel(p){
- const s=p.seller,a=SAMPLE_ATTRIBUTES[p.cat];
+ const s=p.seller,a=p.attribute;
  if(s.catalogFilled)return'자동 채움: '+a.name+' = '+a.value;
  if(s.supplemented)return'판매자 답변: '+a.name+' = '+a.value;
  if(s.responded)return'질문: '+a.name+' · 답변: 모름';
@@ -881,12 +924,13 @@ function renderRecovery(entries,visible,focus){
  $('human-queue-list').innerHTML=humans.slice(0,8).map(e=>'<button type="button" data-focus="'+e.product.id+'"><b>'+e.product.id+' · '+e.state.reviewScore+'점</b><span>'+e.product.name+'</span><small>'+e.state.detail+'</small></button>').join('')+(humans.length>8?'<p class="subtle">외 '+(humans.length-8)+'건 대기</p>':'')||'<p class="subtle">현재 검수 대기 상품이 없습니다.</p>';
  const active=RECOVERY_KINDS.includes(s.kind)?focus:visible.find(e=>RECOVERY_KINDS.includes(e.state.kind));
  if(!active){$('recovery-lines').innerHTML='';$('recovery-callout').hidden=true;return;}
- const state=active.state,c=CATEGORIES[active.product.cat],fromX=CATEGORIES[state.fromCat].x*9,x=c.x*9;
- const parentY=state.stage===0?435:NODE_TOP[state.stage-1]+65,y=NODE_TOP[state.stage]+60;
- $('recovery-lines').innerHTML='<defs><marker id="recovery-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M1 1 L8 5 L1 9" fill="none" stroke="#dd7618" stroke-width="2"/></marker></defs><path d="M'+fromX+' '+y+' H'+(fromX-31)+' V'+parentY+' H'+x+'" marker-end="url(#recovery-arrow)"/><path d="M'+x+' '+parentY+' H'+(x+31)+' V'+y+' H'+x+'" marker-end="url(#recovery-arrow)"/>';
+ const state=active.state,c=targetNode(active.product,state.stage),fromX=NODE_BY_ID.get(state.fromNodeId).x*9,x=c.x*9;
+ const parent=c.parentId?NODE_BY_ID.get(c.parentId):null,parentX=parent?parent.x*9:450;
+ const parentY=state.stage===0?435:NODE_TOP[state.stage-1]+92,y=NODE_TOP[state.stage]+92;
+ $('recovery-lines').innerHTML='<defs><marker id="recovery-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" markerUnits="userSpaceOnUse" orient="auto"><path d="M1 1 L8 5 L1 9" fill="none" stroke="#dd7618" stroke-width="2"/></marker></defs><path d="M'+fromX+' '+y+' H'+(fromX-7)+' V'+parentY+' H'+parentX+'" marker-end="url(#recovery-arrow)"/><path d="M'+parentX+' '+parentY+' H'+(x+7)+' V'+y+' H'+x+'" marker-end="url(#recovery-arrow)"/>';
  $('recovery-callout').hidden=false;
  $('recovery-callout').style.top=Math.max(445,parentY+18)+'px';
- $('recovery-callout').style.left=Math.min(74,Math.max(18,c.x))+'%';
+ $('recovery-callout').style.left=Math.min(92,Math.max(4,c.x))+'%';
  $('recovery-callout').innerHTML='<b>'+active.product.id+' · '+stateLabel(state)+'</b><span>'+state.parentLabel+'에서 후보 재비교 → '+state.targetLabel+'</span>';
 }
 function showReviewExample(kind){
@@ -906,17 +950,18 @@ function render(){const entries=simulate(time,threshold),visible=selectVisible(e
  $('input-now').textContent=time<50?'장면 '+time+' · 새 상품 10개 동시 투입':'장면 '+time+' · 500개 투입 완료 · 남은 처리 진행';$('input-total').textContent='누적 '+PRODUCTS.filter(p=>p.start<=time).length+' / 500';
  renderSellerPanel();renderScalePanel(entries);
  const landedRoutes=visible.filter(e=>e.state.kind==='expressLand');
- const destinations=[...new Map(landedRoutes.map(e=>[e.product.cat,e])).values()];
- $('express-lines').innerHTML='<defs><marker id="express-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M1 1 L8 5 L1 9" fill="none" stroke="#118c60" stroke-width="1.5"/></marker></defs><path class="express-rail" d="M247 366 V409 H862 V1460"/>'+
-  destinations.map(e=>{const c=CATEGORIES[e.product.cat],y=NODE_TOP[c.path.length-1]+163;return '<path class="express-to-bin" d="M862 '+y+' H'+(c.x*9)+'" marker-end="url(#express-arrow)"/>';}).join('');
- document.documentElement.classList.toggle('is-playing',playing);renderLiveScores(visible,entries);CATEGORIES.forEach((c,i)=>c.path.forEach((_,stage)=>{const active=entries.some(e=>e.product.cat===i&&e.state.stage===stage&&['classify','textpass','quality','image','average','review','reviewResult','queue',...RECOVERY_KINDS,...EXPRESS_KINDS].includes(e.state.kind));$('node-'+stage+'-'+i).classList.toggle('is-active',active);$('flow-'+stage+'-'+i).classList.toggle('active',active);}));document.querySelector('.tree-workers').classList.toggle('is-active',entries.some(e=>e.state.stage===0&&['classify','textpass','quality','image','average','review',...EXPRESS_KINDS].includes(e.state.kind)));const width=$('tree').clientWidth;entries.forEach(entry=>{const p=entry.product,s=entry.state,el=$('token-'+p.id),c=CATEGORIES[p.cat];if(!el)return;el.className='token '+c.css+(!visibleIds.has(p.id)?' hidden':'')+(s.stage===0&&s.kind==='classify'?' ingress':'')+(s.kind==='textpass'?' text-pass':'')+(EXPRESS_KINDS.includes(s.kind)?' express':'')+((['review','average','quality','image'].includes(s.kind))?' reviewing':'')+(RECOVERY_KINDS.includes(s.kind)?' recovering':'')+(s.kind==='human'?' human':'')+(s.kind==='done'?' done':'')+(selected===p.id?' selected':'');const pt=position(entry,width,visible);el.style.transform='translate('+pt.x+'px,'+pt.y+'px)';el.querySelector('span').textContent=stateLabel(s)+(s.reviewScore?' · '+s.reviewScore+'점':'');el.setAttribute('aria-pressed',String(selected===p.id));el.setAttribute('aria-label',p.name+' · '+stateLabel(s));});
+ const destinations=[...new Map(landedRoutes.map(e=>[e.product.leafId,e])).values()];
+ $('express-lines').innerHTML='<defs><marker id="express-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" markerUnits="userSpaceOnUse" orient="auto"><path d="M1 1 L8 5 L1 9" fill="none" stroke="#118c60" stroke-width="1.5"/></marker></defs><path class="express-rail" d="M247 366 V409 H862 V1460"/>'+
+  destinations.map(e=>{const c=targetNode(e.product,e.product.path.length-1),y=NODE_TOP[e.product.path.length-1]+274;return '<path class="express-to-bin" d="M862 '+y+' H'+(c.x*9)+'" marker-end="url(#express-arrow)"/>';}).join('');
+ document.documentElement.classList.toggle('is-playing',playing);renderLiveScores(visible,entries);TREE_NODES.forEach(node=>{const active=entries.some(e=>e.product.nodeIds[e.state.stage]===node.id&&['classify','textpass','quality','image','average','review','reviewResult','queue',...RECOVERY_KINDS,...EXPRESS_KINDS].includes(e.state.kind));$(nodeDomId(node)).classList.toggle('is-active',active);$('flow-'+node.id).classList.toggle('active',active);});document.querySelector('.tree-workers').classList.toggle('is-active',entries.some(e=>e.state.stage===0&&['classify','textpass','quality','image','average','review',...EXPRESS_KINDS].includes(e.state.kind)));const width=$('tree').clientWidth;entries.forEach(entry=>{const p=entry.product,s=entry.state,el=$('token-'+p.id),c=CATEGORIES[p.cat];if(!el)return;el.className='token '+c.css+(!visibleIds.has(p.id)?' hidden':'')+(s.stage===0&&s.kind==='classify'?' ingress':'')+(s.kind==='textpass'?' text-pass':'')+(EXPRESS_KINDS.includes(s.kind)?' express':'')+((['review','average','quality','image'].includes(s.kind))?' reviewing':'')+(RECOVERY_KINDS.includes(s.kind)?' recovering':'')+(s.kind==='human'?' human':'')+(s.kind==='done'?' done':'')+(selected===p.id?' selected':'');el.setAttribute('title',p.id+' · '+p.name+' · '+stateLabel(s));const pt=position(entry,width,visible);el.style.transform='translate('+pt.x+'px,'+pt.y+'px)';el.querySelector('span').textContent=stateLabel(s)+(s.reviewScore?' · '+s.reviewScore+'점':'');el.setAttribute('aria-pressed',String(selected===p.id));el.setAttribute('aria-label',p.name+' · '+stateLabel(s));});
  for(let batch=0;batch<25;batch++){const group=entries.filter(e=>e.product.batch===batch),finished=group.every(e=>['done','human'].includes(e.state.kind));$('batch-'+batch).className='batch'+(finished?' finished':group.some(e=>e.state.kind!=='waiting')?' active':'');}
- CATEGORIES.forEach((cat,i)=>{const group=entries.filter(e=>e.product.cat===i);$('lane-count-'+i).textContent=group.filter(e=>e.state.kind!=='waiting'&&e.state.stage>=0&&!(e.state.stage===0&&e.state.kind!=='queue')).length;const completed=basketItems(entries,i),done=completed.length,human=group.filter(e=>e.state.kind==='human').length;$('result-'+i).textContent='담긴 상품 '+done+' · 사람 대기 '+human;
- const preview=completed.slice(0,2);$('basket-preview-'+i).innerHTML=preview.length?preview.map(e=>'<span>'+e.product.id+' · '+e.product.name+(e.route.some(r=>r.kind==='expressStart')?' · 직행':'')+'</span>').join('')+(done>2?'<span class="basket-extra">외 '+(done-2)+'개 보관 중</span>':''):'<span>아직 도착한 상품 없음</span>';
- $('basket-summary-'+i).textContent='전체 상품 보기 ('+done+')';$('basket-list-'+i).innerHTML=completed.map(e=>'<li>'+e.product.id+' · '+e.product.name+(e.route.some(r=>r.kind==='expressStart')?' · 직행':'')+'</li>').join('')||'<li>아직 도착한 상품 없음</li>';[1,2,3].forEach(stage=>{const pocket=$('pocket-'+stage+'-'+i);if(!pocket)return;const active=group.filter(e=>e.state.stage===stage&&['average','review','reviewResult','quality','image'].includes(e.state.kind));pocket.classList.toggle('active',active.length>0);pocket.querySelector('strong').textContent=active.length?active.map(e=>stateLabel(e.state)).join(' / '):'필요할 때만 평균·교차 검토';});});
- const focus=entries.find(e=>e.product.id===selected),p=focus.product,s=focus.state,c=CATEGORIES[p.cat];$('selected-id').textContent=p.id+' · 묶음 '+String.fromCharCode(65+p.batch);$('selected-name').textContent=p.name;$('selected-path').textContent='예시 목표 경로 · '+c.path.join(' ↓ ')+(s.kind==='human'?' (미확정)':'');$('selected-status').textContent=stateLabel(s);$('selected-text').textContent='판매자 상품명: '+p.name+' · 설명: '+p.description+' · 최종 후보 예시 점수: '+p.leafScore+' · 상위 일치: '+(p.leafConsistent?'가상 일치':'가상 불일치')+' (모두 가상 설정)';$('selected-seller').textContent='가상 판매자 정보: '+(p.seller.inputValue?p.seller.inputValue+' · ':'')+sellerInputLabel(p.seller)+' → '+sellerDetailLabel(p)+' · '+sellerOutcomeLabel(p);$('selected-scores').innerHTML=p.sol.slice(0,c.path.length).map((v,i)=>'<div class="score"><span>'+ (i+1)+'단계 · 예시</span><b>'+v+'</b></div>').join('');$('selected-detail').textContent=s.detail;
+ CATEGORIES.forEach((cat,i)=>{const group=entries.filter(e=>e.product.cat===i);$('lane-count-'+i).textContent=group.filter(e=>e.state.kind!=='waiting'&&e.state.stage>=0&&!(e.state.stage===0&&e.state.kind!=='queue')).length;});
+ LEAVES.forEach(leaf=>{const completed=basketItems(entries,leaf.id),done=completed.length;$('result-'+leaf.id).textContent='담긴 상품 '+done;
+ const preview=completed.slice(0,2);$('basket-preview-'+leaf.id).innerHTML=preview.length?preview.map(e=>'<span>'+e.product.id+' · '+e.product.name+(e.route.some(r=>r.kind==='expressStart')?' · 직행':'')+'</span>').join('')+(done>2?'<span class="basket-extra">외 '+(done-2)+'개 보관 중</span>':''):'<span>아직 도착 없음</span>';
+ $('basket-summary-'+leaf.id).textContent='전체 상품 보기 ('+done+')';$('basket-list-'+leaf.id).innerHTML=completed.map(e=>'<li>'+e.product.id+' · '+e.product.name+(e.route.some(r=>r.kind==='expressStart')?' · 직행':'')+'</li>').join('')||'<li>아직 도착 없음</li>';});
+ const focus=entries.find(e=>e.product.id===selected),p=focus.product,s=focus.state,c=CATEGORIES[p.cat];$('selected-id').textContent=p.id+' · 묶음 '+String.fromCharCode(65+p.batch);$('selected-name').textContent=p.name;$('selected-path').textContent='예시 목표 경로 · '+p.path.join(' ↓ ')+(s.kind==='human'?' (미확정)':'');$('selected-status').textContent=stateLabel(s);$('selected-text').textContent='판매자 상품명: '+p.name+' · 설명: '+p.description+' · 최종 후보 예시 점수: '+p.leafScore+' · 상위 일치: '+(p.leafConsistent?'가상 일치':'가상 불일치')+' (모두 가상 설정)';$('selected-seller').textContent='가상 판매자 정보: '+(p.seller.inputValue?p.seller.inputValue+' · ':'')+sellerInputLabel(p.seller)+' → '+sellerDetailLabel(p)+' · '+sellerOutcomeLabel(p);$('selected-scores').innerHTML=p.sol.slice(0,p.path.length).map((v,i)=>'<div class="score"><span>'+ (i+1)+'단계 · 예시</span><b>'+v+'</b></div>').join('');$('selected-detail').textContent=s.detail;
  renderRootDecision(entries);renderRecovery(entries,visible,focus);
- const events=[];entries.forEach(e=>e.route.forEach(r=>{if(r.start<=time&&r.kind!=='classify'&&r.kind!=='queue')events.push({at:r.start,text:e.product.id+' · '+(r.stage+1)+'단계 · '+stateLabel(r)});}));events.sort((a,b)=>b.at-a.at||a.text.localeCompare(b.text));$('events').innerHTML=events.length?events.slice(0,14).map(e=>'<li>장면 '+e.at+' · '+e.text+'</li>').join(''):'<li>평균·검토·도착 사건이 생기면 기록합니다.</li>';$('text-states').innerHTML=entries.map(e=>'<tr><td>'+e.product.id+' '+e.product.name+'</td><td>'+CATEGORIES[e.product.cat].path.join(' → ')+'</td><td>'+stateLabel(e.state)+'</td></tr>').join('');$('accessible-summary').textContent='장면 '+time+'. 투입 전 '+counts.waiting+'개, 1차 대기 '+counts.rootwait+'개, 분류 계산 중 '+counts.active+'개, 검토 중 '+counts.review+'개, 세부 분류 도착 '+counts.done+'개, 사람 확인 대기 '+counts.human+'개.';
+ const events=[];entries.forEach(e=>e.route.forEach(r=>{if(r.start<=time&&r.kind!=='classify'&&r.kind!=='queue')events.push({at:r.start,text:e.product.id+' · '+(r.stage+1)+'단계 · '+stateLabel(r)});}));events.sort((a,b)=>b.at-a.at||a.text.localeCompare(b.text));$('events').innerHTML=events.length?events.slice(0,14).map(e=>'<li>장면 '+e.at+' · '+e.text+'</li>').join(''):'<li>평균·검토·도착 사건이 생기면 기록합니다.</li>';$('text-states').innerHTML=entries.map(e=>'<tr><td>'+e.product.id+' '+e.product.name+'</td><td>'+e.product.path.join(' → ')+'</td><td>'+stateLabel(e.state)+'</td></tr>').join('');$('accessible-summary').textContent='장면 '+time+'. 투입 전 '+counts.waiting+'개, 1차 대기 '+counts.rootwait+'개, 분류 계산 중 '+counts.active+'개, 검토 중 '+counts.review+'개, 세부 분류 도착 '+counts.done+'개, 사람 확인 대기 '+counts.human+'개.';
 }
 function setStatus(message){$('status').textContent=message;}
 function pause(){playing=false;lastStamp=0;accumulated=0;}
@@ -953,33 +998,49 @@ window.addEventListener('resize',()=>{fitTree();render();});document.addEventLis
 function frame(stamp){if(playing){if(!lastStamp)lastStamp=stamp;accumulated+=Math.min(stamp-lastStamp,100)*speed;lastStamp=stamp;if(accumulated>=1200){accumulated-=1200;time=Math.min(time+1,MAX_TIME);if(time===MAX_TIME){pause();setStatus(MAX_TIME+'장면에 도착했습니다. 500개의 가상 상품은 분류 완료 또는 사람 확인 대기 상태입니다.');}render();}}requestAnimationFrame(frame);}
 if(params.has('t')){time=Math.max(0,Math.min(MAX_TIME,Math.floor(Number(params.get('t'))||0)));setStatus('고정 장면 '+time+' · 재생을 누르면 이어집니다.');}
 if(params.has('threshold')){threshold=Math.max(60,Math.min(85,Number(params.get('threshold'))||70));$('threshold').value=threshold;updateTimelineLimit();}
-window.classificationDemo={simulate,routeFor,reviewLedger,showReviewExample,scoreFor,rootDecisionStats,canExpress,setExpressThreshold,setSellerIncentive,getSellerStats,products:PRODUCTS,categories:CATEGORIES,get maxTime(){return MAX_TIME;},getScalePlan:()=>scalePlan,setScaleOptions,getState:()=>({time,threshold,expressThreshold,playing,reduced,autoscaleEnabled,autoscaleMax,sellerIncentiveEnabled}),seek:(t)=>{pause();time=Math.max(0,Math.min(MAX_TIME,Math.floor(t)));render();}};
+window.classificationDemo={simulate,routeFor,reviewLedger,showReviewExample,scoreFor,rootDecisionStats,canExpress,setExpressThreshold,setSellerIncentive,getSellerStats,products:PRODUCTS,categories:CATEGORIES,nodes:TREE_NODES,leaves:LEAVES,treeGeometry:TREE_GEOMETRY,get maxTime(){return MAX_TIME;},getScalePlan:()=>scalePlan,setScaleOptions,getState:()=>({time,threshold,expressThreshold,playing,reduced,autoscaleEnabled,autoscaleMax,sellerIncentiveEnabled}),seek:(t)=>{pause();time=Math.max(0,Math.min(MAX_TIME,Math.floor(t)));render();}};
 // The overview reads the existing engine's counts and shares its single player.
 let fitWholeFlow=false;
+let categoryZoomed=false;
 function fitTree(){
  const tree=$('tree'),available=tree.parentElement.clientWidth;
  if(available<=0)return;
- let scale=available<=650?1:Math.min(1,available/2025);
+ let scale=categoryZoomed||available<=650?1:Math.min(1,available/2025);
  if(fitWholeFlow){
   const screenHeight=window.visualViewport?.height||window.innerHeight;
   const controlsHeight=$('flow-toolbar').offsetHeight;
   const headingHeight=$('simulation-panel').querySelector('.panelbar').offsetHeight;
   const monitorHeight=$('simulation-panel').querySelector('.review-monitor').offsetHeight;
   const availableHeight=Math.max(1,screenHeight-controlsHeight-headingHeight-monitorHeight-44);
-  scale=Math.min(1,available/2025,availableHeight/tree.offsetHeight);
+  scale=Math.min(1,available/(window.classificationDemo.treeGeometry?.width||2025),availableHeight/tree.offsetHeight);
  }
  tree.style.setProperty('--fit-scale',String(scale));
  $('flow-scale').textContent=Math.round(scale*100)+'%';
 }
 function setFlowView(fit){
  fitWholeFlow=fit;
+ if(fit){categoryZoomed=false;$('category-focus').value='';}
  $('simulation-panel').classList.toggle('flow-fit',fit);
  $('flow-fit-toggle').textContent=fit?'크게 보기':'전체 보기';
  $('flow-fit-toggle').setAttribute('aria-pressed',String(fit));
  fitTree();
+ if(fit)$('tree').parentElement.scrollLeft=0;
  $('simulation-panel').scrollIntoView({behavior:'auto',block:'start'});
 }
 $('flow-fit-toggle').addEventListener('click',()=>setFlowView(!fitWholeFlow));
+const categoryFocus=$('category-focus');
+categoryFocus.innerHTML='<option value="">분야 선택</option>'+CATEGORIES.map((category,index)=>'<option value="'+index+'">'+category.name+'</option>').join('');
+categoryFocus.addEventListener('change',()=>{
+ const category=CATEGORIES[Number(categoryFocus.value)];
+ if(categoryFocus.value===''||!category)return;
+ categoryZoomed=true;
+ setFlowView(false);
+ const tree=$('tree'),viewport=tree.parentElement;
+ const scale=Number(tree.style.getPropertyValue('--fit-scale'))||1;
+ viewport.scrollLeft=Math.max(0,category.x/100*tree.clientWidth*scale-viewport.clientWidth/2);
+ const root=$('node-0-'+categoryFocus.value);
+ window.scrollTo({top:window.scrollY+root.getBoundingClientRect().top-$('flow-toolbar').offsetHeight-16,behavior:'auto'});
+});
 window.visualViewport?.addEventListener('resize',fitTree);
 function renderLanding(counts){
  $('hero-play-label').textContent=playing?'분류 과정 일시정지':time===MAX_TIME?'처음부터 다시 재생':time>0?'분류 과정 이어보기':'분류 과정 재생';

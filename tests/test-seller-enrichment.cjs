@@ -20,7 +20,7 @@ function getElement(id) {
   const element = {
     id, handlers, innerHTMLWrites: 0, textContent: '', className: '', value: 0,
     checked: /\bchecked(?:\s|=|>)/.test(staticTags.get(id) || ''),
-    disabled: false, clientWidth: id === 'tree' ? 2025 : 1100,
+    disabled: false, clientWidth: id === 'tree' ? 4200 : 1100,
     parentElement: { clientWidth: 1100 }, style: { setProperty(k, v) { this[k] = v; } },
     classList: {
       toggle(k, enabled) { if (enabled ?? !classes.has(k)) classes.add(k); else classes.delete(k); },
@@ -112,7 +112,7 @@ function verifyTerminalAndBaskets() {
     for (const id of previouslyDone) assert(doneIds.has(id), `scene ${t}: ${id} remains in its output basket`);
     for (const e of completed) {
       previouslyDone.add(e.product.id);
-      assert.equal(e.state.stage, demo.categories[e.product.cat].path.length - 1);
+      assert.equal(e.state.stage, e.product.path.length - 1);
     }
   }
   const final = demo.simulate(demo.maxTime, 70);
@@ -120,8 +120,9 @@ function verifyTerminalAndBaskets() {
   const late = demo.simulate(demo.maxTime + 100, 70);
   assert.deepEqual(ids(late.filter(e => e.state.kind === 'done').map(e => e.product)), ids(final.filter(e => e.state.kind === 'done').map(e => e.product)), 'terminal baskets persist beyond timeline');
   demo.seek(demo.maxTime);
-  for (let c = 0; c < demo.categories.length; c++) {
-    const expected = ids(final.filter(e => e.state.kind === 'done' && e.product.cat === c).map(e => e.product));
+  for (const leaf of demo.leaves) {
+    const c=leaf.id;
+    const expected = ids(final.filter(e => e.state.kind === 'done' && e.product.leafId === c).map(e => e.product));
     const rendered = [...getElement('basket-list-' + c).innerHTML.matchAll(/<li>(P\d+)\s*·/g)].map(m => m[1]).sort();
     assert.deepEqual(rendered, expected, `basket ${c}: rendered IDs exactly match completed products`);
   }
@@ -262,8 +263,10 @@ function selectSellerCard(p, expectedText) {
 }
 selectSellerCard(demo.products.find(p => p.seller.inputType === 'barcode'), ['바코드']);
 selectSellerCard(demo.products.find(p => p.seller.inputType === 'model'), ['모델명']);
-selectSellerCard(demo.products.find(p => p.cat === 0 && p.seller.catalogFilled), ['자동 채움: 연결 방식 = 무선', '부족 정보 자동 채움']);
-selectSellerCard(demo.products.find(p => p.cat === 0 && p.seller.supplemented), ['판매자 답변: 연결 방식 = 무선', '판매자 보강 · 가상 1원']);
+const filledCase=demo.products.find(p => p.seller.catalogFilled);
+selectSellerCard(filledCase, ['자동 채움: '+filledCase.attribute.name+' = '+filledCase.attribute.value, '부족 정보 자동 채움']);
+const supplementedCase=demo.products.find(p => p.seller.supplemented);
+selectSellerCard(supplementedCase, ['판매자 답변: '+supplementedCase.attribute.name+' = '+supplementedCase.attribute.value, '판매자 보강 · 가상 1원']);
 selectSellerCard(demo.products.find(p => p.seller.promptShown && !p.seller.responded), ['질문:', '답변을 받지 못함', '응답 없음 · 정보 부족']);
 selectSellerCard(demo.products.find(p => p.seller.responded && !p.seller.responseUseful), ['질문:', '답변: 모름', '답변 후에도 정보 부족']);
 selectSellerCard(demo.products.find(p => p.seller.baseTextEnough), ['추가 질문 없이 정보가 충분한 예시', '기존 정보 충분']);

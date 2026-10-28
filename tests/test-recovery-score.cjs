@@ -26,7 +26,7 @@ function getElement(id) {
   const classes = new Set();
   const element = {
     id, handlers, innerHTML: '', textContent: '', className: '', value: 0, disabled: false,
-    clientWidth: id === 'tree' ? 2025 : 1100, parentElement: { clientWidth: 1100 },
+    clientWidth: id === 'tree' ? 4200 : 1100, parentElement: { clientWidth: 1100 },
     offsetHeight: id === 'tree' ? 1540 : id === 'flow-toolbar' ? 80 : 32,
     style: { setProperty(k, v) { this[k] = v; } },
     classList: {
@@ -64,7 +64,7 @@ for (const name of ['simulate', 'routeFor', 'canExpress', 'rootDecisionStats', '
   assert.equal(typeof demo[name], 'function', `missing demo API: ${name}`);
 }
 assert.equal(demo.products.length, 500);
-assert.equal(demo.categories.length, 9);
+assert.equal(demo.categories.length, 10);
 const productIds = Array.from(demo.products, p => p.id).sort();
 assert.equal(new Set(productIds).size, 500);
 assert.equal(demo.getState().expressThreshold, 95, 'default direct-leaf threshold');
@@ -113,8 +113,8 @@ for(const product of demo.products){
   if(r.reviewScore>=2)assert(['recoverUp','reviewResult','human'].includes(r.kind),'stop when threshold is reached');
   if(['recoverStart','recoverUp','recoverSearch','recoverDown'].includes(r.kind)){
    context.recoveryEntry={product,state:r,route};
-   const point=vm.runInContext('position(recoveryEntry,2025,[])',context);
-   assert(point.x>=0&&point.x+124<=2025&&point.y>=0&&point.y+47<=1540,product.id+': recovery token stays in tree');
+   const point=vm.runInContext('position(recoveryEntry,4200,[])',context);
+   assert(point.x>=0&&point.x+88<=4200&&point.y>=0&&point.y+34<=1540,product.id+': recovery token stays in tree');
   }
  }
  if(last.kind==='done')assert(last.reviewScore<2);
