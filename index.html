@@ -93,6 +93,24 @@ button{border-color:#cbdedb;border-radius:7px;color:#284e4b}button:hover{backgro
 .token.human-flight{z-index:9;background:#ffe2d8;border-color:#b84b35;border-left-color:#a73722;box-shadow:0 0 0 5px #f5b29a55;transition:transform .94s cubic-bezier(.25,.65,.35,1),opacity .2s}.reduce .token.human-flight{transition:none!important}
 #human-transfer-demo{border-color:#d18c7e;color:#9c4231;background:#fff1e9;font-weight:800}.review-monitor-top{flex-wrap:wrap}
 @media(prefers-reduced-motion:reduce){.token.human-flight{transition:none!important}}
+/* Overview hierarchy: use each root's complete subtree width, and reserve
+   separate vertical strips for the category title, moving ticket and score. */
+.tree .node{height:165px;padding:10px 6px;border-width:2px}
+.tree .node strong{font-size:32px;line-height:1.04;letter-spacing:-.05em;margin:5px 0;overflow-wrap:anywhere;word-break:normal}
+.tree .node .level,.tree .node small{font-size:16px;line-height:1.25}
+.tree .node:has(.count) strong{font-size:54px;line-height:1.08;letter-spacing:-.045em;margin:7px 0}
+.tree .node .count{font-size:20px;padding:1px 8px}.tree .leaf-node{padding:10px 2px}.tree .leaf-node .level,.tree .leaf-node small{display:none}.tree .leaf-node strong{margin:0;font-size:32px;line-height:1.04;letter-spacing:-.05em}
+.tree .model-link{font-size:18px}.tree .resultbin{height:164px}.tree .resultbin strong{font-size:24px}.tree .resultbin small{font-size:22px;line-height:1.2}.tree .basket-preview span{font-size:16px}.tree .basket-details summary{font-size:17px}
+.express-corridor{top:410px;height:1190px;width:230px;left:calc(var(--express-x) - 115px);border-width:3px;background:#e7f7edb3}
+.express-rail-label{width:330px;font-size:46px;line-height:1.15;padding:14px 8px;top:286px}
+.express-lines .express-rail,.express-lines .express-to-bin{stroke-width:10;stroke-dasharray:22 16}
+.human-sector{height:1050px;padding:26px 24px}.human-sector h3{font-size:64px;line-height:1.15}.human-sector h3 svg{width:48px;height:48px;vertical-align:-5px}.human-sector>p{font-size:28px;line-height:1.3}
+.human-sector-stats{font-size:25px;gap:8px;margin-top:18px}.human-sector-stats b{font-size:64px}.human-dock{top:326px;height:164px}.human-dock>span{font-size:28px;top:-21px}
+.human-sector-queue{top:530px}.human-sector-queue>strong{font-size:34px}.human-sector-list{gap:8px;margin-top:10px}.human-sector-list button{min-height:85px;padding:10px 12px}.human-sector-list b{font-size:29px;line-height:1.2}.human-sector-list span{font-size:24px;line-height:1.2}.human-sector-list p{font-size:25px}.human-sector .human-sector-note{font-size:24px;line-height:1.25;bottom:18px;padding-top:10px}
+.human-transfer-lines>path{stroke-width:14;stroke-dasharray:24 15;opacity:.95}
+.human-flight-label{position:absolute;z-index:10;width:420px;padding:12px 16px;border:3px solid #ae3d29;border-radius:16px;background:#fff4e9;color:#922e1c;box-shadow:0 0 0 10px #ffc6ac88;pointer-events:none;transition:transform .94s cubic-bezier(.25,.65,.35,1)}
+.human-flight-label b{display:block;font-size:48px;line-height:1.15;letter-spacing:-.035em;white-space:nowrap}.human-flight-label span{display:block;margin-top:4px;font-size:30px;line-height:1.2}.human-flight-label.safety{border-color:#b67a2e;color:#845114;background:#fff7db}
+.reduce .human-flight-label{transition:none!important}@media(prefers-reduced-motion:reduce){.human-flight-label{transition:none!important}}
 /* Submission landing: the diagram is the introduction, not a decorative cover. */
 .assignment-banner{display:grid;grid-template-columns:minmax(0,1fr) 285px;gap:25px;margin-top:22px;padding:22px 25px;background:#eef3ff;border:1px solid #c8d6f2;border-radius:14px;color:#213e6c}.assignment-scope{display:grid;grid-template-columns:auto 1fr;column-gap:12px;row-gap:3px;align-items:center}.scope-eyebrow{font-size:11px;font-weight:750;color:#526d96}.assignment-scope>strong{font-size:18px;letter-spacing:-.035em;line-height:1.5}.assignment-scope .demo-scope{font-size:24px;color:#214fca}.scope-arrow{display:none}.assignment-scope>p{grid-column:1/-1;font-size:12px;color:#5c7294;line-height:1.6;margin:7px 0 0;word-break:keep-all}.assignment-budget{align-self:center;padding-left:25px;border-left:1px solid #b9c9e8}.assignment-budget>strong,.assignment-budget>b{display:block}.assignment-budget>strong{font-size:28px;letter-spacing:-.05em;line-height:1.2;color:#1c43ac}.assignment-budget>b{font-size:15px;margin-top:6px}.assignment-budget>p{font-size:11px;line-height:1.6;margin:6px 0 0;color:#5c7294;word-break:keep-all}@media(max-width:860px){.assignment-banner{grid-template-columns:minmax(0,1fr) 225px;gap:18px;padding:19px}.assignment-budget{padding-left:18px}.assignment-scope>strong{font-size:16px}.assignment-scope .demo-scope{font-size:21px}.assignment-budget>strong{font-size:25px}}@media(max-width:650px){.assignment-banner{grid-template-columns:1fr;gap:15px;margin-top:16px;padding:17px 16px;border-radius:11px}.assignment-scope{grid-template-columns:1fr;gap:3px}.scope-eyebrow{font-size:10px}.assignment-scope>strong{font-size:17px}.assignment-scope .demo-scope{font-size:22px}.assignment-scope .scope-eyebrow:nth-of-type(3){margin-top:7px}.assignment-scope>p{font-size:11px;margin-top:5px}.assignment-budget{padding:13px 0 0;border-left:0;border-top:1px solid #c6d3eb;display:grid;grid-template-columns:1fr auto;column-gap:10px;align-items:center}.assignment-budget>strong{font-size:24px}.assignment-budget>b{font-size:12px;margin:0}.assignment-budget>p{grid-column:1/-1;margin-top:4px;font-size:10px}}@media(max-width:360px){.assignment-budget{grid-template-columns:1fr}.assignment-budget>b{margin-top:5px}.assignment-scope .demo-scope{font-size:20px}}
 :root{--landing-ink:#152b46;--landing-muted:#586d85;--landing-blue:#315cde;--landing-green:#16846a;--landing-amber:#b96b24;--landing-violet:#7656ac}
@@ -196,6 +214,12 @@ html{scroll-behavior:auto;scroll-padding-top:22px}body{background:#f5f8fc;color:
 /* Make the primary goal visible before the assignment scale. */
 .assignment-banner{row-gap:16px}.assignment-goal{grid-column:1/-1;margin:0;padding-bottom:16px;border-bottom:1px solid #c4d2ed;font-size:34px;font-weight:900;line-height:1.4;letter-spacing:-.045em;color:#213e6c;word-break:keep-all}.assignment-goal strong{font-weight:900;color:#1c43ac}@media(max-width:650px){.assignment-goal{font-size:26px;line-height:1.45;padding-bottom:14px}.assignment-banner{row-gap:14px}}
 
+/* Full structure is the default; detail cards follow below, never beside it. */
+.workspace{display:block}.workspace>.side{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px;margin-top:18px}.tree-panel .tree-scroll{overflow:clip;max-width:100%}.flow-fit>.prep-disclosure{display:block}.flow-fit>.scrollhint{display:none}.tree .category-highlight{outline:12px solid #315cde;outline-offset:10px;z-index:9}.assignment-budget>p{font-size:19px;font-weight:900;line-height:1.45;color:#203f73}.assignment-banner{grid-template-columns:minmax(0,1fr) 325px}.assignment-budget{padding-left:21px}.mobile-tree-hint{display:none!important}@media(max-width:860px){.assignment-banner{grid-template-columns:minmax(0,1fr) 280px}.assignment-budget>p{font-size:17px}.workspace>.side{grid-template-columns:1fr 1fr}}@media(max-width:650px){.assignment-banner{grid-template-columns:1fr}.assignment-budget>p{font-size:18px;margin-top:9px}.workspace>.side{grid-template-columns:1fr}.workspace>.side .card{grid-column:1}}
+/* Top labels remain legible in the default full-map view. */
+.prep-disclosure{padding:0}.comparison-evidence{padding:0}.flow-fit .tree-workers .worker-legend{height:30px;font-size:28px;line-height:1;padding:2px 16px}.flow-fit .tree-workers .worker-root{height:30px;max-width:1500px;font-size:28px;line-height:1;padding:2px}.flow-fit .tree-workers .worker-lane{height:61px;min-height:61px;padding:3px 2px}.flow-fit .tree-workers .worker-lane strong{font-size:27px;line-height:1}.flow-fit .tree-workers .worker-lane span{font-size:24px;line-height:1;margin-top:3px}.flow-fit .tree-workers .worker-lane:after{height:20px;bottom:-20px}.flow-fit .tree .model-a-bus{font-size:35px;line-height:1}.flow-fit .tree .model-a-bus small{font-size:25px}.flow-fit .decision-head strong{font-size:38px;line-height:1.2}.flow-fit .decision-head b{font-size:44px}.flow-fit .decision-card p{font-size:24px;line-height:1.2;margin:5px 0}.flow-fit .decision-card small{font-size:20px;line-height:1.2}.flow-fit .decision-items{display:none}
+.flow-fit .tree-workers .worker-legend,.flow-fit .tree-workers .worker-root{height:34px;line-height:28px}.flow-fit .tree-workers .worker-branch{height:10px}.flow-fit .tree-workers .worker-lane:after{height:16px;bottom:-16px}
+
 /* The frontier decision, conditional fan-out, and reveal boundary are distinct. */
 .blind-review-section{--br-blue:#315caa;--br-amber:#9b601c;--br-line:#bfd0e5}
 .blind-review-section .debate-header{align-items:center;padding:26px 28px 23px}
@@ -281,6 +305,76 @@ html{scroll-behavior:auto;scroll-padding-top:22px}body{background:#f5f8fc;color:
 .br-transcript-body{padding:8px 28px 20px}.br-transcript .debate-footer{margin-top:16px;padding:12px;border-radius:8px}
 @media(max-width:1000px){.br-conditional-arrow{width:39px;}.br-map{grid-template-columns:minmax(150px,.85fr) 20px minmax(175px,1fr) 39px minmax(260px,1.55fr);padding:22px 20px 0}.br-router{padding:14px 10px 10px}.br-models{gap:6px}.br-map h3{font-size:16px}.br-router-heading h3{font-size:23px}.br-comparison-head{flex-direction:column;gap:10px}.br-comparison-head .scenario-switch{margin-top:0}.br-frontier{padding:14px 10px 0}.br-low-score{margin-left:-10px;margin-right:-10px;font-size:9px}.br-low-score b{font-size:9px}.br-input{padding:14px 10px}.br-original-packet{font-size:9px}.br-table-controls .debate-steps button{font-size:10px}}
 @media(max-width:760px){.blind-review-section .debate-header{padding:21px 19px;align-items:flex-start;gap:12px}.blind-review-section .debate-header h2{font-size:23px}.blind-review-section .debate-header p:last-child{font-size:11px}.br-demo-label{text-align:left}.br-map{grid-template-columns:1fr;gap:0;padding:20px 19px 0}.br-input{padding:16px;display:grid;grid-template-columns:108px 1fr;column-gap:13px;align-items:start}.br-input>.br-number,.br-input>h3,.br-input>small{grid-column:1/-1}.br-input>h3{font-size:18px}.br-input .product-art{grid-column:1;grid-row:3/6;width:108px;height:105px;margin:8px 0 0}.br-product-name{margin-top:11px;grid-column:2;font-size:12px}.br-description{grid-column:2;margin:5px 0;font-size:11px;padding:7px}.br-evidence{grid-column:2;font-size:9px}.br-input>small{margin-top:9px}.br-flow-arrow{padding:5px 0;font-size:24px;transform:rotate(90deg);line-height:1.2}.br-frontier-branch{display:grid;grid-template-columns:1fr 1fr;column-gap:10px}.br-frontier{grid-column:1/-1;padding:16px 15px 0}.br-map .br-frontier h3{font-size:19px}.br-frontier>p{font-size:12px;margin:7px 0 11px}.br-first-answer{padding:11px 13px}.br-first-answer>strong{font-size:13px}.br-low-score{margin:12px -15px 0;padding:9px 15px;font-size:11px}.br-low-score b{font-size:11px}.br-exit-arrow{grid-column:1;grid-row:2;flex-direction:column;gap:0;margin:3px 0}.br-exit-arrow span{font-size:10px}.br-direct-end{grid-column:1;grid-row:3;padding:10px;align-items:flex-start}.br-direct-end div{display:block}.br-direct-end strong{font-size:11px}.br-direct-end span{font-size:10px;margin:0}.br-conditional-arrow{position:static;grid-column:2;grid-row:2/4;width:auto;padding:17px 6px 12px;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:8px;border-left:1px dashed #dbbd91;color:#9b601c}.br-conditional-arrow span{font-size:11px}.br-conditional-arrow b{transform:rotate(90deg);font-size:24px}.br-router{grid-column:auto;margin-top:15px;padding:17px 13px 15px}.br-router-heading h3{font-size:26px}.br-router-heading p{font-size:11px}.br-original-packet{font-size:10px;padding:9px 4px}.br-models{gap:8px}.br-model{padding:12px 4px 8px}.br-model p{font-size:10px}.br-seal{font-size:9px}.br-blind-rule{font-size:10px}.br-blind-rule strong{font-size:11px}.br-boundary{padding:17px 20px;justify-content:center;flex-wrap:wrap;gap:6px}.br-boundary>span:last-child{flex-basis:100%;text-align:center}.br-comparison{padding:20px 19px}.br-comparison-head h3{font-size:19px}.br-comparison-head p{font-size:11px}.br-comparison-head .scenario-switch{width:100%;margin-top:5px}.br-comparison-head .scenario-switch button{flex:1;font-size:11px}.br-table-controls{flex-direction:column;align-items:stretch;gap:9px}.br-table-controls .debate-steps{display:grid;grid-template-columns:1fr 1fr 1fr;gap:4px}.br-table-controls .debate-steps button{font-size:10px;padding:7px 5px;line-height:1.5;min-height:48px;display:block;word-break:keep-all}.br-table-controls .debate-steps b{display:block;margin-bottom:2px}.br-table-controls .br-reveal-button{font-size:12px;min-height:43px}.br-result-grid{grid-template-columns:1fr;gap:9px}.br-outcome-rules{grid-template-columns:1fr;gap:7px}.br-outcome-rules b{display:inline;margin-right:6px}.br-comparison-table{display:block}.br-comparison-table thead{display:none}.br-comparison-table tbody{display:grid;gap:12px;padding:10px;background:#f4f7fb}.br-comparison-table tr{display:block;border:1px solid #d8e2ef;background:white;border-radius:7px;overflow:hidden}.br-comparison-table tbody th{display:block;padding:8px 11px;background:#edf3fa;border:0;font-size:12px}.br-comparison-table td{display:grid;grid-template-columns:76px 1fr;gap:7px;padding:8px 11px;border-bottom:1px solid #eef1f6;font-size:11px}.br-comparison-table td:before{content:attr(data-label);font-size:10px;font-weight:650;color:#8391a5}.br-comparison-table tbody tr:last-child>*{border-bottom:1px solid #eef1f6}.br-comparison-table td.sealed-cell{font-size:10px}.br-comparison-table td:last-child{border-bottom:0!important}.br-comparison-table .answer-status{justify-self:start;font-size:10px}.br-transcript>summary{padding:14px 19px;font-size:11px}.br-transcript>summary>span{display:block;margin:4px 0 0 16px}.br-transcript-body{padding:4px 19px 16px}.br-transcript .debate-footer{display:block}.br-transcript .debate-playback{margin-top:9px}}
+/* Larger frontier decision and a shared confidence axis make the branch readable. */
+.discussion-redesign .br-map{grid-template-columns:minmax(190px,.96fr) 38px minmax(225px,1.12fr) 72px minmax(300px,1.4fr);padding:30px 30px 0}
+.discussion-redesign .br-input{border:0;background:#f0f4f9;padding:20px 18px}
+.discussion-redesign .br-input .product-art{width:190px;height:130px;margin:13px auto}
+.discussion-redesign .br-description{font-size:12px;line-height:1.7;padding:11px;background:transparent;border:0;border-top:1px solid #d1dcea;border-radius:0;margin:12px 0 8px}
+.discussion-redesign .br-product-name{font-size:15px}
+.discussion-redesign .br-evidence{font-size:10px}
+.discussion-redesign .br-frontier{border:2px solid #293f62;background:#fff;padding:18px 17px 0;box-shadow:0 7px 18px #203b5e0a}
+.discussion-redesign .codex-first{font-size:33px;letter-spacing:-1px;color:#182b47;margin-top:9px}
+.discussion-redesign .codex-first small{display:block;font-size:12px;letter-spacing:0;font-weight:600;color:#6b7d96;margin-top:3px}
+.discussion-redesign .br-first-answer{background:#f3f6fb;border:0;padding:14px 12px}
+.discussion-redesign .br-first-answer>strong{font-size:14px;line-height:1.55;color:#263d5c}
+.frontier-confidence{margin-top:10px;padding-top:11px;border-top:1px solid #d7e1ee}
+.frontier-confidence>span{display:block;font-size:10px;color:#5d6f87;line-height:1.4;margin-bottom:9px}
+.frontier-confidence b#frontier-score-value{font-size:32px;font-weight:850;color:#ab681d;margin-left:7px;letter-spacing:-1px;vertical-align:-3px}
+.frontier-confidence small{font-size:11px;color:#7e8ba0}
+.confidence-axis{position:relative;isolation:isolate;height:16px;border-radius:3px;background:#e4ebf4;overflow:visible}
+.confidence-axis>i{position:absolute;left:0;top:0;bottom:0;border-radius:3px;background:#30756a;transition:width .45s ease}
+.confidence-axis>.confidence-cutoff{position:absolute;left:85%;top:-5px;bottom:-5px;width:0;border-left:2px dashed #5e7088;z-index:1}
+.frontier-confidence .confidence-axis>i{background:#bd832d}
+.confidence-legend{display:flex;flex-wrap:wrap;justify-content:space-between;gap:4px;margin:11px 0 0;line-height:1.6;font-size:10px;color:#89632b}
+.confidence-legend b{font-size:9px;color:#70809a;font-weight:650}
+.discussion-redesign .br-low-score{font-size:11px;margin:16px -17px 0;padding:10px 17px;align-items:center}
+.discussion-redesign .br-flow-arrow{padding-top:165px;color:#56718d;font-size:30px}
+.discussion-redesign .br-conditional-arrow{top:218px;width:72px;font-size:12px;padding:0 7px}
+.discussion-redesign .br-conditional-arrow span{font-size:10px;line-height:1.6}
+.discussion-redesign .br-conditional-arrow b{font-size:32px}
+.discussion-redesign .br-router{padding:19px 17px 17px;border:1px solid #aec0d7;box-shadow:none;background:#fcfdff}
+.discussion-redesign .br-router-heading h3{font-size:29px;letter-spacing:-1px}
+.discussion-redesign .br-router-heading p{font-size:12px;line-height:1.7;margin-bottom:18px}
+.discussion-redesign .br-original-packet{background:#eaf0f8;font-size:11px;border:0;padding:10px}
+.discussion-redesign .br-fanout{height:40px}
+.discussion-redesign .br-fanout:after{height:20px}
+.discussion-redesign .br-fanout:before{top:20px}
+.discussion-redesign .br-fanout i{height:20px;margin-top:20px}
+.discussion-redesign .br-model{background:#fff;border:1px solid #cad7e7;border-radius:5px;padding:15px 5px 11px}
+.discussion-redesign .br-model-letter{font-size:21px;width:40px;height:40px;background:#eaf0f8;border:0;border-radius:4px;color:#29496f}
+.discussion-redesign .br-model h4{font-size:13px;margin-top:8px}
+.discussion-redesign .br-model p{font-size:10px}
+.discussion-redesign .br-model.answers-revealed{background:#eff8f4;border-color:#98c4af}
+.discussion-redesign .br-blind-rule{border-top:1px solid #dce4ee;padding-top:11px;font-size:10px;line-height:1.8}
+.discussion-redesign .br-blind-rule strong{font-size:11px}
+.discussion-redesign .br-boundary{padding:20px 32px 22px}
+.discussion-redesign .br-comparison{padding:26px 30px;background:#f6f8fc}
+.discussion-redesign .br-comparison-head h3{font-size:22px}
+.discussion-redesign .scenario-switch{display:flex;flex-wrap:wrap;border:1px solid #ccd8e7;background:#fff;border-radius:8px;padding:4px;gap:3px;flex-shrink:0}
+.discussion-redesign .scenario-switch button{font-size:10px;padding:8px 10px;white-space:nowrap}
+.confidence-graph{background:white;border:1px solid #d4deec;border-radius:10px;padding:22px 24px;margin-top:18px}
+.confidence-graph-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:21px;line-height:1.5}
+.confidence-graph-head strong{font-size:15px;color:#253f62}
+.confidence-graph-head span{font-size:10px;color:#7788a0}
+.confidence-model-row{display:grid;grid-template-columns:66px minmax(0,1fr) 46px;align-items:center;gap:16px;margin:18px 0}
+.confidence-model-row>b{font-size:13px;font-weight:700;color:#4b6280}
+.confidence-row-body>span{display:block;font-size:12px;color:#4c6380;line-height:1.6;margin-bottom:10px}
+.confidence-row-body .confidence-axis{height:20px}
+.confidence-model-row>strong{font-size:27px;letter-spacing:-1px;color:#276957;align-self:end;line-height:1;margin-bottom:-2px;text-align:right}
+.confidence-axis-note{font-size:10px;color:#7b8aa1;margin:22px 0 0;line-height:1.6}
+.low-confidence .confidence-axis>i{background:#b78335}.low-confidence .confidence-model-row>strong{color:#9b6828}
+.comparison-evidence{margin-top:13px;border:1px solid #d5dfed;border-radius:7px;background:#fff;overflow:hidden}
+.comparison-evidence>summary{padding:12px 16px;font-size:11px;font-weight:650;color:#5c7393;cursor:pointer}
+.comparison-evidence .br-table-wrap{border:0;border-top:1px solid #d5dfed;border-radius:0}
+.discussion-redesign .br-confidence-note{font-size:11px;line-height:1.7;margin-top:13px}
+.frontier-passed .br-frontier{border-color:#438367}.frontier-passed .frontier-confidence b#frontier-score-value{color:#277253}.frontier-passed .frontier-confidence .confidence-axis>i{background:#42876c}.frontier-passed .confidence-legend{color:#277253}
+.frontier-passed .br-low-score{background:#edf8f1;color:#2e7153;border-color:#c4ddcc}.frontier-passed .br-direct-end{background:#ddf3e7;border:2px solid #438367}
+.frontier-passed .br-router,.frontier-passed .br-conditional-arrow,.frontier-passed .br-boundary{opacity:.38}
+.frontier-passed .br-transcript,.frontier-passed .br-outcome-rules{display:none}
+.frontier-passed .br-table-controls button{opacity:.48;cursor:default}
+@media(max-width:1120px){.discussion-redesign .br-map{grid-template-columns:minmax(165px,.95fr) 28px minmax(205px,1.1fr) 55px minmax(270px,1.4fr);padding:25px 22px 0}.discussion-redesign .br-conditional-arrow{width:55px;padding:0 4px}.discussion-redesign .br-frontier{padding:17px 12px 0}.discussion-redesign .br-low-score{margin-left:-12px;margin-right:-12px;padding-left:12px;padding-right:12px}.discussion-redesign .br-router{padding:17px 12px}.discussion-redesign .br-input{padding:17px 13px}.discussion-redesign .br-comparison-head{flex-direction:column;gap:10px}.discussion-redesign .scenario-switch{margin-top:0}}
+@media(max-width:840px){.discussion-redesign .br-map{grid-template-columns:1fr;gap:0;padding:22px 19px 0}.discussion-redesign .br-input{padding:17px;display:grid;grid-template-columns:122px 1fr;column-gap:15px;align-items:start}.discussion-redesign .br-input>.br-number,.discussion-redesign .br-input>h3,.discussion-redesign .br-input>small{grid-column:1/-1}.discussion-redesign .br-input .product-art{grid-column:1;grid-row:3/6;width:122px;height:118px;margin:11px 0 0}.discussion-redesign .br-product-name{grid-column:2;margin-top:10px;font-size:13px}.discussion-redesign .br-description{grid-column:2;font-size:11px;padding:8px 0 0;margin:7px 0}.discussion-redesign .br-evidence{grid-column:2;font-size:9px}.discussion-redesign .br-flow-arrow{padding:5px 0;font-size:25px;transform:rotate(90deg);line-height:1.2}.discussion-redesign .br-frontier-branch{display:grid;grid-template-columns:1fr 1fr;gap:0 10px}.discussion-redesign .br-frontier{grid-column:1/-1;padding:20px 18px 0}.discussion-redesign .br-map .codex-first{font-size:31px}.discussion-redesign .br-low-score{margin:17px -18px 0;padding:10px 18px}.discussion-redesign .br-exit-arrow{grid-column:1;grid-row:2;flex-direction:column;gap:0}.discussion-redesign .br-direct-end{grid-column:1;grid-row:3}.discussion-redesign .br-conditional-arrow{position:static;grid-column:2;grid-row:2/4;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;width:auto;padding:20px 7px 15px;border-left:1px dashed #c7ac83;gap:10px}.discussion-redesign .br-conditional-arrow b{transform:rotate(90deg);font-size:26px}.discussion-redesign .br-router{grid-column:auto;margin-top:18px;padding:20px 17px}.discussion-redesign .br-comparison{padding:22px 19px}.discussion-redesign .br-boundary{padding:20px}.discussion-redesign .br-comparison-head h3{font-size:20px}.discussion-redesign .scenario-switch{width:100%;display:grid;grid-template-columns:1fr 1fr 1fr}.discussion-redesign .scenario-switch button{font-size:10px;line-height:1.6;white-space:normal;padding:8px 5px}.confidence-graph{padding:19px 15px}.confidence-graph-head{display:block;margin-bottom:17px}.confidence-graph-head strong{font-size:14px;display:block}.confidence-graph-head span{font-size:10px;display:block;margin-top:3px}.confidence-model-row{grid-template-columns:43px minmax(0,1fr) 32px;gap:10px}.confidence-model-row>b{font-size:11px}.confidence-row-body>span{font-size:11px}.confidence-model-row>strong{font-size:24px}.confidence-row-body .confidence-axis{height:17px}.discussion-redesign .br-confidence-note{font-size:10px}}
+@media(prefers-reduced-motion:reduce){.confidence-axis>i{transition:none}}
 
 </style>
 <!-- Lucide static 1.63.0 icon license
@@ -356,19 +450,19 @@ SOFTWARE.
 </head>
 <body>
 <main class="page">
-<a class="skip-link" href="#simulation">시뮬레이션으로 바로 가기</a>
+<a class="skip-link" href="#simulation-panel">시뮬레이션으로 바로 가기</a>
 <header class="landing-nav" id="overview"><a class="landing-brand" href="#overview"><span class="route-brand"><svg class="landing-icon" viewBox="0 0 24 24" aria-hidden="true">
   <circle cx="6" cy="19" r="3" />
   <path d="M9 19h8.5a3.5 3.5 0 0 0 0-7h-11a3.5 3.5 0 0 1 0-7H15" />
   <circle cx="18" cy="5" r="3" />
-</svg></span>Product Category Flow</a><nav aria-label="페이지 탐색"><a class="nav-overview" href="#overview">전체 흐름</a><a href="#agent-debate">독립 검토</a><a href="#simulation">직접 실험</a><a class="source-link" href="https://github.com/Kimhyuntae9665/product-category-flow" target="_blank" rel="noopener noreferrer">GitHub <svg class="landing-icon" viewBox="0 0 24 24" aria-hidden="true">
+</svg></span>Product Category Flow</a><nav aria-label="페이지 탐색"><a class="nav-overview" href="#overview">전체 흐름</a><a href="#agent-debate">독립 검토</a><a href="#simulation-panel">직접 실험</a><a class="source-link" href="https://github.com/Kimhyuntae9665/product-category-flow" target="_blank" rel="noopener noreferrer">GitHub <svg class="landing-icon" viewBox="0 0 24 24" aria-hidden="true">
   <path d="M7 7h10v10" />
   <path d="M7 17 17 7" />
 </svg></a></nav></header>
 <section class="assignment-banner" aria-label="핵심 목적과 과제 규모 안내">
  <p class="assignment-goal"><strong>사람의 검수를 줄이는 것</strong>이 가장 큰 목적입니다.</p>
  <div class="assignment-scope"><span class="scope-eyebrow">실제 과제</span><strong>상품 500만 건 · 카테고리 1만 개</strong><span class="scope-arrow" aria-hidden="true">→</span><span class="scope-eyebrow">이 화면은 축소판</span><strong class="demo-scope">상품 500개 · 대분류 10개</strong><p>애니메이션의 작동 구조를 보여주기 위해 규모를 줄였습니다. 각 대분류 아래에는 여러 하위 카테고리가 갈라집니다.</p></div>
- <div class="assignment-budget"><strong>정확도 = 돈</strong><b>상품 1개당 예산 20원</b><p>사람 검수·오분류 비용을 줄이는 설계</p></div>
+ <div class="assignment-budget"><strong>정확도 == 돈</strong><b>상품 1개당 예산 20원</b><p>사람 호출 노동력을 줄이는 설계</p></div>
 </section>
 <section class="landing cascade-overview" aria-labelledby="landing-title">
  <div class="cascade-heading"><div><p class="cascade-eyebrow">상품 분류 · 필요한 단계까지만</p><h1 id="landing-title">텍스트로 충분하면 끝내고,<br class="mobile-break"> <em>부족하면 이미지·AI로 확인합니다.</em></h1></div><p class="cascade-disclaimer">설명용 시뮬레이션<br> 실제 모델 호출·성능 측정 없음</p></div>
@@ -431,33 +525,33 @@ SOFTWARE.
 </svg></span></span><span id="hero-play-label">분류 과정 재생</span></button><a class="landing-secondary" href="#agent-debate">독립 검토 예시 ↓</a></div><div class="journey-live"><div class="journey-live-top"><span id="hero-status">재생 준비</span><b id="hero-time">0 / 100</b></div><div class="journey-progress" aria-hidden="true"><span id="hero-progress"></span></div><div class="journey-counts"><span>분류 중 <b id="hero-active">10</b></span><span>도착 <b id="hero-done">0</b></span><span>사람 대기 <b id="hero-human">0</b></span><button type="button" id="hero-reset">처음부터 ↺</button></div></div></div>
  <details class="cascade-notes"><summary>점수·모델 선택 기준</summary><div><p><strong>전용 분류기:</strong> 상품 카테고리에 맞춰 추가 학습한 뒤, 별도로 둔 같은 정답 상품으로 비교합니다. 기본 공개 가중치의 ImageNet 1,000개 분류를 과제의 1만 개 상품 분류로 그대로 쓰지는 않습니다. <a href="https://docs.pytorch.org/vision/main/models/generated/torchvision.models.efficientnet_b0.html" target="_blank" rel="noopener noreferrer">EfficientNet-B0</a> · <a href="https://docs.pytorch.org/vision/main/models/generated/torchvision.models.convnext_tiny.html" target="_blank" rel="noopener noreferrer">ConvNeXt-Tiny 공식 문서</a></p><p><strong>독립 검토:</strong> 이미지 입력을 지원하는 모델마다 같은 상품 정보와 분류 기준을 줍니다. 첫 답을 낼 때는 다른 모델과 프론티어의 결론을 보여주지 않고, 답이 모두 나온 뒤에 비교합니다. <a href="https://github.com/OpenRouterTeam/docs/blob/main/guides/overview/multimodal/image-understanding.mdx" target="_blank" rel="noopener noreferrer">OpenRouter 이미지 입력 문서</a></p><p><strong>확신도:</strong> 서로 다른 모델이 스스로 매긴 숫자를 그대로 평균 내지 않습니다. 같은 후보를 기준으로 정답 데이터에 맞춰 보정한 점수와 근거 일치 여부를 함께 확인합니다. 이 화면의 점수는 규칙 설명용 가상 값이며 실제 보정 결과가 아닙니다. <a href="https://proceedings.mlr.press/v70/guo17a.html" target="_blank" rel="noopener noreferrer">확신도 보정 연구</a></p><p><strong>누적 점수:</strong> 프론티어 불확실 +1, 독립 검토 후 확신 부족·미해결 충돌 +2, 경로 복구 +1을 더합니다. 복구 1점 + 프론티어 1점이면 독립 검토 전에 사람에게 보냅니다. 프론티어 1점 + 독립 검토 2점이면 합계 3점입니다. 사진을 읽을 수 없거나 안전하게 분류할 근거가 없으면 점수와 별개로 보류할 수 있습니다.</p><p><strong>평균 예산 20원:</strong> 총 1억 원 ÷ 500만 상품의 평균입니다. 학습·서버·API·사람 검수·오분류 수정 비용을 함께 비교해야 합니다.</p></div></details>
 </section>
-<div class="overview-caption"><span>상품을 선택하면 이동 경로와 누적 검토 점수를 볼 수 있습니다.</span><a href="#simulation">상세 시뮬레이션 ↓</a></div>
-<section class="debate-section blind-review-section" id="agent-debate" aria-labelledby="debate-title">
- <div class="debate-header"><div><p class="section-eyebrow">FRONTIER → BLIND REVIEW</p><h2 id="debate-title">먼저 프론티어가 판단하고,<br><em>불확실할 때만</em> 여러 모델에 따로 묻습니다.</h2><p>프론티어 단계까지 온 상품 하나의 검토 과정입니다. 다른 모델의 답은 독립 판정이 끝난 뒤에 공개합니다.</p></div><span class="br-demo-label">설계 설명용 시연<br>실제 모델·API 호출 없음</span></div>
+<div class="overview-caption"><span>상품을 선택하면 이동 경로와 누적 검토 점수를 볼 수 있습니다.</span><a href="#simulation-panel">상세 시뮬레이션 ↓</a></div>
+<section class="debate-section blind-review-section discussion-redesign" id="agent-debate" aria-labelledby="debate-title">
+ <div class="debate-header"><div><p class="section-eyebrow">FRONTIER → BLIND REVIEW</p><h2 id="debate-title">Codex가 먼저 분류하고,<br><em>기준에 못 미치면</em> 독립된 판단을 모읍니다.</h2><p>같은 이미지·텍스트로 각자 판단한 뒤, 같은 분류 후보의 신뢰도와 근거를 비교합니다.</p></div><span class="br-demo-label">설계 설명용 시연<br>실제 모델·API 호출 없음</span></div>
 
  <div class="br-map" aria-label="같은 상품 입력에서 프론티어 판정과 조건부 독립 검토로 이어지는 흐름">
   <article class="br-input">
    <span class="br-number">01 · 공통 입력</span><h3>이미지 1장 + 텍스트</h3>
-   <svg id="case-art" class="product-art" viewBox="0 0 220 150" role="img" aria-label="속이 빈 실리콘 이어폰 보호 케이스를 나타낸 설명용 그림"><g id="case-art-supported"><ellipse cx="109" cy="135" rx="66" ry="9" fill="#d8e3f5"/><path d="M53 71 Q46 71 46 82 V103 Q48 127 76 129 H145 Q172 127 174 104 V81 Q174 72 165 71Z" fill="#86a7f1" stroke="#456cc3" stroke-width="2"/><path d="M50 76 Q49 64 62 62 H160 Q171 64 170 77 Q162 94 112 95 Q64 95 50 76Z" fill="#355cae"/><path d="M59 73 Q62 66 74 67 H148 Q160 67 162 75 Q147 86 110 86 Q73 86 59 73Z" fill="#e8effd"/><path d="M53 47 Q52 26 74 23 H147 Q169 25 171 45 L169 55 H55Z" fill="#a5bdf4" stroke="#456cc3" stroke-width="2"/><path d="M56 54 Q109 62 168 54" fill="none" stroke="#456cc3" stroke-width="2"/><path d="M69 102 Q109 115 151 102" stroke="#c0d1f7" fill="none" stroke-width="3"/><circle cx="110" cy="114" r="3" fill="#d2def9"/><path d="M175 85 Q199 79 196 98 Q194 115 174 105" fill="none" stroke="#688bce" stroke-width="5"/><path d="M184 23 L193 17 M187 35 H199" stroke="#a2b7da" stroke-width="2" stroke-linecap="round"/></g><g id="case-art-missing" visibility="hidden"><ellipse cx="110" cy="131" rx="65" ry="9" fill="#d8e3f5"/><rect x="49" y="33" width="124" height="92" rx="30" fill="#a5bdf4" stroke="#456cc3" stroke-width="2"/><path d="M50 69 Q109 76 172 69" fill="none" stroke="#456cc3" stroke-width="2"/><path d="M67 48 Q74 41 86 42" fill="none" stroke="#d8e4ff" stroke-width="4" stroke-linecap="round"/><path d="M175 85 Q196 82 194 99 Q192 112 174 104" fill="none" stroke="#688bce" stroke-width="5"/></g></svg>
-   <b class="br-product-name">상품명: 이어폰 케이스</b>
-   <p class="br-description" id="case-description">실리콘 재질의 보호용 케이스. 충전 기능은 없습니다.</p>
-   <div class="br-evidence"><span id="case-photo">사진: 속이 빈 보호 커버</span><span id="case-evidence">판매자 재질: 실리콘</span></div>
+   <svg id="case-art" class="product-art" viewBox="0 0 220 150" role="img" aria-label="무선 이어폰과 충전 케이스의 설명용 그림"><ellipse cx="110" cy="137" rx="77" ry="9" fill="#d9e1ed"/><g id="case-art-supported"><path d="M43 82 Q43 65 62 65 H158 Q179 66 179 84 L176 112 Q172 133 150 133 H70 Q46 131 43 110Z" fill="#273448"/><ellipse cx="111" cy="80" rx="66" ry="19" fill="#0d1727"/><ellipse cx="81" cy="81" rx="19" ry="8" fill="#45576f"/><ellipse cx="141" cy="81" rx="19" ry="8" fill="#45576f"/><path d="M74 63 V30 Q66 21 54 25 Q41 29 45 43 Q49 55 61 49 V64 Q66 72 74 63Z" fill="#eff4fa" stroke="#778ba8" stroke-width="2"/><path d="M148 63 V30 Q156 21 168 25 Q181 29 177 43 Q173 55 161 49 V64 Q156 72 148 63Z" fill="#eff4fa" stroke="#778ba8" stroke-width="2"/><ellipse cx="53" cy="37" rx="4" ry="6" fill="#36485d"/><ellipse cx="169" cy="37" rx="4" ry="6" fill="#36485d"/><circle cx="111" cy="115" r="3" fill="#82d2a6"/><path d="M103 25 Q111 19 119 25 M99 16 Q111 7 123 16" fill="none" stroke="#549d89" stroke-width="2" stroke-linecap="round"/></g><g id="case-art-missing" visibility="hidden"><rect x="44" y="43" width="135" height="89" rx="32" fill="#34445a"/><path d="M46 78 Q110 86 176 78" fill="none" stroke="#899bb5" stroke-width="2"/><path d="M62 60 Q74 51 89 53" fill="none" stroke="#647b99" stroke-width="4" stroke-linecap="round"/></g></svg>
+   <b class="br-product-name">상품명: 무선 이어폰</b>
+   <p class="br-description" id="case-description">Bluetooth 연결 · 음악 재생 · 이어폰 2개와 충전 케이스 포함</p>
+   <div class="br-evidence"><span id="case-photo">사진: 이어피스 2개 + 케이스</span><span id="case-evidence">텍스트: 무선 연결·음악·통화</span></div>
    <small>설명용 상품 그림 · 가상 입력<br>이 원본과 같은 분류 기준을 모든 모델에 전달</small>
   </article>
   <div class="br-flow-arrow" aria-hidden="true">→</div>
   <div class="br-frontier-branch">
-   <article class="br-frontier"><span class="br-number">02 · 첫 판정</span><h3>프론티어 모델 1개</h3><p>이미지와 텍스트를 함께 보고<br>후보 · 근거 · 신뢰도를 반환</p>
-    <div class="br-first-answer"><span>예시 판정</span><strong id="frontier-answer">보호 커버로 보이지만 확정은 보류</strong><span class="br-confidence">Confidence · <b>기준 미달</b></span></div>
-    <div class="br-low-score">신뢰도 낮음 / 미분류 <b>검토 +1</b></div>
+   <article class="br-frontier"><span class="br-number">02 · 첫 판정</span><h3 class="codex-first">Codex <small>프론티어 첫 판정</small></h3><p>이미지와 텍스트를 함께 보고<br>분류 후보 + Confidence를 반환</p>
+    <div class="br-first-answer"><span>예시 판정</span><strong id="frontier-answer">무선 이어폰 후보 · 확정 보류</strong><div class="frontier-confidence"><span>Confidence <b id="frontier-score-value">64</b><small> / 100</small></span><div class="confidence-axis"><i id="frontier-score-bar" style="width:64%"></i><span class="confidence-cutoff"></span></div><div class="confidence-legend"><span id="frontier-gate-label">64 &lt; 기준 85 → 추가 검토</span><b>기준 85</b></div></div></div>
+    <div class="br-low-score" id="frontier-review-score">기준 미달 <b>검토 +1</b></div>
    </article>
    <div class="br-exit-arrow"><b aria-hidden="true">↓</b><span>신뢰도 충분 + 근거 충족이면</span></div>
    <div class="br-direct-end"><svg class="landing-icon" viewBox="0 0 24 24" aria-hidden="true">
   <path d="M20 6 9 17l-5-5" />
 </svg><div><strong>여기서 분류 완료</strong><span>OpenRouter 추가 호출 없음</span></div></div>
-   <div class="br-conditional-arrow"><span>신뢰도가 낮을 때만</span><b aria-hidden="true">→</b></div>
+   <div class="br-conditional-arrow"><span>Confidence<br>기준 미달</span><b aria-hidden="true">→</b></div>
   </div>
   <section class="br-router" aria-labelledby="router-title">
-   <div class="br-router-heading"><span class="br-number">03 · 추가 검토 요청</span><h3 id="router-title">OpenRouter</h3><p>여러 제공사의 저비용 모델을 선택해 각각 호출</p></div>
+   <div class="br-router-heading"><span class="br-number">03 · 추가 검토 요청</span><h3 id="router-title">OpenRouter</h3><p>여러 제공사의 저비용 이미지·텍스트 모델을 각각 호출</p></div>
    <div class="br-original-packet">같은 원본 이미지 + 텍스트 + 분류 기준</div>
    <div class="br-fanout" aria-hidden="true"><i></i><i></i><i></i></div>
    <div class="br-models">
@@ -488,17 +582,18 @@ SOFTWARE.
  <div class="br-boundary"><span aria-hidden="true">↓</span><strong>세 답안이 모인 뒤 공개</strong><span>독립 판정과 결과 비교를 분리합니다.</span></div>
 
  <section class="br-comparison" aria-labelledby="comparison-title">
-  <div class="br-comparison-head"><div><span class="br-number">04 · 결과를 모아 비교</span><h3 id="comparison-title">누가 말했는지보다, 무엇을 근거로 말했는지</h3><p>후보를 같은 분류명으로 맞추고, 원본 이미지·텍스트가 각 의견을 뒷받침하는지 확인합니다.</p></div><div class="scenario-switch" role="group" aria-label="독립 검토 예시 선택"><button type="button" id="case-supported" aria-pressed="true">독립 검토로 해결</button><button type="button" id="case-missing" aria-pressed="false">여전히 정보 부족</button></div></div>
+  <div class="br-comparison-head"><div><span class="br-number">04 · 결과를 모아 비교</span><h3 id="comparison-title">답을 공개한 뒤, 같은 기준에서 신뢰도를 비교합니다.</h3><p>모델별 판정 → 신뢰도 차이 → 이미지·텍스트 근거를 순서대로 대조합니다.</p></div><div class="scenario-switch" role="group" aria-label="독립 검토 예시 선택"><button type="button" id="case-frontier" aria-pressed="false">첫 판정으로 해결</button><button type="button" id="case-supported" aria-pressed="true">블라인드로 해결</button><button type="button" id="case-missing" aria-pressed="false">여전히 정보 부족</button></div></div>
   <div class="br-table-controls"><div class="debate-steps" role="group" aria-label="가상 독립 검토 단계"><button type="button" id="debate-stage-0" aria-pressed="true"><b>1</b> 독립 판정 · 봉인</button><button type="button" id="debate-stage-1" aria-pressed="false"><b>2</b> 답안 공개 · 비교</button><button type="button" id="debate-stage-2" aria-pressed="false"><b>3</b> 최종 결정</button></div><button type="button" class="br-reveal-button" id="debate-next">세 답안 공개 →</button></div>
   <p class="blind-reveal-note" id="blind-reveal-note">현재는 각자 답을 저장한 상태입니다. ‘세 답안 공개’를 누르면 비교표에 의견과 근거가 나타납니다.</p>
-  <div class="br-table-wrap"><table class="br-comparison-table"><caption>동일 상품에 대한 독립 모델의 가상 답안 비교</caption><thead><tr><th scope="col">익명 답안</th><th scope="col">분류 후보</th><th scope="col">이미지 근거</th><th scope="col">텍스트 근거</th><th scope="col">판단 상태</th></tr></thead><tbody id="blind-comparison-body"></tbody></table></div>
-  <p class="br-confidence-note">모델마다 원점수의 기준이 달라 그대로 평균 내지 않습니다. 실제 적용 시 같은 정답 자료로 보정한 신뢰도와 근거 일치를 확인합니다.</p>
+<div class="confidence-graph" id="confidence-graph" aria-label="모델별 동일 기준 가상 신뢰도 비교"><div class="confidence-graph-head"><strong>“무선 이어폰” 후보의 비교용 Confidence</strong><span>0–100 · 설계용 가상 점수</span></div><div class="confidence-model-row"><b>답안 A</b><div class="confidence-row-body"><span id="confidence-candidate-0">판정 봉인</span><div class="confidence-axis"><i id="confidence-bar-0" style="width:0"></i><span class="confidence-cutoff"></span></div></div><strong id="confidence-value-0">—</strong></div><div class="confidence-model-row"><b>답안 B</b><div class="confidence-row-body"><span id="confidence-candidate-1">판정 봉인</span><div class="confidence-axis"><i id="confidence-bar-1" style="width:0"></i><span class="confidence-cutoff"></span></div></div><strong id="confidence-value-1">—</strong></div><div class="confidence-model-row"><b>답안 C</b><div class="confidence-row-body"><span id="confidence-candidate-2">판정 봉인</span><div class="confidence-axis"><i id="confidence-bar-2" style="width:0"></i><span class="confidence-cutoff"></span></div></div><strong id="confidence-value-2">—</strong></div><p class="confidence-axis-note">세로 점선: 예시 기준 85 · 답안 공개 전에는 모델별 점수를 가립니다.</p></div>
+  <details class="comparison-evidence"><summary>각 판단의 이미지·텍스트 근거 보기</summary><div class="br-table-wrap"><table class="br-comparison-table"><caption>동일 상품에 대한 독립 모델의 가상 답안 비교</caption><thead><tr><th scope="col">익명 답안</th><th scope="col">분류 후보</th><th scope="col">이미지 근거</th><th scope="col">텍스트 근거</th><th scope="col">판단 상태</th></tr></thead><tbody id="blind-comparison-body"></tbody></table></div></details>
+  <p class="br-confidence-note">표시된 수치는 가상 예시입니다. 실제 모델의 원점수는 그대로 평균 내지 않고, 같은 정답 자료로 보정한 뒤 동일 후보에 대한 신뢰도와 근거를 비교합니다.</p>
   <div class="br-result-grid"><div class="br-compare-check" id="blind-compare-check">아직 결과를 공개하지 않았습니다.</div><div class="debate-verdict" id="debate-verdict" role="status" aria-live="polite"><svg class="landing-icon" viewBox="0 0 24 24" aria-hidden="true">
   <path d="M16 10a2 2 0 0 1-2 2H6.828a2 2 0 0 0-1.414.586l-2.202 2.202A.71.71 0 0 1 2 14.286V4a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z" />
   <path d="M20 9a2 2 0 0 1 2 2v10.286a.71.71 0 0 1-1.212.502l-2.202-2.202A2 2 0 0 0 17.172 19H10a2 2 0 0 1-2-2v-1" />
 </svg><span id="debate-result">프론티어 불확실 +1 · 독립 검토 결과를 기다립니다.</span></div></div>
   <div class="br-outcome-rules"><span><b>근거 충분</b> 추가 +0 → 누적 1점, 최종 분류</span><span><b>여전히 불확실·충돌</b> 추가 +2 → 누적 3점, 사람 검수</span></div>
-  <p class="br-case-note">위 시연은 프론티어가 보류한 두 가지 가상 사례입니다. A·B·C는 익명 표기이며 실제 모델 선정·호출 결과가 아닙니다. 모든 단계에서 누적 2점 이상이면 후속 호출을 멈춥니다.</p>
+  <p class="br-case-note">첫 판정 통과·독립 비교 해결·정보 부족의 세 가지 가상 사례입니다. A·B·C는 익명 표기이며 실제 모델 선정·호출 결과가 아닙니다. 모든 단계에서 누적 2점 이상이면 후속 호출을 멈춥니다.</p>
  </section>
 
  <details class="br-transcript"><summary>모델별 상세 의견을 단계별로 읽기 <span>미리 작성한 가상 답변 9개</span></summary><div class="br-transcript-body">
@@ -523,32 +618,15 @@ SOFTWARE.
 <div class="workspace">
 <section id="simulation-panel" class="tree-panel" aria-label="위에서 아래로 진행하는 상품 분류 나무">
 <div class="panelbar"><div><p class="panel-kicker">분류 흐름</p><h2>상품이 지나가는 경로</h2></div><small>10개 예시 분야 · 상품을 누르면 현재 상태 확인</small></div>
-<div class="quick-controls" id="flow-toolbar"><button type="button" class="primary" id="quick-play">▶ 재생</button><button type="button" id="quick-step">한 장면 ↓</button><button type="button" id="quick-reset">처음부터</button><button type="button" id="flow-fit-toggle" aria-pressed="false" aria-controls="tree">전체 보기</button><output id="flow-scale" aria-label="분류도 배율"></output><label class="category-focus-label">분야 확대 <select id="category-focus" aria-label="분야를 골라 크게 보기"><option value="">분야 선택</option></select></label><div class="quick-seek"><label for="quick-timeline">진행 장면</label><input type="range" id="quick-timeline" min="0" max="100" value="0" step="1" aria-label="진행 장면 선택"><output id="quick-time" aria-label="현재 진행 장면">0 / 100</output></div><label class="quick-speed-label" for="quick-speed">속도 <select id="quick-speed"><option value="0.6">느리게</option><option value="1" selected>보통</option><option value="1.8">빠르게</option></select></label></div>
+<div class="quick-controls" id="flow-toolbar"><button type="button" class="primary" id="quick-play">▶ 재생</button><button type="button" id="quick-step">한 장면 ↓</button><button type="button" id="quick-reset">처음부터</button><button type="button" id="flow-fit-toggle" aria-pressed="true" aria-controls="tree">전체 구조 맞춤</button><output id="flow-scale" aria-label="분류도 배율"></output><label class="category-focus-label">분야 찾기 <select id="category-focus" aria-label="전체 구조에서 분야 강조"><option value="">분야 선택</option></select></label><div class="quick-seek"><label for="quick-timeline">진행 장면</label><input type="range" id="quick-timeline" min="0" max="100" value="0" step="1" aria-label="진행 장면 선택"><output id="quick-time" aria-label="현재 진행 장면">0 / 100</output></div><label class="quick-speed-label" for="quick-speed">속도 <select id="quick-speed"><option value="0.6">느리게</option><option value="1" selected>보통</option><option value="1.8">빠르게</option></select></label></div>
 <section class="review-monitor" aria-label="복구와 누적 검수 점수">
  <div class="review-monitor-top"><strong>복구 <b id="recovery-count">0</b>건 <span>·</span> 사람 검수 <b id="review-queue-count">0</b>건</strong><div class="review-samples"><button type="button" id="human-transfer-demo">2점 → 검수 이동 재생</button><button type="button" data-review-example="resolved">독립 비교 해결 · 1점</button><button type="button" data-review-example="conflict">복구 + 프론티어 · 2점</button><button type="button" data-review-example="low">독립 비교 미해결 · 3점</button></div></div>
  <div class="review-current"><b id="review-focus">P001 · 0 / 2점</b><span id="review-focus-detail">복구 +1 · 프론티어 미해결 +1 · 독립 비교 미해결 추가 +2</span></div>
 </section>
-<details class="prep-disclosure"><summary>판매자 정보 보강 설정<span>바코드 일치 · 부족 정보 질문 · 가상 보상 제안</span></summary><section class="seller-panel" aria-labelledby="seller-title">
- <div class="seller-top"><div><h3 id="seller-title">분류 전 · 판매자 정보 보강</h3><p>기존 상품을 처리하면서 판매자가 제공한 정보를 함께 사용합니다. 이 화면은 응답이 도착했거나 오지 않은 상태를 가정합니다.</p></div><label class="seller-switch"><input id="seller-incentive" type="checkbox" checked> 가상 보상 제안 켜기</label></div>
- <div class="seller-flow"><div class="seller-flow-step"><b>① 바코드 · 모델명</b><span>판매자가 아는 상품 식별 정보를 입력합니다.</span></div><div class="seller-flow-step"><b>② 기존 정보 자동 채움</b><span>같은 상품과 옵션이 맞으면 부족한 정보를 가져옵니다.</span></div><div class="seller-flow-step"><b>③ 부족한 정보 보강</b><span>필요한 질문을 하고, 답변을 보강하면 가상 크레딧을 제안합니다.</span></div></div>
- <p class="seller-example">질문 예시 · 이어폰의 연결 방식은? <strong>무선 / 유선 / 모름</strong> — 최종 분류에 필요한 항목만 물어봅니다.</p>
- <div class="seller-metrics"><div class="seller-metric"><span>식별 정보 일치</span><strong id="seller-matched">0</strong><small>바코드·모델명 가상 조회</small></div><div class="seller-metric"><span>부족 정보 자동 채움</span><strong id="seller-autofill">0</strong><small>일치한 기존 정보 활용</small></div><div class="seller-metric"><span>판매자가 보강</span><strong id="seller-supplemented">0</strong><small>부족한 항목 답변</small></div><div class="seller-metric"><span>여전히 정보 부족</span><strong id="seller-insufficient">0</strong><small>기존 분류로 계속 진행</small></div><div class="seller-metric"><span>예시 보상</span><strong><b id="seller-rewarded">0</b>건</strong><small>가상 합계 <b id="seller-reward-won">0</b>원</small></div></div>
- <p class="seller-note">누적 입력 <b id="seller-arrived">0</b>개 중 처음부터 정보가 충분한 상품 <b id="seller-originally-complete">0</b>개. ‘식별 정보 일치’는 다른 숫자와 겹칠 수 있습니다. 보상은 유용한 답변 1건당 1원이라는 가정이며 실제 지급은 없습니다.</p>
- <div class="seller-now-head"><strong>이번 장면에 들어오는 상품</strong><span>상품을 선택하면 재생을 멈추고 보강 결과를 보여줍니다.</span></div><div class="seller-current" id="seller-current"></div><div class="seller-selected-inline" id="seller-selected-inline"></div>
- <p class="seller-panel-tail">정보 준비 결과 ↓ 아래 1차 분류로 계속 이동</p><p class="seller-note">보상 켜기·끄기는 미리 정한 가상 응답을 적용하며 실제 참여율이 아닙니다. 전체 작업을 기다리지 않도록 이 예시는 보강 결과를 투입 시점에 이미 알았다고 가정합니다. 실제 답변 지연·재처리·검색 비용은 계산하지 않습니다.</p>
-</section>
-</details><details class="prep-disclosure"><summary>병렬 작업자·자동 확장 설정<span>1차 모델 복제본 10개 시작 · 최대 20개</span></summary><section class="autoscale-panel" aria-labelledby="autoscale-title">
- <div class="autoscale-top"><div class="autoscale-title"><strong id="autoscale-title">1차 텍스트 분류 · 대기열 기반 자동 확장</strong><p>같은 텍스트 모델 A를 여러 복제본으로 실행합니다. 10개로 시작하고 최소 5개를 유지합니다. 최종 세부 분류 근거가 충분한 상품은 바로 완료합니다.</p></div>
-  <div class="autoscale-controls"><label><input id="autoscale-enabled" type="checkbox" checked> 자동 확장 켜기</label><label for="autoscale-max">복제본 최대 <select id="autoscale-max"><option value="10">10개</option><option value="15">15개</option><option value="20" selected>20개</option></select></label></div>
- </div>
- <div class="scale-metrics"><div class="scale-metric"><span>준비된 복제본</span><strong id="scale-replicas">10</strong></div><div class="scale-metric"><span>추가 준비 중</span><strong id="scale-warming">0</strong></div><div class="scale-metric"><span>현재 분류 중</span><strong id="scale-busy">0</strong></div><div class="scale-metric queue"><span>1차 대기열</span><strong id="scale-queued">0</strong></div><div class="scale-metric"><span>복제본·장면 누적</span><strong id="scale-work">0</strong></div></div>
- <p class="scale-signal" id="scale-signal">가상 정책: 대기가 쌓이면 확장하고 유휴가 이어지면 축소합니다.</p>
- <div class="arrival-row"><b id="arrival-label">이번 장면 신규 입력 10개 ↓</b><div class="arrival-list" id="arrival-list"></div></div>
- <p class="scale-note">장면마다 10개가 도착하지만 바쁜 복제본이 있으면 대기열에 남습니다. 가상 설정: 처리 2장면, 추가 준비 2장면. 처리 완료가 늦어지는 설정에서는 마지막 장면이 100보다 늘어납니다. 복제본 하나가 GPU 한 대를 뜻하지는 않습니다. ‘복제본·장면’은 준비·실행 수를 누적한 예시로 실제 GPU 시간이나 요금이 아닙니다. 분야별·이미지 모델은 각각 별도 대기열로 확장하는 설계이며, 여기서는 1차만 용량을 계산합니다.</p>
-</section></details><p class="scrollhint">아래 사각형은 같은 모델 A의 최대 20개 실행 슬롯입니다. 색이 진한 슬롯은 준비된 복제본, 흐린 슬롯은 미사용입니다.<span class="mobile-tree-hint">분류도가 넓습니다. 화면을 좌우로 움직여 분야별 경로를 살펴보세요.</span></p>
+<p class="scrollhint">아래 사각형은 같은 모델 A의 최대 20개 실행 슬롯입니다. 색이 진한 슬롯은 준비된 복제본, 흐린 슬롯은 미사용입니다.<span class="mobile-tree-hint">전체 구조가 화면에 맞춰 표시됩니다. 상품을 누르면 아래에서 상세 근거를 읽을 수 있습니다.</span></p>
 <div class="tree-scroll"><div class="tree" id="tree">
-<svg class="tree-lines" viewBox="0 0 900 1540" preserveAspectRatio="none" aria-hidden="true"><defs><marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" markerUnits="userSpaceOnUse" orient="auto"><path d="M1 1 L8 5 L1 9" style="stroke:#9bb6ca;fill:none;stroke-width:1.5"/></marker></defs><path d="M450 151 V225 H90 V261" marker-end="url(#arrow)"/><path class="foodline" d="M450 225 H270 V261" marker-end="url(#arrow)"/><path class="beautyline" d="M450 151 V261" marker-end="url(#arrow)"/><path d="M450 225 H630 V261" marker-end="url(#arrow)"/><path d="M450 225 H810 V261" marker-end="url(#arrow)"/><path d="M90 373 V465 M90 575 V705 M90 815 V987" marker-end="url(#arrow)"/><path class="foodline" d="M270 373 V465 M270 575 V705 M270 815 V987" marker-end="url(#arrow)"/><path class="beautyline" d="M450 373 V465 M450 575 V705 M450 815 V987" marker-end="url(#arrow)"/><path d="M630 373 V465 M630 575 V705 M630 815 V987" marker-end="url(#arrow)"/><path d="M810 373 V465 M810 575 V705 M810 815 V987" marker-end="url(#arrow)"/></svg>
-<svg class="recovery-lines" id="recovery-lines" viewBox="0 0 900 1540" preserveAspectRatio="none" aria-hidden="true"></svg><div class="recovery-callout" id="recovery-callout" hidden></div><div class="express-corridor" id="express-corridor" aria-hidden="true"></div><svg class="express-lines" id="express-lines" viewBox="0 0 5000 1540" preserveAspectRatio="none" aria-hidden="true"></svg><div class="express-rail-label">최종 직행 ↓</div><div class="tree-workers" aria-label="1단계 공통 텍스트 모델 복제본 병렬 작업"><div class="worker-legend"><span id="input-now">장면 0 · 새 상품 10개 투입</span> <span id="input-total">누적 10 / 500</span></div><div class="worker-flow"><div class="worker-root">상품명 · 설명 입력 ↓ 같은 텍스트 모델 A의 실행 복제본</div><div class="worker-branch"></div><div id="worker-lanes" class="worker-lanes"></div><div class="worker-bus"></div><div class="worker-out">각 결과를 기다림 없이 분야별 다음 단계로 ↓</div></div></div><div class="model-a-bus">공통 모델 · 텍스트 대분류와 최종 후보를 함께 예측 <small>최종 세부 분류 충분하면 직행 · 미해결만 이미지 → 프론티어 → 독립 비교</small></div>
+<svg class="tree-lines" viewBox="0 0 900 1640" preserveAspectRatio="none" aria-hidden="true"><defs><marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" markerUnits="userSpaceOnUse" orient="auto"><path d="M1 1 L8 5 L1 9" style="stroke:#9bb6ca;fill:none;stroke-width:1.5"/></marker></defs><path d="M450 151 V225 H90 V261" marker-end="url(#arrow)"/><path class="foodline" d="M450 225 H270 V261" marker-end="url(#arrow)"/><path class="beautyline" d="M450 151 V261" marker-end="url(#arrow)"/><path d="M450 225 H630 V261" marker-end="url(#arrow)"/><path d="M450 225 H810 V261" marker-end="url(#arrow)"/><path d="M90 373 V465 M90 575 V705 M90 815 V987" marker-end="url(#arrow)"/><path class="foodline" d="M270 373 V465 M270 575 V705 M270 815 V987" marker-end="url(#arrow)"/><path class="beautyline" d="M450 373 V465 M450 575 V705 M450 815 V987" marker-end="url(#arrow)"/><path d="M630 373 V465 M630 575 V705 M630 815 V987" marker-end="url(#arrow)"/><path d="M810 373 V465 M810 575 V705 M810 815 V987" marker-end="url(#arrow)"/></svg>
+<svg class="recovery-lines" id="recovery-lines" viewBox="0 0 900 1640" preserveAspectRatio="none" aria-hidden="true"></svg><div class="recovery-callout" id="recovery-callout" hidden></div><div class="express-corridor" id="express-corridor" aria-hidden="true"></div><svg class="express-lines" id="express-lines" viewBox="0 0 5250 1640" preserveAspectRatio="none" aria-hidden="true"></svg><div class="express-rail-label">최종 직행 ↓</div><div class="tree-workers" aria-label="1단계 공통 텍스트 모델 복제본 병렬 작업"><div class="worker-legend"><span id="input-now">장면 0 · 새 상품 10개 투입</span> <span id="input-total">누적 10 / 500</span></div><div class="worker-flow"><div class="worker-root">상품명 · 설명 입력 ↓ 같은 텍스트 모델 A의 실행 복제본</div><div class="worker-branch"></div><div id="worker-lanes" class="worker-lanes"></div><div class="worker-bus"></div><div class="worker-out">각 결과를 기다림 없이 분야별 다음 단계로 ↓</div></div></div><div class="model-a-bus">공통 모델 · 텍스트 대분류와 최종 후보를 함께 예측 <small>최종 세부 분류 충분하면 직행 · 미해결만 이미지 → 프론티어 → 독립 비교</small></div>
 <section class="decision-card text-route" id="text-route" aria-label="텍스트로 최종 세부 분류 확인">
  <div class="decision-head"><strong>텍스트로 최종 세부 분류 확인 ↓</strong><b id="root-text-count">0</b></div>
  <p>최종 세부 분류 근거 충분 → 사진·API 없이 완료</p>
@@ -560,16 +638,35 @@ SOFTWARE.
  <small id="root-image-counts">화질 검사 0 · 이미지 모델 호출 0</small><div class="decision-items" id="root-image-items">판단한 상품을 기다리는 중</div>
 </section>
 <span class="level-label l1">상위 분류 ↓</span><span class="level-label l2">2단계 ↓</span><span class="level-label l3">3단계 ↓</span>
-<div id="nodes"></div><div id="model-links" aria-label="상품 분류의 계층 깊이"></div><div class="flow-pulses" id="flow-pulses" aria-hidden="true"></div><svg class="human-transfer-lines" id="human-transfer-lines" viewBox="0 0 5000 1540" preserveAspectRatio="none" aria-hidden="true"></svg>
+<div id="nodes"></div><div id="model-links" aria-label="상품 분류의 계층 깊이"></div><div class="flow-pulses" id="flow-pulses" aria-hidden="true"></div><svg class="human-transfer-lines" id="human-transfer-lines" viewBox="0 0 5250 1640" preserveAspectRatio="none" aria-hidden="true"></svg>
 <section class="human-sector" id="human-sector" aria-label="사람 검수 구역">
  <h3><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="7" r="4"/><path d="M2 21v-3a7 7 0 0 1 12-5M16 18l2 2 4-5"/></svg>사람 검수</h3><p>누적 2점 이상 → 분류 즉시 중단</p>
  <div class="human-sector-stats"><span><b id="human-sector-total">0</b>검수 전환</span><span><b id="human-sector-moving">0</b>이동 중</span><span><b id="human-sector-arrived">0</b>도착</span></div>
  <div class="human-dock"><span>대표 상품 도착 구역</span></div>
  <div class="human-sector-queue"><strong>도착한 상품 · 검토 대기</strong><div class="human-sector-list" id="human-sector-list"><p>검수로 전환되는 상품을 기다립니다.</p></div></div>
  <p class="human-sector-note">사진 불량·복구 실패도 별도 보류<br>검수 완료나 정답 확정을 뜻하지 않습니다.</p>
-</section><div id="tokens"></div><div class="flow-scores" id="flow-scores" aria-label="화살표 옆 상품별 현재 단계 점수"></div>
+</section><div class="human-flight-label" id="human-flight-label" hidden aria-hidden="true"></div><div id="tokens"></div><div class="flow-scores" id="flow-scores" aria-label="화살표 옆 상품별 현재 단계 점수"></div>
 </div></div>
 <div class="route-note"><strong>주황 화살표: 상위로 돌아가 후보 재탐색</strong> 복구 +1 · 프론티어 미해결 +1 · 독립 비교 근거 부족/충돌은 추가 +2. <b>합계 2점 이상 → 사람 검수.</b><span>같은 원인은 중복 가산하지 않습니다. 0~1점도 최종 근거를 확인해야 통과합니다. 사진 불량은 별도 보류합니다. 점수는 가상 예시입니다.</span></div>
+<details class="prep-disclosure"><summary>판매자 정보 보강 설정<span>바코드 일치 · 부족 정보 질문 · 가상 보상 제안</span></summary><section class="seller-panel" aria-labelledby="seller-title">
+ <div class="seller-top"><div><h3 id="seller-title">분류 전 · 판매자 정보 보강</h3><p>기존 상품을 처리하면서 판매자가 제공한 정보를 함께 사용합니다. 이 화면은 응답이 도착했거나 오지 않은 상태를 가정합니다.</p></div><label class="seller-switch"><input id="seller-incentive" type="checkbox" checked> 가상 보상 제안 켜기</label></div>
+ <div class="seller-flow"><div class="seller-flow-step"><b>① 바코드 · 모델명</b><span>판매자가 아는 상품 식별 정보를 입력합니다.</span></div><div class="seller-flow-step"><b>② 기존 정보 자동 채움</b><span>같은 상품과 옵션이 맞으면 부족한 정보를 가져옵니다.</span></div><div class="seller-flow-step"><b>③ 부족한 정보 보강</b><span>필요한 질문을 하고, 답변을 보강하면 가상 크레딧을 제안합니다.</span></div></div>
+ <p class="seller-example">질문 예시 · 이어폰의 연결 방식은? <strong>무선 / 유선 / 모름</strong> — 최종 분류에 필요한 항목만 물어봅니다.</p>
+ <div class="seller-metrics"><div class="seller-metric"><span>식별 정보 일치</span><strong id="seller-matched">0</strong><small>바코드·모델명 가상 조회</small></div><div class="seller-metric"><span>부족 정보 자동 채움</span><strong id="seller-autofill">0</strong><small>일치한 기존 정보 활용</small></div><div class="seller-metric"><span>판매자가 보강</span><strong id="seller-supplemented">0</strong><small>부족한 항목 답변</small></div><div class="seller-metric"><span>여전히 정보 부족</span><strong id="seller-insufficient">0</strong><small>기존 분류로 계속 진행</small></div><div class="seller-metric"><span>예시 보상</span><strong><b id="seller-rewarded">0</b>건</strong><small>가상 합계 <b id="seller-reward-won">0</b>원</small></div></div>
+ <p class="seller-note">누적 입력 <b id="seller-arrived">0</b>개 중 처음부터 정보가 충분한 상품 <b id="seller-originally-complete">0</b>개. ‘식별 정보 일치’는 다른 숫자와 겹칠 수 있습니다. 보상은 유용한 답변 1건당 1원이라는 가정이며 실제 지급은 없습니다.</p>
+ <div class="seller-now-head"><strong>이번 장면에 들어오는 상품</strong><span>상품을 선택하면 재생을 멈추고 보강 결과를 보여줍니다.</span></div><div class="seller-current" id="seller-current"></div><div class="seller-selected-inline" id="seller-selected-inline"></div>
+ <p class="seller-panel-tail">정보 준비 결과 ↓ 아래 1차 분류로 계속 이동</p><p class="seller-note">보상 켜기·끄기는 미리 정한 가상 응답을 적용하며 실제 참여율이 아닙니다. 전체 작업을 기다리지 않도록 이 예시는 보강 결과를 투입 시점에 이미 알았다고 가정합니다. 실제 답변 지연·재처리·검색 비용은 계산하지 않습니다.</p>
+</section>
+</details>
+<details class="prep-disclosure"><summary>병렬 작업자·자동 확장 설정<span>1차 모델 복제본 10개 시작 · 최대 20개</span></summary><section class="autoscale-panel" aria-labelledby="autoscale-title">
+ <div class="autoscale-top"><div class="autoscale-title"><strong id="autoscale-title">1차 텍스트 분류 · 대기열 기반 자동 확장</strong><p>같은 텍스트 모델 A를 여러 복제본으로 실행합니다. 10개로 시작하고 최소 5개를 유지합니다. 최종 세부 분류 근거가 충분한 상품은 바로 완료합니다.</p></div>
+  <div class="autoscale-controls"><label><input id="autoscale-enabled" type="checkbox" checked> 자동 확장 켜기</label><label for="autoscale-max">복제본 최대 <select id="autoscale-max"><option value="10">10개</option><option value="15">15개</option><option value="20" selected>20개</option></select></label></div>
+ </div>
+ <div class="scale-metrics"><div class="scale-metric"><span>준비된 복제본</span><strong id="scale-replicas">10</strong></div><div class="scale-metric"><span>추가 준비 중</span><strong id="scale-warming">0</strong></div><div class="scale-metric"><span>현재 분류 중</span><strong id="scale-busy">0</strong></div><div class="scale-metric queue"><span>1차 대기열</span><strong id="scale-queued">0</strong></div><div class="scale-metric"><span>복제본·장면 누적</span><strong id="scale-work">0</strong></div></div>
+ <p class="scale-signal" id="scale-signal">가상 정책: 대기가 쌓이면 확장하고 유휴가 이어지면 축소합니다.</p>
+ <div class="arrival-row"><b id="arrival-label">이번 장면 신규 입력 10개 ↓</b><div class="arrival-list" id="arrival-list"></div></div>
+ <p class="scale-note">장면마다 10개가 도착하지만 바쁜 복제본이 있으면 대기열에 남습니다. 가상 설정: 처리 2장면, 추가 준비 2장면. 처리 완료가 늦어지는 설정에서는 마지막 장면이 100보다 늘어납니다. 복제본 하나가 GPU 한 대를 뜻하지는 않습니다. ‘복제본·장면’은 준비·실행 수를 누적한 예시로 실제 GPU 시간이나 요금이 아닙니다. 분야별·이미지 모델은 각각 별도 대기열로 확장하는 설계이며, 여기서는 1차만 용량을 계산합니다.</p>
+</section></details>
 <section class="resource-strip" aria-label="최종 카테고리 직행 현황"><div><strong>텍스트로 최종 바스켓에 직행</strong><small>초록 점선이 직행 경로입니다. 실제 상품·모델이 아닌 가상 시나리오입니다.</small></div><div class="express-summary">직행 결정 <b id="express-count">0</b> · 이동 중 <b id="express-active">0</b> · 바스켓 도착 <b id="express-completed">0</b><small>누적 결정에는 이동 중이 포함됩니다.</small></div></section>
 <section class="resource-strip" aria-label="현재 1차 이미지 모델 작업"><div><strong>이미지 모델은 필요한 상품에만 사용</strong><small>현재 1차 이미지 분석의 예시 상품 수이며 하위 단계나 실제 GPU 대수·임대 요금은 계산하지 않습니다.</small></div><div class="gpu-indicator" id="gpu-indicator"><i class="gpu-dot" aria-hidden="true"></i>1차 이미지 모델 처리 중 <b id="gpu-active">0</b>개</div></section>
 <div class="legend"><span><i class="dot"></i>전자제품</span><span><i class="dot food"></i>식품</span><span><i class="dot beauty"></i>화장품</span><span><i class="dot sports"></i>스포츠용품</span><span><i class="dot home"></i>가정용품</span><span>신선식품</span><span>의약품</span><span>의류</span><span>기타</span><span><i class="dot express-dot"></i>최종 바스켓 직행</span><span><i class="dot review"></i>추가 이미지·텍스트 검토 중</span><span>파랑 ↓ 진행 · 주황 ↑ 복구</span></div>
@@ -611,8 +708,8 @@ const CATEGORIES=[
  {id:'other',name:'기타',css:'other',branches:[['공예 재료'],['수집용품']]},
  {id:'pets',name:'반려동물용품',css:'pets',branches:[['사료·간식','반려동물 사료'],['사료·간식','반려동물 간식'],['위생·생활용품','배변패드'],['위생·생활용품','반려동물 장난감']]}
 ];
-const NODE_TOP=[484,688,928,1168],TREE_NODES=[],LEAVES=[],NODE_BY_ID=new Map();
-const TREE_GEOMETRY={width:5000,height:1540,contentWidth:4200,expressX:4320,humanLaneX:4440,humanSector:{x:4510,y:484,width:450,height:880},humanTransitFrames:3,leafSlot:100,categoryGap:30,margin:65};
+const NODE_TOP=[484,724,964,1204],TREE_NODES=[],LEAVES=[],NODE_BY_ID=new Map();
+const TREE_GEOMETRY={width:5250,height:1640,contentWidth:4200,expressX:4530,humanLaneX:4650,humanSector:{x:4720,y:484,width:490,height:1050},humanTransitFrames:3,nodeHeight:165,tokenOffset:151,scoreOffset:174,basketOffset:230,basketHeight:164,leafSlot:100,categoryGap:30,margin:65};
 let leafCursor=TREE_GEOMETRY.margin;
 CATEGORIES.forEach((category,cat)=>{
  category.paths=category.branches.map(branch=>[category.name,...branch]);
@@ -636,7 +733,7 @@ CATEGORIES.forEach((category,cat)=>{
  });
  for(const node of category.nodes){
   node.px=(Math.min(...node.leafXs)+Math.max(...node.leafXs))/2;node.x=node.px/TREE_GEOMETRY.width*100;
-  node.width=Math.min(204,node.leafXs.length*TREE_GEOMETRY.leafSlot-12);
+  node.width=node.stage===0?node.leafXs.length*TREE_GEOMETRY.leafSlot-12:node.children.length?Math.min(204,node.leafXs.length*TREE_GEOMETRY.leafSlot-12):100;
  }
  const root=category.nodes[0];category.x=root.x;category.middle=category.path[1];category.leaf=category.path.at(-1);
  leafCursor+=TREE_GEOMETRY.categoryGap;
@@ -954,7 +1051,7 @@ function setReduced(){reduced=params.get('reduce')==='1'||motionMedia.matches;do
 $('timeline').max=MAX_TIME;$('quick-timeline').max=MAX_TIME;$('autoscale-enabled').checked=autoscaleEnabled;$('autoscale-max').value=String(autoscaleMax);
 $('batches').innerHTML=Array.from({length:25},(_,i)=>String.fromCharCode(65+i)).map((name,i)=>'<span class="batch" id="batch-'+i+'">묶음 '+name+' · 예시 20개</span>').join('');
 // Shared prefixes render once. Every visible fork is backed by product targets.
-$('tree').style.width=TREE_GEOMETRY.width+'px';$('tree').style.minWidth=TREE_GEOMETRY.width+'px';
+$('tree').style.height=TREE_GEOMETRY.height+'px';$('tree').style.width=TREE_GEOMETRY.width+'px';$('tree').style.minWidth=TREE_GEOMETRY.width+'px';
 const diagramVars={'--content-width':TREE_GEOMETRY.contentWidth,'--bus-left':TREE_GEOMETRY.contentWidth*.03,'--bus-width':TREE_GEOMETRY.contentWidth*.94,'--decision-width':TREE_GEOMETRY.contentWidth*.37,'--text-left':TREE_GEOMETRY.contentWidth*.09,'--image-left':TREE_GEOMETRY.contentWidth*.54,'--express-x':TREE_GEOMETRY.expressX,'--human-left':TREE_GEOMETRY.humanSector.x,'--human-top':TREE_GEOMETRY.humanSector.y,'--human-width':TREE_GEOMETRY.humanSector.width};
 Object.entries(diagramVars).forEach(([key,value])=>$('tree').style.setProperty(key,value+'px'));
 const rootSvgScale=TREE_GEOMETRY.contentWidth/TREE_GEOMETRY.width;
@@ -962,11 +1059,11 @@ $('tree').querySelector('.tree-lines').innerHTML='<defs><marker id="arrow" viewB
  '<path d="M'+(450*rootSvgScale)+' 198 V218 H'+(247.5*rootSvgScale)+' V236" marker-end="url(#arrow)"/><path d="M'+(450*rootSvgScale)+' 218 H'+(652.5*rootSvgScale)+' V236" marker-end="url(#arrow)"/>'+
  '<path d="M'+(247.5*rootSvgScale)+' 366 V402 H'+(450*rootSvgScale)+' M'+(652.5*rootSvgScale)+' 366 V402 H'+(450*rootSvgScale)+'"/>'+
  TREE_NODES.map(node=>{const x=node.x*9,parent=node.parentId?NODE_BY_ID.get(node.parentId):null;
-  return parent?'<path d="M'+(parent.x*9)+' '+(NODE_TOP[parent.stage]+110)+' V'+(NODE_TOP[node.stage]-45)+' H'+x+' V'+(NODE_TOP[node.stage]-3)+'" marker-end="url(#arrow)"/>':'<path d="M'+(450*rootSvgScale)+' 402 V445 H'+x+' V481" marker-end="url(#arrow)"/>';
+  return parent?'<path d="M'+(parent.x*9)+' '+(NODE_TOP[parent.stage]+TREE_GEOMETRY.nodeHeight)+' V'+(NODE_TOP[node.stage]-45)+' H'+x+' V'+(NODE_TOP[node.stage]-3)+'" marker-end="url(#arrow)"/>':'<path d="M'+(450*rootSvgScale)+' 402 V445 H'+x+' V481" marker-end="url(#arrow)"/>';
  }).join('');
 $('nodes').innerHTML=TREE_NODES.map(node=>{const c=CATEGORIES[node.cat],last=!node.children.length;
  return '<div id="'+nodeDomId(node)+'" class="node '+c.css+(last?' leaf-node':'')+'" style="left:'+node.x+'%;top:'+NODE_TOP[node.stage]+'px;width:'+node.width+'px"><div class="level">'+(node.stage+1)+'단계'+(node.stage===0?' <span class="count" id="lane-count-'+node.cat+'">0</span>':' · '+(last?'최종':'분류'))+'</div><strong>'+node.name+'</strong><small>'+(last?'이 단계에서 분류 완료':node.children.length+'개 하위 분류 ↓')+'</small></div>';
-}).join('')+LEAVES.map(leaf=>'<div class="resultbin" style="left:'+(leaf.x/TREE_GEOMETRY.width*100)+'%;top:'+(NODE_TOP[leaf.path.length-1]+180)+'px;width:88px"><strong id="result-'+leaf.id+'">도착 0</strong><small>'+leaf.name+' 바스켓</small><div class="basket-preview" id="basket-preview-'+leaf.id+'"><span>아직 도착 없음</span></div><details class="basket-details" id="basket-details-'+leaf.id+'"><summary id="basket-summary-'+leaf.id+'">전체 상품 보기 (0)</summary><ul id="basket-list-'+leaf.id+'"></ul></details></div>').join('');
+}).join('')+LEAVES.map(leaf=>'<div class="resultbin" style="left:'+(leaf.x/TREE_GEOMETRY.width*100)+'%;top:'+(NODE_TOP[leaf.path.length-1]+TREE_GEOMETRY.basketOffset)+'px;width:88px"><strong id="result-'+leaf.id+'">도착 0</strong><small>'+leaf.name+' 바스켓</small><div class="basket-preview" id="basket-preview-'+leaf.id+'"><span>아직 도착 없음</span></div><details class="basket-details" id="basket-details-'+leaf.id+'"><summary id="basket-summary-'+leaf.id+'">전체 상품 보기 (0)</summary><ul id="basket-list-'+leaf.id+'"></ul></details></div>').join('');
 $('model-links').innerHTML=TREE_NODES.filter(n=>n.stage>0).map(node=>'<span class="model-link" style="left:'+node.x+'%;top:'+(NODE_TOP[node.stage]-29)+'px">분류 경로 · '+(node.stage+1)+'층</span>').join('');
 $('flow-pulses').innerHTML=TREE_NODES.map(node=>'<i class="flow-pulse" id="flow-'+node.id+'" style="left:'+node.x+'%;top:'+(NODE_TOP[node.stage]-18)+'px;animation-delay:-'+(node.cat*.19+node.stage*.13)+'s"></i>').join('');
 $('tokens').innerHTML=PRODUCTS.map(p=>'<button type="button" class="token hidden" id="token-'+p.id+'" aria-label="'+p.name+' 상태 보기" data-product="'+p.id+'"><b data-id="'+p.id+'"><i class="tokenid">'+p.id+'</i>'+p.name+'</b><span></span></button>').join('');
@@ -981,10 +1078,10 @@ function stateLabel(state){
 function humanTransferFor(entry,width=TREE_GEOMETRY.width,now=time){
  const {product:p,state:s}=entry,g=TREE_GEOMETRY,scale=width/g.width,sector=g.humanSector;
  const slot=(Number(p.id.replace(/\D/g,''))||0)%6,elapsed=Math.max(0,now-s.start);
- const source={x:(s.stage===0?g.contentWidth*.72:targetNode(p,s.stage).px)*scale,y:s.stage===0?390:NODE_TOP[s.stage]+92};
- const departure={x:source.x,y:s.stage===0?445:NODE_TOP[s.stage]+166};
+ const source={x:(s.stage===0?g.contentWidth*.72:targetNode(p,s.stage).px)*scale,y:s.stage===0?390:NODE_TOP[s.stage]+TREE_GEOMETRY.tokenOffset};
+ const departure={x:source.x,y:s.stage===0?445:NODE_TOP[s.stage]+220};
  const waypoint={x:g.humanLaneX*scale,y:departure.y};
- const destination={x:(sector.x+85+(slot%3)*140)*scale,y:sector.y+260+Math.floor(slot/3)*62};
+ const destination={x:(sector.x+95+(slot%3)*150)*scale,y:sector.y+370+Math.floor(slot/3)*70};
  const progress=reduced?g.humanTransitFrames:Math.min(g.humanTransitFrames,elapsed);
  const points=[source,departure,waypoint,destination],step=Math.min(2,Math.floor(progress)),fraction=Math.min(1,progress-step);
  const point={x:points[step].x+(points[step+1].x-points[step].x)*fraction,y:points[step].y+(points[step+1].y-points[step].y)*fraction};
@@ -996,8 +1093,8 @@ function position(entry,width,all){
  if(s.kind==='human'){const flight=humanTransferFor(entry,width);return{x:flight.point.x-44,y:flight.point.y-17};}
  if(RECOVERY_KINDS.includes(s.kind)){
   const node=targetNode(p,s.stage),parent=node.parentId?NODE_BY_ID.get(node.parentId):null;
-  const fromX=NODE_BY_ID.get(s.fromNodeId).x/100*width,targetX=node.x/100*width,parentX=parent?parent.x/100*width:width/2,parentY=s.stage===0?435:NODE_TOP[s.stage-1]+92;
-  const currentY=NODE_TOP[s.stage]+92;
+  const fromX=NODE_BY_ID.get(s.fromNodeId).x/100*width,targetX=node.x/100*width,parentX=parent?parent.x/100*width:width/2,parentY=s.stage===0?435:NODE_TOP[s.stage-1]+TREE_GEOMETRY.tokenOffset;
+  const currentY=NODE_TOP[s.stage]+TREE_GEOMETRY.tokenOffset;
   x=s.kind==='recoverStart'?fromX:s.kind==='recoverUp'?fromX-width*7/900:s.kind==='recoverSearch'?parentX:targetX+width*7/900;
   y=s.kind==='recoverStart'?currentY:s.kind==='recoverDown'?currentY:parentY;
   return{x:Math.max(0,Math.min(width-88,x-44)),y:y-17};
@@ -1005,7 +1102,7 @@ function position(entry,width,all){
  const same=all.filter(e=>e.state.kind===s.kind&&e.state.stage===s.stage&&(s.stage===0&&s.kind!=='queue'?true:e.product.nodeIds[Math.max(0,s.stage)]===p.nodeIds[Math.max(0,s.stage)]));
  let rank=same.findIndex(e=>e.product.id===p.id);
  if(EXPRESS_KINDS.includes(s.kind)){
-  const destY=NODE_TOP[p.path.length-1]+274;
+  const destY=NODE_TOP[p.path.length-1]+TREE_GEOMETRY.basketOffset+94;
   if(s.kind==='expressStart'){const spread=Math.min(90,contentWidth*.36/Math.max(1,same.length-1));x=contentWidth*.275+(rank-(same.length-1)/2)*spread;y=390;}
   else if(s.kind==='expressEntry'){x=width*TREE_GEOMETRY.expressX/TREE_GEOMETRY.width;y=409+rank*14;}
   else if(s.kind==='expressDescend'){x=width*TREE_GEOMETRY.expressX/TREE_GEOMETRY.width;y=destY+(rank%3-1)*12;}
@@ -1016,9 +1113,9 @@ function position(entry,width,all){
   if(s.kind==='classify'){const workerIndex=scalePlan.snapshots[time].workerStatus.findIndex(w=>w.id===p.rootWorker);x=(Math.max(0,workerIndex)+.5)*contentWidth/20;y=128;}
   else{x=contentWidth*(s.kind==='textpass'?.275:.72)+(rank-(same.length-1)/2)*135;y=390;}
  }else{
-  if(s.kind==='queue')y=NODE_TOP[0]+92;else if(s.kind==='classify')y=NODE_TOP[s.stage]+92;
-  else if(['average','review','reviewResult','quality','image',...CASCADE_KINDS].includes(s.kind))y=NODE_TOP[s.stage]+92;else if(s.kind==='human')y=NODE_TOP[s.stage]+198;
-  else if(s.kind==='done')y=NODE_TOP[p.path.length-1]+220+rank*24;
+  if(s.kind==='queue')y=NODE_TOP[0]+TREE_GEOMETRY.tokenOffset;else if(s.kind==='classify')y=NODE_TOP[s.stage]+TREE_GEOMETRY.tokenOffset;
+  else if(['average','review','reviewResult','quality','image',...CASCADE_KINDS].includes(s.kind))y=NODE_TOP[s.stage]+TREE_GEOMETRY.tokenOffset;else if(s.kind==='human')y=NODE_TOP[s.stage]+198;
+  else if(s.kind==='done')y=NODE_TOP[p.path.length-1]+TREE_GEOMETRY.basketOffset+40+rank*24;
   // Each actual node displays one representative; all 500 still contribute to counts.
  }
  return{x:x-(s.stage===0&&s.kind==='classify'?25:44),y:y-(s.stage===0&&s.kind==='classify'?10:17)};
@@ -1062,7 +1159,7 @@ function renderLiveScores(entries,allEntries){
  const active=entries.filter(e=>['classify','textpass','quality','image','average','review','reviewResult','queue',...RECOVERY_KINDS,...CASCADE_KINDS,...EXPRESS_KINDS].includes(e.state.kind));
  $('parallel-stages').innerHTML=[0,1,2,3].map(stage=>{const rows=active.filter(e=>e.state.stage===stage).slice(0,4),total=allEntries.filter(e=>e.state.stage===stage&&['classify','textpass','quality','image','average','review','reviewResult','queue',...RECOVERY_KINDS,...CASCADE_KINDS,...EXPRESS_KINDS].includes(e.state.kind)).length;return '<section class="parallel-stage'+(total?' has-active':'')+'" data-stage="'+stage+'"><h4>'+['1단계 · 대분류','2단계 · 중분류','3단계 · 세부분류','4단계 · 추가 세분류'][stage]+'<span>'+total+'개 진행</span></h4>'+ (rows.length?rows.map(e=>{const score=scoreFor(e);return '<button type="button" class="parallel-item" data-focus="'+e.product.id+'" data-product-id="'+e.product.id+'" data-score-stage="'+stage+'"><b>'+e.product.id+' · 묶음 '+score.batch+' · '+e.product.name+'</b><span class="phase">'+stateLabel(e.state)+'</span><span class="metrics">'+score.values+' · '+score.mode+'</span></button>';}).join(''):'<p class="parallel-empty">표시할 대표 상품이 없습니다. 실제 예시 수는 위에 표시됩니다.</p>')+'</section>';}).join('');
  const seenScore=new Set();$('flow-scores').innerHTML=active.filter(e=>{if(e.state.stage===0)return false;const key=e.product.nodeIds[e.state.stage];if(seenScore.has(key))return false;seenScore.add(key);return true;}).map(e=>{
-  const score=scoreFor(e),node=targetNode(e.product,e.state.stage),c=CATEGORIES[e.product.cat],top=NODE_TOP[e.state.stage]+114;
+  const score=scoreFor(e),node=targetNode(e.product,e.state.stage),c=CATEGORIES[e.product.cat],top=NODE_TOP[e.state.stage]+TREE_GEOMETRY.scoreOffset;
   return '<button type="button" class="flow-score '+c.css+(e.state.kind==='review'?' review-score':'')+'" style="left:'+node.x+'%;top:'+top+'px;width:'+node.width+'px" data-focus="'+e.product.id+'" data-product-id="'+e.product.id+'" data-score-stage="'+score.stage+'" data-sol="'+score.sol+'" data-image="'+(score.image===null?'':score.image)+'" data-average="'+(score.average===null?'':score.average)+'" aria-label="'+e.product.id+' '+score.values+' '+score.mode+'"><span class="score-head"><b>'+e.product.id+'</b><span class="score-mode">'+(['blind','compare'].includes(e.state.kind)?'독립 비교':stateLabel(e.state))+'</span></span><span class="score-values">'+score.values+'</span></button>';
  }).join('');
 }
@@ -1147,8 +1244,10 @@ function renderHumanSector(entries,visible){
  $('human-sector-total').textContent=assigned.length;$('human-sector-moving').textContent=moving.length;$('human-sector-arrived').textContent=arrived.length;
  $('human-sector-list').innerHTML=arrived.slice(0,4).map(e=>'<button type="button" class="'+(e.product.id===selected?'active':'')+'" data-focus="'+e.product.id+'"><b>'+e.product.id+' · '+e.state.reviewScore+'점'+(e.state.reviewScore<2?' · 별도 보류':'')+'</b><span>'+e.product.name+'</span></button>').join('')+(arrived.length>4?'<p>외 '+(arrived.length-4)+'개 상품 대기</p>':'')||'<p>아직 도착한 상품이 없습니다.</p>';
  const flight=visible.find(e=>e.state.kind==='human'&&e.product.id===selected&&humanTransferFor(e).moving)||visible.find(e=>e.state.kind==='human'&&humanTransferFor(e).moving);
- if(!flight){$('human-transfer-lines').innerHTML='';return;}
- const f=humanTransferFor(flight);
+ if(!flight){$('human-transfer-lines').innerHTML='';$('human-flight-label').hidden=true;return;}
+ const f=humanTransferFor(flight),label=$('human-flight-label'),score=flight.state.reviewScore||0;
+ label.hidden=false;label.classList.toggle('safety',score<2);label.innerHTML='<b>'+score+'점 → '+(score>=2?'사람 검수':'안전 보류')+'</b><span>'+flight.product.id+' · '+(score>=2?'추가 모델 호출 중단':'사진·경로 확인 필요')+'</span>';
+ label.style.transform='translate('+Math.min(TREE_GEOMETRY.width-440,Math.max(30,f.point.x+100))+'px,'+Math.max(12,f.point.y-35)+'px)';
  $('human-transfer-lines').innerHTML='<defs><marker id="human-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="15" markerHeight="15" markerUnits="userSpaceOnUse" orient="auto"><path d="M1 1 L8 5 L1 9" fill="none" stroke="#bd513c" stroke-width="2"/></marker></defs><path d="M'+f.source.x+' '+f.source.y+' V'+f.departure.y+' H'+f.waypoint.x+' L'+f.destination.x+' '+f.destination.y+'" marker-end="url(#human-arrow)"/>';
 }
 function showHumanTransferExample(){
@@ -1173,7 +1272,7 @@ function renderRecovery(entries,visible,focus){
  if(!active){$('recovery-lines').innerHTML='';$('recovery-callout').hidden=true;return;}
  const state=active.state,c=targetNode(active.product,state.stage),fromX=NODE_BY_ID.get(state.fromNodeId).x*9,x=c.x*9;
  const parent=c.parentId?NODE_BY_ID.get(c.parentId):null,parentX=parent?parent.x*9:450;
- const parentY=state.stage===0?435:NODE_TOP[state.stage-1]+92,y=NODE_TOP[state.stage]+92;
+ const parentY=state.stage===0?435:NODE_TOP[state.stage-1]+TREE_GEOMETRY.tokenOffset,y=NODE_TOP[state.stage]+TREE_GEOMETRY.tokenOffset;
  $('recovery-lines').innerHTML='<defs><marker id="recovery-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" markerUnits="userSpaceOnUse" orient="auto"><path d="M1 1 L8 5 L1 9" fill="none" stroke="#dd7618" stroke-width="2"/></marker></defs><path d="M'+fromX+' '+y+' H'+(fromX-7)+' V'+parentY+' H'+parentX+'" marker-end="url(#recovery-arrow)"/><path d="M'+parentX+' '+parentY+' H'+(x+7)+' V'+y+' H'+x+'" marker-end="url(#recovery-arrow)"/>';
  $('recovery-callout').hidden=false;
  $('recovery-callout').style.top=Math.max(445,parentY+18)+'px';
@@ -1199,8 +1298,8 @@ function render(){const entries=simulate(time,threshold),visible=selectVisible(e
  renderHumanSector(entries,visible);
  const landedRoutes=visible.filter(e=>e.state.kind==='expressLand');
  const destinations=[...new Map(landedRoutes.map(e=>[e.product.leafId,e])).values()];
- $('express-lines').innerHTML='<defs><marker id="express-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="14" markerHeight="14" markerUnits="userSpaceOnUse" orient="auto"><path d="M1 1 L8 5 L1 9" fill="none" stroke="#118c60" stroke-width="2"/></marker></defs><path class="express-rail" d="M'+(TREE_GEOMETRY.contentWidth*.275)+' 366 V409 H'+TREE_GEOMETRY.expressX+' V1460"/>'+
-  destinations.map(e=>{const c=targetNode(e.product,e.product.path.length-1),y=NODE_TOP[e.product.path.length-1]+274;return '<path class="express-to-bin" d="M'+TREE_GEOMETRY.expressX+' '+y+' H'+c.px+'" marker-end="url(#express-arrow)"/>';}).join('');
+ $('express-lines').innerHTML='<defs><marker id="express-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="14" markerHeight="14" markerUnits="userSpaceOnUse" orient="auto"><path d="M1 1 L8 5 L1 9" fill="none" stroke="#118c60" stroke-width="2"/></marker></defs><path class="express-rail" d="M'+(TREE_GEOMETRY.contentWidth*.275)+' 366 V409 H'+TREE_GEOMETRY.expressX+' V'+(TREE_GEOMETRY.height-44)+'"/>'+
+  destinations.map(e=>{const c=targetNode(e.product,e.product.path.length-1),y=NODE_TOP[e.product.path.length-1]+TREE_GEOMETRY.basketOffset+94;return '<path class="express-to-bin" d="M'+TREE_GEOMETRY.expressX+' '+y+' H'+c.px+'" marker-end="url(#express-arrow)"/>';}).join('');
  document.documentElement.classList.toggle('is-playing',playing);renderLiveScores(visible,entries);TREE_NODES.forEach(node=>{const active=entries.some(e=>e.product.nodeIds[e.state.stage]===node.id&&['classify','textpass','quality','image','average','review','reviewResult','queue',...RECOVERY_KINDS,...CASCADE_KINDS,...EXPRESS_KINDS].includes(e.state.kind));$(nodeDomId(node)).classList.toggle('is-active',active);$('flow-'+node.id).classList.toggle('active',active);});document.querySelector('.tree-workers').classList.toggle('is-active',entries.some(e=>e.state.stage===0&&['classify','textpass','quality','image','average','review',...CASCADE_KINDS,...EXPRESS_KINDS].includes(e.state.kind)));const width=$('tree').clientWidth;entries.forEach(entry=>{const p=entry.product,s=entry.state,el=$('token-'+p.id),c=CATEGORIES[p.cat];if(!el)return;el.className='token '+c.css+(!visibleIds.has(p.id)?' hidden':'')+(s.stage===0&&s.kind==='classify'?' ingress':'')+(s.kind==='textpass'?' text-pass':'')+(EXPRESS_KINDS.includes(s.kind)?' express':'')+((['review','quality','specialist','frontier','blind','compare'].includes(s.kind))?' reviewing':'')+(RECOVERY_KINDS.includes(s.kind)?' recovering':'')+(s.kind==='human'?' human human-flight':'')+(s.kind==='done'?' done':'')+(selected===p.id?' selected':'');el.setAttribute('title',p.id+' · '+p.name+' · '+stateLabel(s));const pt=position(entry,width,visible);el.style.transform='translate('+pt.x+'px,'+pt.y+'px)';el.querySelector('span').textContent=(s.kind==='human'?(humanTransferFor(entry).moving?'사람 검수로 이동 →':'검수 구역 도착'):stateLabel(s))+(s.reviewScore?' · '+s.reviewScore+'점':'');el.setAttribute('aria-pressed',String(selected===p.id));el.setAttribute('aria-label',p.name+' · '+stateLabel(s));});
  for(let batch=0;batch<25;batch++){const group=entries.filter(e=>e.product.batch===batch),finished=group.every(e=>['done','human'].includes(e.state.kind));$('batch-'+batch).className='batch'+(finished?' finished':group.some(e=>e.state.kind!=='waiting')?' active':'');}
  CATEGORIES.forEach((cat,i)=>{const group=entries.filter(e=>e.product.cat===i);$('lane-count-'+i).textContent=group.filter(e=>e.state.kind!=='waiting'&&e.state.stage>=0&&!(e.state.stage===0&&e.state.kind!=='queue')).length;});
@@ -1249,55 +1348,36 @@ function frame(stamp){if(playing){if(!lastStamp)lastStamp=stamp;accumulated+=Mat
 if(params.has('t')){time=Math.max(0,Math.min(MAX_TIME,Math.floor(Number(params.get('t'))||0)));setStatus('고정 장면 '+time+' · 재생을 누르면 이어집니다.');}
 if(params.has('threshold')){threshold=Math.max(60,Math.min(85,Number(params.get('threshold'))||70));$('threshold').value=threshold;updateTimelineLimit();}
 window.classificationDemo={simulate,routeFor,humanTransferFor,position,showHumanTransferExample,reviewLedger,cascadeFixtureFor,policy:CASCADE_POLICY,validLeaf,showReviewExample,scoreFor,rootDecisionStats,canExpress,setExpressThreshold,setSellerIncentive,getSellerStats,products:PRODUCTS,categories:CATEGORIES,nodes:TREE_NODES,leaves:LEAVES,treeGeometry:TREE_GEOMETRY,get maxTime(){return MAX_TIME;},getScalePlan:()=>scalePlan,setScaleOptions,getState:()=>({time,threshold,expressThreshold,playing,reduced,autoscaleEnabled,autoscaleMax,sellerIncentiveEnabled}),seek:(t)=>{pause();time=Math.max(0,Math.min(MAX_TIME,Math.floor(t)));render();}};
-// The overview reads the existing engine's counts and shares its single player.
-let fitWholeFlow=false;
+// Always show the complete diagram; selecting a field highlights it without panning.
+let fitWholeFlow=true;
 let categoryZoomed=false;
 function fitTree(){
  const tree=$('tree'),available=tree.parentElement.clientWidth;
  if(available<=0)return;
- let scale=categoryZoomed||available<=650?1:Math.min(1,available/2025);
- if(categoryZoomed&&$('category-focus')?.value==='human')scale=Math.min(1,(available-32)/TREE_GEOMETRY.humanSector.width);
- if(fitWholeFlow){
-  const screenHeight=window.visualViewport?.height||window.innerHeight;
-  const controlsHeight=$('flow-toolbar').offsetHeight;
-  const headingHeight=$('simulation-panel').querySelector('.panelbar').offsetHeight;
-  const monitorHeight=$('simulation-panel').querySelector('.review-monitor').offsetHeight;
-  const availableHeight=Math.max(1,screenHeight-controlsHeight-headingHeight-monitorHeight-44);
-  scale=Math.min(1,available/(window.classificationDemo.treeGeometry?.width||2025),availableHeight/tree.offsetHeight);
- }
+ const screenHeight=window.visualViewport?.height||window.innerHeight;
+ const controlsHeight=$('flow-toolbar').offsetHeight;
+ const headingHeight=$('simulation-panel').querySelector('.panelbar').offsetHeight;
+ const monitorHeight=$('simulation-panel').querySelector('.review-monitor').offsetHeight;
+ const availableHeight=Math.max(1,screenHeight-controlsHeight-headingHeight-monitorHeight-44);
+ const scale=Math.min(1,available/(window.classificationDemo.treeGeometry?.width||5000),availableHeight/tree.offsetHeight);
  tree.style.setProperty('--fit-scale',String(scale));
  $('flow-scale').textContent=Math.round(scale*100)+'%';
+ $('simulation-panel').classList.add('flow-fit');
+ $('flow-fit-toggle').textContent='전체 구조 맞춤';
+ $('flow-fit-toggle').setAttribute('aria-pressed','true');
+ tree.parentElement.scrollLeft=0;
 }
-function setFlowView(fit){
- fitWholeFlow=fit;
- if(fit){categoryZoomed=false;$('category-focus').value='';}
- $('simulation-panel').classList.toggle('flow-fit',fit);
- $('flow-fit-toggle').textContent=fit?'크게 보기':'전체 보기';
- $('flow-fit-toggle').setAttribute('aria-pressed',String(fit));
- fitTree();
- if(fit)$('tree').parentElement.scrollLeft=0;
+function setFlowView(){
+ fitWholeFlow=true;categoryZoomed=false;fitTree();
  $('simulation-panel').scrollIntoView({behavior:'auto',block:'start'});
 }
-$('flow-fit-toggle').addEventListener('click',()=>setFlowView(!fitWholeFlow));
+$('flow-fit-toggle').addEventListener('click',()=>setFlowView());
 const categoryFocus=$('category-focus');
-categoryFocus.innerHTML='<option value="">분야 선택</option>'+CATEGORIES.map((category,index)=>'<option value="'+index+'">'+category.name+'</option>').join('')+'<option value="human">사람 검수 구역</option>';
+categoryFocus.innerHTML='<option value="">전체 분야</option>'+CATEGORIES.map((category,index)=>'<option value="'+index+'">'+category.name+'</option>').join('')+'<option value="human">사람 검수 구역</option>';
 categoryFocus.addEventListener('change',()=>{
- if(categoryFocus.value==='human'){
-  categoryZoomed=true;setFlowView(false);
-  const tree=$('tree'),viewport=tree.parentElement,scale=Number(tree.style.getPropertyValue('--fit-scale'))||1;
-  viewport.scrollLeft=Math.max(0,(TREE_GEOMETRY.humanSector.x+TREE_GEOMETRY.humanSector.width/2)*scale-viewport.clientWidth/2);
-  window.scrollTo({top:window.scrollY+$('human-sector').getBoundingClientRect().top-$('flow-toolbar').offsetHeight-20,behavior:'auto'});
-  return;
- }
- const category=CATEGORIES[Number(categoryFocus.value)];
- if(categoryFocus.value===''||!category)return;
- categoryZoomed=true;
- setFlowView(false);
- const tree=$('tree'),viewport=tree.parentElement;
- const scale=Number(tree.style.getPropertyValue('--fit-scale'))||1;
- viewport.scrollLeft=Math.max(0,category.x/100*tree.clientWidth*scale-viewport.clientWidth/2);
- const root=$('node-0-'+categoryFocus.value);
- window.scrollTo({top:window.scrollY+root.getBoundingClientRect().top-$('flow-toolbar').offsetHeight-16,behavior:'auto'});
+ document.querySelectorAll('.category-highlight').forEach(node=>node.classList.remove('category-highlight'));
+ if(categoryFocus.value!=='')$(''+(categoryFocus.value==='human'?'human-sector':'node-0-'+categoryFocus.value)).classList.add('category-highlight');
+ fitTree();
 });
 window.visualViewport?.addEventListener('resize',fitTree);
 function renderLanding(counts){
@@ -1318,45 +1398,65 @@ $('hero-play').addEventListener('click',()=>{
 $('hero-reset').addEventListener('click',()=>$('reset').click());
 
 // This is intentionally a separate, authored teaching example, not model output.
-let debateCase='supported',debateStage=0,debateSpeaker=0,debatePlaying=false,debateRAF=null,debateLastFrame=0;
+let debateCase='supported',frontierPassed=false,debateStage=0,debateSpeaker=0,debatePlaying=false,debateRAF=null,debateLastFrame=0;
 const DEBATE_NAMES=['모델 A','모델 B','모델 C'];
 const DEBATE_REPLIES=[['동일 입력 · 답 공유 없음','동일 입력 · 답 공유 없음','동일 입력 · 답 공유 없음'],['세 답을 공개한 뒤 비교','같은 후보에 대한 근거 대조','보정 기준과 의견 일치 확인'],['최종 후보의 근거 확인','미해결 충돌 여부 확인','누적 점수와 종료 조건 확인']];
 const DEBATE_EXAMPLES={
  supported:[
-  ['보호용 커버로 판단합니다. 상품 설명의 “실리콘”과 “충전 기능 없음”이 근거입니다.','보호 케이스 후보입니다. 사진은 속이 빈 커버이며, 설명도 충전 기기가 아니라고 합니다.','보호용 액세서리가 분류 기준에 맞습니다. 제공된 재질·기능 설명과 사진이 일치합니다.','세 모델이 같은 입력으로 각각 판정했습니다. 이제 답을 공개해 비교합니다.'],
-  ['공개된 세 답이 모두 보호용 커버를 가리킵니다. 이름만 보고 내린 추정인지 근거를 확인합니다.','세 모델이 든 사진 단서는 같은 상품 설명과 맞습니다. 다른 모델의 확신만 근거로 삼지는 않습니다.','같은 최종 후보의 근거와 비교 점수를 확인합니다. 이 예시는 점수 기준도 통과한 상황으로 설정했습니다.','후보 일치 + 근거 충족 + 가상 비교 점수 통과 · 독립 검토 추가 점수 0'],
-  ['최종 분류는 이어폰 액세서리 > 보호 케이스입니다. 확인한 상품 설명을 함께 기록합니다.','처음 프론티어가 확정하지 못해 받은 1점은 그대로 남습니다. 독립 검토로 해결됐으므로 더하지 않습니다.','누적 1점이고 최종 후보의 근거도 충족했습니다. 이후 모델 호출을 종료합니다.','프론티어 불확실 +1 · 독립 검토 해결 +0 = 1점 → 최종 분류']
+  ['무선 이어폰으로 판단합니다. 두 개의 이어피스 사진과 Bluetooth·음악 재생 설명을 함께 확인했습니다.','사진의 이어피스와 충전 케이스가 상품 설명에 맞습니다. 다른 모델의 답을 보지 않고 무선 이어폰으로 판단했습니다.','무선 이어폰 후보를 선택했습니다. 통화용 마이크와 음악 재생 기능이 텍스트에 명시돼 있습니다.','세 모델이 같은 입력으로 각각 판정했습니다. 이제 답을 공개해 비교합니다.'],
+  ['공개된 세 답이 모두 무선 이어폰을 가리킵니다. 비교용 신뢰도는 92·90·88로 예시 기준 85를 넘었습니다.','이 점수는 같은 후보와 보정 기준을 가정한 가상 값입니다. 다른 모델의 높은 점수만 보고 결론을 바꾸지는 않습니다.','각 모델이 든 사진·텍스트 근거가 원문에 있는지 확인했습니다. 후보 일치와 기준 통과를 함께 확인했습니다.','후보 일치 + 근거 충족 + 가상 비교 점수 통과 · 독립 검토 추가 점수 0'],
+  ['최종 분류는 가전·디지털 > 음향기기 > 이어폰 > 무선입니다. 확인한 원문과 판정 근거를 함께 기록합니다.','처음 프론티어가 확정하지 못해 받은 1점은 그대로 남습니다. 독립 검토로 해결됐으므로 더하지 않습니다.','누적 1점이고 최종 후보의 근거도 충족했습니다. 이후 모델 호출을 종료합니다.','프론티어 불확실 +1 · 독립 검토 해결 +0 = 1점 → 최종 분류']
  ],
  missing:[
-  ['충전 케이스와 보호 커버를 구분하기 어렵습니다. 상품명만 있고 기능 설명이 없습니다.','겉모양은 케이스이지만 충전 기능이 있는지 보이지 않습니다. 두 후보를 유지합니다.','상품 설명과 사진에서 전원·충전 여부를 확인할 수 없어 최종 분류를 보류합니다.','각 모델이 독립적으로 판단했지만 필요한 기능 정보가 부족합니다.'],
-  ['답을 비교해도 기능 정보가 새로 생기지는 않았습니다. 세 모델이 함께 확신하지 못하고 있습니다.','같은 후보의 근거와 비교 점수를 확인해도 기준에 못 미칩니다. 이 예시는 확신이 부족한 상황으로 설정했습니다.','독립 검토 후에도 근거와 확신이 부족하므로 검수 점수 2점을 추가합니다.','프론티어 +1 뒤 독립 검토의 낮은 점수 +2 · 누적 3점'],
-  ['충전 기능 설명과 확인 가능한 사진을 추가로 요청할 수 있도록 부족한 근거를 남깁니다.','누적 점수가 2점 이상이므로 모델을 더 호출하거나 반복 토론하지 않습니다.','상품 원문과 각 모델의 답·근거를 함께 사람 검수 대기열로 보냅니다.','프론티어 불확실 +1 · 독립 검토 미해결 +2 = 3점 → 사람 검수']
+  ['상품명은 무선 이어폰이지만 사진에는 닫힌 케이스만 있습니다. 이어폰 포함 여부를 확인하기 어렵습니다.','케이스 단품일 가능성을 유지합니다. 이어피스가 사진에 없고 구성품 설명도 없습니다.','무선 이어폰과 케이스 단품을 구분할 근거가 부족해 최종 분류를 보류합니다.','각 모델이 독립적으로 판단했지만 필요한 구성품·기능 정보가 부족합니다.'],
+  ['무선 이어폰이라는 같은 후보의 비교용 신뢰도는 58·54·41입니다. 세 값 모두 예시 기준 85보다 낮습니다.','답을 모아도 없던 기능 정보가 생기지는 않습니다. 상품명과 사진의 불일치를 해결하지 못했습니다.','독립 검토 후에도 근거와 확신이 부족하므로 검수 점수 2점을 추가합니다.','프론티어 +1 뒤 독립 검토의 낮은 점수 +2 · 누적 3점'],
+  ['이어폰 포함 여부와 기능 설명을 추가로 요청할 수 있도록 부족한 근거를 남깁니다.','누적 점수가 2점 이상이므로 모델을 더 호출하거나 반복 토론하지 않습니다.','상품 원문과 각 모델의 답·근거를 함께 사람 검수 대기열로 보냅니다.','프론티어 불확실 +1 · 독립 검토 미해결 +2 = 3점 → 사람 검수']
  ]
 };
 const BLIND_COMPARISON_ROWS={
  supported:[
-  ['보호 커버','속이 빈 덮개 형태','실리콘 · 충전 기능 없음','근거 충족'],
-  ['보호 케이스','다른 기기를 감싸는 외피','보호용이라는 상품 설명','근거 충족'],
-  ['이어폰 보호 액세서리','별도 충전 기기의 근거 없음','“충전 기능 없음”을 확인','근거 충족']
+  ['무선 이어폰','이어피스 2개 + 충전 케이스','Bluetooth · 음악 재생','근거 충족'],
+  ['무선 이어폰','음향 기기와 케이스를 함께 확인','무선 연결 · 통화용 마이크','근거 충족'],
+  ['무선 이어폰','귀에 착용하는 이어피스','음악 재생·통화 기능 명시','근거 충족']
  ],
  missing:[
-  ['충전 케이스 / 보호 커버','케이스 외관만 확인','기능 설명이 없음','두 후보 유지'],
-  ['케이스 · 세부 분류 보류','충전 접점·기능 확인 불가','상품명만으로 구분 불가','확신 부족'],
-  ['최종 분류 보류','사진만으로 기능 판단 불가','전원·충전 정보가 없음','추가 정보 필요']
+  ['무선 이어폰 / 케이스 단품','닫힌 케이스 외관만 확인','기능 설명이 없음','두 후보 유지'],
+  ['케이스 단품 가능성','이어피스가 보이지 않음','구성품 설명이 없음','확신 부족'],
+  ['최종 분류 보류','사진만으로 구성품 판단 불가','상품명 외 설명이 없음','추가 정보 필요']
  ]
 };
 function renderBlindComparison(){
- const revealed=debateStage>0,supported=debateCase==='supported';
+ const revealed=!frontierPassed&&debateStage>0,supported=debateCase==='supported';
+ const firstScore=frontierPassed?92:supported?64:52,scores=supported?[92,90,88]:[58,54,41];
+ $('agent-debate').classList.toggle('frontier-passed',frontierPassed);
+ $('confidence-graph').classList.toggle('low-confidence',!supported);
+ $('frontier-score-value').textContent=String(firstScore);
+ $('frontier-score-bar').style.width=firstScore+'%';
+ $('frontier-gate-label').textContent=firstScore+(frontierPassed?' ≥ 기준 85 → 분류 완료':' < 기준 85 → 추가 검토');
+ $('frontier-review-score').innerHTML=frontierPassed?'기준 통과 + 근거 충족 <b>검토 +0</b>':'기준 미달 <b>검토 +1</b>';
+ $('case-frontier').setAttribute('aria-pressed',String(frontierPassed));
+ $('case-supported').setAttribute('aria-pressed',String(supported&&!frontierPassed));
+ $('case-missing').setAttribute('aria-pressed',String(!supported));
  $('case-art-supported').setAttribute('visibility',supported?'visible':'hidden');
  $('case-art-missing').setAttribute('visibility',supported?'hidden':'visible');
- $('case-art').setAttribute('aria-label',supported?'속이 빈 실리콘 이어폰 보호 케이스를 나타낸 설명용 그림':'충전 기능이 보이지 않는 닫힌 이어폰 케이스의 설명용 그림');
- $('case-description').textContent=supported?'실리콘 재질의 보호용 케이스. 충전 기능은 없습니다.':'상품명: 이어폰 케이스. 재질·용도·충전 기능 설명은 없습니다.';
- $('frontier-answer').textContent=supported?'보호 커버로 보이지만 확정은 보류':'충전 케이스와 보호 커버를 구분하기 어려움';
- $('blind-comparison-body').innerHTML=BLIND_COMPARISON_ROWS[debateCase].map((cells,index)=>'<tr><th scope="row">답안 '+['A','B','C'][index]+'</th>'+cells.map((value,col)=>'<td data-label="'+['분류 후보','이미지 근거','텍스트 근거','판단 상태'][col]+'"'+(!revealed?' class="sealed-cell"':'')+'>'+(revealed?(col===3?'<span class="answer-status'+(!supported?' uncertain':'')+'">'+value+'</span>':value):['공개 전 · 따로 저장','각자 원본 이미지 확인','각자 같은 텍스트 확인','다른 모델 답 비공개'][col])+'</td>').join('')+'</tr>').join('');
- for(let i=0;i<3;i++){$('blind-seal-'+i).textContent=revealed?'답안 공개 ↓':'답안 봉인';$('model-card-'+i).classList.toggle('answers-revealed',revealed);}
- $('blind-compare-check').innerHTML=!revealed?'<strong>아직 서로의 답을 보여 주지 않습니다.</strong>같은 원본 정보만 받고 각자 후보·근거·신뢰도를 저장합니다.':supported?'<strong>후보를 같은 최종 분류명으로 맞추면 일치</strong>보호 커버·보호 케이스·보호 액세서리 → 이어폰 액세서리 &gt; 보호 케이스. 사진과 “충전 기능 없음” 설명을 함께 확인합니다.':'<strong>의견을 모아도 부족한 정보가 채워지지 않음</strong>충전 기능이 있는지 확인할 수 없습니다. 다수결이나 확신 점수의 단순 평균으로 확정하지 않습니다.';
- $('blind-reveal-note').textContent=!revealed?'현재는 각자 답을 저장한 상태입니다. ‘세 답안 공개’를 누르면 의견과 근거가 비교표에 나타납니다.':debateStage===1?'독립 판정이 끝난 뒤 익명 답안 A·B·C를 공개했습니다. 같은 후보인지, 원본 근거가 있는지 비교합니다.':'공개된 근거와 비교 기준을 확인한 뒤 결론을 냅니다. 누적 2점 이상이면 이후 호출을 멈추고 사람 검수로 보냅니다.';
- $('debate-next').textContent=debateStage===0?'세 답안 공개 →':debateStage===1?'비교 후 결론 보기 →':'봉인 단계로 다시 보기 ↺';
+ $('case-art').setAttribute('aria-label',supported?'무선 이어폰 두 개와 충전 케이스의 설명용 그림':'이어폰 포함 여부가 보이지 않는 닫힌 케이스의 설명용 그림');
+ $('case-description').textContent=supported?'Bluetooth 연결 · 음악 재생 · 통화용 마이크 · 이어폰 2개와 충전 케이스 포함':'상품명은 무선 이어폰. 구성품·음악 재생·충전 기능 설명은 없습니다.';
+ $('case-evidence').textContent=supported?'텍스트: 무선 연결·음악·통화':'텍스트: 상품명 외 설명 없음';
+ $('case-photo').textContent=supported?'사진: 이어피스 2개 + 케이스':'사진: 닫힌 케이스만 보임';
+ $('frontier-answer').textContent=frontierPassed?'무선 이어폰 · 근거 충분':supported?'무선 이어폰 후보 · 확정 보류':'무선 이어폰 / 케이스 단품 · 구분 보류';
+ $('blind-comparison-body').innerHTML=BLIND_COMPARISON_ROWS[debateCase].map((cells,index)=>'<tr><th scope="row">답안 '+['A','B','C'][index]+'</th>'+cells.map((value,col)=>'<td data-label="'+['분류 후보','이미지 근거','텍스트 근거','판단 상태'][col]+'"'+(!revealed?' class="sealed-cell"':'')+'>'+(frontierPassed?'추가 검토 요청 없음':revealed?(col===3?'<span class="answer-status'+(!supported?' uncertain':'')+'">'+value+'</span>':value):['공개 전 · 따로 저장','각자 원본 이미지 확인','각자 같은 텍스트 확인','다른 모델 답 비공개'][col])+'</td>').join('')+'</tr>').join('');
+ for(let i=0;i<3;i++){
+  $('blind-seal-'+i).textContent=frontierPassed?'요청 없음':revealed?'답안 공개 ↓':'답안 봉인';
+  $('model-card-'+i).classList.toggle('answers-revealed',revealed);
+  $('confidence-candidate-'+i).textContent=frontierPassed?'프론티어에서 종료':revealed?'판정: '+BLIND_COMPARISON_ROWS[debateCase][i][0]:'판정 봉인';
+  $('confidence-bar-'+i).style.width=(revealed?scores[i]:0)+'%';
+  $('confidence-value-'+i).textContent=revealed?String(scores[i]):'—';
+ }
+ $('blind-compare-check').innerHTML=frontierPassed?'<strong>첫 판정에서 기준과 근거를 충족</strong>이 사례는 추가 모델의 판단이 필요하지 않습니다. OpenRouter 경로를 실행하지 않고 종료합니다.':!revealed?'<strong>아직 서로의 답을 보여 주지 않습니다.</strong>같은 원본 정보만 받고 각자 후보·근거·신뢰도를 저장합니다.':supported?'<strong>무선 이어폰 후보 일치 · 세 점수 모두 기준 통과</strong>사진 속 이어피스와 무선 연결·음악 재생 설명을 대조합니다. 비교 기준을 충족하면 검수 점수를 추가하지 않습니다.':'<strong>같은 후보의 점수도 낮고, 구성품 근거도 부족</strong>닫힌 케이스만으로는 이어폰 포함 여부를 알 수 없습니다. 다수결이나 신뢰도 평균으로 확정하지 않습니다.';
+ $('blind-reveal-note').textContent=frontierPassed?'Codex 첫 판정의 신뢰도 92가 예시 기준 85를 넘고 근거도 충족했습니다. 추가 검토는 요청하지 않습니다.':!revealed?'각자 답을 따로 저장한 상태입니다. ‘세 답안 공개’를 누르면 모델별 판정과 비교용 신뢰도가 나타납니다.':debateStage===1?'독립 판정이 끝난 뒤 답안 A·B·C를 공개했습니다. 아래 막대는 모두 “무선 이어폰”이라는 동일 후보의 신뢰도입니다.':'공개된 근거와 비교 기준을 확인한 뒤 결론을 냅니다. 누적 2점 이상이면 이후 호출을 멈추고 사람 검수로 보냅니다.';
+ $('debate-next').textContent=frontierPassed?'첫 판정에서 완료':debateStage===0?'세 답안 공개 →':debateStage===1?'비교 후 결론 보기 →':'봉인 단계로 다시 보기 ↺';
+ ['debate-next','debate-autoplay','debate-speaker-next','debate-stage-0','debate-stage-1','debate-stage-2'].forEach(id=>$(id).disabled=frontierPassed);
+ if(frontierPassed){$('debate-result').textContent='첫 판정 신뢰도·근거 충족 +0 = 0점 → 최종 분류';$('debate-verdict').className='debate-verdict resolved';}
 }
 
 function renderDebate(){
@@ -1366,8 +1466,6 @@ function renderDebate(){
  [0,1,2].forEach(i=>$('debate-stage-'+i).setAttribute('aria-pressed',String(i===debateStage)));
  $('case-supported').setAttribute('aria-pressed',String(debateCase==='supported'));
  $('case-missing').setAttribute('aria-pressed',String(debateCase==='missing'));
- $('case-evidence').textContent=debateCase==='supported'?'판매자 재질: 실리콘':'판매자 설명: 없음';
- $('case-photo').textContent=debateCase==='supported'?'사진: 속이 빈 보호 커버':'사진: 케이스 외관만 보임';
  $('blind-reveal-note').textContent=debateStage===0?'같은 입력으로 따로 판정한 결과입니다. 각 모델은 첫 판정에서 다른 모델과 프론티어의 답을 보지 않습니다.':debateStage===1?'독립 판정이 끝난 뒤 세 답을 함께 공개합니다. 같은 최종 후보의 근거와 비교 점수를 확인합니다.':'점수와 근거를 함께 확인합니다. 누적 2점 이상이면 이후 호출을 멈추고 사람 검수로 이동합니다.';
  $('debate-next').textContent=debateStage===2?'검토 예시 처음부터 ↺':'다음 단계 →';
  [0,1,2].forEach(i=>{
@@ -1382,7 +1480,7 @@ function renderDebate(){
  $('agent-debate').classList.toggle('debate-playing',debatePlaying);renderBlindComparison();
 }
 function pauseDebate(){debatePlaying=false;if(debateRAF!==null)cancelAnimationFrame(debateRAF);debateRAF=null;}
-function advanceDebateSpeaker(){debateSpeaker=(debateSpeaker+1)%3;if(debateSpeaker===0)debateStage=(debateStage+1)%3;renderDebate();}
+function advanceDebateSpeaker(){if(frontierPassed)return;debateSpeaker=(debateSpeaker+1)%3;if(debateSpeaker===0)debateStage=(debateStage+1)%3;renderDebate();}
 function debateFrame(now){
  if(!debatePlaying)return;
  if(document.hidden){pauseDebate();renderDebate();return;}
@@ -1393,12 +1491,15 @@ function debateFrame(now){
  }
  debateRAF=requestAnimationFrame(debateFrame);
 }
-[0,1,2].forEach(i=>$('debate-stage-'+i).addEventListener('click',()=>{pauseDebate();debateStage=i;debateSpeaker=0;renderDebate();}));
-$('case-supported').addEventListener('click',()=>{pauseDebate();debateCase='supported';debateStage=0;debateSpeaker=0;renderDebate();});
-$('case-missing').addEventListener('click',()=>{pauseDebate();debateCase='missing';debateStage=0;debateSpeaker=0;renderDebate();});
-$('debate-next').addEventListener('click',()=>{pauseDebate();debateStage=(debateStage+1)%3;debateSpeaker=0;renderDebate();});
+[0,1,2].forEach(i=>$('debate-stage-'+i).addEventListener('click',()=>{if(frontierPassed)return;pauseDebate();debateStage=i;debateSpeaker=0;renderDebate();}));
+function chooseDebateCase(kind){pauseDebate();frontierPassed=kind==='frontier';debateCase=kind==='missing'?'missing':'supported';debateStage=0;debateSpeaker=0;renderDebate();}
+$('case-frontier').addEventListener('click',()=>chooseDebateCase('frontier'));
+$('case-supported').addEventListener('click',()=>chooseDebateCase('supported'));
+$('case-missing').addEventListener('click',()=>chooseDebateCase('missing'));
+$('debate-next').addEventListener('click',()=>{if(frontierPassed)return;pauseDebate();debateStage=(debateStage+1)%3;debateSpeaker=0;renderDebate();});
 $('debate-speaker-next').addEventListener('click',()=>{pauseDebate();advanceDebateSpeaker();});
 $('debate-autoplay').addEventListener('click',()=>{
+ if(frontierPassed)return;
  if(debatePlaying)pauseDebate();
  else {if(debateStage===2&&debateSpeaker===2){debateStage=0;debateSpeaker=0;}debatePlaying=true;debateLastFrame=performance.now();debateRAF=requestAnimationFrame(debateFrame);}
  renderDebate();

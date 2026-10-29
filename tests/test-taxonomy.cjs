@@ -26,8 +26,8 @@ function getElement(id) {
   const classes = new Set();
   const element = {
     id, handlers, innerHTML: '', textContent: '', className: '', value: 0, disabled: false,
-    clientWidth: id === 'tree' ? 5000 : 1100, parentElement: { clientWidth: 1100 },
-    offsetHeight: id === 'tree' ? 1540 : id === 'flow-toolbar' ? 80 : 32,
+    clientWidth: id === 'tree' ? 5250 : 1100, parentElement: { clientWidth: 1100 },
+    offsetHeight: id === 'tree' ? 1640 : id === 'flow-toolbar' ? 80 : 32,
     style: { setProperty(k, v) { this[k] = v; } },
     classList: {
       toggle(k, enabled) { if (enabled ?? !classes.has(k)) classes.add(k); else classes.delete(k); },
@@ -72,7 +72,7 @@ assert.equal(demo.getState().expressThreshold, 95, 'default direct-leaf threshol
 // Taxonomy assertions run against the shipped engine and actual rendered baskets.
 const nodes=new Map(Array.from(demo.nodes,n=>[n.id,n]));
 const leaves=new Map(Array.from(demo.leaves,l=>[l.id,l]));
-assert.equal(demo.treeGeometry.width,5000);
+assert.equal(demo.treeGeometry.width,5250);
 assert.equal(demo.treeGeometry.contentWidth,4200);
 assert.equal(demo.categories.length,10);
 assert.equal(new Set(Array.from(demo.categories,c=>c.name)).size,10);
@@ -132,17 +132,17 @@ for(const leaf of demo.leaves){
  const actual=[...getElement('basket-list-'+leaf.id).innerHTML.matchAll(/<li>(P\d+)\s*·/g)].map(m=>m[1]).sort();
  assert.deepEqual(actual,Array.from(expected),leaf.id+': exact persistent basket IDs');renderedIds.push(...actual);
  assert(leaf.x-44>=0&&leaf.x+44<=demo.treeGeometry.contentWidth);
- assert([484,688,928,1168][leaf.path.length-1]+180+132<=1540);
+ assert([484,724,964,1204][leaf.path.length-1]+demo.treeGeometry.basketOffset+demo.treeGeometry.basketHeight<=demo.treeGeometry.height);
 }
 assert.equal(new Set(renderedIds).size,done.length,'no product appears in multiple baskets');
 const renderedNodeIds=[...getElement('nodes').innerHTML.matchAll(/id="(node-[^"]+)"/g)].map(m=>m[1]);
 assert.equal(new Set(renderedNodeIds).size,demo.nodes.length,'shared prefixes render exactly once');
 assert.equal(renderedNodeIds.length,demo.nodes.length);
-// Compact moving tickets occupy a separate strip below the longest title
-// (browser-verified title bottom: node+72) and above score pills at node+114.
+// Moving tickets occupy a strip below the enlarged category title and above
+// the score pill; actual cascade states use the same physical branch center.
 assert(html.includes('.tree .token:not(.ingress){width:88px;height:34px;min-height:34px;'));
 assert(html.includes('.tree .node.is-active small{visibility:hidden}'));
-const nodeTop=[484,688,928,1168];
+const nodeTop=[484,724,964,1204];
 const checkedLandingDepths=new Set();
 for(let t=0;t<=demo.maxTime;t++){
  context.testEntries=demo.simulate(t,70);
@@ -150,14 +150,14 @@ for(let t=0;t<=demo.maxTime;t++){
  assert(visible.filter(e=>e.state.kind==='human').every(e=>{const transfer=demo.humanTransferFor(e,demo.treeGeometry.width,t);return transfer.moving||transfer.arrived&&transfer.point.x-44>=demo.treeGeometry.humanSector.x;}),'human tickets move toward or arrive inside their separate sector');
  for(const e of visible){
   const state=e.state;
-  if(!['queue','classify','quality','image','average','review','reviewResult'].includes(state.kind)||state.stage===0&&state.kind!=='queue')continue;
+  if(!['queue','classify','quality','specialist','frontier','blind','compare','descend'].includes(state.kind)||state.stage===0&&state.kind!=='queue')continue;
   const node=nodes.get(e.product.nodeIds[state.stage]);
   assert(!occupied.has(node.id),'each actual node shows only one moving representative');occupied.add(node.id);
   context.testEntry=e;context.testVisible=visible;
   const point=vm.runInContext('position(testEntry,window.classificationDemo.treeGeometry.width,testVisible)',context);
   assert(Math.abs(point.x+44-node.px)<.001,'compact ticket centers on its actual branch');
-  assert(point.y>=nodeTop[state.stage]+76-1,'moving ticket clears the full two-line category title');
-  assert(point.y+34<=nodeTop[state.stage]+112,'moving ticket clears score pills immediately below the node');
+  assert(point.y>=nodeTop[state.stage]+130-1,'moving ticket clears the full two-line category title');
+  assert(point.y+34<=nodeTop[state.stage]+demo.treeGeometry.scoreOffset-2,'moving ticket clears score pills immediately below the node');
   assert(point.x>=0&&point.x+88<=demo.treeGeometry.contentWidth);
  }
  const landing=visible.find(e=>e.state.kind==='expressLand'&&!checkedLandingDepths.has(e.product.path.length));
@@ -169,6 +169,8 @@ for(let t=0;t<=demo.maxTime;t++){
   const segment=segments.find(m=>Math.abs(Number(m[3])-endpoint)<.001);
   assert(segment,'direct route has an arrow to the actual final basket');
   assert.equal(Number(segment[1]),demo.treeGeometry.expressX,'arrow uses reserved express lane');
+  const rail=getElement('express-lines').innerHTML.match(/class="express-rail" d="M[^"]+ H[\d.]+ V([\d.]+)"/);
+  assert(rail&&Number(rail[1])>=Number(segment[2]),'vertical express rail reaches every terminal depth');
   assert(Math.abs(point.y+17-Number(segment[2]))<=12.001,'direct token lands on its rendered arrow, including ticket stacking offset');
   checkedLandingDepths.add(landing.product.path.length);
  }

@@ -26,8 +26,8 @@ function getElement(id) {
   const classes = new Set();
   const element = {
     id, handlers, innerHTML: '', textContent: '', className: '', value: 0, disabled: false,
-    clientWidth: id === 'tree' ? 5000 : 1100, parentElement: { clientWidth: 1100 },
-    offsetHeight: id === 'tree' ? 1540 : id === 'flow-toolbar' ? 80 : 32,
+    clientWidth: id === 'tree' ? 5250 : 1100, parentElement: { clientWidth: 1100 },
+    offsetHeight: id === 'tree' ? 1640 : id === 'flow-toolbar' ? 80 : 32,
     style: { setProperty(k, v) { this[k] = v; } },
     classList: {
       toggle(k, enabled) { if (enabled ?? !classes.has(k)) classes.add(k); else classes.delete(k); },
@@ -239,15 +239,15 @@ assert.equal(getElement('flow-fit-toggle')['aria-pressed'], 'true');
 assert.equal(getElement('simulation-panel').lastScroll.block, 'start');
 assert.equal(getElement('quick-play').lastFocus.preventScroll, true);
 const fittedScale=+getElement('tree').style['--fit-scale'];
-assert(fittedScale*demo.treeGeometry.width<=1100 && fittedScale*1540+80+32+44<=720.001, 'whole flow must fit in both viewport dimensions');
+assert(fittedScale*demo.treeGeometry.width<=1100 && fittedScale*1640+80+32+32+44<=720.001, 'whole flow must fit in both viewport dimensions');
 assert.equal(getElement('hero-play')['aria-pressed'], 'true');
 assert.match(getElement('hero-play-label').textContent, /일시정지/);
 getElement('hero-play').click();
 assert.equal(demo.getState().playing, false);
 const viewState=JSON.stringify(demo.getState());
 getElement('flow-fit-toggle').click();
-assert.equal(getElement('simulation-panel').classList.contains('flow-fit'), false);
-assert.equal(+getElement('tree').style['--fit-scale'],1100/2025);
+assert.equal(getElement('simulation-panel').classList.contains('flow-fit'), true);
+assert.equal(+getElement('tree').style['--fit-scale'],fittedScale);
 getElement('flow-fit-toggle').click();
 assert.equal(+getElement('tree').style['--fit-scale'],fittedScale);
 assert.equal(JSON.stringify(demo.getState()),viewState,'view changes must preserve playback and product state');

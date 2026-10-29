@@ -1,15 +1,15 @@
 'use strict';
 const {demo,context,getElement,vm,assert,staticIds}=require('./app-harness.cjs');
 const g=demo.treeGeometry;
-assert.equal(g.width,5000);assert.equal(g.height,1540);assert.equal(g.contentWidth,4200);
-assert.equal(g.expressX,4320);assert.equal(g.humanLaneX,4440);assert.equal(g.humanTransitFrames,3);
-assert.deepEqual(JSON.parse(JSON.stringify(g.humanSector)),{x:4510,y:484,width:450,height:880});
-for(const id of ['human-sector','human-sector-total','human-sector-moving','human-sector-arrived','human-sector-list'])assert(staticIds.includes(id),'dedicated human sector element: '+id);
+assert.equal(g.width,5250);assert.equal(g.height,1640);assert.equal(g.contentWidth,4200);
+assert.equal(g.expressX,4530);assert.equal(g.humanLaneX,4650);assert.equal(g.humanTransitFrames,3);
+assert.deepEqual(JSON.parse(JSON.stringify(g.humanSector)),{x:4720,y:484,width:490,height:1050});
+for(const id of ['human-sector','human-sector-total','human-sector-moving','human-sector-arrived','human-sector-list','human-flight-label'])assert(staticIds.includes(id),'dedicated human sector element: '+id);
 for(const key of ['humanTransferFor','position','showHumanTransferExample'])assert.equal(typeof demo[key],'function','public transfer API: '+key);
 const rightmost=Math.max(...Array.from(demo.nodes,n=>n.px+n.width/2),...Array.from(demo.leaves,l=>l.x+44));
 demo.leaves.forEach((leaf,index)=>assert.equal(leaf.x,115+index*100+leaf.cat*30,'existing category/basket physical coordinates are preserved'));
 assert(rightmost<=g.contentWidth,'all original category nodes and baskets stay in the 4200px content area');
-assert(g.expressX-44>rightmost,'an entire 88px express ticket clears the last category');
+assert(g.expressX-44-rightmost>=350,'express ticket has at least 350px clear space beyond the last category');
 assert(g.expressX+44<g.humanLaneX-44,'express and human lanes have separate full ticket widths');
 assert(g.humanLaneX+44<g.humanSector.x,'transfer lane clears the sector boundary');
 assert(g.humanSector.x+g.humanSector.width<=g.width);
@@ -32,7 +32,8 @@ for(const entry of [scored,badPhoto,onePoint]){
   assert(transfer.point.x>=44&&transfer.point.x<=g.width-44&&transfer.point.y>=17&&transfer.point.y<=g.height-17,'moving ticket fits canvas');
   const half=demo.humanTransferFor(entry,g.width/2,at);
   for(const key of [...waypoints,'point']){near(half[key].x,transfer[key].x/2,'width scaling '+key);near(half[key].y,transfer[key].y,'unchanged vertical coordinate '+key);}
-  demo.seek(at);const actual=demo.simulate(at,70).find(e=>e.product.id===entry.product.id);
+  demo.seek(at);if(entry===scored&&elapsed<3){assert.equal(getElement('human-flight-label').hidden,false);assert(getElement('human-flight-label').innerHTML.includes('2점 → 사람 검수'));assert(getElement('human-flight-label').innerHTML.includes(entry.product.id));}
+  const actual=demo.simulate(at,70).find(e=>e.product.id===entry.product.id);
   assert.equal(actual.state.kind,'human','routing is already terminal while the ticket travels');
   assert.equal(actual.state.reviewScore,entry.state.reviewScore,'visual movement does not add or replace points');
   const position=demo.position(actual,g.width,demo.simulate(at,70));
@@ -75,7 +76,7 @@ function checkScene(at){
  return JSON.stringify({list:getElement('human-sector-list').innerHTML,total:getElement('human-sector-total').textContent,moving:getElement('human-sector-moving').textContent,arrived:getElement('human-sector-arrived').textContent,terminal:terminalIds(held)});
 }
 for(const t of [0,scored.state.start,scored.state.start+1,scored.state.start+2,scored.state.start+3,badPhoto.state.start,demo.maxTime])checkScene(t);
-const snapshot=checkScene(scored.state.start+1);checkScene(demo.maxTime);checkScene(0);assert.equal(checkScene(scored.state.start+1),snapshot,'seek reconstructs identical transfer and list state');
+const snapshot=checkScene(scored.state.start+1);checkScene(demo.maxTime);assert.equal(getElement('human-flight-label').hidden,true,'final overview contains no obsolete traveling label');checkScene(0);assert.equal(checkScene(scored.state.start+1),snapshot,'seek reconstructs identical transfer and list state');
 getElement('quick-reset').click();assert.equal(demo.getState().time,0);assert.equal(+getElement('human-sector-total').textContent,0);assert.equal(+getElement('human-sector-moving').textContent,0);assert.equal(+getElement('human-sector-arrived').textContent,0);
 vm.runInContext("params.set('reduce','1');setReduced();",context);
 assert.equal(demo.getState().reduced,true);

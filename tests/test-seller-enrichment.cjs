@@ -20,7 +20,8 @@ function getElement(id) {
   const element = {
     id, handlers, innerHTMLWrites: 0, textContent: '', className: '', value: 0,
     checked: /\bchecked(?:\s|=|>)/.test(staticTags.get(id) || ''),
-    disabled: false, clientWidth: id === 'tree' ? 5000 : 1100,
+    disabled: false, clientWidth: id === 'tree' ? 5250 : 1100,
+    offsetHeight: id === 'tree' ? 1640 : id === 'flow-toolbar' ? 80 : 32,
     parentElement: { clientWidth: 1100 }, style: { setProperty(k, v) { this[k] = v; } },
     classList: {
       toggle(k, enabled) { if (enabled ?? !classes.has(k)) classes.add(k); else classes.delete(k); },
@@ -45,7 +46,7 @@ const document = {
   getElementById: getElement, querySelector: getElement, querySelectorAll() { return []; },
   addEventListener() {}, documentElement: getElement('html'), hidden: false
 };
-const window = { addEventListener() {} };
+const window = { innerHeight:720, addEventListener() {} };
 const context = vm.createContext({
   document, window, location: { search: '' }, URLSearchParams, console, Map, Set,
   matchMedia: () => ({ matches: false, addEventListener() {} }),
