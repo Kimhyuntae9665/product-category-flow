@@ -258,20 +258,6 @@ assert.equal(demo.getState().time, 0);
 assert.equal(demo.getState().playing, false);
 assert.equal(getElement('hero-progress').style.width, '0%');
 
-// Authored discussion scenes remain independent from the classification engine.
-const unchangedState = JSON.stringify(demo.getState());
-getElement('case-supported').click();
-getElement('debate-next').click();
-assert.equal(getElement('debate-stage-1')['aria-pressed'], 'true');
-getElement('debate-next').click();
-assert.match(getElement('debate-result').textContent, /불확실 \+1.*해결 \+0 = 누적 1점.*최종 분류/);
-getElement('case-missing').click();
-assert.equal(getElement('debate-stage-0')['aria-pressed'], 'true');
-getElement('debate-stage-2').click();
-assert.match(getElement('debate-result').textContent, /불확실 \+1.*미해결 \+2 = 누적 3점.*사람 검수/);
-getElement('debate-next').click();
-assert.equal(getElement('debate-stage-0')['aria-pressed'], 'true');
-assert.equal(JSON.stringify(demo.getState()), unchangedState);
 // The removed UI must not remain as hidden controls or disclosures.
 for(const id of ['play','step','reset','timeline','speed','threshold','express-threshold','count-done','human-queue-list','debate-autoplay','debate-turn-label']) assert(!staticIds.includes(id), `removed UI remains: ${id}`);
 assert(!html.includes('class="br-transcript"'));
@@ -283,6 +269,6 @@ getElement('quick-timeline').handlers.input({target:{value:'20'}});
 assert.equal(demo.getState().time,20);
 getElement('quick-reset').click();
 assert.equal(demo.getState().time,0);
-console.log('PASS: landing play/pause/replay/reset shares engine; hero counters match; both authored discussion outcomes and reset; discussion does not mutate simulated products.');
+console.log('PASS: landing play/pause/replay/reset shares engine; hero counters match; main toolbar controls remain functional after comparison removal.');
 console.log(JSON.stringify({ passed: true, products: 500, positions, scenarios: summaries }, null, 2));
 console.log('PASS: real inline application; text / specialist / frontier / blind cascade; evidence gates; exact product IDs and counters; persistent final baskets; ten inputs per scene; autoscale 10/15/20 on/off; threshold policy; actual DOM movement.');

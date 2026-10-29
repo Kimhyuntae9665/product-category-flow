@@ -984,22 +984,7 @@ SOFTWARE.
 </svg><span><strong>블라인드: 서로의 답을 보지 않습니다.</strong>프론티어의 후보·근거·점수도 전달하지 않습니다.</span></p>
   </section>
  </div>
- <div class="br-boundary"><span aria-hidden="true">↓</span><strong>세 답안이 모인 뒤 공개</strong><span>독립 판정과 결과 비교를 분리합니다.</span></div>
 
- <section class="br-comparison" aria-labelledby="comparison-title">
-  <div class="br-comparison-head"><div><span class="br-number">04 · 결과를 모아 비교</span><h3 id="comparison-title">답을 공개한 뒤, 같은 기준에서 신뢰도를 비교합니다.</h3><p>모델별 판정 → 신뢰도 차이 → 이미지·텍스트 근거를 순서대로 대조합니다.</p></div><div class="scenario-switch" role="group" aria-label="독립 검토 예시 선택"><button type="button" id="case-frontier" aria-pressed="false">첫 판정으로 해결</button><button type="button" id="case-supported" aria-pressed="true">블라인드로 해결</button><button type="button" id="case-missing" aria-pressed="false">여전히 정보 부족</button></div></div>
-  <div class="br-table-controls"><div class="debate-steps" role="group" aria-label="가상 독립 검토 단계"><button type="button" id="debate-stage-0" aria-pressed="true"><b>1</b> 독립 판정 · 봉인</button><button type="button" id="debate-stage-1" aria-pressed="false"><b>2</b> 답안 공개 · 비교</button><button type="button" id="debate-stage-2" aria-pressed="false"><b>3</b> 최종 결정</button></div><button type="button" class="br-reveal-button" id="debate-next">세 답안 공개 →</button></div>
-  <p class="blind-reveal-note" id="blind-reveal-note">현재는 각자 답을 저장한 상태입니다. ‘세 답안 공개’를 누르면 비교표에 의견과 근거가 나타납니다.</p>
-<div class="confidence-graph" id="confidence-graph" aria-label="모델별 동일 기준 가상 신뢰도 비교"><div class="confidence-graph-head"><strong>“무선 이어폰” 후보의 비교용 Confidence</strong><span>0–100 · 설계용 가상 점수</span></div><div class="confidence-model-row"><b>답안 A</b><div class="confidence-row-body"><span id="confidence-candidate-0">판정 봉인</span><div class="confidence-axis"><i id="confidence-bar-0" style="width:0"></i><span class="confidence-cutoff"></span></div></div><strong id="confidence-value-0">—</strong></div><div class="confidence-model-row"><b>답안 B</b><div class="confidence-row-body"><span id="confidence-candidate-1">판정 봉인</span><div class="confidence-axis"><i id="confidence-bar-1" style="width:0"></i><span class="confidence-cutoff"></span></div></div><strong id="confidence-value-1">—</strong></div><div class="confidence-model-row"><b>답안 C</b><div class="confidence-row-body"><span id="confidence-candidate-2">판정 봉인</span><div class="confidence-axis"><i id="confidence-bar-2" style="width:0"></i><span class="confidence-cutoff"></span></div></div><strong id="confidence-value-2">—</strong></div><p class="confidence-axis-note">세로 점선: 예시 기준 85 · 답안 공개 전에는 모델별 점수를 가립니다.</p></div>
-  <details class="comparison-evidence"><summary>각 판단의 이미지·텍스트 근거 보기</summary><div class="br-table-wrap"><table class="br-comparison-table"><caption>동일 상품에 대한 독립 모델의 가상 답안 비교</caption><thead><tr><th scope="col">익명 답안</th><th scope="col">분류 후보</th><th scope="col">이미지 근거</th><th scope="col">텍스트 근거</th><th scope="col">판단 상태</th></tr></thead><tbody id="blind-comparison-body"></tbody></table></div></details>
-  <p class="br-confidence-note">표시된 수치는 가상 예시입니다. 실제 모델의 원점수는 그대로 평균 내지 않고, 같은 정답 자료로 보정한 뒤 동일 후보에 대한 신뢰도와 근거를 비교합니다.</p>
-  <div class="br-result-grid"><div class="br-compare-check" id="blind-compare-check">아직 결과를 공개하지 않았습니다.</div><div class="debate-verdict" id="debate-verdict" role="status" aria-live="polite"><svg class="landing-icon" viewBox="0 0 24 24" aria-hidden="true">
-  <path d="M16 10a2 2 0 0 1-2 2H6.828a2 2 0 0 0-1.414.586l-2.202 2.202A.71.71 0 0 1 2 14.286V4a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z" />
-  <path d="M20 9a2 2 0 0 1 2 2v10.286a.71.71 0 0 1-1.212.502l-2.202-2.202A2 2 0 0 0 17.172 19H10a2 2 0 0 1-2-2v-1" />
-</svg><span id="debate-result">프론티어 불확실로 사람검증 점수 +1 · 독립 검토 결과를 기다립니다.</span></div></div>
-  <div class="br-outcome-rules"><span><b>근거 충분</b> 사람검증 점수 +0 → 누적 1점, 최종 분류</span><span><b>낮은 보정 점수·충돌 미해결</b> 사람검증 점수 +2 → 누적 3점, 사람 검수</span></div>
-  <p class="br-case-note">첫 판정 통과·독립 비교 해결·정보 부족의 세 가지 가상 사례입니다. A는 Qwen3.7 Flash, B는 GLM 5.3 Flash, C는 Reka Edge의 배치 예시이며, 답안과 점수는 실제 모델의 응답·성능이 아닙니다. 세 모델은 이미지·텍스트 입력을 지원하는 후보로 선정했습니다. 한국어 상품 분류 성능과 실제 비용은 도입 전에 검증해야 합니다. 모든 단계에서 누적 2점 이상이면 후속 호출을 멈춥니다.</p>
- </section>
 
 
 </section>
@@ -1829,84 +1814,6 @@ $('hero-play').addEventListener('click',()=>{
 });
 $('hero-reset').addEventListener('click',()=>$('quick-reset').click());
 
-// This is intentionally a separate, authored teaching example, not model output.
-let debateCase='supported',frontierPassed=false,debateStage=0;
-const DEBATE_EXAMPLES={
- supported:[
-  ['무선 이어폰으로 판단합니다. 두 개의 이어피스 사진과 Bluetooth·음악 재생 설명을 함께 확인했습니다.','사진의 이어피스와 충전 케이스가 상품 설명에 맞습니다. 다른 모델의 답을 보지 않고 무선 이어폰으로 판단했습니다.','무선 이어폰 후보를 선택했습니다. 통화용 마이크와 음악 재생 기능이 텍스트에 명시돼 있습니다.','세 모델이 같은 입력으로 각각 판정했습니다. 이제 답을 공개해 비교합니다.'],
-  ['공개된 세 답이 모두 무선 이어폰을 가리킵니다. 비교용 신뢰도는 92·90·88로 예시 기준 85를 넘었습니다.','이 점수는 같은 후보와 보정 기준을 가정한 가상 값입니다. 다른 모델의 높은 점수만 보고 결론을 바꾸지는 않습니다.','각 모델이 든 사진·텍스트 근거가 원문에 있는지 확인했습니다. 후보 일치와 기준 통과를 함께 확인했습니다.','후보 일치 + 근거 충족 + 가상 비교 점수 통과 · 독립 검토 사람검증 점수 +0'],
-  ['최종 분류는 가전·디지털 > 음향기기 > 이어폰 > 무선입니다. 확인한 원문과 판정 근거를 함께 기록합니다.','처음 프론티어가 확정하지 못해 받은 사람검증 점수 1점은 그대로 남습니다. 독립 검토로 해결됐으므로 더하지 않습니다.','누적 사람검증 점수가 1점이고 최종 후보의 근거도 충족했습니다. 이후 모델 호출을 종료합니다.','사람검증 점수: 프론티어 불확실 +1 · 독립 검토 해결 +0 = 누적 1점 → 최종 분류']
- ],
- missing:[
-  ['상품명은 무선 이어폰이지만 사진에는 닫힌 케이스만 있습니다. 이어폰 포함 여부를 확인하기 어렵습니다.','케이스 단품일 가능성을 유지합니다. 이어피스가 사진에 없고 구성품 설명도 없습니다.','무선 이어폰과 케이스 단품을 구분할 근거가 부족해 최종 분류를 보류합니다.','각 모델이 독립적으로 판단했지만 필요한 구성품·기능 정보가 부족합니다.'],
-  ['무선 이어폰이라는 같은 후보의 비교용 신뢰도는 58·54·41입니다. 세 값 모두 예시 기준 85보다 낮습니다.','답을 모아도 없던 기능 정보가 생기지는 않습니다. 상품명과 사진의 불일치를 해결하지 못했습니다.','독립 검토 후에도 근거와 확신이 부족하므로 사람검증 점수 2점을 추가합니다.','사람검증 점수: 프론티어 미해결 +1 뒤 낮은 보정 점수·충돌 미해결 +2 · 누적 3점'],
-  ['이어폰 포함 여부와 기능 설명을 추가로 요청할 수 있도록 부족한 근거를 남깁니다.','누적 사람검증 점수가 2점 이상이므로 모델을 더 호출하거나 반복 토론하지 않습니다.','상품 원문과 각 모델의 답·근거를 함께 사람 검수 대기열로 보냅니다.','사람검증 점수: 프론티어 불확실 +1 · 독립 검토 미해결 +2 = 누적 3점 → 사람 검수']
- ]
-};
-const BLIND_COMPARISON_ROWS={
- supported:[
-  ['무선 이어폰','이어피스 2개 + 충전 케이스','Bluetooth · 음악 재생','근거 충족'],
-  ['무선 이어폰','음향 기기와 케이스를 함께 확인','무선 연결 · 통화용 마이크','근거 충족'],
-  ['무선 이어폰','귀에 착용하는 이어피스','음악 재생·통화 기능 명시','근거 충족']
- ],
- missing:[
-  ['무선 이어폰 / 케이스 단품','닫힌 케이스 외관만 확인','기능 설명이 없음','두 후보 유지'],
-  ['케이스 단품 가능성','이어피스가 보이지 않음','구성품 설명이 없음','확신 부족'],
-  ['최종 분류 보류','사진만으로 구성품 판단 불가','상품명 외 설명이 없음','추가 정보 필요']
- ]
-};
-function renderBlindComparison(){
- const revealed=!frontierPassed&&debateStage>0,supported=debateCase==='supported';
- const firstScore=frontierPassed?92:supported?64:52,scores=supported?[92,90,88]:[58,54,41];
- $('agent-debate').classList.toggle('frontier-passed',frontierPassed);
- $('confidence-graph').classList.toggle('low-confidence',!supported);
- $('frontier-score-value').textContent=String(firstScore);
- $('frontier-score-bar').style.width=firstScore+'%';
- $('frontier-gate-label').textContent=firstScore+(frontierPassed?' ≥ 기준 85 → 분류 완료':' < 기준 85 → 추가 검토');
- $('frontier-review-score').innerHTML=frontierPassed?'기준 통과 + 근거 충족 <b>사람검증 점수 +0</b>':'기준 미달 <b>사람검증 점수 +1</b>';
- $('case-frontier').setAttribute('aria-pressed',String(frontierPassed));
- $('case-supported').setAttribute('aria-pressed',String(supported&&!frontierPassed));
- $('case-missing').setAttribute('aria-pressed',String(!supported));
- $('case-art-supported').setAttribute('visibility',supported?'visible':'hidden');
- $('case-art-missing').setAttribute('visibility',supported?'hidden':'visible');
- $('case-art').setAttribute('aria-label',supported?'무선 이어폰 두 개와 충전 케이스의 설명용 그림':'이어폰 포함 여부가 보이지 않는 닫힌 케이스의 설명용 그림');
- $('case-description').textContent=supported?'Bluetooth 연결 · 음악 재생 · 통화용 마이크 · 이어폰 2개와 충전 케이스 포함':'상품명은 무선 이어폰. 구성품·음악 재생·충전 기능 설명은 없습니다.';
- $('case-evidence').textContent=supported?'텍스트: 무선 연결·음악·통화':'텍스트: 상품명 외 설명 없음';
- $('case-photo').textContent=supported?'사진: 이어피스 2개 + 케이스':'사진: 닫힌 케이스만 보임';
- $('frontier-answer').textContent=frontierPassed?'무선 이어폰 · 근거 충분':supported?'무선 이어폰 후보 · 확정 보류':'무선 이어폰 / 케이스 단품 · 구분 보류';
- $('blind-comparison-body').innerHTML=BLIND_COMPARISON_ROWS[debateCase].map((cells,index)=>'<tr><th scope="row">답안 '+['A','B','C'][index]+'</th>'+cells.map((value,col)=>'<td data-label="'+['분류 후보','이미지 근거','텍스트 근거','판단 상태'][col]+'"'+(!revealed?' class="sealed-cell"':'')+'>'+(frontierPassed?'추가 검토 요청 없음':revealed?(col===3?'<span class="answer-status'+(!supported?' uncertain':'')+'">'+value+'</span>':value):['공개 전 · 따로 저장','각자 원본 이미지 확인','각자 같은 텍스트 확인','다른 모델 답 비공개'][col])+'</td>').join('')+'</tr>').join('');
- for(let i=0;i<3;i++){
-  $('blind-seal-'+i).textContent=frontierPassed?'요청 없음':revealed?'답안 공개 ↓':'답안 봉인';
-  $('model-card-'+i).classList.toggle('answers-revealed',revealed);
-  $('confidence-candidate-'+i).textContent=frontierPassed?'프론티어에서 종료':revealed?'판정: '+BLIND_COMPARISON_ROWS[debateCase][i][0]:'판정 봉인';
-  $('confidence-bar-'+i).style.width=(revealed?scores[i]:0)+'%';
-  $('confidence-value-'+i).textContent=revealed?String(scores[i]):'—';
- }
- $('blind-compare-check').innerHTML=frontierPassed?'<strong>첫 판정에서 기준과 근거를 충족</strong>이 사례는 추가 모델의 판단이 필요하지 않습니다. OpenRouter 경로를 실행하지 않고 종료합니다.':!revealed?'<strong>아직 서로의 답을 보여 주지 않습니다.</strong>같은 원본 정보만 받고 각자 후보·근거·신뢰도를 저장합니다.':supported?'<strong>무선 이어폰 후보 일치 · 세 점수 모두 기준 통과</strong>사진 속 이어피스와 무선 연결·음악 재생 설명을 대조합니다. 비교 기준을 충족하면 사람검증 점수를 추가하지 않습니다.':'<strong>같은 후보의 점수도 낮고, 구성품 근거도 부족</strong>닫힌 케이스만으로는 이어폰 포함 여부를 알 수 없습니다. 다수결이나 신뢰도 평균으로 확정하지 않습니다.';
- $('blind-reveal-note').textContent=frontierPassed?'Gemini 예시 첫 판정의 신뢰도 92가 예시 기준 85를 넘고 근거도 충족했습니다. 추가 검토는 요청하지 않습니다.':!revealed?'각자 답을 따로 저장한 상태입니다. ‘세 답안 공개’를 누르면 모델별 판정과 비교용 신뢰도가 나타납니다.':debateStage===1?'독립 판정이 끝난 뒤 답안 A·B·C를 공개했습니다. 아래 막대는 모두 “무선 이어폰”이라는 동일 후보의 신뢰도입니다.':'공개된 근거와 비교 기준을 확인한 뒤 결론을 냅니다. 누적 사람검증 점수가 2점 이상이면 이후 호출을 멈추고 사람 검수로 보냅니다.';
- $('debate-next').textContent=frontierPassed?'첫 판정에서 완료':debateStage===0?'세 답안 공개 →':debateStage===1?'비교 후 결론 보기 →':'봉인 단계로 다시 보기 ↺';
- ['debate-next','debate-stage-0','debate-stage-1','debate-stage-2'].forEach(id=>$(id).disabled=frontierPassed);
- if(frontierPassed){$('debate-result').textContent='첫 판정 신뢰도·근거 충족 · 사람검증 점수 +0 = 0점 → 최종 분류';$('debate-verdict').className='debate-verdict resolved';}
-}
-
-function renderDebate(){
- const example=DEBATE_EXAMPLES[debateCase][debateStage];
- $('debate-result').textContent=example[3];
- $('debate-verdict').className='debate-verdict'+(debateStage===2?(debateCase==='supported'?' resolved':' held'):'');
- [0,1,2].forEach(i=>$('debate-stage-'+i).setAttribute('aria-pressed',String(i===debateStage)));
- $('case-supported').setAttribute('aria-pressed',String(debateCase==='supported'));
- $('case-missing').setAttribute('aria-pressed',String(debateCase==='missing'));
- $('blind-reveal-note').textContent=debateStage===0?'같은 입력으로 따로 판정한 결과입니다. 각 모델은 첫 판정에서 다른 모델과 프론티어의 답을 보지 않습니다.':debateStage===1?'독립 판정이 끝난 뒤 세 답을 함께 공개합니다. 같은 최종 후보의 근거와 비교 점수를 확인합니다.':'점수와 근거를 함께 확인합니다. 누적 사람검증 점수가 2점 이상이면 이후 호출을 멈추고 사람 검수로 이동합니다.';
- $('debate-next').textContent=debateStage===2?'검토 예시 처음부터 ↺':'다음 단계 →';
- renderBlindComparison();
-}
-[0,1,2].forEach(i=>$('debate-stage-'+i).addEventListener('click',()=>{if(frontierPassed)return;debateStage=i;renderDebate();}));
-function chooseDebateCase(kind){frontierPassed=kind==='frontier';debateCase=kind==='missing'?'missing':'supported';debateStage=0;renderDebate();}
-$('case-frontier').addEventListener('click',()=>chooseDebateCase('frontier'));
-$('case-supported').addEventListener('click',()=>chooseDebateCase('supported'));
-$('case-missing').addEventListener('click',()=>chooseDebateCase('missing'));
-$('debate-next').addEventListener('click',()=>{if(frontierPassed)return;debateStage=(debateStage+1)%3;renderDebate();});
-renderDebate();
 
 fitTree();render();requestAnimationFrame(frame);window.__ready=true;
 </script>
