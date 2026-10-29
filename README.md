@@ -152,3 +152,9 @@ node tests/test-token-price.cjs
 - [예측 라벨을 학습 자료로 활용한 Noisy Student 연구](https://research.google/pubs/self-training-with-noisy-student-improves-imagenet-classification/)
 - [AWS 대기열 기반 작업자 확장](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-autoscaling-queue.html)
 - [Kaufland 상품 정보 가이드](https://www.kauflandglobalmarketplace.com/en/seller-university/selling/product-data/product-data-guideline/)
+
+## 내 생각: 카테고리 축소는 보류
+
+[페이지 마지막의 의견](https://product-category-flow.pages.dev/#my-thoughts)에는 비슷하거나 지나치게 세분화된 항목을 묶어 카테고리 수를 줄이면 분류 비용을 낮출 가능성이 있다는 생각을 담았습니다. 다만 **1만 개 카테고리로 분류한다는 과제 규칙을 바꾸는 방안이므로 이번에는 보류**했습니다. 현재 설계는 주어진 1만 개 카테고리를 유지하는 전제입니다.
+
+![카테고리 수 축소에 관한 개인 의견과 과제 조건에 따른 보류](assets/personal-thought.png)
