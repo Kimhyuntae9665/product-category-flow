@@ -255,6 +255,31 @@ html{scroll-behavior:auto;scroll-padding-top:22px}body{background:#f5f8fc;color:
 .workspace+#agent-debate{margin-top:30px}.text-model-choice{display:inline-block;color:#245d7a;font-size:12px;line-height:1.5;overflow-wrap:anywhere}
 
 /* The frontier decision, conditional fan-out, and reveal boundary are distinct. */
+.br-process-controls{grid-column:1/-1;display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:18px;flex-wrap:wrap;color:#526e91;font-size:12px;line-height:1.7}
+.br-process-controls b{color:#315caa}.br-process-controls button{padding:8px 12px;border:1px solid #b4c9e2;border-radius:7px;background:#fff;color:#315caa;font:inherit;cursor:pointer}.br-process-controls button:focus-visible{outline:3px solid #315caa;outline-offset:3px}.br-process-controls button:disabled{cursor:default;color:#687b94;background:#f1f4f9}
+#blind-process{padding-bottom:28px}
+#blind-process .br-input,#blind-process .br-frontier,#blind-process .br-router,#blind-process .br-model{transition:background-color .5s,border-color .5s,box-shadow .5s}
+#blind-process[data-process-phase="0"] .br-input{background:#edf5ff;border-color:#548cce;box-shadow:0 0 0 3px #548cce26}
+#blind-process[data-process-phase="1"] .br-frontier{background:#f3efff;border-color:#8b65ce;box-shadow:0 0 0 3px #8b65ce26}
+#blind-process[data-process-phase="1"] .br-flow-arrow{color:#8053bd}
+#blind-process[data-process-phase="2"] .br-frontier{background:#fff8e8;border-color:#bb8127;box-shadow:0 0 0 3px #bb812726}
+#blind-process[data-process-phase="2"] .br-conditional-arrow{color:#a76613;font-weight:800}
+#blind-process[data-process-phase="3"] .br-original-packet{background:#dceaff;color:#214f94;box-shadow:0 0 0 2px #84a8dc}
+#blind-process[data-process-phase="3"] .br-fanout i,#blind-process[data-process-phase="3"] .br-fanout:before,#blind-process[data-process-phase="3"] .br-fanout:after{border-color:#477fc2}
+#blind-process .br-model{--process-color:#7c50b9;--process-bg:#f3ecff}
+#blind-process #model-card-1{--process-color:#346cb6;--process-bg:#eaf2ff}
+#blind-process #model-card-2{--process-color:#21806f;--process-bg:#e8f6f1}
+#blind-process .br-model.process-working{background:var(--process-bg);border-color:var(--process-color);box-shadow:0 0 0 2px var(--process-bg)}
+#blind-process .br-model.process-working .br-seal{color:var(--process-color);font-weight:800}
+#blind-process .br-model.process-done{background:#edf8f1;border-color:#65a486}
+#blind-process .br-model.process-done .br-seal{color:#26714c;font-weight:800}
+.br-process-meter{height:4px;border-radius:4px;background:#e3eaf3;overflow:hidden;margin-top:9px}.br-process-meter i{display:block;width:0;height:100%;background:var(--process-color)}
+#blind-process[data-process-phase="5"] .br-merge i,#blind-process[data-process-phase="5"] .br-merge:before,#blind-process[data-process-phase="5"] .br-merge:after{border-color:#3c926e}
+#blind-process[data-process-phase="5"] .br-router{background:#f5fcf8;border-color:#65a486}
+.br-process-caption{font-size:12px;line-height:1.8;color:#315c86;min-height:44px;margin:12px 0 8px;font-weight:700;word-break:keep-all}
+.br-process-timeline{height:3px;overflow:hidden;border-radius:3px;background:#e1e9f2}.br-process-timeline i{display:block;width:0;height:100%;background:#547fb7}
+.br-process-note{font-size:10px;line-height:1.7;color:#687e96;word-break:keep-all;margin:8px 0}
+#blind-process.process-reduced .br-input,#blind-process.process-reduced .br-frontier,#blind-process.process-reduced .br-router,#blind-process.process-reduced .br-model{transition:none}
 .blind-review-section{--br-blue:#315caa;--br-amber:#9b601c;--br-line:#bfd0e5}
 .blind-review-section .debate-header{align-items:center;padding:26px 28px 23px}
 .blind-review-section .debate-header h2{font-size:27px;line-height:1.4;letter-spacing:-.045em}
@@ -934,7 +959,8 @@ SOFTWARE.
   <p class="review-investment-rule"><b>판단 기준은 사람 검수·오분류 수정까지 합친 전체 비용입니다.</b> 먼저 독립적으로 답하고, 이후 후보와 근거를 교차 검증합니다. 호출 횟수와 예산 안에서 검토하고, 끝내 해소되지 않는 예외는 사람에게 보냅니다.</p>
  </aside>
 
- <div class="br-map" aria-label="같은 상품 입력에서 프론티어 판정과 조건부 독립 검토로 이어지는 흐름">
+ <div class="br-map" id="blind-process" data-process-phase="0" aria-label="같은 상품 입력에서 프론티어 판정과 조건부 독립 검토로 이어지는 흐름">
+  <div class="br-process-controls"><span><b>18초 자동 반복</b> · 기준 미달 상품의 처리 예시</span><button type="button" id="br-process-toggle" aria-pressed="false">Ⅱ 일시정지</button></div>
   <article class="br-input">
    <span class="br-number">01 · 공통 입력</span><h3>이미지 1장 + 텍스트</h3>
    <svg id="case-art" class="product-art" viewBox="0 0 220 150" role="img" aria-label="무선 이어폰과 충전 케이스의 설명용 그림"><ellipse cx="110" cy="137" rx="77" ry="9" fill="#d9e1ed"/><g id="case-art-supported"><path d="M43 82 Q43 65 62 65 H158 Q179 66 179 84 L176 112 Q172 133 150 133 H70 Q46 131 43 110Z" fill="#273448"/><ellipse cx="111" cy="80" rx="66" ry="19" fill="#0d1727"/><ellipse cx="81" cy="81" rx="19" ry="8" fill="#45576f"/><ellipse cx="141" cy="81" rx="19" ry="8" fill="#45576f"/><path d="M74 63 V30 Q66 21 54 25 Q41 29 45 43 Q49 55 61 49 V64 Q66 72 74 63Z" fill="#eff4fa" stroke="#778ba8" stroke-width="2"/><path d="M148 63 V30 Q156 21 168 25 Q181 29 177 43 Q173 55 161 49 V64 Q156 72 148 63Z" fill="#eff4fa" stroke="#778ba8" stroke-width="2"/><ellipse cx="53" cy="37" rx="4" ry="6" fill="#36485d"/><ellipse cx="169" cy="37" rx="4" ry="6" fill="#36485d"/><circle cx="111" cy="115" r="3" fill="#82d2a6"/><path d="M103 25 Q111 19 119 25 M99 16 Q111 7 123 16" fill="none" stroke="#549d89" stroke-width="2" stroke-linecap="round"/></g><g id="case-art-missing" visibility="hidden"><rect x="44" y="43" width="135" height="89" rx="32" fill="#34445a"/><path d="M46 78 Q110 86 176 78" fill="none" stroke="#899bb5" stroke-width="2"/><path d="M62 60 Q74 51 89 53" fill="none" stroke="#647b99" stroke-width="4" stroke-linecap="round"/></g></svg>
@@ -964,19 +990,22 @@ SOFTWARE.
   <circle cx="12" cy="16" r="1" />
   <rect x="3" y="10" width="18" height="12" rx="2" />
   <path d="M7 10V7a5 5 0 0 1 10 0v3" />
-</svg> 답안 봉인</div></article>
+</svg> 요청 대기</div><div class="br-process-meter" aria-hidden="true"><i id="br-model-progress-0"></i></div></article>
     <article class="br-model" id="model-card-1"><span class="br-model-brand"><img class="model-logo" width="32" height="32" alt="" aria-hidden="true" src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSJjdXJyZW50Q29sb3IiIGZpbGwtcnVsZT0iZXZlbm9kZCIgaGVpZ2h0PSIxZW0iIHN0eWxlPSJmbGV4Om5vbmU7bGluZS1oZWlnaHQ6MSIgdmlld0JveD0iMCAwIDI0IDI0IiB3aWR0aD0iMWVtIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjx0aXRsZT5aLmFpPC90aXRsZT48cGF0aCBkPSJNMTIuMTA1IDJMOS45MjcgNC45NTNILjY1M0wyLjgzIDJoOS4yNzZ6TTIzLjI1NCAxOS4wNDhMMjEuMDc4IDIyaC05LjI0MmwyLjE3NC0yLjk1Mmg5LjI0NHpNMjQgMkw5LjI2NCAyMkgwTDE0LjczNiAySDI0eiI+PC9wYXRoPjwvc3ZnPg=="><span class="br-answer-id">B</span></span><h4>GLM 5.3<small>Flash · Z.ai</small></h4><p>원본 근거<br>독립 검토</p><div class="br-seal" id="blind-seal-1"><svg class="landing-icon" viewBox="0 0 24 24" aria-hidden="true">
   <circle cx="12" cy="16" r="1" />
   <rect x="3" y="10" width="18" height="12" rx="2" />
   <path d="M7 10V7a5 5 0 0 1 10 0v3" />
-</svg> 답안 봉인</div></article>
+</svg> 요청 대기</div><div class="br-process-meter" aria-hidden="true"><i id="br-model-progress-1"></i></div></article>
     <article class="br-model" id="model-card-2"><span class="br-model-brand"><img class="model-logo" width="32" height="32" alt="" aria-hidden="true" src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSJjdXJyZW50Q29sb3IiIGZpbGwtcnVsZT0iZXZlbm9kZCIgaGVpZ2h0PSIxZW0iIHN0eWxlPSJmbGV4Om5vbmU7bGluZS1oZWlnaHQ6MSIgdmlld0JveD0iMCAwIDI0IDI0IiB3aWR0aD0iMWVtIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjx0aXRsZT5SZWthPC90aXRsZT48cGF0aCBkPSJNMy42NjIuMDE0QzQuMzQ3LjAwNCA1LjA1Mi4wMTIgNS43NC4wMTJoMy45cTEuMDEuMDA2IDIuMDItLjAwNmMtLjAwNS44Ny0uMDEgMS43NzkgMCAyLjY0Ny0uMTYtLjAyNy0uNTkzLS4wMTgtLjc3NC0uMDE4SDQuOTQzbC0xLjQwOC4wMDFjLS4yNjMuMDAxLS41OTUuMDEtLjg1Mi0uMDA0LjAxNCAxLjIxNi4wMDIgMi40NTUuMDAyIDMuNjczdjQuNjgxYzAgLjE4NS0uMDA4LjQ4LjAxNi42NTYtLjgzNC0uMDM5LTEuODQ5LS4wMDUtMi43LS4wMS4wMzItLjcxNy4wMDgtMS41NzYuMDA4LTIuMzA3VjMuNjljLS4wMDEtLjQ0LS4wMjMtLjgxMi4wNjUtMS4yNDYuMTEtLjU1Ny4zNzctMS4wNy43Ny0xLjQ4MUEzIDMgMCAwIDEgMi43NTYuMDNjLjI0NS0uMDIyLjY0NC0uMDEuOTA1LS4wMTdNMjMuNzQgMTEuNjQxYy0uNjg4LS4wMy0xLjU0LS4wMDctMi4yMzctLjAwN0gxNS45MmMtLjg1My4wMDEtMS4zNzMuMDI0LTIuMTM5LS40MjJhMy4wMiAzLjAyIDAgMCAxLTEuNC0xLjg0MmMtLjE0Ni0uNTUzLS4xLTEuMjg1LS4xLTEuODYzVjUuMjk5bC0uMDAyLTEuNTM1YzAtLjM3LS4wMTEtLjc5NC4wMzUtMS4xNTYuMDUzLS4zODguMTgzLS43NjMuMzgyLTEuMUEzLjAxIDMuMDEgMCAwIDEgMTUuMTAyLjAxM2MuMzg3LS4wMjIuODY5LS4wMSAxLjI2MS0uMDFsMi4yMjQuMDAxaDEuNjA3Yy44OC0uMDAxIDEuNDQ5LS4wMzcgMi4yMzcuNDI2YTMuMDIgMy4wMiAwIDAgMSAxLjI5MyAxLjU0NGMuMDguMjE3LjEyLjM5NS4xNzcuNjE1djEuMDI3Yy0uMDcyLjE2Ny0uMTIzLjQ3Mi0uMjI3LjcxOWEzLjA0IDMuMDQgMCAwIDEtMS4xNzYgMS4zNzVjLS4zMTguMjA0LS43NC4zNC0xLjA5OC40NjdsLS45NTEuMzQtMy4xODEgMS4xMzJjLS41NTIuMTk2LTEuMjA1LjQxLTEuNzQuNjI2LS4wMy0uNjQ2LjAwOC0xLjMxNi0uMDA3LTEuOTY1LS4wMDUtLjItLjAwNi0uNDMyLjAxLS42MzIuNDYzLS4xODkuOTYtLjM2OCAxLjQzLS41NDdsMi43MTktMS4wMzhjLjM1Ny0uMTM3LjcxNy0uMjY4IDEuMDc0LS40MDUuMTc0LS4wNjcuMzUyLS4xMzUuNDMzLS4zMTUuMTg2LS40MTQtLjExMi0uNzQtLjUzOC0uNzM5cS0uNTU1IDAtMS4xMDYuMDAzbC0yLjE2MS0uMDAySDE2LjEyYy0uMjQ4IDAtLjUwNi0uMDA4LS43NTIuMDE4LS4xMjQuMDA4LS4zMjcuMTU3LS4zNjIuMjgtLjA3LjI0Ni0uMDUyLjU5Ny0uMDUyLjg1MmwuMDAzIDEuMDU1VjcuNWMwIC40OTcuMDEgMS4wMjQtLjAwNCAxLjUxOS4zMzQtLjAyNi44MTYtLjAxIDEuMTY0LS4wMUgxOC4yYzEuODI1IDAgMy43MjYtLjAyNyA1LjU0Ny4wMDQtLjAyMy4yMjgtLjAxLjY4Ni0uMDEuOTN6bS0xMS4yNzIuNzc5aDcuNjI2Yy4zNjEgMCAuODE0LS4wMTMgMS4xNjUuMDNhMy4wNCAzLjA0IDAgMCAxIDIuNDUgMS45MDdjLjA4NC4yMTUuMTMuNDE5LjE5Mi42NHY2LjQ4NWMtLjA1Mi4xOTMtLjA5Ny4zOTUtLjE2Ni41OGEzLjA1IDMuMDUgMCAwIDEtMS4zNTIgMS41OTdjLS4xNTQuMDg4LS4yNDEuMTMtLjQwNC4xOS0uMDc4LjAyOC0uMzg4LjEyNC0uNDMuMTVoLTYuOTAzYy0uMDYyLS4wMzYtLjQ5Ny0uMTcyLS42NDgtLjI0NUEzLjA1IDMuMDUgMCAwIDEgMTIuNDQ0IDIyYy0uNDctMS4zNjUuMDYtMi45NTMgMS4zMS0zLjY4NS4zNTYtLjIwOS43NDUtLjMzIDEuMTMyLS40NjdsMS4zNy0uNDg2YzEuNDY1LS41MiAyLjk1Ni0xLjA3MyA0LjQyNC0xLjU3MS0uMDI5LjgzLjAxNiAxLjc0Mi0uMDA1IDIuNTg4LS4xMjEuMDU3LS4zMzcuMTMtLjQ2OC4xOGwtLjg5NC4zNC0yLjg0NyAxLjA4NWMtLjE1OC4wNi0uMzI3LjExOC0uNDgxLjE4MS0uMTg4LjA5OC0uNzMuMjI2LS44NjQuMzctLjM2LjM4OC0uMDk3Ljg5LjQxNS44ODcuNDItLjAwMy43NzIgMCAxLjE1LS4wMDJsMS45ODguMDAxaDEuMzY3Yy4yNTYgMCAuNTIuMDA4Ljc3NC0uMDEzLjIxLS4wMTguMzkzLS4yMjguNDE2LS40MzIuMDI2LS4yMjkuMDE4LS40NTguMDE3LS42ODhsLS4wMDEtMS4wMTh2LTIuNjM5YzAtLjUxNi0uMDA4LTEuMDU0LjAwNi0xLjU2OC0xLjM1Mi0uMDMtMi43OS0uMDA3LTQuMTQ4LS4wMDctMS41MzIgMC0zLjExNy0uMDItNC42NDUuMDA3LjAxNS0uMjkyLjAwNi0uNjQyLjAwNi0uOTM5em0tNC41NTQuMDE1Yy4zMy0uMDIxLjcwNS0uMDAyIDEuMDQtLjAwOC44NDctLjAxNiAxLjczOC4wMjMgMi41ODItLjAwMi0uMTk1LjIyLS40MzQuNDMtLjY0Ni42MzdsLTEuMDE3IDEuMDAyTDcuMDQgMTYuODRjLS40MzUuNDI3LS45MTIuODY2LTEuMzMzIDEuMzA0LjEyNC4xNTQuNDE4LjQzMS41NzEuNTg1bDEuMDg0IDEuMDgyIDIuMTc2IDIuMTY4cTEuMDM0IDEgMi4wNDcgMi4wMjJINy44NDljLS4yNDgtLjIzNi0uNDk1LS40OTMtLjc0LS43MzVsLTEuNjMyLTEuNnEtLjU5NS0uNTY5LTEuMTgtMS4xNDdjLS4yNy0uMjY4LS41Ny0uNTQxLS43NzUtLjg2YTIuNjU2IDIuNjU2IDAgMCAxIC4zMzgtMy4yNjJjLjIxLS4yMi40NTQtLjQ0Ny42NzItLjY2bDEuNTgtMS41NDhxLjYxMS0uNjEyIDEuMjM5LTEuMjFjLjEzNy0uMTM0LjQyNy0uNDQuNTY0LS41NDNtLTcuOTA5LS4wMDFjLjc1NS0uMDMyIDEuNTMuMDA2IDIuMjg2LS4wMDguMTMtLjAwMi4yNzMtLjAwMy40MDMuMDAyLS4wMjkuMzE3LS4wMS45ODgtLjAxIDEuMzM4djIuNTU3TDIuNjg2IDI0SC4wMDdsLjAwMi03LjkxN1YxMy42MWMwLS4zNC0uMDE4LS44NDctLjAwMy0xLjE3NSI+PC9wYXRoPjwvc3ZnPg=="><span class="br-answer-id">C</span></span><h4>Reka Edge<small>Reka</small></h4><p>원본 근거<br>독립 검토</p><div class="br-seal" id="blind-seal-2"><svg class="landing-icon" viewBox="0 0 24 24" aria-hidden="true">
   <circle cx="12" cy="16" r="1" />
   <rect x="3" y="10" width="18" height="12" rx="2" />
   <path d="M7 10V7a5 5 0 0 1 10 0v3" />
-</svg> 답안 봉인</div></article>
+</svg> 요청 대기</div><div class="br-process-meter" aria-hidden="true"><i id="br-model-progress-2"></i></div></article>
    </div>
    <div class="br-merge" aria-hidden="true"><i></i><i></i><i></i></div>
+   <p class="br-process-caption" id="br-process-caption">01 · 같은 상품의 이미지와 텍스트를 준비합니다.</p>
+   <div class="br-process-timeline" aria-hidden="true"><i id="br-process-progress"></i></div>
+   <p class="br-process-note">색과 진행 막대는 처리 순서를 설명하는 연출입니다. 실제 모델 호출·응답 시간·성능 측정이 아닙니다.</p>
    <p class="br-blind-rule"><svg class="landing-icon" viewBox="0 0 24 24" aria-hidden="true">
   <circle cx="12" cy="16" r="1" />
   <rect x="3" y="10" width="18" height="12" rx="2" />
@@ -1908,6 +1937,69 @@ fitTree();render();requestAnimationFrame(frame);window.__ready=true;
   },{threshold:0});
   observer.observe(root);
  }
+})();
+
+</script>
+<script id="blind-process-script">
+// Authored process illustration only: no model requests or measured latency.
+(()=>{
+ const root=document.getElementById('blind-process');
+ if(!root)return;
+ const get=id=>document.getElementById(id),duration=18;
+ const motion=matchMedia('(prefers-reduced-motion: reduce)');
+ const labels=[
+  '01 · 같은 상품의 이미지와 텍스트를 준비합니다.',
+  '02 · Gemini가 이미지와 텍스트를 함께 판단합니다.',
+  '03 · 예시 점수 64 < 기준 85 → 독립 검토를 요청합니다.',
+  '04 · 세 모델에 같은 원본을 동시에 전달합니다. 앞선 답은 전달하지 않습니다.',
+  '05 · 세 모델이 서로의 답을 보지 않고 동시에 검토합니다.',
+  '06 · 세 답안 수집 완료. 이후 근거 비교로 연결하고 처음부터 반복합니다.'
+ ];
+ let time=0,playing=false,paused=false,inView=typeof IntersectionObserver==='undefined',frameId=null,last=0,lastDraw=0;
+ const phase=()=>time<2?0:time<6?1:time<8?2:time<10?3:time<15?4:5;
+ function render(){
+  const p=phase(),result=p>=2;
+  root.setAttribute('data-process-phase',String(p));
+  root.classList.toggle('process-reduced',motion.matches);
+  get('br-process-caption').textContent=motion.matches?'동작 줄이기 적용 · 공통 입력 → Gemini → 기준 미달 시 세 모델 독립 검토 → 답안 수집':labels[p];
+  get('br-process-progress').style.width=(time/duration*100)+'%';
+  get('br-process-toggle').textContent=motion.matches?'동작 줄이기 적용':paused?'▶ 자동 반복 재개':'Ⅱ 일시정지';
+  get('br-process-toggle').disabled=motion.matches;
+  get('br-process-toggle').setAttribute('aria-pressed',String(playing));
+  get('frontier-answer').textContent=result?'무선 이어폰 후보 · 확정 보류':p===1?'이미지·텍스트 판단 중':'공통 입력 대기';
+  get('frontier-score-value').textContent=result?'64':'—';
+  get('frontier-score-bar').style.width=result?'64%':'0%';
+  get('frontier-gate-label').textContent=result?'64 < 기준 85 → 추가 검토':'판정 후 예시 기준과 비교';
+  get('frontier-review-score').textContent=result?'기준 미달 · 사람검증 점수 +1':'판정 대기 · 검수 점수 미부여';
+  for(let i=0;i<3;i++){
+   get('model-card-'+i).classList.toggle('process-working',p===4);
+   get('model-card-'+i).classList.toggle('process-done',p===5);
+   get('blind-seal-'+i).textContent=p===5?'✓ 답안 저장 · 봉인':p===4?'독립 검토 중':p===3?'동일 원본 수신':'요청 대기';
+   get('br-model-progress-'+i).style.width=(p===5?100:p===4?(time-10)/5*100:0)+'%';
+  }
+ }
+ function stop(){playing=false;if(frameId!==null)cancelAnimationFrame(frameId);frameId=null;}
+ function frame(now){
+  if(!playing)return;
+  time=(time+Math.min(200,Math.max(0,now-last))/1000)%duration;last=now;
+  if(now-lastDraw>=50){render();lastDraw=now;}
+  frameId=requestAnimationFrame(frame);
+ }
+ function sync(){
+  if(paused||motion.matches||!inView||document.hidden)stop();
+  else if(!playing){playing=true;last=performance.now();lastDraw=last;frameId=requestAnimationFrame(frame);}
+  render();
+ }
+ get('br-process-toggle').addEventListener('click',()=>{if(!motion.matches){paused=!paused;sync();}});
+ motion.addEventListener('change',()=>{if(motion.matches)time=15;sync();});
+ document.addEventListener('visibilitychange',sync);
+ if(motion.matches)time=15;
+ sync();
+ if(typeof IntersectionObserver!=='undefined'){
+  const observer=new IntersectionObserver(entries=>{inView=entries.some(entry=>entry.isIntersecting);sync();},{threshold:0});
+  observer.observe(root);
+ }
+ window.blindProcessDemo={getState:()=>({time,phase:phase(),playing,paused,reduced:motion.matches})};
 })();
 
 </script>
