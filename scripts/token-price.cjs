@@ -118,9 +118,12 @@ ${chart('token-hero')}
 
 function renderCompact() {
   return `<aside class="token-price-compact" id="future-token-price" aria-labelledby="future-price-title">
-<div class="token-price-future-copy"><p class="token-price-eyebrow">낮아지는 단가 + 분야별 소형 모델</p><h3 id="future-price-title">더 저렴해질 AI를,<br> 더 잘 활용하는 구조로.</h3><p>GPT-4 수준의 최저 토큰 단가는 2023년 10월보다 <strong>약 ${Math.round(ratio)}분의 1</strong>로 낮아졌습니다. 장기적인 단가 하락을 기대하며, 필요한 AI Agent 검토를 적극 활용합니다.</p><p>동시에 검증된 학습 자료를 쌓아 소형 모델로 전환합니다. <strong>단가 변화와 자체 모델의 실제 총비용을 함께 비교</strong>해 처리 비중을 조정합니다.</p><small>향후 하락은 전망이며, 계속 내려간다고 보장하지 않습니다.</small></div>
-${chart('token-future')}
-<div class="token-price-method">${criteria()}${sourceLine()}<p class="token-price-outlook">각 성능 기준을 충족한 모델·제공처 간 비교입니다. 이 서비스의 실측 처리비용이나 절감 성과는 아닙니다.</p></div>
+<div class="token-price-future-copy"><p class="token-price-eyebrow">토큰 비용 하락을 고려한 설계 판단</p>
+<h3 id="future-price-title">AI Agent 간 의견 비교를<br>적극적으로 활용합니다.</h3>
+<p>같은 성능 기준의 토큰 단가는 장기적으로 낮아져 왔으며, 앞으로도 더 줄어들 것으로 예상합니다.</p>
+<p>이에 <strong>PAL-review처럼 여러 AI Agent의 판정과 근거를 비교하는 도구를 적극 활용하는 편이, 사람이 모든 상품을 직접 검수하는 것보다 효율적이라고 판단했습니다.</strong></p>
+<p>의견이 같다는 이유만으로 확정하지 않고, 근거가 부족하거나 판정이 충돌하면 사람에게 넘깁니다.</p>
+<small>설계상 판단이며, 실제 정확도와 총비용의 우위는 도입 전에 검증합니다.</small></div>
 </aside>`;
 }
 

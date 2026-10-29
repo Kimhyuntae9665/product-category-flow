@@ -40,8 +40,8 @@ for (const mobile of [false, true]) {
 
 const html = fs.readFileSync(path.join(__dirname, '../index.html'), 'utf8');
 const hero = chart.renderHero(), future = chart.renderCompact();
-assert.ok(html.includes(hero) && html.includes(future), 'Both live sections must use the current dataset.');
-assert.ok(html.indexOf(hero) < html.indexOf('class="assignment-banner"'));
+assert.ok(html.includes(hero) && html.includes(future), 'Both live sections must match their current renderers.');
+assert.ok(html.indexOf('class="assignment-banner"') < html.indexOf(hero), 'The task goal and scale precede the supporting cost outlook.');
 const ids = [...(hero + future).matchAll(/\bid="([^"]+)"/g)].map(match => match[1]);
 assert.equal(ids.length, new Set(ids).size, 'Responsive chart descriptions must have unique IDs.');
 assert.ok(!/<img|<canvas|<script/.test(hero + future), 'The historical curves are native SVG, not screenshots or a live forecast.');
