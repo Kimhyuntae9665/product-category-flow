@@ -120,10 +120,10 @@ function renderCompact() {
   return `<aside class="token-price-compact" id="future-token-price" aria-labelledby="future-price-title">
 <div class="token-price-future-copy"><p class="token-price-eyebrow">토큰 비용 하락을 고려한 설계 판단</p>
 <h3 id="future-price-title">AI Agent 간 의견 비교를<br>적극적으로 활용합니다.</h3>
-<p>같은 성능 기준의 토큰 단가는 장기적으로 낮아져 왔으며, 앞으로도 더 줄어들 것으로 예상합니다.</p>
+<p>성능 기준별 최저 토큰 단가의 장기적 하락 추세를 바탕으로, 앞으로도 비용이 더 줄어들 것으로 예상합니다.</p>
 <p>이에 <strong>PAL-review처럼 여러 AI Agent의 판정과 근거를 비교하는 도구를 적극 활용하는 편이, 사람이 모든 상품을 직접 검수하는 것보다 효율적이라고 판단했습니다.</strong></p>
 <p>의견이 같다는 이유만으로 확정하지 않고, 근거가 부족하거나 판정이 충돌하면 사람에게 넘깁니다.</p>
-<small>설계상 판단이며, 실제 정확도와 총비용의 우위는 도입 전에 검증합니다.</small></div>
+<small>가격 하락은 전망입니다. 실제 정확도와 총비용의 우위는 도입 전에 검증합니다.</small></div>
 </aside>`;
 }
 
