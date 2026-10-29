@@ -4,7 +4,7 @@
 
 **[▶ 웹에서 직접 실행하기](https://product-category-flow.pages.dev/)**
 
-![사람 검수 감소 목적을 맨 위에 두고, AI Agent 활용 관점과 토큰 단가 그래프를 이어 배치한 첫 화면](assets/token-price-hero.png)
+![분류 정확도를 높여 반복 검수와 인건비를 줄이는 설계 목표를 설명한 정적 그림](assets/review-cost-goal.png)
 
 ## AI Agent를 적극 활용하는 이유
 
@@ -18,7 +18,7 @@
 
 과제는 **상품 500만 건·카테고리 1만 개**입니다. 애니메이션의 작동 구조를 보여주기 위해 **가상 상품 500개·대분류 10개·최종 분류 38개**로 줄였습니다. 전체 분류 노드는 66개이며, 의류의 상의·하의처럼 같은 층에 여러 하위 후보가 있습니다.
 
-**정확도 == 돈 · 상품당 평균 예산 20원.** 총 1억 원을 500만 상품으로 나눈 예산 기준입니다. 학습·서버·API·사람 검수·오분류 수정 비용을 함께 비교해야 합니다. 실제 처리비용이나 달성한 정확도가 아닙니다.
+**분류 정확도를 높여 사람의 반복 검수와 인건비를 줄이는 설계 · 상품당 평균 예산 20원.** 총 1억 원을 500만 상품으로 나눈 예산 기준입니다. 학습·서버·API·사람 검수·오분류 수정 비용을 함께 비교해야 합니다. 실제 처리비용이나 달성한 정확도가 아닙니다.
 
 ## 필요한 단계까지만 실행
 
@@ -84,9 +84,9 @@
 
 [독립 검토 화면](https://product-category-flow.pages.dev/#agent-debate)은 **원본 이미지 1장과 텍스트 → Codex 프론티어 첫 판정 → 신뢰도가 기준보다 낮을 때 OpenRouter → 블라인드 독립 답안을 공개한 뒤 비교**를 보여줍니다. 첫 판정의 신뢰도와 예시 기준선 85를 표시하고, 근거와 기준을 충족하면 여기서 종료합니다. 주 시뮬레이션에서 프론티어 단계까지 온 상품을 설명하는 별도의 예시입니다.
 
-![Codex 첫 판정과 Qwen, NVIDIA Nemotron, Cohere 로고를 표시한 OpenRouter 블라인드 분기](assets/codex-model-logos.png)
+![Qwen3.7 Flash, GLM 5.3 Flash, Reka Edge의 독립 검토 조합을 설명한 정적 설계도](assets/blind-selected-models.png)
 
-카드 A·B·C는 각각 Qwen·NVIDIA Nemotron·Cohere를 배치한 예시입니다. 같은 원본과 분류 기준을 전달하고, 앞선 프론티어의 후보·근거·점수와 다른 모델의 답은 전달하지 않는 설계를 보여줍니다. **세 답안 공개**를 누른 뒤에만 판정과 신뢰도 막대가 나타납니다. 모든 막대는 동일한 ‘무선 이어폰’ 후보에 대한 가상 비교 점수이며 해당 모델의 실제 성능이 아닙니다. 실제 연결에는 선택 모델의 이미지 입력 지원을 별도로 확인해야 합니다. 이미지·텍스트 근거는 접기 표에서 확인합니다.
+카드 A·B·C는 각각 Qwen3.7 Flash·GLM 5.3 Flash·Reka Edge를 배치한 예시입니다. 같은 원본과 분류 기준을 전달하고, 앞선 프론티어의 후보·근거·점수와 다른 모델의 답은 전달하지 않는 설계를 보여줍니다. **세 답안 공개**를 누른 뒤에만 판정과 신뢰도 막대가 나타납니다. 모든 막대는 동일한 ‘무선 이어폰’ 후보에 대한 가상 비교 점수이며 해당 모델의 실제 성능이 아닙니다. 실제 연결에는 선택 모델의 이미지 입력 지원을 별도로 확인해야 합니다. 이미지·텍스트 근거는 접기 표에서 확인합니다.
 
 ![같은 후보의 모델별 신뢰도와 기준선 비교](assets/codex-confidence-comparison.jpg)
 
@@ -142,7 +142,7 @@ node tests/test-token-price.cjs
 
 사용자가 문제와 처리 순서를 정하고, Codex를 활용해 화면·시뮬레이션·검사를 구현하고 수정했습니다. 2026.10.28의 PAL 설계 검토 기록은 접기 영역에 별도로 보존했습니다. 현재 상품 분류의 실제 모델 호출이나 이미지 모델 선정 기록이 아닙니다.
 
-아이콘은 [Lucide Static](https://lucide.dev/guide/static) 1.63.0입니다. Codex·Qwen·NVIDIA·Cohere의 브랜드 로고는 [Lobe Icons](assets/model-logos/README.md)이며 원본 색상·형태와 라이선스를 보존했습니다. 상품 그림·분류도는 자체 SVG입니다.
+아이콘은 [Lucide Static](https://lucide.dev/guide/static) 1.63.0입니다. Gemini·Qwen·Z.ai·Reka의 브랜드 로고는 [Lobe Icons](assets/model-logos/README.md)이며 원본 색상·형태와 라이선스를 보존했습니다. 상품 그림·분류도는 자체 SVG입니다.
 
 - [EfficientNet-B0 공식 문서](https://docs.pytorch.org/vision/main/models/generated/torchvision.models.efficientnet_b0.html)
 - [ConvNeXt-Tiny 공식 문서](https://docs.pytorch.org/vision/main/models/generated/torchvision.models.convnext_tiny.html)

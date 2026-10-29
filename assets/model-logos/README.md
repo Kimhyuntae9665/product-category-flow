@@ -1,15 +1,15 @@
 # Model and provider logos
 
-Unmodified source SVGs from [Lobe Icons](https://github.com/lobehub/lobe-icons), pinned at commit `8b7bbc433d38437fa2b0cca58ae896917162b812`, path `packages/static-svg/icons/`.
+Unmodified SVGs from [Lobe Icons](https://github.com/lobehub/lobe-icons), pinned at commit `8b7bbc433d38437fa2b0cca58ae896917162b812`, path `packages/static-svg/icons/`.
 
-- `codex-color.svg`: Codex, identifying the first frontier-review step
-- `qwen-color.svg`: Qwen family
-- `nvidia-color.svg`: NVIDIA, identifying the Nemotron family
-- `cohere-color.svg`: Cohere, identifying the North family
-- `gemini-color.svg`: Google Gemini family
+Current classification diagrams:
+- `gemini-color.svg`: Gemini 3.1 Flash-Lite, frontier stage.
+- `qwen-color.svg`: Qwen3.7 Flash, independent answer A.
+- `zai.svg`: Z.ai, GLM 5.3 Flash, independent answer B.
+- `reka.svg`: Reka Edge, independent answer C.
 
-Copyright (c) 2023 LobeHub. The complete MIT [LICENSE](LICENSE) is retained. Original SVG bytes are embedded as data URLs in the single-file site; colors and geometry are not altered. The marks identify model families/providers and do not imply affiliation, sponsorship, endorsement, or verified product-classification performance.
+Original `codex-color.svg`, `nvidia-color.svg`, and `cohere-color.svg` remain as historical assets; the current site uses neutral record icons for the historical PAL review transcript. That transcript retains the actual participating model names and service/usage records. It is not relabeled as the new models' work.
 
-Model participation is from the 2026-10-28 PAL design-review record, not live connection status. Qwen, Nemotron, and North Mini Code completed independent review and peer critique. Gemini returned HTTP 503. Product dialogue is a separately authored illustrative scenario, not their response transcript.
+Copyright (c) 2023 LobeHub. Complete MIT [LICENSE](LICENSE) retained. Original SVG bytes are embedded as data URLs without color or geometry edits. Marks identify model families/providers and imply no affiliation, endorsement, or verified classification performance. Z.ai and Reka source marks are monochrome originals.
 
-The 2026-10-29 frontier / blind-review diagram uses Codex plus Qwen, NVIDIA Nemotron, and Cohere family marks. A/B/C remain the answer identifiers in the confidence comparison. Their placement is illustrative; it does not establish an exact model selection, image-input support, current OpenRouter availability, or actual product responses. The previous Qwen design review used Groq; this historical service record remains unchanged.
+`../blind-selected-models.svg/png` and `../review-cost-goal.svg/png` are newly authored static explanation graphics using the same original marks. They are not browser screenshots or actual API responses. The site is an illustrative simulation and has no live model calls.
