@@ -1,0 +1,115 @@
+snapshot_date,tier,tier_floor_model,cheapest_model,litellm_key,served_by,input_usd_per_1m,output_usd_per_1m,blended_usd_per_1m
+2023-10-01,GPT-4 class,gpt-4-0314,gpt-4-0314,gpt-4-0314,OpenAI,30,60,37.5
+2023-10-01,GPT-4o class,gpt-4o-2024-05-13,,,,,,
+2023-10-01,Gemini 2.5 Pro class,gemini-2.5-pro,,,,,,
+2023-11-01,GPT-4 class,gpt-4-0314,gpt-4-0314,gpt-4-0314,OpenAI,30,60,37.5
+2023-11-01,GPT-4o class,gpt-4o-2024-05-13,,,,,,
+2023-11-01,Gemini 2.5 Pro class,gemini-2.5-pro,,,,,,
+2023-12-01,GPT-4 class,gpt-4-0314,gpt-4-1106-preview,gpt-4-1106-preview,OpenAI,10,30,15
+2023-12-01,GPT-4o class,gpt-4o-2024-05-13,,,,,,
+2023-12-01,Gemini 2.5 Pro class,gemini-2.5-pro,,,,,,
+2024-01-01,GPT-4 class,gpt-4-0314,gpt-4-1106-preview,gpt-4-1106-preview,OpenAI,10,30,15
+2024-01-01,GPT-4o class,gpt-4o-2024-05-13,,,,,,
+2024-01-01,Gemini 2.5 Pro class,gemini-2.5-pro,,,,,,
+2024-02-01,GPT-4 class,gpt-4-0314,gpt-4-0125-preview,gpt-4-0125-preview,OpenAI,10,30,15
+2024-02-01,GPT-4o class,gpt-4o-2024-05-13,,,,,,
+2024-02-01,Gemini 2.5 Pro class,gemini-2.5-pro,,,,,,
+2024-03-01,GPT-4 class,gpt-4-0314,gpt-4-0125-preview,gpt-4-0125-preview,OpenAI,10,30,15
+2024-03-01,GPT-4o class,gpt-4o-2024-05-13,,,,,,
+2024-03-01,Gemini 2.5 Pro class,gemini-2.5-pro,,,,,,
+2024-04-01,GPT-4 class,gpt-4-0314,gpt-4-0125-preview,gpt-4-0125-preview,OpenAI,10,30,15
+2024-04-01,GPT-4o class,gpt-4o-2024-05-13,,,,,,
+2024-04-01,Gemini 2.5 Pro class,gemini-2.5-pro,,,,,,
+2024-05-01,GPT-4 class,gpt-4-0314,gpt-4-turbo-2024-04-09,gpt-4-turbo-2024-04-09,OpenAI,10,30,15
+2024-05-01,GPT-4o class,gpt-4o-2024-05-13,,,,,,
+2024-05-01,Gemini 2.5 Pro class,gemini-2.5-pro,,,,,,
+2024-06-01,GPT-4 class,gpt-4-0314,gpt-4o-2024-05-13,gpt-4o-2024-05-13,OpenAI,5,15,7.5
+2024-06-01,GPT-4o class,gpt-4o-2024-05-13,gpt-4o-2024-05-13,gpt-4o-2024-05-13,OpenAI,5,15,7.5
+2024-06-01,Gemini 2.5 Pro class,gemini-2.5-pro,,,,,,
+2024-07-01,GPT-4 class,gpt-4-0314,claude-3-5-sonnet-20240620,claude-3-5-sonnet-20240620,Anthropic,3,15,6
+2024-07-01,GPT-4o class,gpt-4o-2024-05-13,gpt-4o-2024-05-13,gpt-4o-2024-05-13,OpenAI,5,15,7.5
+2024-07-01,Gemini 2.5 Pro class,gemini-2.5-pro,,,,,,
+2024-08-01,GPT-4 class,gpt-4-0314,gpt-4o-mini-2024-07-18,gpt-4o-mini-2024-07-18,OpenAI,0.15,0.6,0.2625
+2024-08-01,GPT-4o class,gpt-4o-2024-05-13,gpt-4o-2024-05-13,gpt-4o-2024-05-13,OpenAI,5,15,7.5
+2024-08-01,Gemini 2.5 Pro class,gemini-2.5-pro,,,,,,
+2024-09-01,GPT-4 class,gpt-4-0314,gpt-4o-mini-2024-07-18,gpt-4o-mini-2024-07-18,OpenAI,0.15,0.6,0.2625
+2024-09-01,GPT-4o class,gpt-4o-2024-05-13,gpt-4o-2024-05-13,gpt-4o-2024-05-13,OpenAI,5,15,7.5
+2024-09-01,Gemini 2.5 Pro class,gemini-2.5-pro,,,,,,
+2024-10-01,GPT-4 class,gpt-4-0314,gemini-1.5-flash-002,gemini/gemini-1.5-flash-002,Google,0.075,0.3,0.1312
+2024-10-01,GPT-4o class,gpt-4o-2024-05-13,gemini-1.5-pro-002,gemini/gemini-1.5-pro-002,Google,3.5,10.5,5.25
+2024-10-01,Gemini 2.5 Pro class,gemini-2.5-pro,,,,,,
+2024-11-01,GPT-4 class,gpt-4-0314,gemini-1.5-flash-002,gemini/gemini-1.5-flash-002,Google,0.075,0.3,0.1312
+2024-11-01,GPT-4o class,gpt-4o-2024-05-13,gemini-1.5-pro-002,gemini/gemini-1.5-pro-002,Google,3.5,10.5,5.25
+2024-11-01,Gemini 2.5 Pro class,gemini-2.5-pro,,,,,,
+2024-12-01,GPT-4 class,gpt-4-0314,gemini-1.5-flash-002,gemini/gemini-1.5-flash-002,Google,0.075,0.3,0.1312
+2024-12-01,GPT-4o class,gpt-4o-2024-05-13,gemini-1.5-pro-002,gemini/gemini-1.5-pro-002,Google,3.5,10.5,5.25
+2024-12-01,Gemini 2.5 Pro class,gemini-2.5-pro,,,,,,
+2025-01-01,GPT-4 class,gpt-4-0314,gemini-1.5-flash-002,gemini/gemini-1.5-flash-002,Google,0.075,0.3,0.1312
+2025-01-01,GPT-4o class,gpt-4o-2024-05-13,gemini-1.5-pro-002,gemini/gemini-1.5-pro-002,Google,3.5,10.5,5.25
+2025-01-01,Gemini 2.5 Pro class,gemini-2.5-pro,,,,,,
+2025-02-01,GPT-4 class,gpt-4-0314,gemini-1.5-flash-002,gemini/gemini-1.5-flash-002,Google,0.075,0.3,0.1312
+2025-02-01,GPT-4o class,gpt-4o-2024-05-13,deepseek-v3,fireworks_ai/accounts/fireworks/models/deepseek-v3,Fireworks AI,0.9,0.9,0.9
+2025-02-01,Gemini 2.5 Pro class,gemini-2.5-pro,,,,,,
+2025-03-01,GPT-4 class,gpt-4-0314,gemini-2.0-flash-lite-preview-02-05,gemini/gemini-2.0-flash-lite-preview-02-05,Google,0.075,0.3,0.1312
+2025-03-01,GPT-4o class,gpt-4o-2024-05-13,gemini-2.0-flash-lite-preview-02-05,gemini/gemini-2.0-flash-lite-preview-02-05,Google,0.075,0.3,0.1312
+2025-03-01,Gemini 2.5 Pro class,gemini-2.5-pro,,,,,,
+2025-04-01,GPT-4 class,gpt-4-0314,gemini-2.0-flash-lite-preview-02-05,gemini/gemini-2.0-flash-lite-preview-02-05,Google,0.075,0.3,0.1312
+2025-04-01,GPT-4o class,gpt-4o-2024-05-13,gemini-2.0-flash-lite-preview-02-05,gemini/gemini-2.0-flash-lite-preview-02-05,Google,0.075,0.3,0.1312
+2025-04-01,Gemini 2.5 Pro class,gemini-2.5-pro,,,,,,
+2025-05-01,GPT-4 class,gpt-4-0314,gemini-2.0-flash-lite-preview-02-05,gemini/gemini-2.0-flash-lite-preview-02-05,Google,0.075,0.3,0.1312
+2025-05-01,GPT-4o class,gpt-4o-2024-05-13,gemini-2.0-flash-lite-preview-02-05,gemini/gemini-2.0-flash-lite-preview-02-05,Google,0.075,0.3,0.1312
+2025-05-01,Gemini 2.5 Pro class,gemini-2.5-pro,,,,,,
+2025-06-01,GPT-4 class,gpt-4-0314,gemini-2.0-flash-lite-preview-02-05,gemini/gemini-2.0-flash-lite-preview-02-05,Google,0.075,0.3,0.1312
+2025-06-01,GPT-4o class,gpt-4o-2024-05-13,gemini-2.0-flash-lite-preview-02-05,gemini/gemini-2.0-flash-lite-preview-02-05,Google,0.075,0.3,0.1312
+2025-06-01,Gemini 2.5 Pro class,gemini-2.5-pro,,,,,,
+2025-07-01,GPT-4 class,gpt-4-0314,gemini-2.0-flash-lite-preview-02-05,gemini/gemini-2.0-flash-lite-preview-02-05,Google,0.075,0.3,0.1312
+2025-07-01,GPT-4o class,gpt-4o-2024-05-13,gemini-2.0-flash-lite-preview-02-05,gemini/gemini-2.0-flash-lite-preview-02-05,Google,0.075,0.3,0.1312
+2025-07-01,Gemini 2.5 Pro class,gemini-2.5-pro,gemini-2.5-pro,gemini/gemini-2.5-pro,Google,1.25,10,3.4375
+2025-08-01,GPT-4 class,gpt-4-0314,gemini-2.0-flash-lite-preview-02-05,gemini/gemini-2.0-flash-lite-preview-02-05,Google,0.075,0.3,0.1312
+2025-08-01,GPT-4o class,gpt-4o-2024-05-13,gemini-2.0-flash-lite-preview-02-05,gemini/gemini-2.0-flash-lite-preview-02-05,Google,0.075,0.3,0.1312
+2025-08-01,Gemini 2.5 Pro class,gemini-2.5-pro,gemini-2.5-pro,gemini/gemini-2.5-pro,Google,1.25,10,3.4375
+2025-09-01,GPT-4 class,gpt-4-0314,gemma-3-4b-it,deepinfra/google/gemma-3-4b-it,DeepInfra,0.02,0.04,0.025
+2025-09-01,GPT-4o class,gpt-4o-2024-05-13,gemma-3-27b-it,deepinfra/google/gemma-3-27b-it,DeepInfra,0.09,0.17,0.11
+2025-09-01,Gemini 2.5 Pro class,gemini-2.5-pro,gemini-2.5-pro,deepinfra/google/gemini-2.5-pro,DeepInfra,0.875,7,2.4063
+2025-10-01,GPT-4 class,gpt-4-0314,gemma-3-4b-it,deepinfra/google/gemma-3-4b-it,DeepInfra,0.04,0.08,0.05
+2025-10-01,GPT-4o class,gpt-4o-2024-05-13,gemma-3-27b-it,deepinfra/google/gemma-3-27b-it,DeepInfra,0.09,0.17,0.11
+2025-10-01,Gemini 2.5 Pro class,gemini-2.5-pro,gemini-2.5-pro,deepinfra/google/gemini-2.5-pro,DeepInfra,0.875,7,2.4063
+2025-11-01,GPT-4 class,gpt-4-0314,gemma-3-4b-it,deepinfra/google/gemma-3-4b-it,DeepInfra,0.04,0.08,0.05
+2025-11-01,GPT-4o class,gpt-4o-2024-05-13,gemma-3-27b-it,deepinfra/google/gemma-3-27b-it,DeepInfra,0.09,0.16,0.1075
+2025-11-01,Gemini 2.5 Pro class,gemini-2.5-pro,gemini-2.5-pro,deepinfra/google/gemini-2.5-pro,DeepInfra,1.25,10,3.4375
+2025-12-01,GPT-4 class,gpt-4-0314,gemma-3-4b-it,deepinfra/google/gemma-3-4b-it,DeepInfra,0.04,0.08,0.05
+2025-12-01,GPT-4o class,gpt-4o-2024-05-13,gemma-3-27b-it,deepinfra/google/gemma-3-27b-it,DeepInfra,0.09,0.16,0.1075
+2025-12-01,Gemini 2.5 Pro class,gemini-2.5-pro,gpt-5.1-high,gpt-5.1,OpenAI,1.25,10,3.4375
+2026-01-01,GPT-4 class,gpt-4-0314,gemma-3-4b-it,deepinfra/google/gemma-3-4b-it,DeepInfra,0.04,0.08,0.05
+2026-01-01,GPT-4o class,gpt-4o-2024-05-13,gemma-3-27b-it,deepinfra/google/gemma-3-27b-it,DeepInfra,0.09,0.16,0.1075
+2026-01-01,Gemini 2.5 Pro class,gemini-2.5-pro,gemini-3-flash,gemini/gemini-3-flash-preview,Google,0.5,3,1.125
+2026-02-01,GPT-4 class,gpt-4-0314,gemma-3-4b-it,deepinfra/google/gemma-3-4b-it,DeepInfra,0.04,0.08,0.05
+2026-02-01,GPT-4o class,gpt-4o-2024-05-13,gemma-3-27b-it,deepinfra/google/gemma-3-27b-it,DeepInfra,0.09,0.16,0.1075
+2026-02-01,Gemini 2.5 Pro class,gemini-2.5-pro,gemini-3-flash,gemini/gemini-3-flash-preview,Google,0.5,3,1.125
+2026-03-01,GPT-4 class,gpt-4-0314,gemma-3-4b-it,deepinfra/google/gemma-3-4b-it,DeepInfra,0.04,0.08,0.05
+2026-03-01,GPT-4o class,gpt-4o-2024-05-13,gemma-3-27b-it,deepinfra/google/gemma-3-27b-it,DeepInfra,0.09,0.16,0.1075
+2026-03-01,Gemini 2.5 Pro class,gemini-2.5-pro,kimi-k2.5-thinking,together_ai/moonshotai/Kimi-K2.5,Together AI,0.5,2.8,1.075
+2026-04-01,GPT-4 class,gpt-4-0314,gemma-3-4b-it,deepinfra/google/gemma-3-4b-it,DeepInfra,0.04,0.08,0.05
+2026-04-01,GPT-4o class,gpt-4o-2024-05-13,gemma-3-27b-it,deepinfra/google/gemma-3-27b-it,DeepInfra,0.09,0.16,0.1075
+2026-04-01,Gemini 2.5 Pro class,gemini-2.5-pro,kimi-k2.5-thinking,together_ai/moonshotai/Kimi-K2.5,Together AI,0.5,2.8,1.075
+2026-05-01,GPT-4 class,gpt-4-0314,gemma-3-4b-it,deepinfra/google/gemma-3-4b-it,DeepInfra,0.04,0.08,0.05
+2026-05-01,GPT-4o class,gpt-4o-2024-05-13,gemma-3-27b-it,deepinfra/google/gemma-3-27b-it,DeepInfra,0.09,0.16,0.1075
+2026-05-01,Gemini 2.5 Pro class,gemini-2.5-pro,kimi-k2.5-thinking,together_ai/moonshotai/Kimi-K2.5,Together AI,0.5,2.8,1.075
+2026-06-01,GPT-4 class,gpt-4-0314,gemma-3-4b-it,deepinfra/google/gemma-3-4b-it,DeepInfra,0.04,0.08,0.05
+2026-06-01,GPT-4o class,gpt-4o-2024-05-13,gemma-3-27b-it,deepinfra/google/gemma-3-27b-it,DeepInfra,0.09,0.16,0.1075
+2026-06-01,Gemini 2.5 Pro class,gemini-2.5-pro,kimi-k2.5-thinking,together_ai/moonshotai/Kimi-K2.5,Together AI,0.5,2.8,1.075
+2026-07-01,GPT-4 class,gpt-4-0314,gemma-3-4b-it,deepinfra/google/gemma-3-4b-it,DeepInfra,0.04,0.08,0.05
+2026-07-01,GPT-4o class,gpt-4o-2024-05-13,gemma-3-27b-it,deepinfra/google/gemma-3-27b-it,DeepInfra,0.09,0.16,0.1075
+2026-07-01,Gemini 2.5 Pro class,gemini-2.5-pro,deepseek-v4-pro,deepseek-v4-pro,DeepSeek,0.435,0.87,0.5438
+2026-08-01,GPT-4 class,gpt-4-0314,gemma-3-4b-it,deepinfra/google/gemma-3-4b-it,DeepInfra,0.04,0.08,0.05
+2026-08-01,GPT-4o class,gpt-4o-2024-05-13,gemma-3-27b-it,deepinfra/google/gemma-3-27b-it,DeepInfra,0.09,0.16,0.1075
+2026-08-01,Gemini 2.5 Pro class,gemini-2.5-pro,gpt-5.6-luna-xhigh,gpt-5.6-luna,OpenAI,0.2,1.2,0.45
+2026-09-01,GPT-4 class,gpt-4-0314,gpt-oss-20b,deepinfra/openai/gpt-oss-20b,DeepInfra,0.03,0.14,0.0575
+2026-09-01,GPT-4o class,gpt-4o-2024-05-13,gpt-oss-120b,deepinfra/openai/gpt-oss-120b,DeepInfra,0.037,0.17,0.0703
+2026-09-01,Gemini 2.5 Pro class,gemini-2.5-pro,gemma-4-31b,deepinfra/google/gemma-4-31B-it-turbo,DeepInfra,0.09,0.34,0.1525
+2026-10-01,GPT-4 class,gpt-4-0314,gpt-oss-20b,deepinfra/openai/gpt-oss-20b,DeepInfra,0.03,0.14,0.0575
+2026-10-01,GPT-4o class,gpt-4o-2024-05-13,gpt-oss-120b,deepinfra/openai/gpt-oss-120b,DeepInfra,0.037,0.17,0.0703
+2026-10-01,Gemini 2.5 Pro class,gemini-2.5-pro,gemma-4-31b,deepinfra/google/gemma-4-31B-it-turbo,DeepInfra,0.09,0.34,0.1525
+2026-10-28,GPT-4 class,gpt-4-0314,gpt-oss-20b,deepinfra/openai/gpt-oss-20b,DeepInfra,0.03,0.14,0.0575
+2026-10-28,GPT-4o class,gpt-4o-2024-05-13,gpt-oss-120b,deepinfra/openai/gpt-oss-120b,DeepInfra,0.037,0.17,0.0703
+2026-10-28,Gemini 2.5 Pro class,gemini-2.5-pro,gemma-4-31b,deepinfra/google/gemma-4-31B-it-turbo,DeepInfra,0.09,0.34,0.1525

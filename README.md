@@ -4,7 +4,15 @@
 
 **[▶ 웹에서 직접 실행하기](https://product-category-flow.pages.dev/)**
 
-![사람검증 점수의 가산 조건과 단계별 분류 흐름](assets/human-review-score.png)
+![AI Agent 활용 관점과 성능 기준별 최저 토큰 단가 그래프](assets/token-price-hero.png)
+
+## AI Agent를 적극 활용하는 이유
+
+상단과 [추후 개선 영역](https://product-category-flow.pages.dev/#future-improvements)에 **2023.10~2026.10.28 성능 기준별 최저 토큰 단가**를 원자료에서 직접 그린 SVG로 표시합니다. GPT-4 수준은 **$37.50 → $0.0575, 약 652분의 1(99.8% 감소)**입니다. 입력 3 : 출력 1로 혼합한 100만 토큰당 미국 달러이며, LMArena의 각 성능 기준을 충족한 모델·제공처 중 최저 표준 API 단가를 비교합니다. 같은 모델 제품의 가격 추이나 이 서비스의 비용 절감 성과는 아닙니다.
+
+출처: [Gravity / Aryan Agarwal](https://gravity.fast/data/llm-api-price-history/#price-by-tier), [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). 자료 기준 2026.10.28, 확인 2026.10.29. [CSV·비교 기준·한계](assets/data/README.md)를 함께 보관했습니다. 세 곡선, 결측 구간과 중간 상승 구간을 유지했습니다.
+
+장기적인 단가 하락을 기대하며 사람의 반복 검수를 줄이는 AI Agent 활용에 투자한다는 관점을 담았습니다. **향후 하락은 전망**이며, 정확도·추가 호출·사람 검수·자체 소형 모델의 총비용을 함께 비교해 도입을 판단합니다.
 
 ## 과제와 축소판
 
@@ -13,6 +21,8 @@
 **정확도 == 돈 · 상품당 평균 예산 20원.** 총 1억 원을 500만 상품으로 나눈 예산 기준입니다. 학습·서버·API·사람 검수·오분류 수정 비용을 함께 비교해야 합니다. 실제 처리비용이나 달성한 정확도가 아닙니다.
 
 ## 필요한 단계까지만 실행
+
+![사람검증 점수의 가산 조건과 단계별 분류 흐름](assets/human-review-score.png)
 
 1. **텍스트로 분류:** 최종 세부 분류를 특정할 근거가 충분하면 바로 종료합니다.
 2. **이미지 전용 분류기 1개:** 텍스트로 해결되지 않은 상품의 사진을 확인합니다. 해결되면 종료합니다.
@@ -98,6 +108,7 @@ node tests/test-cascade.cjs
 node tests/test-human-sector.cjs
 node tests/test-blind-review.cjs
 node tests/test-future-learning.cjs
+node tests/test-token-price.cjs
 ```
 
 상태 전환, 조기 종료, 합산·중복 방지, 2점 도달 후 추가 호출 방지, 독립 입력, 최종 후보 검증, 복구 한도, 500개 보존과 초기화를 검사합니다. PC·모바일의 화면·조작 검수는 [설계 기록](docs/submission-design.md)에 남겼습니다.

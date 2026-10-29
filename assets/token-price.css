@@ -1,0 +1,57 @@
+/* Static charts share one archived dataset; no runtime API request. */
+.token-price-hero,.token-price-compact{color:#203d59;display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.35fr);column-gap:36px;background:#fff;border:1px solid #d6e2eb;border-radius:18px;min-width:0}
+.token-price-hero{margin:24px 0 22px;padding:28px 30px 18px}
+.token-price-copy,.token-price-chart,.token-price-future-copy{min-width:0}
+.token-price-eyebrow{font-size:11px;font-weight:750;letter-spacing:.02em;color:#547e74;margin:0 0 13px}
+.token-price-copy h2{font-size:clamp(32px,3.25vw,46px);line-height:1.23;font-weight:850;letter-spacing:-.055em;margin:0;color:#163a39;word-break:keep-all}
+.token-price-copy h2 em{font-style:normal;color:#087d68}
+.token-price-lead{font-size:13px;line-height:1.85;color:#5c7181;margin:17px 0 18px;max-width:395px;word-break:keep-all}
+.token-price-lead strong{color:#34574f;font-weight:700}
+.token-price-metric{border-top:1px solid #d7e8e0;padding-top:13px;max-width:360px}
+.token-price-metric>span{display:block;font-size:11px;font-weight:700;color:#5c7c73}
+.token-price-metric>strong{display:block;color:#087d68;font-size:53px;line-height:1.2;letter-spacing:-.055em;font-weight:850;margin-top:3px}
+.token-price-metric small{font-size:24px;margin-left:4px;letter-spacing:-.05em}
+.token-price-metric p{display:flex;gap:12px;align-items:center;flex-wrap:wrap;font-size:11px;color:#5e8075;margin:6px 0 0}
+.token-price-metric p b{font-size:14px;color:#244f45;font-variant-numeric:tabular-nums}
+.token-price-chart{margin:5px 0 0;align-self:center}
+.token-price-chart-heading{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;padding-bottom:14px}
+.token-price-chart-heading h3{font-size:18px;line-height:1.4;letter-spacing:-.04em;margin:0;color:#28445d;word-break:keep-all}
+.token-price-chart-heading>span{font-size:10px;color:#6b7d8d;white-space:nowrap;margin-top:6px}
+.token-price-svg{display:block;width:100%;height:auto;overflow:visible;font-family:inherit}
+.token-price-mobile{display:none}
+.token-price-legend{display:grid;grid-template-columns:1fr 1fr 1.3fr;gap:10px;margin:0 0 0 6px;font-size:10px;line-height:1.5}
+.token-price-legend>span{display:flex;gap:7px;align-items:flex-start;color:#536980}
+.token-price-legend i{display:block;width:21px;border-top:3px solid #087d68;margin-top:6px;flex-shrink:0}
+.token-price-legend .gpt4o i{border-color:#315cde;border-top-style:dashed}
+.token-price-legend .gemini i{border-color:#9460b7;border-top-style:dotted}
+.token-price-legend b{display:block;font-size:16px;line-height:1.5;color:#274459;font-variant-numeric:tabular-nums}
+.token-price-legend .gpt4 b{color:#087d68}
+.token-price-latest{font-size:10px;color:#7a8796;text-align:right;margin:10px 0 0}
+.token-price-method{grid-column:1/-1;border-top:1px solid #e0e9ec;margin-top:23px;padding-top:13px;font-size:10px;line-height:1.7;color:#65778a}
+.token-price-criteria,.token-price-source,.token-price-outlook{margin:0 0 4px;word-break:keep-all}
+.token-price-criteria b{font-size:10px;color:#385865;margin-right:8px}
+.token-price-source a,.token-price-details a{color:#397269;text-underline-offset:2px}
+.token-price-source>span{margin-left:10px}
+.token-price-outlook{color:#6e7d8b}
+.token-price-details{border:0;margin:8px 0 0;padding:0;background:transparent;font-size:11px}
+.token-price-details summary{cursor:pointer;color:#3f7166;font-weight:700;padding:3px 0}
+.token-price-details summary:focus-visible{outline:2px solid #087d68;outline-offset:3px;border-radius:2px}
+.token-price-details>div{padding:3px 0 0;max-width:1000px}
+.token-price-details p{line-height:1.8;margin:7px 0}
+.token-price-compact{grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);column-gap:32px;padding:22px 24px 15px;background:#f8fbfa;border-color:#d5e5dd;margin:20px 0 25px;border-radius:12px}
+.token-price-compact .token-price-chart{max-width:500px;justify-self:end;width:100%;margin:0}
+.token-price-compact .token-price-chart-heading{padding-bottom:8px}
+.token-price-compact .token-price-chart-heading h3{font-size:14px}
+.token-price-compact .token-price-chart-heading>span{font-size:9px;margin-top:3px}
+.token-price-future-copy{align-self:center}
+.token-price-future-copy h3{font-size:25px;line-height:1.4;letter-spacing:-.04em;color:#216153;margin:0 0 13px;word-break:keep-all}
+.token-price-future-copy p:not(.token-price-eyebrow){font-size:12px;line-height:1.85;color:#5c746c;word-break:keep-all;margin:9px 0}
+.token-price-future-copy strong{color:#2d6357}
+.token-price-future-copy small{font-size:10px;line-height:1.7;color:#7c8a85;display:block;margin-top:11px}
+.token-price-compact .token-price-legend{font-size:9px;gap:8px;margin-left:0}
+.token-price-compact .token-price-legend b{font-size:13px}
+.token-price-compact .token-price-latest{font-size:9px;margin-top:6px}
+.token-price-compact .token-price-method{margin-top:15px;padding-top:10px}
+@media(max-width:1100px){.token-price-hero{padding:24px;column-gap:24px;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr)}.token-price-copy h2{font-size:34px}.token-price-metric>strong{font-size:47px}.token-price-lead{font-size:12px}.token-price-chart-heading{display:block}.token-price-chart-heading>span{display:block;margin-top:4px}.token-price-chart-heading h3{font-size:17px}.token-price-compact{padding:20px;gap:20px}.token-price-future-copy h3{font-size:22px}.token-price-compact .token-price-wide{display:none}.token-price-compact .token-price-mobile{display:block}}
+@media(max-width:760px){.token-price-hero{grid-template-columns:1fr;padding:24px 22px 16px;gap:25px}.token-price-copy{display:grid;grid-template-columns:1fr .8fr;column-gap:20px;align-items:end}.token-price-copy .token-price-eyebrow{grid-column:1/-1}.token-price-copy h2{font-size:32px;grid-column:1}.token-price-lead{grid-column:1/-1;grid-row:3;margin:16px 0 0;max-width:none;font-size:13px}.token-price-metric{grid-column:2;grid-row:2;border-top:0;padding:0 0 5px}.token-price-metric>strong{font-size:44px}.token-price-metric small{font-size:20px}.token-price-metric p{gap:3px}.token-price-chart{margin:0}.token-price-chart-heading{display:flex;align-items:center}.token-price-chart-heading>span{margin:0}.token-price-method{margin-top:0}.token-price-compact{grid-template-columns:1fr;padding:20px;gap:20px}.token-price-compact .token-price-chart{justify-self:center;max-width:520px}.token-price-compact .token-price-wide{display:block}.token-price-compact .token-price-mobile{display:none}.token-price-future-copy h3 br{display:none}.token-price-compact .token-price-method{margin:0}}
+@media(max-width:480px){.token-price-hero{padding:20px 16px 15px;border-radius:12px;margin-top:18px;gap:22px}.token-price-eyebrow{font-size:10px;margin-bottom:11px}.token-price-copy{display:block}.token-price-copy h2{font-size:32px;line-height:1.23}.token-price-lead{font-size:12px;margin:14px 0 16px}.token-price-metric{border-top:1px solid #d7e8e0;padding:12px 0 0;display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:3px 10px;max-width:none}.token-price-metric>span{grid-column:1/-1;font-size:10px}.token-price-metric>strong{font-size:43px;white-space:nowrap}.token-price-metric small{font-size:19px}.token-price-metric p{display:block;margin:0;text-align:right;font-size:10px}.token-price-metric p b{display:block;font-size:11px;white-space:nowrap}.token-price-metric p span{display:block;margin-top:4px}.token-price-chart-heading{display:block;padding-bottom:12px}.token-price-chart-heading h3{font-size:16px}.token-price-chart-heading>span{font-size:10px;margin-top:4px}.token-price-wide{display:none}.token-price-mobile{display:block}.token-price-legend{gap:7px;margin-left:0;font-size:9px;grid-template-columns:1fr 1fr 1.3fr}.token-price-legend>span{gap:4px}.token-price-legend i{width:14px;margin-top:5px;border-top-width:2px}.token-price-legend b{font-size:13px}.token-price-latest{font-size:9px;text-align:left;margin-top:8px}.token-price-method{font-size:10px;line-height:1.85;padding-top:12px}.token-price-source>span{display:block;margin-left:0}.token-price-details{font-size:10px}.token-price-criteria b{font-size:10px;margin-right:4px}.token-price-compact{padding:17px 14px;gap:18px;margin:18px -2px 23px}.token-price-future-copy h3{font-size:21px}.token-price-future-copy p:not(.token-price-eyebrow){font-size:11px}.token-price-compact .token-price-wide{display:none}.token-price-compact .token-price-mobile{display:block}.token-price-compact .token-price-chart-heading h3{font-size:14px}.token-price-compact .token-price-legend{font-size:8px;gap:5px}.token-price-compact .token-price-legend b{font-size:12px}}

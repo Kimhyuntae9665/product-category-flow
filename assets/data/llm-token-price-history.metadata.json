@@ -1,0 +1,17 @@
+{
+  "title": "LLM API pricing history — tier floors by month",
+  "creator": "Aryan Agarwal / Gravity",
+  "source": "https://gravity.fast/data/llm-api-price-history/",
+  "download": "https://gravity.fast/data/llm-api-price-history/data.csv",
+  "license": "https://creativecommons.org/licenses/by/4.0/",
+  "dataAsOf": "2026-10-28",
+  "retrievedOn": "2026-10-29",
+  "localFile": "llm-token-price-history-2026-10-28.csv",
+  "sha256": "d5ffae9fd79e187756ae9a227a09751e9ece43aab50b0c3e27937cf24900d89e",
+  "rows": 114,
+  "dates": 38,
+  "tiers": 3,
+  "units": "USD per million blended tokens, input:output = 3:1",
+  "capabilityBenchmark": "LMArena text style-controlled overall, 2026-10-02",
+  "changes": "Source CSV values unchanged; redrawn as responsive inline SVG with Korean labels and logarithmic y-axis. Missing values remain absent; no future values extrapolated."
+}
