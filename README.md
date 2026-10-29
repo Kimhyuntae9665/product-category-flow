@@ -155,6 +155,12 @@ node tests/test-token-price.cjs
 
 ## 내 생각: 카테고리 축소는 보류
 
-[페이지 마지막의 의견](https://product-category-flow.pages.dev/#my-thoughts)에는 비슷하거나 지나치게 세분화된 항목을 묶어 카테고리 수를 줄이면 분류 비용을 낮출 가능성이 있다는 생각을 담았습니다. 다만 **1만 개 카테고리로 분류한다는 과제 규칙을 바꾸는 방안이므로 이번에는 보류**했습니다. 현재 설계는 주어진 1만 개 카테고리를 유지하는 전제입니다.
+[페이지 하단의 의견](https://product-category-flow.pages.dev/#my-thoughts)에는 비슷하거나 지나치게 세분화된 항목을 묶어 카테고리 수를 줄이면 분류 비용을 낮출 가능성이 있다는 생각을 담았습니다. 다만 **1만 개 카테고리로 분류한다는 과제 규칙을 바꾸는 방안이므로 이번에는 보류**했습니다. 현재 설계는 주어진 1만 개 카테고리를 유지하는 전제입니다.
 
 ![카테고리 수 축소에 관한 개인 의견과 과제 조건에 따른 보류](assets/personal-thought.png)
+
+## AI 이용한 부분
+
+[‘내 생각:’ 아래의 AI 활용 영역](https://product-category-flow.pages.dev/#ai-use)에 비슷한 사례·자료 조사, Codex Dot를 이용한 48시간 서칭, AI Agent를 활용한 웹 시뮬레이션 제작과 Cloudflare Pages 배포를 정리했습니다. 48시간 서칭은 작성자의 설명에 따른 기록입니다.
+
+![개인 의견 아래에 다른 색으로 구분한 AI 활용 내용](assets/ai-use.png)

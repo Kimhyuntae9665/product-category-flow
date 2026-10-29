@@ -547,6 +547,18 @@ html{scroll-behavior:auto;scroll-padding-top:22px}body{background:#f5f8fc;color:
 .personal-thought .personal-thought-decision{border-top:1px solid #ccd8e9;margin-top:16px;padding-top:15px}
 @media(max-width:650px){.personal-thought{margin-top:24px;padding:20px 17px}.personal-thought-heading{align-items:flex-start;flex-wrap:wrap;gap:9px;margin-bottom:14px}.personal-thought h2{font-size:23px}.personal-thought-heading>span{font-size:10px;padding:4px 7px}.personal-thought p{font-size:13px;line-height:1.9}.personal-thought .personal-thought-decision{margin-top:14px;padding-top:13px}}
 
+.ai-use{margin:20px 0 0;padding:25px 28px;background:#fff7e9;border:2px solid #d6ad70;border-radius:3px;scroll-margin-top:24px;color:#725238}
+.ai-use-heading{display:flex;align-items:center;justify-content:space-between;gap:15px;margin-bottom:7px}
+.ai-use h2{font-size:25px;line-height:1.35;letter-spacing:-.04em;color:#815116;margin:0}
+.ai-use-heading>span{font-size:11px;font-weight:700;color:#8a6027;border:1px solid #e5c99c;background:#fffdf8;padding:5px 9px;line-height:1.5;white-space:nowrap}
+.ai-use-list{list-style:none;margin:0;padding:0}
+.ai-use-list li{display:flex;align-items:flex-start;gap:15px;margin:0;padding:16px 0;border-bottom:1px solid #ebd8b9}
+.ai-use-list li:last-child{border-bottom:0;padding-bottom:0}
+.ai-use-number{display:flex;flex:0 0 30px;align-items:center;justify-content:center;width:30px;height:30px;margin-top:1px;border:1px solid #e0bd87;background:#fffdf8;color:#9a631f;font-size:12px;font-weight:800;font-variant-numeric:tabular-nums}
+.ai-use h3{margin:0 0 4px;color:#815116;font-size:16px;line-height:1.5;letter-spacing:-.02em}
+.ai-use p{margin:0;max-width:1080px;font-size:14px;line-height:1.85;word-break:keep-all}
+@media(max-width:650px){.ai-use{margin-top:18px;padding:20px 17px}.ai-use-heading{align-items:flex-start;flex-wrap:wrap;gap:9px;margin-bottom:4px}.ai-use h2{font-size:23px}.ai-use-heading>span{font-size:10px;padding:4px 7px}.ai-use-list li{gap:11px;padding:14px 0}.ai-use-number{flex-basis:26px;width:26px;height:26px;font-size:11px}.ai-use h3{font-size:15px}.ai-use p{font-size:13px;line-height:1.9}}
+
 </style>
 <!-- Lucide static 1.63.0 icon license
 ISC License
@@ -1023,6 +1035,15 @@ SOFTWARE.
  <div class="personal-thought-heading"><h2 id="my-thoughts-title">내 생각:</h2><span>보류 · 과제 조건 유지</span></div>
  <p>카테고리가 1만 개인 만큼, 비슷하거나 지나치게 세분화된 항목을 묶어 <strong>카테고리 수를 줄이면 더 비용 효율적인 분류가 가능할 것 같습니다.</strong> 구분해야 할 후보가 줄어들면 모델의 판단과 추가 검토에 드는 부담도 낮출 가능성이 있다고 생각합니다.</p>
  <p class="personal-thought-decision">다만, 이는 <strong>‘1만 개 카테고리로 분류한다’는 과제 규칙을 바꾸는 방안이므로 이번에는 보류했습니다.</strong> 이번 설계는 주어진 1만 개 카테고리를 유지하는 것을 전제로 합니다.</p>
+</section>
+
+<section class="ai-use" id="ai-use" aria-labelledby="ai-use-title">
+ <div class="ai-use-heading"><h2 id="ai-use-title">AI 이용한 부분:</h2><span>조사 · 제작 · 배포</span></div>
+ <ol class="ai-use-list">
+  <li><span class="ai-use-number" aria-hidden="true">01</span><div><h3>비슷한 사례·자료 조사</h3><p>상품 분류 방식과 비용 절감에 참고할 만한 비슷한 사례와 관련 자료를 AI로 조사했습니다.</p></div></li>
+  <li><span class="ai-use-number" aria-hidden="true">02</span><div><h3>Codex Dot를 이용한 48시간 서칭</h3><p>Codex Dot를 이용해 48시간 동안 관련 자료와 다양한 접근 방식을 찾아보았습니다.</p></div></li>
+  <li><span class="ai-use-number" aria-hidden="true">03</span><div><h3>웹 시뮬레이션 제작·Cloudflare 배포</h3><p>AI Agent를 이용해 이 웹 시뮬레이션 사이트를 제작하고, Cloudflare Pages에 배포했습니다.</p></div></li>
+ </ol>
 </section>
 
 <div class="sr-only" id="accessible-summary" aria-live="off"></div>
