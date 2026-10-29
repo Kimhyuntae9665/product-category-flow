@@ -20,10 +20,10 @@ assert.deepEqual(Array.from(resolved.at(-1).reviewEvents,e=>[e.kind,e.points]),[
 const recovery={stage:1,reason:'wrongBranch',cause:'same-branch',resolved:true};
 const blocked=route({recovery});terminal(blocked,'human',2);
 assert(!blocked.some(s=>s.kind==='blind'),'recovery +1 then frontier +1 must stop before further calls');
-const low=route({blind:{score:45,agreed:true,validLeaf:true}});terminal(low,'human',3);
-assert.deepEqual(Array.from(low.at(-1).reviewEvents,e=>[e.kind,e.points]),[['frontier',1],['blind',2]],'independent +2 is added to prior frontier +1');
-const conflict=route({blind:{score:99,agreed:false,validLeaf:true}});terminal(conflict,'human',3);
-const invalid=route({specialist:{score:99,validLeaf:false},frontier:{score:99,validLeaf:false},blind:{score:99,agreed:true,validLeaf:true,candidateLeafId:'absent'}});terminal(invalid,'human',3);
+const low=route({blind:{score:45,agreed:true,validLeaf:true}});terminal(low,'human',2);
+assert.deepEqual(Array.from(low.at(-1).reviewEvents,e=>[e.kind,e.points]),[['frontier',1],['blind',1]],'independent +1 is added to prior frontier +1');
+const conflict=route({blind:{score:99,agreed:false,validLeaf:true}});terminal(conflict,'human',2);
+const invalid=route({specialist:{score:99,validLeaf:false},frontier:{score:99,validLeaf:false},blind:{score:99,agreed:true,validLeaf:true,candidateLeafId:'absent'}});terminal(invalid,'human',2);
 const weak=route({recovery:{...recovery,reason:'lowScore'}});terminal(weak,'done',1);
 assert(!weak.some(s=>s.kind.startsWith('recover')),'low score alone escalates without recovery');
 const exhausted=route({recovery:{...recovery,resolved:false}});terminal(exhausted,'human',1);
@@ -44,4 +44,4 @@ for(const r of all){for(let i=0;i<r.length;i++){const s=r[i];assert.equal(s.revi
  assert.equal(r.at(-1).end,Infinity);
 }
 for(const p of demo.products){const r=demo.routeFor(p,70);assert.equal(JSON.stringify(r),JSON.stringify(demo.routeFor(p,70)));for(const s of r){context.entry={product:p,state:s,route:r};if(s.stage<0)continue;const point=vm.runInContext('position(entry,window.classificationDemo.treeGeometry.width,[])',context);assert(Number.isFinite(point.x)&&Number.isFinite(point.y));if(!['classify','done','human'].includes(s.kind))assert(point.x>=0&&point.x+88<=demo.treeGeometry.width&&point.y>=0&&point.y+34<=demo.treeGeometry.height,p.id+': state fits existing geometry');}}
-console.log('PASS: text / one specialist / frontier / frontier+1 then blind resolved / recovery+frontier immediate stop / additive blind+2 / blind inputs / final leaf validation / bounded recovery / no fitted calibration.');
+console.log('PASS: text / one specialist / frontier / frontier+1 then blind resolved / recovery+frontier immediate stop / additive blind+1 / blind inputs / final leaf validation / bounded recovery / no fitted calibration.');
