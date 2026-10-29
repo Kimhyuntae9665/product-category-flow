@@ -1045,10 +1045,17 @@ SOFTWARE.
 </ol><table class="text-table"><thead><tr><th scope="col">예시 상품</th><th scope="col">분류 경로</th><th scope="col">현재 상태</th></tr></thead><tbody id="text-states"></tbody></table></details>
 <div class="landing-credits"><p>아이콘: <a href="https://lucide.dev/" target="_blank" rel="noopener noreferrer">Lucide</a> · ISC / MIT<br>모델 로고: <a href="https://github.com/lobehub/lobe-icons/tree/8b7bbc433d38437fa2b0cca58ae896917162b812" target="_blank" rel="noopener noreferrer">Lobe Icons</a> · MIT · 각 브랜드 식별용, 제휴·보증 의미 없음</p><p>분류도·상품 그림: 자체 제작 SVG<br>구현·수정: Codex 활용 · 설계 검토: PAL 무료 모델 검토 절차</p></div>
 <footer class="footer"><span>설명용 고정 시나리오 · 실제 바코드 조회 / 보상 지급 / 모델 실행 / API 호출 없음</span><span>이 파일은 인터넷 연결 없이 열립니다.</span></footer>
-<section class="personal-thought" id="my-thoughts" aria-labelledby="my-thoughts-title">
- <div class="personal-thought-heading"><h2 id="my-thoughts-title">내 생각:</h2><span>보류 · 과제 조건 유지</span></div>
- <p>카테고리가 1만 개인 만큼, 비슷하거나 지나치게 세분화된 항목을 묶어 <strong>카테고리 수를 줄이면 더 비용 효율적인 분류가 가능할 것 같습니다.</strong> 구분해야 할 후보가 줄어들면 모델의 판단과 추가 검토에 드는 부담도 낮출 가능성이 있다고 생각합니다.</p>
- <p class="personal-thought-decision">다만, 이는 <strong>‘1만 개 카테고리로 분류한다’는 과제 규칙을 바꾸는 방안이므로 이번에는 보류했습니다.</strong> 이번 설계는 주어진 1만 개 카테고리를 유지하는 것을 전제로 합니다.</p>
+<section class="my-contribution" id="my-contribution" aria-labelledby="my-contribution-title">
+ <div class="my-contribution-heading"><h2 id="my-contribution-title">내가 한 부분:</h2><span>아이디어 · 설계 방향</span></div>
+ <p class="my-contribution-intro">제가 제안하고 이 설계에 반영한 부분입니다.</p>
+ <ol class="my-contribution-list">
+  <li><span class="my-contribution-number" aria-hidden="true">01</span><div><h3>AI Agent끼리 의견을 나누는 아이디어</h3><p>여러 AI Agent가 각자 판단한 결과와 근거를 비교하며, 애매한 분류를 함께 검토하는 방식을 제안했습니다.</p></div></li>
+  <li><span class="my-contribution-number" aria-hidden="true">02</span><div><h3>OpenRouter 적극 활용 <small>실제 사용 중</small></h3><p>제가 실제로 사용 중인 OpenRouter의 가성비가 좋다고 판단해, 다양한 모델을 적극 활용하자는 의견을 냈습니다.</p></div></li>
+  <li><span class="my-contribution-number" aria-hidden="true">03</span><div><h3>사람 검수 누적점수제 도입</h3><p>불확실한 결과에 점수를 누적해 사람 검수 여부를 정하는 시스템을 제안하고, 이 시뮬레이션에 반영했습니다.</p></div></li>
+  <li><span class="my-contribution-number" aria-hidden="true">04</span><div><h3>오픈소스·전이학습 적극 활용</h3><p>오픈소스 모델과, 이미 학습된 모델을 상품 분류에 맞게 추가 학습하는 전이학습을 적극 이용하자는 의견을 냈습니다.</p></div></li>
+  <li><span class="my-contribution-number" aria-hidden="true">05</span><div><h3>사람 검수에 드는 인건비 최소화</h3><p>사람이 직접 검수해야 할 상품을 최대한 줄여 인건비를 낮추는 것을 이 설계의 핵심 목표로 정했습니다.</p></div></li>
+  <li><span class="my-contribution-number" aria-hidden="true">06</span><div><h3>토큰 비용 감소를 고려한 AI 활용</h3><p>앞으로 토큰 비용이 더 낮아질 것이라는 전망을 바탕으로, AI Agent를 더 적극적으로 활용하자는 의견을 냈습니다.</p></div></li>
+ </ol>
 </section>
 
 <section class="ai-use" id="ai-use" aria-labelledby="ai-use-title">
@@ -1062,17 +1069,10 @@ SOFTWARE.
  </ol>
 </section>
 
-<section class="my-contribution" id="my-contribution" aria-labelledby="my-contribution-title">
- <div class="my-contribution-heading"><h2 id="my-contribution-title">내가 한 부분:</h2><span>아이디어 · 설계 방향</span></div>
- <p class="my-contribution-intro">제가 제안하고 이 설계에 반영한 부분입니다.</p>
- <ol class="my-contribution-list">
-  <li><span class="my-contribution-number" aria-hidden="true">01</span><div><h3>AI Agent끼리 의견을 나누는 아이디어</h3><p>여러 AI Agent가 각자 판단한 결과와 근거를 비교하며, 애매한 분류를 함께 검토하는 방식을 제안했습니다.</p></div></li>
-  <li><span class="my-contribution-number" aria-hidden="true">02</span><div><h3>OpenRouter 적극 활용 <small>실제 사용 중</small></h3><p>제가 실제로 사용 중인 OpenRouter의 가성비가 좋다고 판단해, 다양한 모델을 적극 활용하자는 의견을 냈습니다.</p></div></li>
-  <li><span class="my-contribution-number" aria-hidden="true">03</span><div><h3>사람 검수 누적점수제 도입</h3><p>불확실한 결과에 점수를 누적해 사람 검수 여부를 정하는 시스템을 제안하고, 이 시뮬레이션에 반영했습니다.</p></div></li>
-  <li><span class="my-contribution-number" aria-hidden="true">04</span><div><h3>오픈소스·전이학습 적극 활용</h3><p>오픈소스 모델과, 이미 학습된 모델을 상품 분류에 맞게 추가 학습하는 전이학습을 적극 이용하자는 의견을 냈습니다.</p></div></li>
-  <li><span class="my-contribution-number" aria-hidden="true">05</span><div><h3>사람 검수에 드는 인건비 최소화</h3><p>사람이 직접 검수해야 할 상품을 최대한 줄여 인건비를 낮추는 것을 이 설계의 핵심 목표로 정했습니다.</p></div></li>
-  <li><span class="my-contribution-number" aria-hidden="true">06</span><div><h3>토큰 비용 감소를 고려한 AI 활용</h3><p>앞으로 토큰 비용이 더 낮아질 것이라는 전망을 바탕으로, AI Agent를 더 적극적으로 활용하자는 의견을 냈습니다.</p></div></li>
- </ol>
+<section class="personal-thought" id="my-thoughts" aria-labelledby="my-thoughts-title">
+ <div class="personal-thought-heading"><h2 id="my-thoughts-title">내 생각:</h2><span>보류 · 과제 조건 유지</span></div>
+ <p>카테고리가 1만 개인 만큼, 비슷하거나 지나치게 세분화된 항목을 묶어 <strong>카테고리 수를 줄이면 더 비용 효율적인 분류가 가능할 것 같습니다.</strong> 구분해야 할 후보가 줄어들면 모델의 판단과 추가 검토에 드는 부담도 낮출 가능성이 있다고 생각합니다.</p>
+ <p class="personal-thought-decision">다만, 이는 <strong>‘1만 개 카테고리로 분류한다’는 과제 규칙을 바꾸는 방안이므로 이번에는 보류했습니다.</strong> 이번 설계는 주어진 1만 개 카테고리를 유지하는 것을 전제로 합니다.</p>
 </section>
 
 <div class="sr-only" id="accessible-summary" aria-live="off"></div>

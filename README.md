@@ -153,20 +153,20 @@ node tests/test-token-price.cjs
 - [AWS 대기열 기반 작업자 확장](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-autoscaling-queue.html)
 - [Kaufland 상품 정보 가이드](https://www.kauflandglobalmarketplace.com/en/seller-university/selling/product-data/product-data-guideline/)
 
-## 내 생각: 카테고리 축소는 보류
+## 내가 한 부분
 
-[페이지 하단의 의견](https://product-category-flow.pages.dev/#my-thoughts)에는 비슷하거나 지나치게 세분화된 항목을 묶어 카테고리 수를 줄이면 분류 비용을 낮출 가능성이 있다는 생각을 담았습니다. 다만 **1만 개 카테고리로 분류한다는 과제 규칙을 바꾸는 방안이므로 이번에는 보류**했습니다. 현재 설계는 주어진 1만 개 카테고리를 유지하는 전제입니다.
+[본인 기여 영역](https://product-category-flow.pages.dev/#my-contribution)에는 작성자가 제안한 여섯 가지를 구분해 담았습니다. AI Agent 간 의견·근거 비교, 실제 사용 중인 OpenRouter의 적극 활용, 사람 검수 누적점수제, 오픈소스·전이학습 활용, 사람 검수 인건비 최소화, 토큰 비용 감소 전망에 따른 AI 활용입니다. 이 여섯 방향은 작성자의 기여로, 사례 조사·복구 루트 제안·이미지 전용 분류기와 모델 후보 추천·웹 구현·배포는 아래의 AI 활용 영역으로 구분합니다. OpenRouter 실제 사용은 작성자가 밝힌 경험이며 이 정적 시뮬레이션의 실시간 API 호출을 뜻하지 않습니다.
 
-![카테고리 수 축소에 관한 개인 의견과 과제 조건에 따른 보류](assets/personal-thought.png)
+![직접 제안한 여섯 가지 아이디어와 설계 방향](assets/my-contribution.png)
 
 ## AI 이용한 부분
 
-[‘내 생각:’ 아래의 AI 활용 영역](https://product-category-flow.pages.dev/#ai-use)에 Walmart·Rakuten·Meta·Shopify 등 세계 여러 기업의 사례 조사와 의견 제공, Walmart 사례 조사 과정에서 AI가 제안한 복구 루트, 이미지 전용 분류기 아이디어와 EfficientNet-B0·ConvNeXt-Tiny 등 모델 후보 추천을 명시했습니다. Codex Dot를 이용한 48시간 서칭, AI Agent를 활용한 웹 시뮬레이션 제작과 Cloudflare Pages 배포도 함께 담았습니다. 아이디어 출처와 48시간 서칭은 작성자의 설명에 따른 기록이며, 복구 루트가 Walmart의 실제 구현과 동일하다는 뜻은 아닙니다.
+[‘내가 한 부분:’ 다음의 AI 활용 영역](https://product-category-flow.pages.dev/#ai-use)에 Walmart·Rakuten·Meta·Shopify 등 세계 여러 기업의 사례 조사와 의견 제공, Walmart 사례 조사 과정에서 AI가 제안한 복구 루트, 이미지 전용 분류기 아이디어와 EfficientNet-B0·ConvNeXt-Tiny 등 모델 후보 추천을 명시했습니다. Codex Dot를 이용한 48시간 서칭, AI Agent를 활용한 웹 시뮬레이션 제작과 Cloudflare Pages 배포도 함께 담았습니다. 아이디어 출처와 48시간 서칭은 작성자의 설명에 따른 기록이며, 복구 루트가 Walmart의 실제 구현과 동일하다는 뜻은 아닙니다.
 
-![개인 의견 아래에 다른 색으로 구분한 AI 활용 내용](assets/ai-use.png)
+![본인 기여 다음에 다른 색으로 구분한 AI 활용 내용](assets/ai-use.png)
 
-## 내가 한 부분
+## 내 생각: 카테고리 축소는 보류
 
-[본인 기여 영역](https://product-category-flow.pages.dev/#my-contribution)에는 작성자가 제안한 여섯 가지를 구분해 담았습니다. AI Agent 간 의견·근거 비교, 실제 사용 중인 OpenRouter의 적극 활용, 사람 검수 누적점수제, 오픈소스·전이학습 활용, 사람 검수 인건비 최소화, 토큰 비용 감소 전망에 따른 AI 활용입니다. 이 여섯 방향은 작성자의 기여로, 사례 조사·복구 루트 제안·이미지 전용 분류기와 모델 후보 추천·웹 구현·배포는 앞의 AI 활용 영역으로 구분합니다. OpenRouter 실제 사용은 작성자가 밝힌 경험이며 이 정적 시뮬레이션의 실시간 API 호출을 뜻하지 않습니다.
+[페이지 마지막의 의견](https://product-category-flow.pages.dev/#my-thoughts)에는 비슷하거나 지나치게 세분화된 항목을 묶어 카테고리 수를 줄이면 분류 비용을 낮출 가능성이 있다는 생각을 담았습니다. 다만 **1만 개 카테고리로 분류한다는 과제 규칙을 바꾸는 방안이므로 이번에는 보류**했습니다. 현재 설계는 주어진 1만 개 카테고리를 유지하는 전제입니다.
 
-![직접 제안한 여섯 가지 아이디어와 설계 방향](assets/my-contribution.png)
+![카테고리 수 축소에 관한 개인 의견과 과제 조건에 따른 보류](assets/personal-thought.png)
