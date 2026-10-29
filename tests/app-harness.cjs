@@ -15,7 +15,7 @@ assert.equal(new Set(staticIds).size, staticIds.length, 'HTML IDs must be unique
 for (const id of ['parallel-stages', 'show-parallel', 'selected-id', 'selected-review-score']) {
   assert(!staticIds.includes(id), `removed detail panel must not return: ${id}`);
 }
-for (const id of ['express-count', 'express-active', 'express-completed', 'express-lines', 'express-threshold', 'express-threshold-value']) {
+for (const id of ['express-count', 'express-active', 'express-completed', 'express-lines']) {
   assert(staticIds.includes(id), `missing direct-route control: ${id}`);
 }
 for (const match of inline[1].matchAll(/\$\('([^']+)'\)/g)) {

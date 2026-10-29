@@ -61,9 +61,8 @@ function checkScene(at){
  demo.seek(at);const entries=demo.simulate(at,70),held=entries.filter(e=>e.state.kind==='human');
  const transfers=held.map(e=>demo.humanTransferFor(e,g.width,at));
  assert.equal(entries.length,500);assert.equal(new Set(terminalIds(entries)).size,500);
- const counters=['count-wait','count-rootwait','count-active','count-review','count-done','count-human'];
- assert.equal(counters.reduce((sum,id)=>sum+Number(getElement(id).textContent),0),500,'human transfers are not counted twice');
- assert.equal(+getElement('count-human').textContent,held.length,'terminal human counter is immediate');
+ assert.equal(entries.filter(e=>e.state.kind!=='human').length+held.length,500,'all products remain accounted for');
+ assert.equal(+getElement('hero-human').textContent,held.length,'visible summary tracks human holds');
  assert.equal(+getElement('human-sector-total').textContent,held.length);
  assert.equal(+getElement('human-sector-moving').textContent,transfers.filter(t=>t.moving).length);
  assert.equal(+getElement('human-sector-arrived').textContent,transfers.filter(t=>t.arrived).length);

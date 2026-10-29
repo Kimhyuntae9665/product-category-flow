@@ -52,7 +52,6 @@ assert.equal(getElement('frontier-score-value').textContent,'92');
 assert.equal(getElement('agent-debate').classList.contains('frontier-passed'),true);
 assert.match(getElement('debate-result').textContent,/0점 → 최종 분류/);
 assert.equal(getElement('debate-next').disabled,true);
-assert.equal(getElement('debate-autoplay').disabled,true);
 assert(!rows().includes('근거 충족'), 'no independent output should be fabricated when the frontier already passed');
 for(let i=0;i<3;i++){
   assert.equal(getElement(`blind-seal-${i}`).textContent,'요청 없음');
@@ -60,8 +59,6 @@ for(let i=0;i<3;i++){
 }
 click('debate-next');
 click('debate-stage-2');
-click('debate-autoplay');
-assert.equal(getElement('debate-autoplay')['aria-pressed'],'false');
 assert.match(getElement('debate-result').textContent,/0점 → 최종 분류/);
 click('case-missing');
 assert.equal(getElement('debate-next').disabled,false);

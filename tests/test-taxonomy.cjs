@@ -12,7 +12,7 @@ assert(inline, 'the deliverable must contain its runnable inline application');
 const markup = html.slice(0, inline.index);
 const staticIds = [...markup.matchAll(/\bid="([^"]+)"/g)].map(m => m[1]);
 assert.equal(new Set(staticIds).size, staticIds.length, 'HTML IDs must be unique');
-for (const id of ['express-count', 'express-active', 'express-completed', 'express-lines', 'express-threshold', 'express-threshold-value']) {
+for (const id of ['express-count', 'express-active', 'express-completed', 'express-lines']) {
   assert(staticIds.includes(id), `missing direct-route control: ${id}`);
 }
 for (const match of inline[1].matchAll(/\$\('([^']+)'\)/g)) {

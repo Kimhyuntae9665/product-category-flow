@@ -12,7 +12,7 @@ assert(inline, 'the deliverable must contain its runnable inline application');
 const markup = html.slice(0, inline.index);
 const staticIds = [...markup.matchAll(/\bid="([^"]+)"/g)].map(m => m[1]);
 assert.equal(new Set(staticIds).size, staticIds.length, 'HTML IDs must be unique');
-for (const id of ['express-count', 'express-active', 'express-completed', 'express-lines', 'express-threshold', 'express-threshold-value']) {
+for (const id of ['express-count', 'express-active', 'express-completed', 'express-lines']) {
   assert(staticIds.includes(id), `missing direct-route control: ${id}`);
 }
 for (const match of inline[1].matchAll(/\$\('([^']+)'\)/g)) {
@@ -207,12 +207,9 @@ assert(crossing, 'the sample set must include a threshold-sensitive leaf');
 demo.setExpressThreshold(90);
 assert.equal(demo.getState().expressThreshold, 90);
 assert(isExpress(demo.routeFor(crossing, 70)));
-const slider = getElement('express-threshold');
-assert.equal(typeof slider.handlers.input, 'function');
-slider.handlers.input({ target: { value: '99' } });
-assert.equal(demo.getState().expressThreshold, 99);
-assert(!isExpress(demo.routeFor(crossing, 70)), 'raising the slider threshold must actually change the route');
-assert(String(getElement('express-threshold-value').textContent).includes('99'));
+demo.setExpressThreshold(99);
+assert.equal(demo.getState().expressThreshold,99);
+assert(!isExpress(demo.routeFor(crossing,70)), 'raising the model threshold must change the route');
 demo.setExpressThreshold(95);
 
 for (const enabled of [true, false]) {
@@ -253,9 +250,9 @@ assert.equal(+getElement('tree').style['--fit-scale'],fittedScale);
 assert.equal(JSON.stringify(demo.getState()),viewState,'view changes must preserve playback and product state');
 demo.seek(35);
 assert.equal(getElement('hero-time').textContent, getElement('quick-time').textContent);
-assert.equal(+getElement('hero-done').textContent, +getElement('count-done').textContent);
-assert.equal(+getElement('hero-human').textContent, +getElement('count-human').textContent);
-assert.equal(+getElement('hero-active').textContent, +getElement('count-active').textContent + +getElement('count-review').textContent);
+const currentEntries=demo.simulate(demo.getState().time,demo.getState().threshold);
+assert.equal(+getElement('hero-done').textContent,currentEntries.filter(e=>e.state.kind==='done').length);
+assert.equal(+getElement('hero-human').textContent,currentEntries.filter(e=>e.state.kind==='human').length);
 getElement('hero-reset').click();
 assert.equal(demo.getState().time, 0);
 assert.equal(demo.getState().playing, false);
@@ -275,30 +272,17 @@ assert.match(getElement('debate-result').textContent, /불확실 \+1.*미해결 
 getElement('debate-next').click();
 assert.equal(getElement('debate-stage-0')['aria-pressed'], 'true');
 assert.equal(JSON.stringify(demo.getState()), unchangedState);
-// Model turns advance separately, stop after the final turn, and reset on scenario changes.
-getElement('case-supported').click();
-const speakerNames = ['모델 A', '모델 B', '모델 C'];
-for (let turn = 0; turn < 9; turn++) {
-  assert(getElement('debate-turn-label').textContent.includes(`${turn + 1} / 9`));
-  assert(getElement('debate-turn-label').textContent.includes(speakerNames[turn % 3]));
-  for (let speaker = 0; speaker < 3; speaker++) {
-    assert.equal(getElement(`speech-${speaker}`).classList.contains('current-speaker'), speaker === turn % 3);
-    assert.equal(getElement(`model-card-${speaker}`).classList.contains('current-speaker'), speaker === turn % 3);
-  }
-  if (turn < 8) getElement('debate-speaker-next').click();
-}
-getElement('debate-autoplay').click();
-assert.equal(getElement('debate-autoplay')['aria-pressed'], 'true');
-assert.match(getElement('debate-turn-label').textContent, /1 \/ 9/);
-for (let tick = 1; tick <= 9; tick++) animationFrames.at(-1)(tick * 4200);
-assert.equal(getElement('debate-autoplay')['aria-pressed'], 'false');
-assert.match(getElement('debate-turn-label').textContent, /9 \/ 9/);
-getElement('debate-autoplay').click();
-getElement('case-missing').click();
-assert.equal(getElement('debate-autoplay')['aria-pressed'], 'false');
-assert.match(getElement('debate-turn-label').textContent, /1 \/ 9/);
-assert.equal(JSON.stringify(demo.getState()), unchangedState);
-console.log('PASS: nine model turns; one active speaker/card; autoplay completes; case changes stop and reset dialogue; product engine unchanged.');
+// The removed UI must not remain as hidden controls or disclosures.
+for(const id of ['play','step','reset','timeline','speed','threshold','express-threshold','count-done','human-queue-list','debate-autoplay','debate-turn-label']) assert(!staticIds.includes(id), `removed UI remains: ${id}`);
+assert(!html.includes('class="br-transcript"'));
+assert(!html.includes('class="pal-evidence"'));
+getElement('quick-reset').click();
+getElement('quick-step').click();
+assert.equal(demo.getState().time,1);
+getElement('quick-timeline').handlers.input({target:{value:'20'}});
+assert.equal(demo.getState().time,20);
+getElement('quick-reset').click();
+assert.equal(demo.getState().time,0);
 console.log('PASS: landing play/pause/replay/reset shares engine; hero counters match; both authored discussion outcomes and reset; discussion does not mutate simulated products.');
 console.log(JSON.stringify({ passed: true, products: 500, positions, scenarios: summaries }, null, 2));
-console.log('PASS: real inline application; text / specialist / frontier / blind cascade; evidence gates; exact product IDs and counters; persistent final baskets; ten inputs per scene; autoscale 10/15/20 on/off; threshold slider; actual DOM movement.');
+console.log('PASS: real inline application; text / specialist / frontier / blind cascade; evidence gates; exact product IDs and counters; persistent final baskets; ten inputs per scene; autoscale 10/15/20 on/off; threshold policy; actual DOM movement.');

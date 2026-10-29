@@ -921,11 +921,7 @@ SOFTWARE.
 <p class="model-key"><strong>공통 모델은 텍스트 최종 후보를 예측합니다. 전용 이미지 분류기는 1개만 사용하고, 미해결 상품만 사진·글 프론티어와 독립 비교로 보냅니다.</strong> 아래 계층은 확인된 최종 분류의 이동과 분기 복구를 표시하며, 층마다 추가 API를 호출하지 않습니다. 실제 모델·API 연결은 없습니다.</p>
 <details class="batch-details"><summary>묶음별 진행 상태 보기</summary><div class="batches" id="batches" aria-label="예시 묶음 투입 상태"></div></details>
 </section>
-<aside class="side">
-<section class="card"><h2>장면을 직접 바꿔 보세요</h2><div class="controls"><button type="button" class="primary" id="play">▶ 재생</button><button type="button" id="step" aria-label="한 장면 앞으로">한 장면 ↓</button><button type="button" id="reset">처음부터</button></div><div class="control-row"><label for="timeline">진행 장면 <output id="time-value">0 / 100</output></label><input id="timeline" type="range" min="0" max="32" value="0" step="1" aria-label="진행 장면 선택"></div><div class="control-row"><label for="speed">재생 속도 <select id="speed"><option value="0.6">느리게</option><option value="1" selected>보통</option><option value="1.8">빠르게</option></select></label></div><div class="control-row"><label for="express-threshold">최종 직행 가상 기준 <output id="express-threshold-value">≥ 95</output></label><input id="express-threshold" type="range" min="90" max="99" value="95" step="1"><p class="subtle">최종 후보의 가상 점수이며 실제 확률이나 보정값이 아닙니다. 텍스트 근거와 상위 분류의 일치도 함께 확인합니다.</p></div><div class="control-row"><label for="threshold">독립 비교 합성 검토 기준 <output id="threshold-value">≤ 70</output></label><input id="threshold" type="range" min="60" max="85" value="70" step="1"><p class="subtle">독립 비교 합성 점수가 이 값 이하이거나 불일치가 남으면 사람검증 점수 +2를 더합니다. 실제 보정 확률이 아닙니다.</p></div><div class="status" id="status" role="status" aria-live="polite">준비됨 · 재생을 눌러 시작하세요.</div></section>
-<section class="card"><h2>500개 예시 상품의 현재 상태</h2><div class="counts"><div class="metric"><strong id="count-wait">10</strong><span>투입 대기</span></div><div class="metric"><strong id="count-rootwait">0</strong><span>1차 분류 대기</span></div><div class="metric"><strong id="count-active">2</strong><span>분류·계산 중</span></div><div class="metric review"><strong id="count-review">0</strong><span>추가 검토 중</span></div><div class="metric done"><strong id="count-done">0</strong><span>세부 분류 도착</span></div><div class="metric human"><strong id="count-human">0</strong><span>사람 확인 대기</span></div><div class="metric"><strong id="count-checks">0</strong><span>발생한 검토 횟수</span></div></div><p class="subtle">숫자는 500개 전체 상태입니다. 분류도에는 현재 진행 중인 대표 상품을 표시합니다. 실제 처리량·성능 측정값이 아닙니다.</p></section>
-<section class="card review-queue-card"><h2>사람 검수 대기</h2><p class="subtle">2점 이상 우선 · 사진 불량은 별도 보류</p><div id="human-queue-list"></div></section><section class="card event-card"><h2>지금까지의 판단 기록</h2><ol class="event-list" id="events"></ol></section>
-</aside>
+
 </div>
 <section class="debate-section blind-review-section discussion-redesign" id="agent-debate" aria-labelledby="debate-title">
  <div class="debate-header"><div><p class="section-eyebrow">FRONTIER → BLIND REVIEW</p><h2 id="debate-title">Gemini가 먼저 분류하고,<br><em>기준에 못 미치면</em> 독립된 판단을 모읍니다.</h2><p>같은 이미지·텍스트로 각자 판단한 뒤, 같은 분류 후보의 신뢰도와 근거를 비교합니다.</p></div><span class="br-demo-label">설계 설명용 시연<br>실제 모델·API 호출 없음</span></div>
@@ -1005,31 +1001,7 @@ SOFTWARE.
   <p class="br-case-note">첫 판정 통과·독립 비교 해결·정보 부족의 세 가지 가상 사례입니다. A는 Qwen3.7 Flash, B는 GLM 5.3 Flash, C는 Reka Edge의 배치 예시이며, 답안과 점수는 실제 모델의 응답·성능이 아닙니다. 세 모델은 이미지·텍스트 입력을 지원하는 후보로 선정했습니다. 한국어 상품 분류 성능과 실제 비용은 도입 전에 검증해야 합니다. 모든 단계에서 누적 2점 이상이면 후속 호출을 멈춥니다.</p>
  </section>
 
- <details class="br-transcript"><summary>모델별 상세 의견을 단계별로 읽기 <span>미리 작성한 가상 답변 9개</span></summary><div class="br-transcript-body">
-  <div class="turn-strip"><span class="turn-indicator" aria-hidden="true"></span><span id="debate-turn-label" role="status" aria-live="polite">가상 예시 1 / 9 · 모델 A의 독립 판정</span><span class="turn-connector" aria-hidden="true">독립 작성 → 공개 후 비교</span></div>
-  <div class="speech-row model-speech qwen" id="speech-0"><span class="agent-avatar blind-avatar" aria-hidden="true">A</span><div class="speech-card"><strong>모델 A</strong><span class="reply-to" id="reply-0">동일 입력 · 답 공유 없음</span><p id="debate-text"></p></div></div>
-  <div class="speech-row model-speech zai" id="speech-1"><span class="agent-avatar blind-avatar" aria-hidden="true">B</span><div class="speech-card"><strong>모델 B</strong><span class="reply-to" id="reply-1">동일 입력 · 답 공유 없음</span><p id="debate-image"></p></div></div>
-  <div class="speech-row model-speech reka" id="speech-2"><span class="agent-avatar blind-avatar" aria-hidden="true">C</span><div class="speech-card"><strong>모델 C</strong><span class="reply-to" id="reply-2">동일 입력 · 답 공유 없음</span><p id="debate-verify"></p></div></div>
-  <div class="debate-footer"><p>상품 분류 시뮬레이션과 별개인 설명용 의견입니다.</p><div class="debate-playback"><button type="button" id="debate-autoplay" aria-pressed="false">▶ 검토 장면 재생</button><button type="button" id="debate-speaker-next">다음 발언 →</button></div></div>
- </div></details>
- <details class="pal-evidence"><summary>실제 PAL 설계 검토 기록 보기 <span>3개 모델 · 독립 검토와 상호 비평</span></summary>
-  <div class="pal-evidence-body"><p class="pal-evidence-intro">2026.10.28 이전 페이지의 설계안과 재생 코드를 검토한 실제 응답 요약입니다. 위 상품 분류의 이미지 모델 선정·실행 기록과는 별개입니다.</p>
-   <div class="record-turn"><span class="record-brand"><svg class="landing-icon" viewBox="0 0 24 24" aria-hidden="true">
-  <path d="M16 10a2 2 0 0 1-2 2H6.828a2 2 0 0 0-1.414.586l-2.202 2.202A.71.71 0 0 1 2 14.286V4a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z" />
-  <path d="M20 9a2 2 0 0 1 2 2v10.286a.71.71 0 0 1-1.212.502l-2.202-2.202A2 2 0 0 0 17.172 19H10a2 2 0 0 1-2-2v-1" />
-</svg></span><p><strong>Qwen3.8 27B</strong>화면 배치와 접근성은 브라우저에서 추가 확인해야 한다는 의견.</p></div>
-   <div class="record-turn"><span class="record-brand"><svg class="landing-icon" viewBox="0 0 24 24" aria-hidden="true">
-  <path d="M16 10a2 2 0 0 1-2 2H6.828a2 2 0 0 0-1.414.586l-2.202 2.202A.71.71 0 0 1 2 14.286V4a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z" />
-  <path d="M20 9a2 2 0 0 1 2 2v10.286a.71.71 0 0 1-1.212.502l-2.202-2.202A2 2 0 0 0 17.172 19H10a2 2 0 0 1-2-2v-1" />
-</svg></span><p><strong>Nemotron 3 Ultra</strong>큰 재생 버튼과 첫 화면에서 보이는 분류 과정 제안.</p></div>
-   <div class="record-turn"><span class="record-brand"><svg class="landing-icon" viewBox="0 0 24 24" aria-hidden="true">
-  <path d="M16 10a2 2 0 0 1-2 2H6.828a2 2 0 0 0-1.414.586l-2.202 2.202A.71.71 0 0 1 2 14.286V4a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z" />
-  <path d="M20 9a2 2 0 0 1 2 2v10.286a.71.71 0 0 1-1.212.502l-2.202-2.202A2 2 0 0 0 17.172 19H10a2 2 0 0 1-2-2v-1" />
-</svg></span><p><strong>North Mini Code</strong>버튼 이름·크기와 시뮬레이션 표시 점검 제안.</p></div>
-   <p class="record-limitation">텍스트 검토 기록입니다. Gemini는 503 오류로 미참여했습니다.</p>
-   <details class="model-identities"><summary>정확한 API 모델 ID · 사용량</summary><div class="model-id-table"><table><thead><tr><th>요청 모델 / 서비스</th><th>응답 ID 확인</th><th>입력 / 출력 / 합계 토큰</th></tr></thead><tbody><tr><td><code>qwen/qwen3.8-27b</code><br>Groq</td><td>동일 ID · 2회 완료</td><td>11,904 / 164 / 12,068</td></tr><tr><td><code>nvidia/nemotron-3-ultra-550b-a55b:free</code><br>OpenRouter</td><td>동일 ID · 2회 완료</td><td>12,793 / 2,352 / 15,145</td></tr><tr><td><code>cohere/north-mini-code:free</code><br>OpenRouter</td><td>동일 ID · 2회 완료</td><td>11,416 / 3,487 / 14,903</td></tr><tr><td><code>gemini-3.8-flash</code><br>Google</td><td>미확인 · 503 오류</td><td>미확인</td></tr></tbody></table></div><p>확인된 합계 42,116 토큰 · Gemini 사용량 미확인으로 부분 합계입니다. 외부 API 잔여 한도는 실제 조회값이 없습니다.</p></details>
-  </div>
- </details>
+
 </section>
 
 <section class="future-improvements" id="future-improvements" aria-labelledby="future-title">
@@ -1122,7 +1094,7 @@ SOFTWARE.
 </ol><table class="text-table"><thead><tr><th scope="col">예시 상품</th><th scope="col">분류 경로</th><th scope="col">현재 상태</th></tr></thead><tbody id="text-states"></tbody></table></details>
 <div class="landing-credits"><p>아이콘: <a href="https://lucide.dev/" target="_blank" rel="noopener noreferrer">Lucide</a> · ISC / MIT<br>모델 로고: <a href="https://github.com/lobehub/lobe-icons/tree/8b7bbc433d38437fa2b0cca58ae896917162b812" target="_blank" rel="noopener noreferrer">Lobe Icons</a> · MIT · 각 브랜드 식별용, 제휴·보증 의미 없음</p><p>분류도·상품 그림: 자체 제작 SVG<br>구현·수정: Codex 활용 · 설계 검토: PAL 무료 모델 검토 절차</p></div>
 <footer class="footer"><span>설명용 고정 시나리오 · 실제 바코드 조회 / 보상 지급 / 모델 실행 / API 호출 없음</span><span>이 파일은 인터넷 연결 없이 열립니다.</span></footer>
-<section class="my-contribution" id="my-contribution" aria-labelledby="my-contribution-title">
+<div class="sr-only" id="status" role="status" aria-live="polite"></div><section class="my-contribution" id="my-contribution" aria-labelledby="my-contribution-title">
  <div class="my-contribution-heading"><h2 id="my-contribution-title">내가 한 부분:</h2><span>아이디어 · 설계 방향 · UI·UX 조정</span></div>
  <p class="my-contribution-intro">제가 제안하고 이 설계에 반영한 부분입니다.</p>
  <ol class="my-contribution-list">
@@ -1513,12 +1485,12 @@ function simulate(time,threshold=70){return PRODUCTS.map(product=>{
 const $=id=>document.getElementById(id);let time=0,threshold=70,expressThreshold=95,playing=false,speed=1,selected='P001',lastStamp=0,accumulated=0,sellerCardsKey='';
 function updateTimelineLimit(){
  MAX_TIME=Math.max(100,...PRODUCTS.map(product=>{const route=routeFor(product,threshold),last=route.at(-1);return last.start+(last.kind==='human'?TREE_GEOMETRY.humanTransitFrames:0);}));
- time=Math.min(time,MAX_TIME);$('timeline').max=MAX_TIME;$('quick-timeline').max=MAX_TIME;
+ time=Math.min(time,MAX_TIME);$('quick-timeline').max=MAX_TIME;
 }
 updateTimelineLimit();
 const params=new URLSearchParams(location.search);const motionMedia=matchMedia('(prefers-reduced-motion: reduce)');let reduced=params.get('reduce')==='1'||motionMedia.matches;
 function setReduced(){reduced=params.get('reduce')==='1'||motionMedia.matches;document.documentElement.classList.toggle('reduce',reduced);}setReduced();motionMedia.addEventListener('change',setReduced);
-$('timeline').max=MAX_TIME;$('quick-timeline').max=MAX_TIME;$('autoscale-enabled').checked=autoscaleEnabled;$('autoscale-max').value=String(autoscaleMax);
+$('quick-timeline').max=MAX_TIME;$('autoscale-enabled').checked=autoscaleEnabled;$('autoscale-max').value=String(autoscaleMax);
 $('batches').innerHTML=Array.from({length:25},(_,i)=>String.fromCharCode(65+i)).map((name,i)=>'<span class="batch" id="batch-'+i+'">묶음 '+name+' · 예시 20개</span>').join('');
 // Shared prefixes render once. Every visible fork is backed by product targets.
 $('tree').style.height=TREE_GEOMETRY.height+'px';$('tree').style.width=TREE_GEOMETRY.width+'px';$('tree').style.minWidth=TREE_GEOMETRY.width+'px';
@@ -1734,7 +1706,6 @@ function renderRecovery(entries,visible,focus){
  $('review-focus').textContent=p.id+' · 사람검증 점수 '+score+' / 2점';
  $('review-focus').className=score>=2?'held':score?'caution':'';
  $('review-focus-detail').textContent=events.length?events.map(e=>e.label).join(' → ')+' · '+stateLabel(s):stateLabel(s)+' · 사람검증 점수 없음';
- $('human-queue-list').innerHTML=humans.slice(0,8).map(e=>'<button type="button" data-focus="'+e.product.id+'"><b>'+e.product.id+' · '+e.state.reviewScore+'점</b><span>'+e.product.name+'</span><small>'+e.state.detail+'</small></button>').join('')+(humans.length>8?'<p class="subtle">외 '+(humans.length-8)+'건 대기</p>':'')||'<p class="subtle">현재 검수 대기 상품이 없습니다.</p>';
  const active=RECOVERY_KINDS.includes(s.kind)?focus:visible.find(e=>RECOVERY_KINDS.includes(e.state.kind));
  if(!active){$('recovery-lines').innerHTML='';$('recovery-callout').hidden=true;return;}
  const state=active.state,c=targetNode(active.product,state.stage),fromX=NODE_BY_ID.get(state.fromNodeId).x*9,x=c.x*9;
@@ -1759,7 +1730,7 @@ function showReviewExample(kind){
  pause();selected=match.product.id;time=segment.start;setStatus(match.product.id+' · '+(kind==='resolved'?'프론티어 +1 뒤 독립 비교 해결 → 1점 통과':kind==='conflict'?'복구 +1 뒤 프론티어 +1 → 2점 즉시 사람 검수':'프론티어 +1 뒤 독립 비교 미해결 +2 → 3점 사람 검수')+' 합성 예시입니다.');render();if(typeof setFlowView==='function')setFlowView(true);
 }
 
-function render(){const entries=simulate(time,threshold),visible=selectVisible(entries),visibleIds=new Set(visible.map(e=>e.product.id)),counts={waiting:0,rootwait:0,active:0,review:0,done:0,human:0};let checks=0;entries.forEach(e=>{const k=e.state.kind;counts[k==='waiting'?'waiting':k==='rootwait'?'rootwait':k==='done'?'done':k==='human'?'human':['review','reviewResult','frontier','frontierResult','blind','compare','blindResult',...RECOVERY_KINDS].includes(k)?'review':'active']++;checks+=e.state.checks||0;});for(const key of Object.keys(counts))$('count-'+key.replace('waiting','wait')).textContent=counts[key];$('count-checks').textContent=checks;$('time-value').textContent=time+' / '+MAX_TIME;$('timeline').value=time;$('quick-timeline').value=time;$('threshold-value').textContent='≤ '+threshold;$('express-threshold-value').textContent='≥ '+expressThreshold;$('play').textContent=playing?'Ⅱ 일시정지':time===MAX_TIME?'↻ 다시 재생':'▶ 재생';$('step').disabled=time===MAX_TIME;$('quick-play').textContent=$('play').textContent;$('quick-step').disabled=time===MAX_TIME;$('quick-time').textContent=time+' / '+MAX_TIME;renderLanding(counts);
+function render(){const entries=simulate(time,threshold),visible=selectVisible(entries),visibleIds=new Set(visible.map(e=>e.product.id)),counts={waiting:0,rootwait:0,active:0,review:0,done:0,human:0};let checks=0;entries.forEach(e=>{const k=e.state.kind;counts[k==='waiting'?'waiting':k==='rootwait'?'rootwait':k==='done'?'done':k==='human'?'human':['review','reviewResult','frontier','frontierResult','blind','compare','blindResult',...RECOVERY_KINDS].includes(k)?'review':'active']++;checks+=e.state.checks||0;});$('quick-timeline').value=time;$('quick-play').textContent=playing?'Ⅱ 일시정지':time===MAX_TIME?'↻ 다시 재생':'▶ 재생';$('quick-step').disabled=time===MAX_TIME;$('quick-time').textContent=time+' / '+MAX_TIME;renderLanding(counts);
  $('input-now').textContent=time<50?'장면 '+time+' · 새 상품 10개 동시 투입':'장면 '+time+' · 500개 투입 완료 · 남은 처리 진행';$('input-total').textContent='누적 '+PRODUCTS.filter(p=>p.start<=time).length+' / 500';
  renderSellerPanel();renderScalePanel(entries);
  renderHumanSector(entries,visible);
@@ -1775,26 +1746,23 @@ function render(){const entries=simulate(time,threshold),visible=selectVisible(e
  $('basket-summary-'+leaf.id).textContent='전체 상품 보기 ('+done+')';$('basket-list-'+leaf.id).innerHTML=completed.map(e=>'<li>'+e.product.id+' · '+e.product.name+(e.route.some(r=>r.kind==='expressStart')?' · 직행':'')+'</li>').join('')||'<li>아직 도착 없음</li>';});
  const focus=entries.find(e=>e.product.id===selected);
  renderRootDecision(entries);renderRecovery(entries,visible,focus);
- const events=[];entries.forEach(e=>e.route.forEach(r=>{if(r.start<=time&&r.kind!=='classify'&&r.kind!=='queue')events.push({at:r.start,text:e.product.id+' · '+(r.stage+1)+'단계 · '+stateLabel(r)});}));events.sort((a,b)=>b.at-a.at||a.text.localeCompare(b.text));$('events').innerHTML=events.length?events.slice(0,14).map(e=>'<li>장면 '+e.at+' · '+e.text+'</li>').join(''):'<li>이미지·독립 비교·도착 사건이 생기면 기록합니다.</li>';$('text-states').innerHTML=entries.map(e=>'<tr><td>'+e.product.id+' '+e.product.name+'</td><td>'+e.product.path.join(' → ')+'</td><td>'+stateLabel(e.state)+'</td></tr>').join('');$('accessible-summary').textContent='장면 '+time+'. 투입 전 '+counts.waiting+'개, 1차 대기 '+counts.rootwait+'개, 분류 계산 중 '+counts.active+'개, 검토 중 '+counts.review+'개, 세부 분류 도착 '+counts.done+'개, 사람 확인 대기 '+counts.human+'개.';
+ $('text-states').innerHTML=entries.map(e=>'<tr><td>'+e.product.id+' '+e.product.name+'</td><td>'+e.product.path.join(' → ')+'</td><td>'+stateLabel(e.state)+'</td></tr>').join('');$('accessible-summary').textContent='장면 '+time+'. 투입 전 '+counts.waiting+'개, 1차 대기 '+counts.rootwait+'개, 분류 계산 중 '+counts.active+'개, 검토 중 '+counts.review+'개, 세부 분류 도착 '+counts.done+'개, 사람 확인 대기 '+counts.human+'개.';
 }
 function setStatus(message){$('status').textContent=message;}
 function pause(){playing=false;lastStamp=0;accumulated=0;}
-$('play').addEventListener('click',()=>{if(playing){pause();setStatus('일시정지 · 티켓과 판단 근거를 살펴보세요.');}else{if(time>=MAX_TIME)time=0;playing=true;lastStamp=0;setStatus('재생 중 · 묶음마다 독립적으로 아래로 내려갑니다.');}render();});
-$('step').addEventListener('click',()=>{pause();time=Math.min(time+1,MAX_TIME);setStatus('한 장면 앞으로 · 현재 판단을 살펴보세요.');render();});
-$('reset').addEventListener('click',()=>{pause();time=0;setStatus('처음으로 돌아왔습니다. 검토 기준 '+threshold+'은 유지됩니다.');render();});
-$('timeline').addEventListener('input',event=>{pause();time=Number(event.target.value);setStatus('장면 '+time+'에서 멈췄습니다.');render();});
-$('speed').addEventListener('change',event=>{speed=Number(event.target.value);$('quick-speed').value=event.target.value;});$('quick-speed').addEventListener('change',event=>{speed=Number(event.target.value);$('speed').value=event.target.value;});$('quick-timeline').addEventListener('input',event=>{pause();time=Number(event.target.value);setStatus('장면 '+time+'에서 멈췄습니다.');render();});
+$('quick-play').addEventListener('click',()=>{if(playing){pause();setStatus('일시정지 · 티켓과 판단 근거를 살펴보세요.');}else{if(time>=MAX_TIME)time=0;playing=true;lastStamp=0;setStatus('재생 중 · 묶음마다 독립적으로 아래로 내려갑니다.');}render();});
+$('quick-step').addEventListener('click',()=>{pause();time=Math.min(time+1,MAX_TIME);setStatus('한 장면 앞으로 · 현재 판단을 살펴보세요.');render();});
+$('quick-reset').addEventListener('click',()=>{pause();time=0;setStatus('처음으로 돌아왔습니다. 검토 기준 '+threshold+'은 유지됩니다.');render();});
+$('quick-speed').addEventListener('change',event=>{speed=Number(event.target.value);});$('quick-timeline').addEventListener('input',event=>{pause();time=Number(event.target.value);setStatus('장면 '+time+'에서 멈췄습니다.');render();});
 function setExpressThreshold(value){
- pause();expressThreshold=Math.max(90,Math.min(99,Number(value)||95));$('express-threshold').value=expressThreshold;
+ pause();expressThreshold=Math.max(90,Math.min(99,Number(value)||95));
  updateTimelineLimit();setStatus('최종 직행 가상 기준 ≥'+expressThreshold+' · 장면 '+time+'까지 같은 상품을 다시 계산했습니다.');render();
 }
-$('express-threshold').addEventListener('input',event=>setExpressThreshold(event.target.value));
 function setSellerIncentive(enabled){
  pause();sellerIncentiveEnabled=Boolean(enabled);applySellerIncentive();$('seller-incentive').checked=sellerIncentiveEnabled;
  updateTimelineLimit();setStatus('가상 보상 제안 '+(sellerIncentiveEnabled?'켜기':'끄기')+' · 같은 상품의 정보 보강과 분류 경로를 다시 계산했습니다.');render();
 }
 $('seller-incentive').addEventListener('change',event=>setSellerIncentive(event.target.checked));
-$('threshold').addEventListener('input',event=>{pause();threshold=Number(event.target.value);updateTimelineLimit();setStatus('기준 ≤'+threshold+' · 같은 예시를 장면 '+time+'까지 다시 계산했습니다.');render();});
 function setScaleOptions(enabled,max){
  pause();autoscaleEnabled=Boolean(enabled);autoscaleMax=Math.max(10,Math.min(20,Number(max)||20));
  $('autoscale-enabled').checked=autoscaleEnabled;$('autoscale-max').value=String(autoscaleMax);$('autoscale-max').disabled=!autoscaleEnabled;
@@ -1802,17 +1770,15 @@ function setScaleOptions(enabled,max){
 }
 $('autoscale-enabled').addEventListener('change',event=>setScaleOptions(event.target.checked,$('autoscale-max').value));
 $('autoscale-max').addEventListener('change',event=>setScaleOptions($('autoscale-enabled').checked,event.target.value));
-$('quick-play').addEventListener('click',()=>$('play').click());$('quick-step').addEventListener('click',()=>$('step').click());$('quick-reset').addEventListener('click',()=>$('reset').click());
 ['flow-scores','seller-current'].forEach(id=>$(id).addEventListener('click',event=>{const target=event.target.closest('[data-focus]');if(target){if(id==='seller-current'){pause();setStatus('판매자 정보 확인을 위해 일시정지했습니다.');}selected=target.dataset.focus;render();}}));
 $('seller-current').addEventListener('focusin',event=>{if(playing&&event.target.closest('[data-focus]')){pause();setStatus('판매자 상품을 살펴보는 동안 일시정지했습니다.');render();}});
 document.querySelectorAll('[data-review-example]').forEach(button=>button.addEventListener('click',()=>showReviewExample(button.dataset.reviewExample)));
 $('human-transfer-demo').addEventListener('click',showHumanTransferExample);
 $('human-sector-list').addEventListener('click',event=>{const target=event.target.closest('[data-focus]');if(target){pause();selected=target.dataset.focus;render();}});
-$('human-queue-list').addEventListener('click',event=>{const target=event.target.closest('[data-focus]');if(target){pause();selected=target.dataset.focus;render();}});
 window.addEventListener('resize',()=>{fitTree();render();});document.addEventListener('visibilitychange',()=>{if(document.hidden&&playing){pause();setStatus('화면을 벗어나 재생을 멈췄습니다.');render();}});
 function frame(stamp){if(playing){if(!lastStamp)lastStamp=stamp;accumulated+=Math.min(stamp-lastStamp,100)*speed;lastStamp=stamp;if(accumulated>=1200){accumulated-=1200;time=Math.min(time+1,MAX_TIME);if(time===MAX_TIME){pause();setStatus(MAX_TIME+'장면에 도착했습니다. 500개의 가상 상품은 분류 완료 또는 사람 확인 대기 상태입니다.');}render();}}requestAnimationFrame(frame);}
 if(params.has('t')){time=Math.max(0,Math.min(MAX_TIME,Math.floor(Number(params.get('t'))||0)));setStatus('고정 장면 '+time+' · 재생을 누르면 이어집니다.');}
-if(params.has('threshold')){threshold=Math.max(60,Math.min(85,Number(params.get('threshold'))||70));$('threshold').value=threshold;updateTimelineLimit();}
+if(params.has('threshold')){threshold=Math.max(60,Math.min(85,Number(params.get('threshold'))||70));updateTimelineLimit();}
 window.classificationDemo={simulate,routeFor,humanTransferFor,position,showHumanTransferExample,reviewLedger,cascadeFixtureFor,policy:CASCADE_POLICY,validLeaf,showReviewExample,scoreFor,rootDecisionStats,canExpress,setExpressThreshold,setSellerIncentive,getSellerStats,products:PRODUCTS,categories:CATEGORIES,nodes:TREE_NODES,leaves:LEAVES,treeGeometry:TREE_GEOMETRY,get maxTime(){return MAX_TIME;},getScalePlan:()=>scalePlan,setScaleOptions,getState:()=>({time,threshold,expressThreshold,playing,reduced,autoscaleEnabled,autoscaleMax,sellerIncentiveEnabled}),seek:(t)=>{pause();time=Math.max(0,Math.min(MAX_TIME,Math.floor(t)));render();}};
 // Always show the complete diagram; selecting a field highlights it without panning.
 let fitWholeFlow=true;
@@ -1858,15 +1824,13 @@ function renderLanding(counts){
 }
 $('hero-play').addEventListener('click',()=>{
  setFlowView(true);
- $('play').click();
+ $('quick-play').click();
  $('quick-play').focus({preventScroll:true});
 });
-$('hero-reset').addEventListener('click',()=>$('reset').click());
+$('hero-reset').addEventListener('click',()=>$('quick-reset').click());
 
 // This is intentionally a separate, authored teaching example, not model output.
-let debateCase='supported',frontierPassed=false,debateStage=0,debateSpeaker=0,debatePlaying=false,debateRAF=null,debateLastFrame=0;
-const DEBATE_NAMES=['모델 A','모델 B','모델 C'];
-const DEBATE_REPLIES=[['동일 입력 · 답 공유 없음','동일 입력 · 답 공유 없음','동일 입력 · 답 공유 없음'],['세 답을 공개한 뒤 비교','같은 후보에 대한 근거 대조','보정 기준과 의견 일치 확인'],['최종 후보의 근거 확인','미해결 충돌 여부 확인','누적 사람검증 점수와 종료 조건 확인']];
+let debateCase='supported',frontierPassed=false,debateStage=0;
 const DEBATE_EXAMPLES={
  supported:[
   ['무선 이어폰으로 판단합니다. 두 개의 이어피스 사진과 Bluetooth·음악 재생 설명을 함께 확인했습니다.','사진의 이어피스와 충전 케이스가 상품 설명에 맞습니다. 다른 모델의 답을 보지 않고 무선 이어폰으로 판단했습니다.','무선 이어폰 후보를 선택했습니다. 통화용 마이크와 음악 재생 기능이 텍스트에 명시돼 있습니다.','세 모델이 같은 입력으로 각각 판정했습니다. 이제 답을 공개해 비교합니다.'],
@@ -1921,56 +1885,27 @@ function renderBlindComparison(){
  $('blind-compare-check').innerHTML=frontierPassed?'<strong>첫 판정에서 기준과 근거를 충족</strong>이 사례는 추가 모델의 판단이 필요하지 않습니다. OpenRouter 경로를 실행하지 않고 종료합니다.':!revealed?'<strong>아직 서로의 답을 보여 주지 않습니다.</strong>같은 원본 정보만 받고 각자 후보·근거·신뢰도를 저장합니다.':supported?'<strong>무선 이어폰 후보 일치 · 세 점수 모두 기준 통과</strong>사진 속 이어피스와 무선 연결·음악 재생 설명을 대조합니다. 비교 기준을 충족하면 사람검증 점수를 추가하지 않습니다.':'<strong>같은 후보의 점수도 낮고, 구성품 근거도 부족</strong>닫힌 케이스만으로는 이어폰 포함 여부를 알 수 없습니다. 다수결이나 신뢰도 평균으로 확정하지 않습니다.';
  $('blind-reveal-note').textContent=frontierPassed?'Gemini 예시 첫 판정의 신뢰도 92가 예시 기준 85를 넘고 근거도 충족했습니다. 추가 검토는 요청하지 않습니다.':!revealed?'각자 답을 따로 저장한 상태입니다. ‘세 답안 공개’를 누르면 모델별 판정과 비교용 신뢰도가 나타납니다.':debateStage===1?'독립 판정이 끝난 뒤 답안 A·B·C를 공개했습니다. 아래 막대는 모두 “무선 이어폰”이라는 동일 후보의 신뢰도입니다.':'공개된 근거와 비교 기준을 확인한 뒤 결론을 냅니다. 누적 사람검증 점수가 2점 이상이면 이후 호출을 멈추고 사람 검수로 보냅니다.';
  $('debate-next').textContent=frontierPassed?'첫 판정에서 완료':debateStage===0?'세 답안 공개 →':debateStage===1?'비교 후 결론 보기 →':'봉인 단계로 다시 보기 ↺';
- ['debate-next','debate-autoplay','debate-speaker-next','debate-stage-0','debate-stage-1','debate-stage-2'].forEach(id=>$(id).disabled=frontierPassed);
+ ['debate-next','debate-stage-0','debate-stage-1','debate-stage-2'].forEach(id=>$(id).disabled=frontierPassed);
  if(frontierPassed){$('debate-result').textContent='첫 판정 신뢰도·근거 충족 · 사람검증 점수 +0 = 0점 → 최종 분류';$('debate-verdict').className='debate-verdict resolved';}
 }
 
 function renderDebate(){
  const example=DEBATE_EXAMPLES[debateCase][debateStage];
- $('debate-text').textContent=example[0];$('debate-image').textContent=example[1];$('debate-verify').textContent=example[2];$('debate-result').textContent=example[3];
+ $('debate-result').textContent=example[3];
  $('debate-verdict').className='debate-verdict'+(debateStage===2?(debateCase==='supported'?' resolved':' held'):'');
  [0,1,2].forEach(i=>$('debate-stage-'+i).setAttribute('aria-pressed',String(i===debateStage)));
  $('case-supported').setAttribute('aria-pressed',String(debateCase==='supported'));
  $('case-missing').setAttribute('aria-pressed',String(debateCase==='missing'));
  $('blind-reveal-note').textContent=debateStage===0?'같은 입력으로 따로 판정한 결과입니다. 각 모델은 첫 판정에서 다른 모델과 프론티어의 답을 보지 않습니다.':debateStage===1?'독립 판정이 끝난 뒤 세 답을 함께 공개합니다. 같은 최종 후보의 근거와 비교 점수를 확인합니다.':'점수와 근거를 함께 확인합니다. 누적 사람검증 점수가 2점 이상이면 이후 호출을 멈추고 사람 검수로 이동합니다.';
  $('debate-next').textContent=debateStage===2?'검토 예시 처음부터 ↺':'다음 단계 →';
- [0,1,2].forEach(i=>{
-  $('speech-'+i).classList.toggle('current-speaker',i===debateSpeaker);
-  $('model-card-'+i).classList.toggle('current-speaker',i===debateSpeaker);
-  $('reply-'+i).textContent=DEBATE_REPLIES[debateStage][i];
- });
- $('debate-turn-label').textContent='가상 예시 '+(debateStage*3+debateSpeaker+1)+' / 9 · '+DEBATE_NAMES[debateSpeaker]+' · '+['독립 판정','결과 비교','최종 결정'][debateStage];
- $('debate-autoplay').setAttribute('aria-pressed',String(debatePlaying));
- $('debate-autoplay').textContent=debatePlaying?'Ⅱ 검토 장면 일시정지':'▶ 검토 장면 재생';
- $('debate-speaker-next').textContent=debateStage===2&&debateSpeaker===2?'첫 발언으로 ↺':'다음 발언 →';
- $('agent-debate').classList.toggle('debate-playing',debatePlaying);renderBlindComparison();
+ renderBlindComparison();
 }
-function pauseDebate(){debatePlaying=false;if(debateRAF!==null)cancelAnimationFrame(debateRAF);debateRAF=null;}
-function advanceDebateSpeaker(){if(frontierPassed)return;debateSpeaker=(debateSpeaker+1)%3;if(debateSpeaker===0)debateStage=(debateStage+1)%3;renderDebate();}
-function debateFrame(now){
- if(!debatePlaying)return;
- if(document.hidden){pauseDebate();renderDebate();return;}
- if(now-debateLastFrame>=4200){
-  debateLastFrame=now;
-  if(debateStage===2&&debateSpeaker===2){pauseDebate();renderDebate();return;}
-  advanceDebateSpeaker();
- }
- debateRAF=requestAnimationFrame(debateFrame);
-}
-[0,1,2].forEach(i=>$('debate-stage-'+i).addEventListener('click',()=>{if(frontierPassed)return;pauseDebate();debateStage=i;debateSpeaker=0;renderDebate();}));
-function chooseDebateCase(kind){pauseDebate();frontierPassed=kind==='frontier';debateCase=kind==='missing'?'missing':'supported';debateStage=0;debateSpeaker=0;renderDebate();}
+[0,1,2].forEach(i=>$('debate-stage-'+i).addEventListener('click',()=>{if(frontierPassed)return;debateStage=i;renderDebate();}));
+function chooseDebateCase(kind){frontierPassed=kind==='frontier';debateCase=kind==='missing'?'missing':'supported';debateStage=0;renderDebate();}
 $('case-frontier').addEventListener('click',()=>chooseDebateCase('frontier'));
 $('case-supported').addEventListener('click',()=>chooseDebateCase('supported'));
 $('case-missing').addEventListener('click',()=>chooseDebateCase('missing'));
-$('debate-next').addEventListener('click',()=>{if(frontierPassed)return;pauseDebate();debateStage=(debateStage+1)%3;debateSpeaker=0;renderDebate();});
-$('debate-speaker-next').addEventListener('click',()=>{pauseDebate();advanceDebateSpeaker();});
-$('debate-autoplay').addEventListener('click',()=>{
- if(frontierPassed)return;
- if(debatePlaying)pauseDebate();
- else {if(debateStage===2&&debateSpeaker===2){debateStage=0;debateSpeaker=0;}debatePlaying=true;debateLastFrame=performance.now();debateRAF=requestAnimationFrame(debateFrame);}
- renderDebate();
-});
-document.addEventListener('visibilitychange',()=>{if(document.hidden&&debatePlaying){pauseDebate();renderDebate();}});
+$('debate-next').addEventListener('click',()=>{if(frontierPassed)return;debateStage=(debateStage+1)%3;renderDebate();});
 renderDebate();
 
 fitTree();render();requestAnimationFrame(frame);window.__ready=true;
