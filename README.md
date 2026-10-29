@@ -155,13 +155,13 @@ node tests/test-token-price.cjs
 
 ## 내가 한 부분
 
-[본인 기여 영역](https://product-category-flow.pages.dev/#my-contribution)에는 작성자가 제안한 여덟 가지를 구분해 담았습니다. AI Agent 간 의견·근거 비교, 실제 사용 중인 OpenRouter의 적극 활용, 사람 검수 누적점수제, 오픈소스·전이학습 활용, 사람 검수 인건비 최소화, 토큰 비용 감소 전망에 따른 AI 활용, 어려운 분야를 초기에는 프론티어 모델로 처리하며 데이터·검증된 정답을 모은 뒤 작은 모델로 전환하는 방식, 프론티어 API 사용을 최소화하는 구조입니다. 이 여덟 방향은 작성자의 기여로, 사례 조사·복구 루트 제안·이미지 전용 분류기와 모델 후보 추천·웹 구현·배포는 아래의 AI 활용 영역으로 구분합니다. OpenRouter 실제 사용은 작성자가 밝힌 경험이며 이 정적 시뮬레이션의 실시간 API 호출을 뜻하지 않습니다.
+[본인 기여 영역](https://product-category-flow.pages.dev/#my-contribution)에는 작성자가 제안한 여덟 가지를 구분해 담았습니다. AI Agent 간 의견·근거 비교, 실제 사용 중인 OpenRouter의 적극 활용, 사람 검수 누적점수제, 오픈소스·전이학습 활용, 사람 검수 인건비 최소화, 토큰 비용 감소 전망에 따른 AI 활용, 어려운 분야를 초기에는 프론티어 모델로 처리하며 데이터·검증된 정답을 모은 뒤 작은 모델로 전환하는 방식, 프론티어 API 사용을 최소화하는 구조입니다. 이 여덟 방향은 작성자의 기여로, 사례 조사·복구 루트 제안·이미지 전용 분류기 아이디어·각 단계의 구체적인 모델 서칭 및 추천·웹 구현·배포는 아래의 AI 활용 영역으로 구분합니다. OpenRouter 실제 사용은 작성자가 밝힌 경험이며 이 정적 시뮬레이션의 실시간 API 호출을 뜻하지 않습니다.
 
 ![직접 제안한 여덟 가지 아이디어와 설계 방향](assets/my-contribution.png)
 
 ## AI 이용한 부분
 
-[‘내가 한 부분:’ 다음의 AI 활용 영역](https://product-category-flow.pages.dev/#ai-use)에 Walmart·Rakuten·Meta·Shopify 등 세계 여러 기업의 사례 조사와 의견 제공, Walmart 사례 조사 과정에서 AI가 제안한 복구 루트, 이미지 전용 분류기 아이디어와 EfficientNet-B0·ConvNeXt-Tiny 등 모델 후보 추천을 명시했습니다. Codex Dot를 이용한 48시간 서칭, AI Agent를 활용한 웹 시뮬레이션 제작과 Cloudflare Pages 배포도 함께 담았습니다. 아이디어 출처와 48시간 서칭은 작성자의 설명에 따른 기록이며, 복구 루트가 Walmart의 실제 구현과 동일하다는 뜻은 아닙니다.
+[‘내가 한 부분:’ 다음의 AI 활용 영역](https://product-category-flow.pages.dev/#ai-use)에 Walmart·Rakuten·Meta·Shopify 등 세계 여러 기업의 사례 조사와 의견 제공, Walmart 사례 조사 과정에서 AI가 제안한 복구 루트, 이미지 전용 분류기 아이디어와 각 단계의 구체적인 모델 서칭 및 추천을 명시했습니다. 모델 후보에는 KoELECTRA-Small-v3, EfficientNet-B0·ConvNeXt-Tiny, Gemini 3.1 Flash-Lite, Qwen3.7 Flash·GLM 5.3 Flash·Reka Edge가 포함됩니다. Codex Dot를 이용한 48시간 서칭, AI Agent를 활용한 웹 시뮬레이션 제작과 Cloudflare Pages 배포도 함께 담았습니다. 아이디어 출처와 48시간 서칭은 작성자의 설명에 따른 기록이며, 복구 루트가 Walmart의 실제 구현과 동일하다는 뜻은 아닙니다.
 
 ![본인 기여 다음에 다른 색으로 구분한 AI 활용 내용](assets/ai-use.png)
 
