@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>상품 분류 설계 | 텍스트부터 이미지 전용 분류기·독립 검토까지</title>
-<meta name="description" content="텍스트로 충분하면 종료하고, 이미지 전용 분류기·프론티어 API·독립 검토를 필요한 상품에만 사용하는 분류 설계입니다. 누적 검수 2점 이상은 사람에게 보내는 가상 시뮬레이션입니다.">
+<meta name="description" content="텍스트로 충분하면 종료하고, 이미지 전용 분류기·프론티어 API·독립 검토를 필요한 상품에만 사용하는 분류 설계입니다. 누적 사람검증 점수 2점 이상은 사람에게 보내는 가상 시뮬레이션입니다.">
 <style>
 :root{--ink:#17354c;--muted:#527083;--paper:#f3f8fc;--line:#c6d8e4;--blue:#1265c3;--food:#b76613;--beauty:#8a4a96;--review:#a33b30;--white:#fff;--shadow:0 12px 36px #2347640b}
 *{box-sizing:border-box}body{margin:0;color:var(--ink);background:var(--paper);font:15px/1.65 "Malgun Gothic","Apple SD Gothic Neo",sans-serif}button,input,select{font:inherit}button,select{cursor:pointer}button{border:1px solid var(--line);border-radius:9px;background:white;color:var(--ink);padding:9px 16px;font-weight:700;transition:background .15s,opacity .15s}button:hover{background:#eaf3fb}button:focus-visible,input:focus-visible,select:focus-visible,a:focus-visible{outline:3px solid #ec9007;outline-offset:4px}button.primary{background:var(--ink);color:white;border-color:var(--ink)}button:disabled{opacity:.4;cursor:default}.page{max-width:1400px;margin:auto;padding:34px 40px 48px}.masthead{display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line);padding-bottom:17px;font-size:12px;font-weight:800;letter-spacing:.11em}.brand{display:flex;align-items:center;gap:10px}.brandmark{display:grid;grid-template-columns:repeat(2,6px);gap:3px;transform:rotate(45deg)}.brandmark i{width:6px;height:6px;background:var(--blue);border-radius:1px}.tag{font-size:11px;letter-spacing:.03em;border:1px solid #abc5d7;padding:3px 9px;border-radius:30px;color:#395d76}.hero{display:grid;grid-template-columns:1fr 330px;gap:45px;margin:32px 0 25px}.eyebrow{font-size:12px;color:var(--blue);font-weight:800;letter-spacing:.08em;margin:0 0 8px}h1{font-size:clamp(30px,3.1vw,45px);letter-spacing:-.065em;line-height:1.3;margin:0 0 15px;font-weight:800}h1 em{font-style:normal;color:var(--blue)}.intro{max-width:760px;color:var(--muted);margin:0;word-break:keep-all}.scope{border-left:3px solid #91aec4;padding-left:19px;align-self:center;font-size:12px;color:var(--muted)}.scope strong{display:block;color:var(--ink);font-size:14px;margin-bottom:5px}.scope p{margin:0 0 4px}.notice{background:#e8f1f8;border:1px solid #c6d9e7;border-radius:10px;padding:12px 16px;font-size:12px;color:#365a72;margin-bottom:22px}.notice strong{color:var(--ink)}.workspace{display:grid;grid-template-columns:minmax(0,1fr) 280px;gap:20px;align-items:start}.tree-panel{border:1px solid var(--line);background:white;border-radius:16px;overflow:hidden;box-shadow:var(--shadow)}.panelbar{padding:18px 22px 14px;display:flex;align-items:center;justify-content:space-between;gap:10px;border-bottom:1px solid #dce7ee}.panelbar h2{font-size:16px;letter-spacing:-.04em;margin:0}.panelbar small{font-size:11px;color:var(--muted)}.batches{display:flex;gap:7px;padding:13px 20px;flex-wrap:wrap}.batch{padding:4px 8px;border:1px solid #d3e0e9;border-radius:5px;background:#f5f8fa;font-size:10px;color:#647e90}.batch.active{background:#e8f2ff;color:#165b9d;border-color:#94bbde}.batch.finished{background:#edf5ef;color:#466a4e}.scrollhint{display:none}.tree-scroll{overflow-x:auto}.tree{position:relative;height:1110px;min-width:750px;background:radial-gradient(circle,#d8e5ee .8px,transparent .9px) 0 0/15px 15px}.tree-lines{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}.tree-lines path{fill:none;stroke:#c9dce9;stroke-width:2}.tree-lines .foodline{stroke:#e4d4bc}.tree-lines .beautyline{stroke:#decfe3}.level-label{position:absolute;left:18px;color:#5d7c91;font-size:10px;font-weight:700;background:white;padding:3px 7px;border:1px solid #d7e4ed;border-radius:4px}.level-label.l1{top:240px}.level-label.l2{top:455px}.level-label.l3{top:695px}.hub{position:absolute;top:24px;left:50%;transform:translateX(-50%);width:360px;height:128px;text-align:center;border:1.5px solid #a7c5d9;background:#edf5fb;border-radius:12px;padding:13px}.hub .tiny{font-size:10px;color:#4e7391}.hub strong{display:block;font-size:20px;letter-spacing:-.04em}.hub small{font-size:11px;color:#56748b}.root-pocket{position:absolute;left:50%;top:165px;transform:translateX(-50%);font-size:10px;text-align:center;color:var(--muted);width:340px;min-height:48px}.root-pocket strong{display:block;color:#4f6f85;font-size:11px}.node{position:absolute;transform:translateX(-50%);width:204px;height:110px;background:#f4f9ff;border:1px solid #adcbe5;border-radius:11px;padding:12px 14px;color:var(--blue)}.node.food{background:#fff9ef;border-color:#e5cda5;color:var(--food)}.node.beauty{background:#fbf5fc;border-color:#d6b6df;color:var(--beauty)}.node .level{font-size:10px;opacity:.85;display:flex;align-items:center;justify-content:space-between}.node strong{display:block;font-size:19px;letter-spacing:-.05em;margin:1px 0}.node small{font-size:10px;opacity:.85}.node .count{font:11px/1.5 Consolas,monospace;border:1px solid currentColor;border-radius:30px;padding:0 5px}.pocket{position:absolute;transform:translateX(-50%);width:204px;min-height:63px;border:1px dashed #c0d1de;border-radius:7px;text-align:center;background:#fcfdfe;padding:6px;color:#5a7587}.pocket strong{font-size:10px;display:block}.pocket small{font-size:9px}.pocket.active{background:#fff1e8;border-color:#cf957e;color:#8c4427}.resultbin{position:absolute;top:994px;transform:translateX(-50%);width:204px;height:89px;border-top:2px solid #789bb4;padding:9px 12px;text-align:center;background:#f3f7fa;border-radius:0 0 8px 8px}.resultbin strong{font-size:11px;color:#4e6b7e}.resultbin small{display:block;font-size:10px;color:#6b8292}.token{position:absolute;left:0;top:0;width:124px;min-height:47px;z-index:3;background:white;border:1px solid #6ca3d5;border-left:4px solid var(--blue);border-radius:7px;padding:5px 7px;box-shadow:0 4px 10px #133a5a13;transition:transform .6s cubic-bezier(.2,.8,.2,1),opacity .18s;will-change:transform;text-align:left;cursor:pointer;color:var(--ink)}.token.food{border-color:#c89954;border-left-color:var(--food)}.token.beauty{border-color:#b385bd;border-left-color:var(--beauty)}.token.reviewing{background:#fff2ea;border-color:#c47e66}.token.human{background:#fff0ee;border-color:#c07870;border-left-color:#a44237}.token.done{background:#f1f9f4;border-color:#8bb59a;border-left-color:#4b8360}.token.selected{outline:2px solid #24465f;outline-offset:2px}.token b{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:11px;line-height:1.5}.token span{display:block;font:9px/1.55 "Malgun Gothic",sans-serif;color:#5b768a}.token .tokenid{font:8px Consolas,monospace;float:right;letter-spacing:0;color:#6c879b}.token.hidden{opacity:0;pointer-events:none}.side{display:grid;gap:15px}.card{background:white;border:1px solid var(--line);border-radius:13px;padding:18px;box-shadow:var(--shadow)}.card h2{font-size:14px;letter-spacing:-.04em;margin:0 0 14px}.controls{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:15px}.controls button{padding:8px 13px;font-size:12px}.control-row{margin:16px 0 0;font-size:11px}.control-row label{display:flex;justify-content:space-between;align-items:center;margin-bottom:7px;font-weight:700}.control-row output{font:700 13px Consolas,monospace;color:var(--blue)}input[type=range]{width:100%;accent-color:var(--blue);cursor:pointer}select{border:1px solid var(--line);border-radius:5px;padding:3px 7px;color:var(--ink);background:white;font-size:11px}.subtle{font-size:10px;color:var(--muted);margin:5px 0 0;line-height:1.6}.status{font-size:11px;background:#ecf4fb;border-radius:6px;padding:7px 9px;color:#38617c;margin-top:12px}.counts{display:grid;grid-template-columns:1fr 1fr;gap:8px}.metric{background:#f2f7fa;border-radius:7px;padding:10px}.metric strong{display:block;font:700 25px/1.25 Consolas,monospace;letter-spacing:-.05em}.metric span{font-size:10px;color:#567184}.metric.review{background:#fff1e9}.metric.human{background:#fff0ed}.metric.done{background:#eef6ef}.selected-heading{font-size:18px!important;margin-bottom:1px!important}.product-id{font:10px Consolas,monospace;color:#688398}.path{font-size:11px;margin:12px 0;border-left:2px solid #9fbcd1;padding-left:9px;color:#46667d;word-break:keep-all}.product-status{font-size:11px;font-weight:700;color:var(--blue)}.scores{display:grid;grid-template-columns:repeat(3,1fr);gap:5px;margin:11px 0}.score{background:#f4f7f9;border-radius:5px;text-align:center;padding:6px 1px}.score span{font-size:9px;color:#647e90;display:block}.score b{font:700 16px Consolas,monospace}.detail{font-size:11px;color:#4f6e83;padding-top:10px;border-top:1px solid #dce6ee;min-height:65px}.event-list{margin:0;padding-left:16px;max-height:175px;overflow:auto;font-size:10px;color:#597286}.event-list li{padding-bottom:5px}.legend{display:flex;gap:14px;flex-wrap:wrap;font-size:10px;color:var(--muted);padding:12px 20px;border-top:1px solid #dce7ee}.dot{width:7px;height:7px;display:inline-block;background:var(--blue);border-radius:50%;margin-right:4px}.dot.food{background:var(--food)}.dot.beauty{background:var(--beauty)}.dot.review{background:#bd6b43}.rules{margin-top:28px}.rules h2{font-size:22px;letter-spacing:-.05em;margin:0 0 4px}.rules>.subtle{font-size:12px}.rule-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:16px}.rule{background:#fff;border:1px solid var(--line);border-radius:11px;padding:17px}.rule .band{font:700 18px/1.4 Consolas,monospace;color:var(--blue)}.rule h3{font-size:13px;margin:7px 0 8px}.rule p{font-size:11px;color:var(--muted);margin:0;word-break:keep-all}.rule.review-rule{background:#fff8f3}.rule.review-rule .band{color:#a8502c}.calibration{margin:16px 0 0;border:1px solid #c6d8e5;border-radius:9px;background:#eaf2f8;padding:14px 17px;font-size:11px;color:#46667d}.calibration strong{color:var(--ink)}details{margin-top:20px;background:white;border:1px solid var(--line);border-radius:10px;padding:14px 18px}summary{font-size:12px;font-weight:700;cursor:pointer}details p,details ol{font-size:12px;color:var(--muted)}.text-table{width:100%;border-collapse:collapse;font-size:11px;margin-top:13px}.text-table th,.text-table td{text-align:left;padding:7px;border-bottom:1px solid #dce7ee}.footer{display:flex;justify-content:space-between;gap:20px;font-size:10px;color:#6e8798;margin-top:23px}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}.reduce .token{transition:opacity .15s;will-change:auto}.reduce .brandmark{transform:none}@media(prefers-reduced-motion:reduce){.token{transition:opacity .15s;will-change:auto}.brandmark{transform:none}}@media(max-width:1150px){.page{padding:25px}.workspace{grid-template-columns:minmax(0,1fr)}.side{grid-template-columns:1fr 1fr 1fr}.card{padding:15px}.hero{grid-template-columns:1fr 280px;gap:25px}.rule-grid{gap:9px}.tree{min-width:750px}.event-card{display:none}}@media(max-width:760px){.page{padding:19px 14px}.masthead{font-size:10px;letter-spacing:.04em}.tag{font-size:9px}.hero{grid-template-columns:1fr;gap:17px;margin-top:24px}.scope{font-size:11px}.scope strong{font-size:12px}.hero h1{font-size:32px}.intro{font-size:13px}.workspace{gap:13px}.side{grid-template-columns:1fr 1fr}.side .selection{grid-column:1/-1}.panelbar{padding:14px}.panelbar h2{font-size:14px}.panelbar small{font-size:9px}.batches{padding:11px 14px;gap:5px}.batch{font-size:9px}.scrollhint{display:block;font-size:10px;color:var(--muted);margin:0;padding:0 14px 8px}.tree-scroll{scroll-snap-type:x proximity}.rule-grid{grid-template-columns:1fr 1fr}.rule{padding:13px}.rule .band{font-size:17px}.footer{display:block}.footer span{display:block;margin-bottom:5px}.counts{gap:5px}.metric{padding:8px}.controls button{padding:7px 10px}.notice{font-size:11px}.text-table{font-size:10px}}
@@ -184,7 +184,7 @@ html{scroll-behavior:auto;scroll-padding-top:22px}body{background:#f5f8fc;color:
 .specialist-step{border-top-color:#397e9d}.frontier-step{border-top-color:#7a63b4}.blind-step{border-top-color:#b37e35;background:#fffaf3}
 .blind-step .cascade-step-top{margin-bottom:9px}.blind-step .cascade-kind{font-size:9px}.blind-step .cascade-step-top>.landing-icon{display:none}
 .blind-models{display:flex;gap:5px;margin-bottom:7px}.blind-models span{flex:1;padding:4px 0;border:1px dashed #d3b88f;border-radius:5px;background:#fff;font-size:10px;text-align:center;color:#735b37;font-weight:700}
-.blind-step p{font-size:10px;line-height:1.4;margin-bottom:9px}.blind-warning{font-size:9px;line-height:1.5;color:#865017;padding-top:7px;white-space:nowrap}.blind-warning strong{font-size:11px;margin-left:3px}
+.blind-step p{font-size:10px;line-height:1.4;margin-bottom:9px}.blind-warning{font-size:9px;line-height:1.5;color:#865017;padding-top:7px;white-space:normal;word-break:keep-all}.blind-warning strong{display:block;font-size:12px;margin:3px 0 0}
 .cascade-success{position:relative;display:flex;justify-content:center;align-items:center;gap:9px;margin:27px 0 14px;padding:9px 12px;border:1px solid #bad9cd;border-radius:7px;background:#f0faf6;color:#16765d;font-size:11px;line-height:1.5}
 .cascade-success>.landing-icon{width:18px;height:18px}.cascade-success>strong{font-size:13px;letter-spacing:-.02em}.cascade-success>span:not(.success-spoke){color:#4f7567;font-size:10px}
 .cascade-success:before{content:'';position:absolute;left:11%;right:12%;height:13px;top:-14px;border-top:1.5px solid #71b39b;border-left:1.5px solid #71b39b;border-right:1.5px solid #71b39b;border-radius:4px 4px 0 0}
@@ -253,7 +253,7 @@ html{scroll-behavior:auto;scroll-padding-top:22px}body{background:#f5f8fc;color:
 .br-confidence{font-size:11px;color:#64738b;border-top:1px solid #e2e8f2;padding-top:7px}
 .br-confidence b{color:#9d6424;float:right}
 .br-low-score{display:flex;justify-content:space-between;gap:4px;background:#fff5e5;border-top:1px solid #e5c58b;margin:14px -14px 0;padding:9px 10px;color:#936024;font-size:10px;line-height:1.5}
-.br-low-score b{white-space:nowrap}
+.br-low-score b{white-space:nowrap}.br-low-score{flex-wrap:wrap}
 .br-exit-arrow{display:flex;align-items:center;justify-content:center;gap:7px;font-size:25px;color:#5e9c82;line-height:1.5;margin:3px 0}
 .br-exit-arrow span{font-size:9px;color:#5d7e72}
 .br-direct-end{display:flex;gap:7px;align-items:center;padding:11px 10px;border:1px solid #b2d2c3;background:#eef9f3;border-radius:8px;color:#277151}
@@ -433,6 +433,24 @@ html{scroll-behavior:auto;scroll-padding-top:22px}body{background:#f5f8fc;color:
 @media(max-width:1000px){.future-steps{grid-template-columns:repeat(2,minmax(0,1fr));gap:25px 30px}.future-steps>li:nth-child(3):before{content:none}.future-steps h3{font-size:17px}}
 @media(max-width:650px){.future-improvements{padding:23px 19px;margin-top:26px}.future-heading{display:block}.future-heading h2{font-size:25px}.future-status{display:inline-block;margin-top:12px;font-size:10px}.future-lead{font-size:22px;margin:20px 0 17px}.transfer-primer{padding:14px 14px}.transfer-primer>strong{font-size:14px}.transfer-primer p{font-size:12px;line-height:1.85}.future-steps{grid-template-columns:1fr;gap:25px;margin:25px 0}.future-steps>li{padding-top:15px}.future-steps>li+li:before{content:'↓';left:auto;right:4px;top:-17px;font-size:19px;padding:0 6px}.future-steps h3{margin-top:7px;font-size:17px}.future-steps p{font-size:13px;line-height:1.9;margin-bottom:12px}.future-stage-note{font-size:11px}.future-goal{padding:15px}.future-goal>strong{font-size:15px}.future-goal p{font-size:12px;line-height:1.9}.future-footnote,.future-sources{font-size:10px}}
 
+.future-learning{margin:23px 0 26px;padding:23px;background:#f7f9fd;border:1px solid #d3deed;border-radius:12px;scroll-margin-top:20px}
+.fl-heading{display:flex;align-items:center;justify-content:space-between;gap:15px}.fl-eyebrow{display:block;font-size:11px;font-weight:750;color:#7085a0;letter-spacing:.025em}.fl-heading h3{font-size:21px;line-height:1.5;letter-spacing:-.04em;color:#2e4665;margin:3px 0 0;word-break:keep-all}.fl-demo-tag{font-size:10px;color:#7a7892;white-space:nowrap;border:1px solid #dcd9e8;background:#f7f5fb;border-radius:4px;padding:5px 7px}
+.fl-scenes{display:grid;grid-template-columns:repeat(4,1fr);gap:7px;margin:20px 0}.fl-scenes button{border:1px solid #d8e2ef;background:#fff;color:#7486a0;border-radius:6px;padding:9px 6px;font-size:12px;line-height:1.5;cursor:pointer}.fl-scenes b{font:750 11px Consolas,monospace;margin-right:5px;color:#9bacbd}.fl-scenes button[aria-pressed=true]{color:#285e9d;border-color:#94b2d3;background:#edf4ff;font-weight:750}.fl-scenes button[aria-pressed=true] b{color:#3c6ca4}
+.fl-flow{display:grid;grid-template-columns:minmax(0,1fr) 54px minmax(0,1fr) 54px minmax(0,1.2fr);align-items:stretch}
+.fl-node{min-width:0;display:flex;flex-direction:column;padding:16px;border:1px solid #d5dfed;border-radius:9px;background:white;transition:border-color .18s,background-color .18s;position:relative}.fl-node-kind{font-size:10px;line-height:1.5;color:#7a8ba2;word-break:keep-all}.fl-node h4{margin:5px 0 12px;font-size:17px;line-height:1.5;letter-spacing:-.035em;color:#355273}.fl-node-footer{display:block;border-top:1px solid #e6eaf2;padding-top:10px;margin-top:auto;font-size:10px;line-height:1.6;color:#7b8ca2;word-break:keep-all}
+.fl-frontier{align-items:center;text-align:center}.fl-frontier-icon{width:55px;height:55px;margin:12px 0 3px;color:#8468b4}.fl-frontier-icon svg{width:100%;height:100%;stroke:currentColor;stroke-width:2;fill:#f3eef9;stroke-linecap:round;stroke-linejoin:round}.fl-frontier h4{color:#725798;margin:4px 0 6px}.fl-frontier p{font-size:12px;line-height:1.7;color:#7c7291;margin:0 0 14px;min-height:41px;word-break:keep-all}.fl-frontier .fl-node-footer{width:100%}.fl-frontier.is-active{border-color:#a28cbb;background:#fcfaff}
+.fl-data.is-active{border-color:#8eaacb;background:#fbfdff}.fl-reservoir{display:grid;grid-template-columns:repeat(6,1fr);gap:5px;margin:3px 0 10px}.fl-reservoir i{display:block;height:26px;border:1px solid #dfe7f1;background:#f2f5f9;border-radius:3px;opacity:.6;transition:background-color .15s,opacity .15s,border-color .15s}.fl-reservoir i.is-filled{background:#83a6cf;border-color:#7397c1;opacity:1}.fl-reservoir i:nth-child(3n+2).is-filled{background:#b3a0c8;border-color:#a38fba}.fl-reservoir i:nth-child(3n).is-filled{background:#80b3a3;border-color:#73a394}.fl-data-count{font-size:11px;line-height:1.5;color:#73859c;margin:0 0 15px}.fl-data-count strong{font-size:25px;color:#466c99}.fl-data-count small{font-size:9px;margin-left:4px;color:#8b98a9}
+.fl-link{align-self:center;display:flex;flex-direction:column;align-items:center;gap:4px;color:#9aacbf;padding:0 2px}.fl-link>span{font-size:9px;white-space:nowrap;color:#7a8da4}.fl-link svg{display:block;width:50px;height:24px;overflow:visible}.fl-link path{fill:none;stroke:#b7c6d8;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}.fl-link circle{fill:#7d9bc3;opacity:0}
+.fl-models.is-active{border-color:#92b6a7;background:#fbfefc}.fl-model-row{padding:9px 10px;margin-bottom:7px;border:1px solid #e0e7f0;border-radius:5px;background:#f8fafd;transition:border-color .15s,background-color .15s}.fl-model-row>div:first-child{display:flex;justify-content:space-between;gap:7px;align-items:center}.fl-model-row strong{font-size:11px;color:#536d8c;white-space:nowrap}.fl-model-row span{font-size:10px;color:#8a96a6;white-space:nowrap}.fl-model-meter{height:4px;background:#e5eaf2;border-radius:2px;overflow:hidden;margin-top:7px}.fl-model-meter i{display:block;height:100%;width:0;background:#97adca}.fl-model-row.is-training{border-color:#c5b5dd;background:#f9f6fd}.fl-model-row.is-training span{color:#8665ab}.fl-model-row.is-training .fl-model-meter i{background:#ad90ca}.fl-model-row.is-evaluating{border-color:#d9c59c;background:#fffcf5}.fl-model-row.is-evaluating span{color:#a07c37}.fl-model-row.is-evaluating .fl-model-meter i{background:#c9ab70}.fl-model-row.is-ready{border-color:#b5d3c5;background:#eff8f3}.fl-model-row.is-ready span{color:#3b8965}.fl-model-row.is-ready .fl-model-meter i{background:#59a67d}.fl-models .fl-node-footer{margin-top:4px}
+.fl-share-panel{background:#fff;border:1px solid #d9e2ed;border-radius:8px;padding:15px 17px;margin-top:16px}.fl-share-heading{display:flex;align-items:center;justify-content:space-between;gap:10px;font-size:12px;color:#42607f;line-height:1.6}.fl-share-heading>span{font-size:10px;color:#8795a6}.fl-share-bar{height:17px;display:flex;overflow:hidden;border-radius:5px;background:#e4eaf1;margin:10px 0}.fl-share-bar i{height:100%;display:block;flex:none}.fl-share-bar i:first-child{background:#9778bc;width:100%}.fl-share-bar i:last-child{background:#56a183;width:0}.fl-share-labels{display:flex;justify-content:space-between;gap:12px;font-size:11px;line-height:1.6;color:#667b94}.fl-share-labels>span{display:flex;gap:5px;align-items:center}.fl-share-labels i{display:inline-block;width:8px;height:8px;border-radius:2px;background:#9778bc}.fl-share-labels .fl-small-label i{background:#56a183}.fl-share-labels b{font-size:18px;margin-left:3px;color:#755798}.fl-share-labels .fl-small-label b{color:#3c896a}.fl-share-panel>p{font-size:12px;line-height:1.75;color:#58718f;margin:12px 0 0;padding-top:11px;border-top:1px solid #e5ebf3;min-height:54px;word-break:keep-all}
+.fl-controls{display:flex;align-items:center;gap:9px;flex-wrap:wrap;margin-top:15px}.fl-controls>button{border:1px solid #c8d7e9;background:white;border-radius:6px;min-height:37px;padding:8px 11px;font:inherit;font-size:11px;font-weight:650;color:#547292;cursor:pointer}.fl-controls>button.fl-play{background:#365c9d;border-color:#365c9d;color:#fff;min-width:116px;font-weight:750}.fl-controls>button:disabled{background:#e8edf4;border-color:#d3dce9;color:#7a8da4;cursor:default}.fl-seek-label{flex:1;min-width:145px;display:flex;align-items:center;gap:8px;font-size:10px;color:#7d8da1}.fl-seek-label input{width:100%;min-width:0;accent-color:#597ca8}.fl-controls output{font:11px Consolas,monospace;color:#677d96;white-space:nowrap}.fl-motion{display:flex;align-items:center;gap:4px;font-size:10px;color:#788a9f;white-space:nowrap}.fl-motion input{accent-color:#597ca8}.fl-note{font-size:10px;line-height:1.8;color:#8795a6;margin:11px 0 0;word-break:keep-all}.future-learning button:focus-visible,.future-learning input:focus-visible{outline:3px solid #5578b8;outline-offset:3px}
+.fl-seek-label{white-space:nowrap}
+.future-learning.is-reduced .fl-link circle{display:none}.future-learning.is-reduced .fl-node,.future-learning.is-reduced .fl-model-row,.future-learning.is-reduced .fl-reservoir i{transition:background-color .15s,border-color .15s,opacity .15s}
+@media(max-width:1000px){.future-learning{padding:19px}.fl-flow{grid-template-columns:minmax(0,1fr) 38px minmax(0,1fr) 38px minmax(0,1.2fr)}.fl-link svg{width:34px}.fl-node{padding:13px 11px}.fl-node h4{font-size:15px}.fl-reservoir{gap:4px}.fl-reservoir i{height:23px}.fl-model-row{padding:8px}.fl-model-row strong,.fl-model-row span{font-size:10px}.fl-heading{align-items:flex-start}.fl-demo-tag{font-size:9px}.fl-heading h3{font-size:19px}}
+@media(max-width:760px){.fl-flow{grid-template-columns:1fr}.fl-link{flex-direction:row;justify-content:center;gap:10px;height:48px}.fl-link svg{width:39px;transform:rotate(90deg)}.fl-link>span{font-size:11px}.fl-node{padding:15px}.fl-node h4{font-size:17px}.fl-frontier{display:grid;grid-template-columns:58px 1fr;column-gap:13px;text-align:left;align-items:start}.fl-frontier>.fl-node-kind{grid-column:2}.fl-frontier-icon{grid-column:1;grid-row:1/4;width:49px;height:49px;margin:12px 0 0}.fl-frontier h4,.fl-frontier p{grid-column:2}.fl-frontier h4{margin-top:2px}.fl-frontier p{min-height:0;margin-bottom:12px}.fl-frontier .fl-node-footer{grid-column:1/-1}.fl-data{display:grid;grid-template-columns:1fr auto;column-gap:12px}.fl-data>.fl-node-kind,.fl-data>h4,.fl-data>.fl-node-footer{grid-column:1/-1}.fl-data .fl-reservoir{grid-column:1;gap:5px;margin:0 0 12px}.fl-reservoir i{height:17px}.fl-data-count{grid-column:2;align-self:center;max-width:63px;margin:0 0 10px;line-height:1.8}.fl-data-count strong{font-size:23px}.fl-data-count small{display:block;margin:0}.fl-model-row strong{font-size:12px}.fl-model-row span{font-size:11px}.fl-heading{display:block}.fl-demo-tag{display:inline-block;margin-top:8px}.fl-scenes{grid-template-columns:1fr 1fr;margin:15px 0;gap:6px}.fl-scenes button{font-size:11px;padding:8px 5px}.fl-controls{gap:8px}.fl-seek-label{order:4;flex:1 1 65%;min-width:130px}.fl-controls output{order:5}.fl-motion{margin-left:auto}.fl-share-heading{display:block}.fl-share-heading>span{display:block;margin-top:2px}.fl-share-panel{padding:14px}.fl-share-labels{gap:7px;flex-wrap:wrap}.fl-share-labels b{font-size:16px}.fl-share-panel>p{font-size:11px;min-height:68px}}
+@media(max-width:480px){.future-learning{padding:16px 12px}.fl-heading h3{font-size:18px}.fl-controls>button{padding:8px 9px}.fl-controls>button.fl-play{min-width:111px}.fl-motion{width:100%;margin-left:0;order:6}.fl-node-kind{font-size:9px}.fl-share-labels{font-size:10px}.fl-share-labels b{font-size:15px;margin-left:0}}
+@media(prefers-reduced-motion:reduce){.future-learning .fl-link circle{display:none}.future-learning .fl-node,.future-learning .fl-model-row,.future-learning .fl-reservoir i{transition:background-color .15s,border-color .15s,opacity .15s}}
+
 </style>
 <!-- Lucide static 1.63.0 icon license
 ISC License
@@ -523,7 +541,7 @@ SOFTWARE.
 </section>
 <section class="landing cascade-overview" aria-labelledby="landing-title">
  <div class="cascade-heading"><div><p class="cascade-eyebrow">상품 분류 · 필요한 단계까지만</p><h1 id="landing-title">텍스트로 충분하면 끝내고,<br class="mobile-break"> <em>부족하면 이미지·AI로 확인합니다.</em></h1></div><p class="cascade-disclaimer">설명용 시뮬레이션<br> 실제 모델 호출·성능 측정 없음</p></div>
- <div class="cascade-map" aria-label="텍스트, 이미지 전용 분류기, 프론티어 API, 독립 검토 순서와 누적 검수 규칙">
+ <div class="cascade-map" aria-label="텍스트, 이미지 전용 분류기, 프론티어 API, 독립 검토 순서와 누적 사람검증 점수 규칙">
   <div class="cascade-stages">
    <article class="cascade-step text-step"><div class="cascade-step-top"><span class="cascade-number">1</span><span class="cascade-kind">상품명 · 설명</span><svg class="landing-icon" viewBox="0 0 24 24" aria-hidden="true">
   <path d="M3 7V5a2 2 0 0 1 2-2h2" />
@@ -553,7 +571,7 @@ SOFTWARE.
   <path d="M20 2v4" />
   <path d="M22 4h-4" />
   <circle cx="4" cy="20" r="2" />
-</svg></div><h2>프론티어 API</h2><p>복잡한 의미·관계를 해석<br><small>Qwen-VL 계열도 대안으로 평가</small></p><span class="cascade-pass">해결하면 여기서 종료 ↓</span><div class="blind-warning">불확실하거나 분류하지 못하면 <strong>+1</strong></div><span class="cascade-next scored-next"><b>1점이면</b><svg class="landing-icon" viewBox="0 0 24 24" aria-hidden="true">
+</svg></div><h2>프론티어 API</h2><p>복잡한 의미·관계를 해석<br><small>Qwen-VL 계열도 대안으로 평가</small></p><span class="cascade-pass">해결하면 여기서 종료 ↓</span><div class="blind-warning"><span>불확실하거나 분류하지 못하면</span><strong>사람검증 점수 +1</strong></div><span class="cascade-next scored-next"><b>1점이면</b><svg class="landing-icon" viewBox="0 0 24 24" aria-hidden="true">
   <path d="M5 12h14" />
   <path d="m12 5 7 7-7 7" />
 </svg></span></article>
@@ -564,22 +582,22 @@ SOFTWARE.
   <circle cx="19" cy="18" r="3" />
   <path d="M12 18H7a2 2 0 0 1-2-2V9" />
   <path d="m9 15 3 3-3 3" />
-</svg></div><h2>Blind 독립 검토</h2><div class="blind-models" aria-label="같은 이미지와 텍스트를 모델 A, B, C가 서로의 답을 보지 않고 판정"><span>모델 A</span><span>모델 B</span><span>모델 C</span></div><p>각자 답한 뒤 결과·근거 비교</p><span class="cascade-pass">근거가 충분하면 종료 ↓</span><div class="blind-warning">낮은 보정 점수·충돌 미해결 <strong>+2</strong></div></article>
+</svg></div><h2>Blind 독립 검토</h2><div class="blind-models" aria-label="같은 이미지와 텍스트를 모델 A, B, C가 서로의 답을 보지 않고 판정"><span>모델 A</span><span>모델 B</span><span>모델 C</span></div><p>각자 답한 뒤 결과·근거 비교</p><span class="cascade-pass">근거가 충분하면 종료 ↓</span><div class="blind-warning"><span>낮은 보정 점수·충돌 미해결 시</span><strong>사람검증 점수 +2</strong></div></article>
   </div>
   <div class="cascade-success"><span class="success-spoke" aria-hidden="true"></span><svg class="landing-icon" viewBox="0 0 24 24" aria-hidden="true">
   <path d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z" />
   <path d="m9 13 2 2 4-4" />
-</svg><strong>최종 세부 분류 확정</strong><span>근거 충족 + 누적 2점 미만 · 이후 모델 호출 종료</span></div>
+</svg><strong>최종 세부 분류 확정</strong><span>근거 충족 + 누적 사람검증 점수 2점 미만 · 이후 모델 호출 종료</span></div>
   <div class="cascade-policies">
    <div class="cascade-recovery"><span class="cascade-number">5</span><svg class="landing-icon" viewBox="0 0 24 24" aria-hidden="true">
   <path d="M9 14 4 9l5-5" />
   <path d="M4 9h10.5a5.5 5.5 0 0 1 5.5 5.5a5.5 5.5 0 0 1-5.5 5.5H11" />
-</svg><div><strong>하위 분류로 못 가면, 상위로 복구 <b>+1</b></strong><span>잘못 들어간 가지를 다시 탐색 · 같은 원인에는 한 번만 가산</span></div></div>
+</svg><div><strong>하위 분류로 못 가면, 상위로 복구<br><b>사람검증 점수 +1</b></strong><span>잘못 들어간 가지를 다시 탐색 · 같은 원인에는 한 번만 가산</span></div></div>
    <div class="cascade-human"><span class="cascade-number">6</span><svg class="landing-icon" viewBox="0 0 24 24" aria-hidden="true">
   <path d="M2 21a8 8 0 0 1 13.292-6" />
   <circle cx="10" cy="8" r="5" />
   <path d="m16 19 2 2 4-4" />
-</svg><div><strong>어느 단계든 누적 <b>2점 이상</b> → 사람 검수</strong><span>점수가 쌓일 때마다 확인 · 뒤의 모델 호출을 건너뜀</span></div></div>
+</svg><div><strong>누적 사람검증 점수 <b>2점 이상</b> → 사람 검수</strong><span>점수가 쌓일 때마다 확인 · 뒤의 모델 호출을 건너뜀</span></div></div>
   </div>
  </div>
  <div class="classifier-pilot"><span class="pilot-label">도입 전 비교 실험</span><strong>EfficientNet-B0 <span>↔</span> ConvNeXt-Tiny</strong><p>같은 상품·정답으로 정확도와 처리비용 비교 → 사용할 모델 선택</p><span class="pilot-note">매 상품에 두 모델을 차례로 실행하지 않습니다.</span></div>
@@ -589,9 +607,9 @@ SOFTWARE.
   <rect x="14" y="3" width="5" height="18" rx="1" />
   <rect x="5" y="3" width="5" height="18" rx="1" />
 </svg></span></span><span id="hero-play-label">분류 과정 재생</span></button><a class="landing-secondary" href="#agent-debate">독립 검토 예시 ↓</a></div><div class="journey-live"><div class="journey-live-top"><span id="hero-status">재생 준비</span><b id="hero-time">0 / 100</b></div><div class="journey-progress" aria-hidden="true"><span id="hero-progress"></span></div><div class="journey-counts"><span>분류 중 <b id="hero-active">10</b></span><span>도착 <b id="hero-done">0</b></span><span>사람 대기 <b id="hero-human">0</b></span><button type="button" id="hero-reset">처음부터 ↺</button></div></div></div>
- <details class="cascade-notes"><summary>점수·모델 선택 기준</summary><div><p><strong>전용 분류기:</strong> 상품 카테고리에 맞춰 추가 학습한 뒤, 별도로 둔 같은 정답 상품으로 비교합니다. 기본 공개 가중치의 ImageNet 1,000개 분류를 과제의 1만 개 상품 분류로 그대로 쓰지는 않습니다. <a href="https://docs.pytorch.org/vision/main/models/generated/torchvision.models.efficientnet_b0.html" target="_blank" rel="noopener noreferrer">EfficientNet-B0</a> · <a href="https://docs.pytorch.org/vision/main/models/generated/torchvision.models.convnext_tiny.html" target="_blank" rel="noopener noreferrer">ConvNeXt-Tiny 공식 문서</a></p><p><strong>독립 검토:</strong> 이미지 입력을 지원하는 모델마다 같은 상품 정보와 분류 기준을 줍니다. 첫 답을 낼 때는 다른 모델과 프론티어의 결론을 보여주지 않고, 답이 모두 나온 뒤에 비교합니다. <a href="https://github.com/OpenRouterTeam/docs/blob/main/guides/overview/multimodal/image-understanding.mdx" target="_blank" rel="noopener noreferrer">OpenRouter 이미지 입력 문서</a></p><p><strong>확신도:</strong> 서로 다른 모델이 스스로 매긴 숫자를 그대로 평균 내지 않습니다. 같은 후보를 기준으로 정답 데이터에 맞춰 보정한 점수와 근거 일치 여부를 함께 확인합니다. 이 화면의 점수는 규칙 설명용 가상 값이며 실제 보정 결과가 아닙니다. <a href="https://proceedings.mlr.press/v70/guo17a.html" target="_blank" rel="noopener noreferrer">확신도 보정 연구</a></p><p><strong>누적 점수:</strong> 프론티어 불확실 +1, 독립 검토 후 확신 부족·미해결 충돌 +2, 경로 복구 +1을 더합니다. 복구 1점 + 프론티어 1점이면 독립 검토 전에 사람에게 보냅니다. 프론티어 1점 + 독립 검토 2점이면 합계 3점입니다. 사진을 읽을 수 없거나 안전하게 분류할 근거가 없으면 점수와 별개로 보류할 수 있습니다.</p><p><strong>평균 예산 20원:</strong> 총 1억 원 ÷ 500만 상품의 평균입니다. 학습·서버·API·사람 검수·오분류 수정 비용을 함께 비교해야 합니다.</p></div></details>
+ <details class="cascade-notes"><summary>사람검증 점수·모델 선택 기준</summary><div><p><strong>전용 분류기:</strong> 상품 카테고리에 맞춰 추가 학습한 뒤, 별도로 둔 같은 정답 상품으로 비교합니다. 기본 공개 가중치의 ImageNet 1,000개 분류를 과제의 1만 개 상품 분류로 그대로 쓰지는 않습니다. <a href="https://docs.pytorch.org/vision/main/models/generated/torchvision.models.efficientnet_b0.html" target="_blank" rel="noopener noreferrer">EfficientNet-B0</a> · <a href="https://docs.pytorch.org/vision/main/models/generated/torchvision.models.convnext_tiny.html" target="_blank" rel="noopener noreferrer">ConvNeXt-Tiny 공식 문서</a></p><p><strong>독립 검토:</strong> 이미지 입력을 지원하는 모델마다 같은 상품 정보와 분류 기준을 줍니다. 첫 답을 낼 때는 다른 모델과 프론티어의 결론을 보여주지 않고, 답이 모두 나온 뒤에 비교합니다. <a href="https://github.com/OpenRouterTeam/docs/blob/main/guides/overview/multimodal/image-understanding.mdx" target="_blank" rel="noopener noreferrer">OpenRouter 이미지 입력 문서</a></p><p><strong>확신도:</strong> 서로 다른 모델이 스스로 매긴 숫자를 그대로 평균 내지 않습니다. 같은 후보를 기준으로 정답 데이터에 맞춰 보정한 점수와 근거 일치 여부를 함께 확인합니다. 이 화면의 점수는 규칙 설명용 가상 값이며 실제 보정 결과가 아닙니다. <a href="https://proceedings.mlr.press/v70/guo17a.html" target="_blank" rel="noopener noreferrer">확신도 보정 연구</a></p><p><strong>누적 사람검증 점수:</strong> 사람이 확인해야 할 필요성을 누적하는 규칙 점수로, 모델의 신뢰도와는 다릅니다. 프론티어 불확실 +1, 독립 검토 후 확신 부족·미해결 충돌 +2, 경로 복구 +1을 더합니다. 복구 1점 + 프론티어 1점이면 독립 검토 전에 사람에게 보냅니다. 프론티어 1점 + 독립 검토 2점이면 합계 3점입니다. 사진을 읽을 수 없거나 안전하게 분류할 근거가 없으면 점수와 별개로 보류할 수 있습니다.</p><p><strong>평균 예산 20원:</strong> 총 1억 원 ÷ 500만 상품의 평균입니다. 학습·서버·API·사람 검수·오분류 수정 비용을 함께 비교해야 합니다.</p></div></details>
 </section>
-<div class="overview-caption"><span>상품을 선택하면 이동 경로와 누적 검토 점수를 볼 수 있습니다.</span><a href="#simulation-panel">상세 시뮬레이션 ↓</a></div>
+<div class="overview-caption"><span>상품을 선택하면 이동 경로와 누적 사람검증 점수를 볼 수 있습니다.</span><a href="#simulation-panel">상세 시뮬레이션 ↓</a></div>
 <section class="debate-section blind-review-section discussion-redesign" id="agent-debate" aria-labelledby="debate-title">
  <div class="debate-header"><div><p class="section-eyebrow">FRONTIER → BLIND REVIEW</p><h2 id="debate-title">Codex가 먼저 분류하고,<br><em>기준에 못 미치면</em> 독립된 판단을 모읍니다.</h2><p>같은 이미지·텍스트로 각자 판단한 뒤, 같은 분류 후보의 신뢰도와 근거를 비교합니다.</p></div><span class="br-demo-label">설계 설명용 시연<br>실제 모델·API 호출 없음</span></div>
 
@@ -616,7 +634,7 @@ SOFTWARE.
   <div class="br-frontier-branch">
    <article class="br-frontier"><span class="br-number">02 · 첫 판정</span><h3 class="codex-first"><span class="codex-brand"><img class="model-logo" width="32" height="32" alt="" aria-hidden="true" src="data:image/svg+xml;base64,PHN2ZyBoZWlnaHQ9IjFlbSIgc3R5bGU9ImZsZXg6bm9uZTtsaW5lLWhlaWdodDoxIiB2aWV3Qm94PSIwIDAgMjQgMjQiIHdpZHRoPSIxZW0iIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHRpdGxlPkNvZGV4PC90aXRsZT48cGF0aCBkPSJNMTkuNTAzIDBINC40OTZBNC40OTYgNC40OTYgMCAwMDAgNC40OTZ2MTUuMDA3QTQuNDk2IDQuNDk2IDAgMDA0LjQ5NiAyNGgxNS4wMDdBNC40OTYgNC40OTYgMCAwMDI0IDE5LjUwM1Y0LjQ5NkE0LjQ5NiA0LjQ5NiAwIDAwMTkuNTAzIDB6IiBmaWxsPSIjZmZmIj48L3BhdGg+PHBhdGggZD0iTTkuMDY0IDMuMzQ0YTQuNTc4IDQuNTc4IDAgMDEyLjI4NS0uMzEyYzEgLjExNSAxLjg5MS41NCAyLjY3MyAxLjI3NS4wMS4wMS4wMjQuMDE3LjAzNy4wMjFhLjA5LjA5IDAgMDAuMDQzIDAgNC41NSA0LjU1IDAgMDEzLjA0Ni4yNzVsLjA0Ny4wMjIuMTE2LjA1N2E0LjU4MSA0LjU4MSAwIDAxMi4xODggMi4zOTljLjIwOS41MS4zMTMgMS4wNDEuMzE1IDEuNTk1YTQuMjQgNC4yNCAwIDAxLS4xMzQgMS4yMjMuMTIzLjEyMyAwIDAwLjAzLjExNWMuNTk0LjYwNy45ODggMS4zMyAxLjE4MyAyLjE3LjI4OSAxLjQyNS0uMDA3IDIuNzEtLjg4NyAzLjg1NGwtLjEzNi4xNjZhNC41NDggNC41NDggMCAwMS0yLjIwMSAxLjM4OC4xMjMuMTIzIDAgMDAtLjA4MS4wNzZjLS4xOTEuNTUxLS4zODMgMS4wMjMtLjc0IDEuNDk0LS45IDEuMTg3LTIuMjIyIDEuODQ2LTMuNzExIDEuODM4LTEuMTg3LS4wMDYtMi4yMzktLjQ0LTMuMTU3LTEuMzAyYS4xMDcuMTA3IDAgMDAtLjEwNS0uMDI0Yy0uMzg4LjEyNS0uNzguMTQzLTEuMjA0LjEzOGE0LjQ0MSA0LjQ0MSAwIDAxLTEuOTQ1LS40NjYgNC41NDQgNC41NDQgMCAwMS0xLjYxLTEuMzM1Yy0uMTUyLS4yMDItLjMwMy0uMzkyLS40MTQtLjYxN2E1LjgxIDUuODEgMCAwMS0uMzctLjk2MSA0LjU4MiA0LjU4MiAwIDAxLS4wMTQtMi4yOTguMTI0LjEyNCAwIDAwLjAwNi0uMDU2LjA4NS4wODUgMCAwMC0uMDI3LS4wNDggNC40NjcgNC40NjcgMCAwMS0xLjAzNC0xLjY1MSAzLjg5NiAzLjg5NiAwIDAxLS4yNTEtMS4xOTIgNS4xODkgNS4xODkgMCAwMS4xNDEtMS42Yy4zMzctMS4xMTIuOTgyLTEuOTg1IDEuOTMzLTIuNjE4LjIxMi0uMTQxLjQxMy0uMjUxLjYwMS0uMzMuMjE1LS4wODkuNDMtLjE2NC42NDYtLjIyN2EuMDk4LjA5OCAwIDAwLjA2NS0uMDY2IDQuNTEgNC41MSAwIDAxLjgyOS0xLjYxNSA0LjUzNSA0LjUzNSAwIDAxMS44MzctMS4zODh6bTMuNDgyIDEwLjU2NWEuNjM3LjYzNyAwIDAwMCAxLjI3MmgzLjYzNmEuNjM3LjYzNyAwIDEwMC0xLjI3MmgtMy42MzZ6TTguNDYyIDkuMjNhLjYzNy42MzcgMCAwMC0xLjEwNi42MzFsMS4yNzIgMi4yMjQtMS4yNjYgMi4xMzZhLjYzNi42MzYgMCAxMDEuMDk1LjY0OWwxLjQ1NC0yLjQ1NWEuNjM2LjYzNiAwIDAwLjAwNS0uNjRMOC40NjIgOS4yM3oiIGZpbGw9InVybCgjbG9iZS1pY29ucy1jb2RleC1fUl8wXykiPjwvcGF0aD48ZGVmcz48bGluZWFyR3JhZGllbnQgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiIGlkPSJsb2JlLWljb25zLWNvZGV4LV9SXzBfIiB4MT0iMTIiIHgyPSIxMiIgeTE9IjMiIHkyPSIyMSI+PHN0b3Agc3RvcC1jb2xvcj0iI0IxQTdGRiI+PC9zdG9wPjxzdG9wIG9mZnNldD0iLjUiIHN0b3AtY29sb3I9IiM3QTlERkYiPjwvc3RvcD48c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiMzOTQxRkYiPjwvc3RvcD48L2xpbmVhckdyYWRpZW50PjwvZGVmcz48L3N2Zz4K"><span>Codex</span></span><small>프론티어 첫 판정</small></h3><p>이미지와 텍스트를 함께 보고<br>분류 후보 + Confidence를 반환</p>
     <div class="br-first-answer"><span>예시 판정</span><strong id="frontier-answer">무선 이어폰 후보 · 확정 보류</strong><div class="frontier-confidence"><span>Confidence <b id="frontier-score-value">64</b><small> / 100</small></span><div class="confidence-axis"><i id="frontier-score-bar" style="width:64%"></i><span class="confidence-cutoff"></span></div><div class="confidence-legend"><span id="frontier-gate-label">64 &lt; 기준 85 → 추가 검토</span><b>기준 85</b></div></div></div>
-    <div class="br-low-score" id="frontier-review-score">기준 미달 <b>검토 +1</b></div>
+    <div class="br-low-score" id="frontier-review-score">기준 미달 <b>사람검증 점수 +1</b></div>
    </article>
    <div class="br-exit-arrow"><b aria-hidden="true">↓</b><span>신뢰도 충분 + 근거 충족이면</span></div>
    <div class="br-direct-end"><svg class="landing-icon" viewBox="0 0 24 24" aria-hidden="true">
@@ -665,8 +683,8 @@ SOFTWARE.
   <div class="br-result-grid"><div class="br-compare-check" id="blind-compare-check">아직 결과를 공개하지 않았습니다.</div><div class="debate-verdict" id="debate-verdict" role="status" aria-live="polite"><svg class="landing-icon" viewBox="0 0 24 24" aria-hidden="true">
   <path d="M16 10a2 2 0 0 1-2 2H6.828a2 2 0 0 0-1.414.586l-2.202 2.202A.71.71 0 0 1 2 14.286V4a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z" />
   <path d="M20 9a2 2 0 0 1 2 2v10.286a.71.71 0 0 1-1.212.502l-2.202-2.202A2 2 0 0 0 17.172 19H10a2 2 0 0 1-2-2v-1" />
-</svg><span id="debate-result">프론티어 불확실 +1 · 독립 검토 결과를 기다립니다.</span></div></div>
-  <div class="br-outcome-rules"><span><b>근거 충분</b> 추가 +0 → 누적 1점, 최종 분류</span><span><b>여전히 불확실·충돌</b> 추가 +2 → 누적 3점, 사람 검수</span></div>
+</svg><span id="debate-result">프론티어 불확실로 사람검증 점수 +1 · 독립 검토 결과를 기다립니다.</span></div></div>
+  <div class="br-outcome-rules"><span><b>근거 충분</b> 사람검증 점수 +0 → 누적 1점, 최종 분류</span><span><b>낮은 보정 점수·충돌 미해결</b> 사람검증 점수 +2 → 누적 3점, 사람 검수</span></div>
   <p class="br-case-note">첫 판정 통과·독립 비교 해결·정보 부족의 세 가지 가상 사례입니다. A는 Qwen, B는 NVIDIA Nemotron, C는 Cohere의 배치 예시이며, 답안과 점수는 실제 모델의 응답·성능이 아닙니다. 실제 연결에는 선택한 모델의 이미지 입력 지원을 별도로 확인해야 합니다. 모든 단계에서 누적 2점 이상이면 후속 호출을 멈춥니다.</p>
  </section>
 
@@ -693,9 +711,9 @@ SOFTWARE.
 <section id="simulation-panel" class="tree-panel" aria-label="위에서 아래로 진행하는 상품 분류 나무">
 <div class="panelbar"><div><p class="panel-kicker">분류 흐름</p><h2>상품이 지나가는 경로</h2></div><small>10개 예시 분야 · 상품을 누르면 현재 상태 확인</small></div>
 <div class="quick-controls" id="flow-toolbar"><button type="button" class="primary" id="quick-play">▶ 재생</button><button type="button" id="quick-step">한 장면 ↓</button><button type="button" id="quick-reset">처음부터</button><button type="button" id="flow-fit-toggle" aria-pressed="true" aria-controls="tree">전체 구조 맞춤</button><output id="flow-scale" aria-label="분류도 배율"></output><label class="category-focus-label">분야 찾기 <select id="category-focus" aria-label="전체 구조에서 분야 강조"><option value="">분야 선택</option></select></label><div class="quick-seek"><label for="quick-timeline">진행 장면</label><input type="range" id="quick-timeline" min="0" max="100" value="0" step="1" aria-label="진행 장면 선택"><output id="quick-time" aria-label="현재 진행 장면">0 / 100</output></div><label class="quick-speed-label" for="quick-speed">속도 <select id="quick-speed"><option value="0.6">느리게</option><option value="1" selected>보통</option><option value="1.8">빠르게</option></select></label></div>
-<section class="review-monitor" aria-label="복구와 누적 검수 점수">
+<section class="review-monitor" aria-label="복구와 누적 사람검증 점수">
  <div class="review-monitor-top"><strong>복구 <b id="recovery-count">0</b>건 <span>·</span> 사람 검수 <b id="review-queue-count">0</b>건</strong><div class="review-samples"><button type="button" id="human-transfer-demo">2점 → 검수 이동 재생</button><button type="button" data-review-example="resolved">독립 비교 해결 · 1점</button><button type="button" data-review-example="conflict">복구 + 프론티어 · 2점</button><button type="button" data-review-example="low">독립 비교 미해결 · 3점</button></div></div>
- <div class="review-current"><b id="review-focus">P001 · 0 / 2점</b><span id="review-focus-detail">복구 +1 · 프론티어 미해결 +1 · 독립 비교 미해결 추가 +2</span></div>
+ <div class="review-current"><b id="review-focus">P001 · 사람검증 점수 0 / 2점</b><span id="review-focus-detail">사람검증 점수: 복구 +1 · 프론티어 미해결 +1 · 독립 비교 미해결 +2</span></div>
 </section>
 <p class="scrollhint">아래 사각형은 같은 모델 A의 최대 20개 실행 슬롯입니다. 색이 진한 슬롯은 준비된 복제본, 흐린 슬롯은 미사용입니다.<span class="mobile-tree-hint">전체 구조가 화면에 맞춰 표시됩니다. 상품을 누르면 아래에서 상세 근거를 읽을 수 있습니다.</span></p>
 <div class="tree-scroll"><div class="tree" id="tree">
@@ -721,7 +739,7 @@ SOFTWARE.
  <p class="human-sector-note">사진 불량·복구 실패도 별도 보류<br>검수 완료나 정답 확정을 뜻하지 않습니다.</p>
 </section><div class="human-flight-label" id="human-flight-label" hidden aria-hidden="true"></div><div id="tokens"></div><div class="flow-scores" id="flow-scores" aria-label="화살표 옆 상품별 현재 단계 점수"></div>
 </div></div>
-<div class="route-note"><strong>주황 화살표: 상위로 돌아가 후보 재탐색</strong> 복구 +1 · 프론티어 미해결 +1 · 독립 비교 근거 부족/충돌은 추가 +2. <b>합계 2점 이상 → 사람 검수.</b><span>같은 원인은 중복 가산하지 않습니다. 0~1점도 최종 근거를 확인해야 통과합니다. 사진 불량은 별도 보류합니다. 점수는 가상 예시입니다.</span></div>
+<div class="route-note"><strong>주황 화살표: 상위로 돌아가 후보 재탐색</strong> 사람검증 점수: 복구 +1 · 프론티어 미해결 +1 · 독립 비교의 낮은 보정 점수·충돌 미해결 +2. <b>누적 사람검증 점수 2점 이상 → 사람 검수.</b><span>같은 원인은 중복 가산하지 않습니다. 0~1점도 최종 근거를 확인해야 통과합니다. 사진 불량은 별도 보류합니다. 점수는 가상 예시입니다.</span></div>
 <details class="prep-disclosure"><summary>판매자 정보 보강 설정<span>바코드 일치 · 부족 정보 질문 · 가상 보상 제안</span></summary><section class="seller-panel" aria-labelledby="seller-title">
  <div class="seller-top"><div><h3 id="seller-title">분류 전 · 판매자 정보 보강</h3><p>기존 상품을 처리하면서 판매자가 제공한 정보를 함께 사용합니다. 이 화면은 응답이 도착했거나 오지 않은 상태를 가정합니다.</p></div><label class="seller-switch"><input id="seller-incentive" type="checkbox" checked> 가상 보상 제안 켜기</label></div>
  <div class="seller-flow"><div class="seller-flow-step"><b>① 바코드 · 모델명</b><span>판매자가 아는 상품 식별 정보를 입력합니다.</span></div><div class="seller-flow-step"><b>② 기존 정보 자동 채움</b><span>같은 상품과 옵션이 맞으면 부족한 정보를 가져옵니다.</span></div><div class="seller-flow-step"><b>③ 부족한 정보 보강</b><span>필요한 질문을 하고, 답변을 보강하면 가상 크레딧을 제안합니다.</span></div></div>
@@ -749,15 +767,44 @@ SOFTWARE.
 <details class="batch-details"><summary>묶음별 진행 상태 보기</summary><div class="batches" id="batches" aria-label="예시 묶음 투입 상태"></div></details>
 </section>
 <aside class="side">
-<section class="card"><h2>장면을 직접 바꿔 보세요</h2><div class="controls"><button type="button" class="primary" id="play">▶ 재생</button><button type="button" id="step" aria-label="한 장면 앞으로">한 장면 ↓</button><button type="button" id="reset">처음부터</button></div><div class="control-row"><label for="timeline">진행 장면 <output id="time-value">0 / 100</output></label><input id="timeline" type="range" min="0" max="32" value="0" step="1" aria-label="진행 장면 선택"></div><div class="control-row"><label for="speed">재생 속도 <select id="speed"><option value="0.6">느리게</option><option value="1" selected>보통</option><option value="1.8">빠르게</option></select></label></div><div class="control-row"><label for="express-threshold">최종 직행 가상 기준 <output id="express-threshold-value">≥ 95</output></label><input id="express-threshold" type="range" min="90" max="99" value="95" step="1"><p class="subtle">최종 후보의 가상 점수이며 실제 확률이나 보정값이 아닙니다. 텍스트 근거와 상위 분류의 일치도 함께 확인합니다.</p></div><div class="control-row"><label for="threshold">독립 비교 합성 검토 기준 <output id="threshold-value">≤ 70</output></label><input id="threshold" type="range" min="60" max="85" value="70" step="1"><p class="subtle">독립 비교 합성 점수가 이 값 이하이거나 불일치가 남으면 추가 +2입니다. 실제 보정 확률이 아닙니다.</p></div><div class="status" id="status" role="status" aria-live="polite">준비됨 · 재생을 눌러 시작하세요.</div></section>
+<section class="card"><h2>장면을 직접 바꿔 보세요</h2><div class="controls"><button type="button" class="primary" id="play">▶ 재생</button><button type="button" id="step" aria-label="한 장면 앞으로">한 장면 ↓</button><button type="button" id="reset">처음부터</button></div><div class="control-row"><label for="timeline">진행 장면 <output id="time-value">0 / 100</output></label><input id="timeline" type="range" min="0" max="32" value="0" step="1" aria-label="진행 장면 선택"></div><div class="control-row"><label for="speed">재생 속도 <select id="speed"><option value="0.6">느리게</option><option value="1" selected>보통</option><option value="1.8">빠르게</option></select></label></div><div class="control-row"><label for="express-threshold">최종 직행 가상 기준 <output id="express-threshold-value">≥ 95</output></label><input id="express-threshold" type="range" min="90" max="99" value="95" step="1"><p class="subtle">최종 후보의 가상 점수이며 실제 확률이나 보정값이 아닙니다. 텍스트 근거와 상위 분류의 일치도 함께 확인합니다.</p></div><div class="control-row"><label for="threshold">독립 비교 합성 검토 기준 <output id="threshold-value">≤ 70</output></label><input id="threshold" type="range" min="60" max="85" value="70" step="1"><p class="subtle">독립 비교 합성 점수가 이 값 이하이거나 불일치가 남으면 사람검증 점수 +2를 더합니다. 실제 보정 확률이 아닙니다.</p></div><div class="status" id="status" role="status" aria-live="polite">준비됨 · 재생을 눌러 시작하세요.</div></section>
 <section class="card"><h2>500개 예시 상품의 현재 상태</h2><div class="counts"><div class="metric"><strong id="count-wait">10</strong><span>투입 대기</span></div><div class="metric"><strong id="count-rootwait">0</strong><span>1차 분류 대기</span></div><div class="metric"><strong id="count-active">2</strong><span>분류·계산 중</span></div><div class="metric review"><strong id="count-review">0</strong><span>추가 검토 중</span></div><div class="metric done"><strong id="count-done">0</strong><span>세부 분류 도착</span></div><div class="metric human"><strong id="count-human">0</strong><span>사람 확인 대기</span></div><div class="metric"><strong id="count-checks">0</strong><span>발생한 검토 횟수</span></div></div><p class="subtle">숫자는 500개 전체 상태입니다. 신규 입력 10개는 위에 표시하고, 각 단계는 현재 진행 중인 상품 일부를 표시합니다. 실제 처리량·성능 측정값이 아닙니다.</p></section>
-<section class="card selection"><div class="product-id" id="selected-id">A01 · 묶음 A</div><h2 class="selected-heading" id="selected-name">무선 이어폰 A</h2><div class="path" id="selected-path"></div><div class="selected-text" id="selected-text"></div><div class="seller-selection" id="selected-seller"></div><div class="product-status" id="selected-status"></div><div class="scores" id="selected-scores"></div><div class="review-score-card"><strong id="selected-review-score">검수 점수 0 / 2</strong><ol id="selected-review-events"></ol></div><div class="detail" id="selected-detail"></div><p class="subtle">숫자는 경로별 고정 합성 점수이며 확률이 아닙니다. 티켓을 선택해 정보 보강과 검토 경로를 확인하세요.</p></section>
+<section class="card selection"><div class="product-id" id="selected-id">A01 · 묶음 A</div><h2 class="selected-heading" id="selected-name">무선 이어폰 A</h2><div class="path" id="selected-path"></div><div class="selected-text" id="selected-text"></div><div class="seller-selection" id="selected-seller"></div><div class="product-status" id="selected-status"></div><div class="scores" id="selected-scores"></div><div class="review-score-card"><strong id="selected-review-score">사람검증 점수 0 / 2</strong><ol id="selected-review-events"></ol></div><div class="detail" id="selected-detail"></div><p class="subtle">숫자는 경로별 고정 합성 점수이며 확률이 아닙니다. 티켓을 선택해 정보 보강과 검토 경로를 확인하세요.</p></section>
 <section class="card review-queue-card"><h2>사람 검수 대기</h2><p class="subtle">2점 이상 우선 · 사진 불량은 별도 보류</p><div id="human-queue-list"></div></section><section class="card event-card"><h2>지금까지의 판단 기록</h2><ol class="event-list" id="events"></ol></section>
 </aside>
 </div>
 <section class="future-improvements" id="future-improvements" aria-labelledby="future-title">
  <div class="future-heading"><div><p class="section-eyebrow">TRANSFER LEARNING · NEXT STEPS</p><h2 id="future-title">추후 개선 방향:</h2></div><span class="future-status">향후 설계 · 실제 학습 전</span></div>
  <p class="future-lead">새 분야는 프론티어가 먼저 맡고,<br><strong>데이터가 쌓이면 자체 소형 모델로 전환합니다.</strong></p>
+ <section class="future-learning" id="future-learning" aria-labelledby="future-learning-title">
+ <div class="fl-heading"><div><span class="fl-eyebrow">판단 기록이 쌓여, 자체 모델로</span><h3 id="future-learning-title">데이터 축적에서 소형 모델 전환까지</h3></div><span class="fl-demo-tag">24초 흐름 예시 · 실제 학습 아님</span></div>
+ <div class="fl-scenes" role="group" aria-label="개선 애니메이션 장면 선택">
+  <button type="button" id="future-scene-0" aria-pressed="true"><b>01</b> 프론티어 처리</button>
+  <button type="button" id="future-scene-1" aria-pressed="false"><b>02</b> 판단 자료 축적</button>
+  <button type="button" id="future-scene-2" aria-pressed="false"><b>03</b> 학습·평가</button>
+  <button type="button" id="future-scene-3" aria-pressed="false"><b>04</b> 점진적 전환</button>
+ </div>
+ <div class="fl-flow">
+  <article class="fl-node fl-frontier" id="future-frontier-node"><span class="fl-node-kind">처음 보는 분야 · 어려운 상품</span><div class="fl-frontier-icon" aria-hidden="true"><svg viewBox="0 0 64 64"><rect x="15" y="15" width="34" height="34" rx="10"/><path d="M25 3v12M39 3v12M25 49v12M39 49v12M3 25h12M3 39h12M49 25h12M49 39h12"/><path d="m32 23 3 6 6 3-6 3-3 6-3-6-6-3 6-3Z"/></svg></div><h4>프론티어 모델</h4><p id="future-frontier-status">새 분야의 상품을 먼저 판단합니다.</p><span class="fl-node-footer">이미지 + 설명 → 분류 후보·근거</span></article>
+  <div class="fl-link" aria-hidden="true"><span>기록·검증</span><svg viewBox="0 0 60 24"><path d="M3 12h50m-8-7 8 7-8 7"/><circle id="future-packet-0" cx="5" cy="12" r="4"/></svg></div>
+  <article class="fl-node fl-data" id="future-data-node"><span class="fl-node-kind">검수한 자료만 선별</span><h4>학습 자료 축적</h4><div class="fl-reservoir" aria-hidden="true">
+   <i id="future-data-0"></i><i id="future-data-1"></i><i id="future-data-2"></i><i id="future-data-3"></i><i id="future-data-4"></i><i id="future-data-5"></i>
+   <i id="future-data-6"></i><i id="future-data-7"></i><i id="future-data-8"></i><i id="future-data-9"></i><i id="future-data-10"></i><i id="future-data-11"></i>
+   <i id="future-data-12"></i><i id="future-data-13"></i><i id="future-data-14"></i><i id="future-data-15"></i><i id="future-data-16"></i><i id="future-data-17"></i>
+  </div><p class="fl-data-count"><strong id="future-data-count">0</strong> / 18 묶음 <small>가상 자료</small></p><span class="fl-node-footer">판단 근거 + 사람의 수정 결과</span></article>
+  <div class="fl-link" aria-hidden="true"><span>전이학습</span><svg viewBox="0 0 60 24"><path d="M3 12h50m-8-7 8 7-8 7"/><circle id="future-packet-1" cx="5" cy="12" r="4"/></svg></div>
+  <article class="fl-node fl-models" id="future-models-node"><span class="fl-node-kind">분야마다 학습 → 별도 자료로 평가</span><h4>분야별 작은 모델</h4>
+   <div class="fl-model-row" id="future-model-0"><div><strong>전자제품</strong><span id="future-model-state-0">자료 대기</span></div><div class="fl-model-meter" aria-hidden="true"><i id="future-model-progress-0"></i></div></div>
+   <div class="fl-model-row" id="future-model-1"><div><strong>의류</strong><span id="future-model-state-1">자료 대기</span></div><div class="fl-model-meter" aria-hidden="true"><i id="future-model-progress-1"></i></div></div>
+   <div class="fl-model-row" id="future-model-2"><div><strong>반려동물용품</strong><span id="future-model-state-2">자료 대기</span></div><div class="fl-model-meter" aria-hidden="true"><i id="future-model-progress-2"></i></div></div>
+   <span class="fl-node-footer"><b id="future-ready-models">0</b> / 3개 분야 전환 가능 · 가상 평가</span>
+  </article>
+ </div>
+ <div class="fl-share-panel"><div class="fl-share-heading"><strong>새 상품의 예시 처리 비중</strong><span>평가를 통과한 분야부터 전환</span></div><div class="fl-share-bar" aria-hidden="true"><i id="future-frontier-share"></i><i id="future-small-share"></i></div><div class="fl-share-labels"><span class="fl-frontier-label"><i></i>프론티어 <b id="future-frontier-percent">100%</b></span><span class="fl-small-label"><i></i>분야별 소형 모델 <b id="future-small-percent">0%</b></span></div><p id="future-learning-caption" role="status" aria-live="polite">처음에는 새 분야를 프론티어가 담당합니다. 재생하면 전환 흐름을 볼 수 있습니다.</p></div>
+ <div class="fl-controls"><button type="button" id="future-play" class="fl-play" aria-pressed="false">▶ 흐름 재생</button><button type="button" id="future-reset">처음부터</button><label class="fl-seek-label" for="future-timeline">진행<input id="future-timeline" type="range" min="0" max="24" step="0.1" value="0" aria-label="개선 애니메이션 진행 시점"></label><output id="future-time" for="future-timeline">0 / 24초</output><label class="fl-motion"><input id="future-reduce" type="checkbox">동작 줄이기</label></div>
+ <p class="fl-note">자료 묶음·처리 비중·평가 통과 시점은 설명용 가정입니다. 실제 학습 기준이나 정확도·절감률을 뜻하지 않습니다. 처음 보는 상품과 낮은 신뢰도 사례는 계속 프론티어·추가 검토로 보냅니다.</p>
+</section>
+
  <div class="transfer-primer"><strong>출발점은 오픈소스 이미지 모델의 전이학습입니다.</strong><p>EfficientNet-B0·ConvNeXt-Tiny 같은 사전학습 모델을 비교해 하나를 선택하고, 우리 상품 분류표에 맞게 추가 학습합니다. 이미 학습한 형태·질감 등의 특징을 재사용하면서 마지막 분류층을 바꾸고 필요한 부분을 조정하는 방식입니다. 공개 모델의 기존 카테고리에만 묶이지 않고, 우리 상품의 새 분류를 배울 수 있도록 합니다.</p></div>
  <ol class="future-steps" aria-label="신규 분야를 자체 소형 모델로 전환하는 네 단계">
   <li><span class="future-number">01</span><h3>초기에는 프론티어가 담당</h3><p>기존 이미지 모델이 아직 배우지 못한 카테고리·분야는 분류 기준을 정한 뒤 프론티어가 이미지와 설명을 함께 보고 우선 처리합니다. 초기 호출비용은 더 들 수 있지만, 새 분야의 분류를 시작하며 학습 자료를 모읍니다.</p><b class="future-stage-note">미지원 분야의 초기 처리</b></li>
@@ -776,7 +823,7 @@ SOFTWARE.
 <li>판매자의 바코드·모델명으로 기존 정보를 찾아 부족한 내용을 채웁니다. 아직 필요한 정보가 있으면 질문하고, 응답이 없으면 기다리지 않고 분류합니다.</li>
 <li>20개씩 25묶음, 총 500개 상품을 장면마다 10개씩 입력합니다. 1차 복제본이 바쁘면 대기열에서 기다리며, 앞선 상품은 아래 단계에서 계속 처리합니다.</li>
 <li>1차에서 정보가 충분하고 최종 후보 점수와 상위 분류가 기준을 충족하면 초록색 경로로 최종 바스켓에 직행합니다.</li>
-<li>그 외 상품은 화질 검사 후 전용 이미지 분류기 1개로 확인합니다. 미해결이면 프론티어, 여전히 부족하면 +1 뒤 이미지 지원 저비용 모델의 독립 판단·비교를 진행합니다. 미해결 비교는 추가 +2, 분기 막힘의 1회 복구는 +1이며 매 가산 직후 2점 이상이면 사람에게 보냅니다.</li>
+<li>그 외 상품은 화질 검사 후 전용 이미지 분류기 1개로 확인합니다. 미해결이면 프론티어, 여전히 부족하면 사람검증 점수 +1 뒤 이미지 지원 저비용 모델의 독립 판단·비교를 진행합니다. 미해결 비교는 사람검증 점수 +2, 분기 막힘의 1회 복구는 사람검증 점수 +1이며 매 가산 직후 2점 이상이면 사람에게 보냅니다.</li>
 <li>보상 제안이나 직행 기준을 바꾸면 같은 상품의 현재 장면을 다시 계산합니다. ‘처음부터’는 설정을 유지한 채 장면을 0으로 돌립니다.</li>
 </ol><table class="text-table"><thead><tr><th scope="col">예시 상품</th><th scope="col">분류 경로</th><th scope="col">현재 상태</th></tr></thead><tbody id="text-states"></tbody></table></details>
 <div class="landing-credits"><p>아이콘: <a href="https://lucide.dev/" target="_blank" rel="noopener noreferrer">Lucide</a> · ISC / MIT<br>모델 로고: <a href="https://github.com/lobehub/lobe-icons/tree/8b7bbc433d38437fa2b0cca58ae896917162b812" target="_blank" rel="noopener noreferrer">Lobe Icons</a> · MIT · 각 브랜드 식별용, 제휴·보증 의미 없음</p><p>분류도·상품 그림: 자체 제작 SVG<br>구현·수정: Codex 활용 · 설계 검토: PAL 무료 모델 검토 절차</p></div>
@@ -1062,7 +1109,7 @@ function routeFor(product,threshold=70){
   route.push({kind,stage,start:clock,end:clock+duration,detail,checks,reviewScore:ledger.score,reviewEvents:ledger.snapshot(),...extra});clock+=duration;
  }
  function hold(stage,reason){add('human',stage,Infinity,reason,{holdReason:reason});return false;}
- function gate(stage){return ledger.score>=2?hold(stage,'검수 점수 '+ledger.score+'점 · 사람 검수 대기열로 이동합니다.'):true;}
+ function gate(stage){return ledger.score>=2?hold(stage,'사람검증 점수 '+ledger.score+'점 · 사람 검수 대기열로 이동합니다.'):true;}
  function finish(source){
   const fromStage=route.at(-1).stage;
   if(fromStage===0)add('queue',0,1,cat.name+' · 확인한 최종 후보의 경로로 이동합니다. 추가 모델 호출은 없습니다.');
@@ -1081,8 +1128,8 @@ function routeFor(product,threshold=70){
   const fromCat=alternative.cat,fromLabel=alternative.name,parentLabel=parent?parent.name:'전체 대분류';
   const extra={cause,fromCat,fromNodeId:alternative.id,targetNodeId:node.id,parentStage:stage-1,fromLabel,parentLabel,targetLabel:path[stage],recoveryAttempt:1,maxRecoveryAttempts:1};
   add('recoverStart',stage,1,'하위 분류 막힘/잘못된 분기 '+fromLabel+' · 상위 복구를 1회만 시도합니다.',extra);
-  ledger.record('recovery',cause,1,'복구 경로 +1');
-  add('recoverUp',stage,1,parentLabel+'로 돌아갑니다. 복구 이력 +1.',extra);
+  ledger.record('recovery',cause,1,'복구 경로 · 사람검증 점수 +1');
+  add('recoverUp',stage,1,parentLabel+'로 돌아갑니다. 사람검증 점수 +1.',extra);
   if(!gate(stage))return false;
   add('recoverSearch',stage,2,parentLabel+' 안에서 기존 후보와 대체 후보를 다시 비교합니다.',extra);
   if(request.resolved===false)return hold(stage,'복구 1회 한도 소진 · 같은 분기를 반복 탐색하지 않고 사람에게 보냅니다.');
@@ -1105,8 +1152,8 @@ function routeFor(product,threshold=70){
  const stage=fixture.recovery?Math.max(1,Math.min(lastStage,fixture.recovery.stage||1)):0;
  add('frontier',stage,2,'전용 분류기로 미해결 · 이미지와 텍스트를 사진·글 프론티어 API에 보낼 단계의 합성 예시입니다. Qwen-VL 계열은 별도 평가할 대안입니다.',{model:'multimodal-frontier-fixture',syntheticScore:fixture.frontier.score,inputModalities:['image','text']});
  if(resolved(fixture.frontier,CASCADE_POLICY.frontierThreshold))return finish('사진·글 프론티어');
- ledger.record('frontier','unresolved-frontier',1,'프론티어 미해결 +1');
- add('frontierResult',stage,0,'프론티어 근거 부족 · +1 가산 직후 누적 '+ledger.score+'점 확인.',{syntheticScore:fixture.frontier.score});
+ ledger.record('frontier','unresolved-frontier',1,'프론티어 미해결 · 사람검증 점수 +1');
+ add('frontierResult',stage,0,'프론티어 근거 부족 · 사람검증 점수 +1 가산 직후 누적 '+ledger.score+'점 확인.',{syntheticScore:fixture.frontier.score});
  if(!gate(stage))return route;
  checks++;
  const evidence={imageRef:'synthetic-image:'+product.id,text:product.name+' · '+product.description,taxonomyVersion:'synthetic-38-leaves-v1',taxonomyLeafIds:LEAVES.map(l=>l.id),taxonomy:LEAVES.map(l=>({id:l.id,path:[...l.path]}))};
@@ -1116,8 +1163,8 @@ function routeFor(product,threshold=70){
  add('compare',stage,1,'독립 판단을 모은 뒤 공통 후보 라벨에서 근거를 비교합니다. 자기확신의 평균을 확률로 사용하지 않습니다.',{candidateLeafIds,candidateLabels:candidateLeafIds.map(id=>({id,path:LEAVES.find(l=>l.id===id).path})),syntheticScore:fixture.blind.score,calibrationFitted:false});
  const agreed=fixture.blind.agreed&&new Set(assessments.map(a=>a.candidateLeafId)).size===1;
  const accepted=agreed&&resolved(fixture.blind,0)&&fixture.blind.score>threshold;
- if(!accepted)ledger.record('blind','unresolved-blind',2,!agreed?'독립 비교 후 충돌 +2':'독립 비교 후 근거 부족 +2');
- add('blindResult',stage,0,accepted?'합성 비교 결과 최종 세부 분류 근거 일치 · 추가 점수 0.':'독립 비교 미해결 · 추가 +2 직후 누적 '+ledger.score+'점 확인.',{agreed,syntheticScore:fixture.blind.score,calibrationFitted:false});
+ if(!accepted)ledger.record('blind','unresolved-blind',2,!agreed?'독립 비교 후 충돌 미해결 · 사람검증 점수 +2':'독립 비교 후 근거 부족 · 사람검증 점수 +2');
+ add('blindResult',stage,0,accepted?'합성 비교 결과 최종 세부 분류 근거 일치 · 사람검증 점수 +0.':'독립 비교 미해결 · 사람검증 점수 +2 가산 직후 누적 '+ledger.score+'점 확인.',{agreed,syntheticScore:fixture.blind.score,calibrationFitted:false});
  if(!gate(stage))return route;
  if(!accepted){hold(stage,'최종 세부 분류 근거 부족 · 사람 확인');return route;}
  return finish('독립 이미지·텍스트 비교');
@@ -1159,11 +1206,11 @@ $('flow-pulses').innerHTML=TREE_NODES.map(node=>'<i class="flow-pulse" id="flow-
 $('tokens').innerHTML=PRODUCTS.map(p=>'<button type="button" class="token hidden" id="token-'+p.id+'" aria-label="'+p.name+' 상태 보기" data-product="'+p.id+'"><b data-id="'+p.id+'"><i class="tokenid">'+p.id+'</i>'+p.name+'</b><span></span></button>').join('');
 document.querySelectorAll('[data-product]').forEach(button=>button.addEventListener('click',()=>{selected=button.dataset.product;render();}));
 function stateLabel(state){
- if(state.kind==='specialist')return'전용 이미지 분류기 1개';if(state.kind==='frontier')return'사진·글 프론티어';if(state.kind==='frontierResult')return'프론티어 미해결 +1';if(state.kind==='blind')return'이미지·텍스트 독립 판단';if(state.kind==='compare')return'공통 후보 근거 비교';if(state.kind==='blindResult')return'독립 비교 결과 · '+state.reviewScore+'점';if(state.kind==='descend')return'확인된 최종 후보 경로 이동';
+ if(state.kind==='specialist')return'전용 이미지 분류기 1개';if(state.kind==='frontier')return'사진·글 프론티어';if(state.kind==='frontierResult')return'프론티어 미해결 · 사람검증 점수 +1';if(state.kind==='blind')return'이미지·텍스트 독립 판단';if(state.kind==='compare')return'공통 후보 근거 비교';if(state.kind==='blindResult')return'독립 비교 결과 · 사람검증 점수 '+state.reviewScore+'점';if(state.kind==='descend')return'확인된 최종 후보 경로 이동';
  if(state.kind==='waiting')return'투입 전';if(state.kind==='rootwait')return'1차 분류 대기열';if(state.kind==='queue')return'상위 분류별 대기열';
  if(EXPRESS_KINDS.includes(state.kind))return'텍스트 → 최종 바스켓 직행';if(state.kind==='classify')return(state.stage+1)+'단계 · 텍스트 판단';if(state.kind==='textpass')return'1단계 · 이미지 생략';if(state.kind==='quality')return(state.stage+1)+'단계 · 사진 화질 검사';
  if(state.kind==='image')return(state.stage+1)+'단계 · 이미지 모델 분석';if(state.kind==='average')return'이미지 분석 · 예시 평균';
- if(state.kind==='recoverStart')return'후보 의심 · 복구 준비';if(state.kind==='recoverUp')return'상위로 복구 ↑';if(state.kind==='recoverSearch')return'대체 후보 재탐색';if(state.kind==='recoverDown')return'새 후보로 다시 진입 ↓';if(state.kind==='reviewResult')return'토론 결과 · '+state.reviewScore+'점';if(state.kind==='review')return'AI 근거 대조 · 토론';if(state.kind==='human')return(state.stage+1)+'단계 · 사람 확인 대기';return'세부 분류 도착';
+ if(state.kind==='recoverStart')return'후보 의심 · 복구 준비';if(state.kind==='recoverUp')return'상위로 복구 ↑';if(state.kind==='recoverSearch')return'대체 후보 재탐색';if(state.kind==='recoverDown')return'새 후보로 다시 진입 ↓';if(state.kind==='reviewResult')return'토론 결과 · 사람검증 점수 '+state.reviewScore+'점';if(state.kind==='review')return'AI 근거 대조 · 토론';if(state.kind==='human')return(state.stage+1)+'단계 · 사람 확인 대기';return'세부 분류 도착';
 }
 function humanTransferFor(entry,width=TREE_GEOMETRY.width,now=time){
  const {product:p,state:s}=entry,g=TREE_GEOMETRY,scale=width/g.width,sector=g.humanSector;
@@ -1344,7 +1391,7 @@ function showHumanTransferExample(){
  const match=PRODUCTS.map(product=>({product,route:routeFor(product,threshold)})).find(e=>e.route.at(-1).kind==='human'&&e.route.at(-1).reviewScore===2);
  if(!match)return;
  pause();selected=match.product.id;time=Math.max(0,match.route.at(-1).start-1);playing=true;lastStamp=0;
- setStatus(selected+' · 2점이 되면 추가 분류를 멈추고 오른쪽 사람 검수 구역으로 이동합니다.');render();
+ setStatus(selected+' · 사람검증 점수가 2점이 되면 추가 분류를 멈추고 오른쪽 사람 검수 구역으로 이동합니다.');render();
  if(typeof setFlowView==='function')setFlowView(true);
 }
 function renderRecovery(entries,visible,focus){
@@ -1352,10 +1399,10 @@ function renderRecovery(entries,visible,focus){
  const recovered=entries.filter(e=>e.route.some(r=>r.kind==='recoverUp'&&r.start<=time));
  const humans=entries.filter(e=>e.state.kind==='human').sort((a,b)=>(b.state.reviewScore||0)-(a.state.reviewScore||0)||a.state.start-b.state.start||a.product.id.localeCompare(b.product.id));
  $('recovery-count').textContent=recovered.length;$('review-queue-count').textContent=humans.length;
- $('review-focus').textContent=p.id+' · '+score+' / 2점';
+ $('review-focus').textContent=p.id+' · 사람검증 점수 '+score+' / 2점';
  $('review-focus').className=score>=2?'held':score?'caution':'';
- $('review-focus-detail').textContent=events.length?events.map(e=>e.label).join(' → ')+' · '+stateLabel(s):stateLabel(s)+' · 검수 점수 없음';
- $('selected-review-score').textContent='검수 점수 '+score+' / 2';
+ $('review-focus-detail').textContent=events.length?events.map(e=>e.label).join(' → ')+' · '+stateLabel(s):stateLabel(s)+' · 사람검증 점수 없음';
+ $('selected-review-score').textContent='사람검증 점수 '+score+' / 2';
  $('selected-review-events').innerHTML=events.length?events.map(e=>'<li>'+e.label+'</li>').join(''):'<li>누적 사유 없음</li>';
  $('human-queue-list').innerHTML=humans.slice(0,8).map(e=>'<button type="button" data-focus="'+e.product.id+'"><b>'+e.product.id+' · '+e.state.reviewScore+'점</b><span>'+e.product.name+'</span><small>'+e.state.detail+'</small></button>').join('')+(humans.length>8?'<p class="subtle">외 '+(humans.length-8)+'건 대기</p>':'')||'<p class="subtle">현재 검수 대기 상품이 없습니다.</p>';
  const active=RECOVERY_KINDS.includes(s.kind)?focus:visible.find(e=>RECOVERY_KINDS.includes(e.state.kind));
@@ -1490,17 +1537,17 @@ $('hero-reset').addEventListener('click',()=>$('reset').click());
 // This is intentionally a separate, authored teaching example, not model output.
 let debateCase='supported',frontierPassed=false,debateStage=0,debateSpeaker=0,debatePlaying=false,debateRAF=null,debateLastFrame=0;
 const DEBATE_NAMES=['모델 A','모델 B','모델 C'];
-const DEBATE_REPLIES=[['동일 입력 · 답 공유 없음','동일 입력 · 답 공유 없음','동일 입력 · 답 공유 없음'],['세 답을 공개한 뒤 비교','같은 후보에 대한 근거 대조','보정 기준과 의견 일치 확인'],['최종 후보의 근거 확인','미해결 충돌 여부 확인','누적 점수와 종료 조건 확인']];
+const DEBATE_REPLIES=[['동일 입력 · 답 공유 없음','동일 입력 · 답 공유 없음','동일 입력 · 답 공유 없음'],['세 답을 공개한 뒤 비교','같은 후보에 대한 근거 대조','보정 기준과 의견 일치 확인'],['최종 후보의 근거 확인','미해결 충돌 여부 확인','누적 사람검증 점수와 종료 조건 확인']];
 const DEBATE_EXAMPLES={
  supported:[
   ['무선 이어폰으로 판단합니다. 두 개의 이어피스 사진과 Bluetooth·음악 재생 설명을 함께 확인했습니다.','사진의 이어피스와 충전 케이스가 상품 설명에 맞습니다. 다른 모델의 답을 보지 않고 무선 이어폰으로 판단했습니다.','무선 이어폰 후보를 선택했습니다. 통화용 마이크와 음악 재생 기능이 텍스트에 명시돼 있습니다.','세 모델이 같은 입력으로 각각 판정했습니다. 이제 답을 공개해 비교합니다.'],
-  ['공개된 세 답이 모두 무선 이어폰을 가리킵니다. 비교용 신뢰도는 92·90·88로 예시 기준 85를 넘었습니다.','이 점수는 같은 후보와 보정 기준을 가정한 가상 값입니다. 다른 모델의 높은 점수만 보고 결론을 바꾸지는 않습니다.','각 모델이 든 사진·텍스트 근거가 원문에 있는지 확인했습니다. 후보 일치와 기준 통과를 함께 확인했습니다.','후보 일치 + 근거 충족 + 가상 비교 점수 통과 · 독립 검토 추가 점수 0'],
-  ['최종 분류는 가전·디지털 > 음향기기 > 이어폰 > 무선입니다. 확인한 원문과 판정 근거를 함께 기록합니다.','처음 프론티어가 확정하지 못해 받은 1점은 그대로 남습니다. 독립 검토로 해결됐으므로 더하지 않습니다.','누적 1점이고 최종 후보의 근거도 충족했습니다. 이후 모델 호출을 종료합니다.','프론티어 불확실 +1 · 독립 검토 해결 +0 = 1점 → 최종 분류']
+  ['공개된 세 답이 모두 무선 이어폰을 가리킵니다. 비교용 신뢰도는 92·90·88로 예시 기준 85를 넘었습니다.','이 점수는 같은 후보와 보정 기준을 가정한 가상 값입니다. 다른 모델의 높은 점수만 보고 결론을 바꾸지는 않습니다.','각 모델이 든 사진·텍스트 근거가 원문에 있는지 확인했습니다. 후보 일치와 기준 통과를 함께 확인했습니다.','후보 일치 + 근거 충족 + 가상 비교 점수 통과 · 독립 검토 사람검증 점수 +0'],
+  ['최종 분류는 가전·디지털 > 음향기기 > 이어폰 > 무선입니다. 확인한 원문과 판정 근거를 함께 기록합니다.','처음 프론티어가 확정하지 못해 받은 사람검증 점수 1점은 그대로 남습니다. 독립 검토로 해결됐으므로 더하지 않습니다.','누적 사람검증 점수가 1점이고 최종 후보의 근거도 충족했습니다. 이후 모델 호출을 종료합니다.','사람검증 점수: 프론티어 불확실 +1 · 독립 검토 해결 +0 = 누적 1점 → 최종 분류']
  ],
  missing:[
   ['상품명은 무선 이어폰이지만 사진에는 닫힌 케이스만 있습니다. 이어폰 포함 여부를 확인하기 어렵습니다.','케이스 단품일 가능성을 유지합니다. 이어피스가 사진에 없고 구성품 설명도 없습니다.','무선 이어폰과 케이스 단품을 구분할 근거가 부족해 최종 분류를 보류합니다.','각 모델이 독립적으로 판단했지만 필요한 구성품·기능 정보가 부족합니다.'],
-  ['무선 이어폰이라는 같은 후보의 비교용 신뢰도는 58·54·41입니다. 세 값 모두 예시 기준 85보다 낮습니다.','답을 모아도 없던 기능 정보가 생기지는 않습니다. 상품명과 사진의 불일치를 해결하지 못했습니다.','독립 검토 후에도 근거와 확신이 부족하므로 검수 점수 2점을 추가합니다.','프론티어 +1 뒤 독립 검토의 낮은 점수 +2 · 누적 3점'],
-  ['이어폰 포함 여부와 기능 설명을 추가로 요청할 수 있도록 부족한 근거를 남깁니다.','누적 점수가 2점 이상이므로 모델을 더 호출하거나 반복 토론하지 않습니다.','상품 원문과 각 모델의 답·근거를 함께 사람 검수 대기열로 보냅니다.','프론티어 불확실 +1 · 독립 검토 미해결 +2 = 3점 → 사람 검수']
+  ['무선 이어폰이라는 같은 후보의 비교용 신뢰도는 58·54·41입니다. 세 값 모두 예시 기준 85보다 낮습니다.','답을 모아도 없던 기능 정보가 생기지는 않습니다. 상품명과 사진의 불일치를 해결하지 못했습니다.','독립 검토 후에도 근거와 확신이 부족하므로 사람검증 점수 2점을 추가합니다.','사람검증 점수: 프론티어 미해결 +1 뒤 낮은 보정 점수·충돌 미해결 +2 · 누적 3점'],
+  ['이어폰 포함 여부와 기능 설명을 추가로 요청할 수 있도록 부족한 근거를 남깁니다.','누적 사람검증 점수가 2점 이상이므로 모델을 더 호출하거나 반복 토론하지 않습니다.','상품 원문과 각 모델의 답·근거를 함께 사람 검수 대기열로 보냅니다.','사람검증 점수: 프론티어 불확실 +1 · 독립 검토 미해결 +2 = 누적 3점 → 사람 검수']
  ]
 };
 const BLIND_COMPARISON_ROWS={
@@ -1523,7 +1570,7 @@ function renderBlindComparison(){
  $('frontier-score-value').textContent=String(firstScore);
  $('frontier-score-bar').style.width=firstScore+'%';
  $('frontier-gate-label').textContent=firstScore+(frontierPassed?' ≥ 기준 85 → 분류 완료':' < 기준 85 → 추가 검토');
- $('frontier-review-score').innerHTML=frontierPassed?'기준 통과 + 근거 충족 <b>검토 +0</b>':'기준 미달 <b>검토 +1</b>';
+ $('frontier-review-score').innerHTML=frontierPassed?'기준 통과 + 근거 충족 <b>사람검증 점수 +0</b>':'기준 미달 <b>사람검증 점수 +1</b>';
  $('case-frontier').setAttribute('aria-pressed',String(frontierPassed));
  $('case-supported').setAttribute('aria-pressed',String(supported&&!frontierPassed));
  $('case-missing').setAttribute('aria-pressed',String(!supported));
@@ -1542,11 +1589,11 @@ function renderBlindComparison(){
   $('confidence-bar-'+i).style.width=(revealed?scores[i]:0)+'%';
   $('confidence-value-'+i).textContent=revealed?String(scores[i]):'—';
  }
- $('blind-compare-check').innerHTML=frontierPassed?'<strong>첫 판정에서 기준과 근거를 충족</strong>이 사례는 추가 모델의 판단이 필요하지 않습니다. OpenRouter 경로를 실행하지 않고 종료합니다.':!revealed?'<strong>아직 서로의 답을 보여 주지 않습니다.</strong>같은 원본 정보만 받고 각자 후보·근거·신뢰도를 저장합니다.':supported?'<strong>무선 이어폰 후보 일치 · 세 점수 모두 기준 통과</strong>사진 속 이어피스와 무선 연결·음악 재생 설명을 대조합니다. 비교 기준을 충족하면 검수 점수를 추가하지 않습니다.':'<strong>같은 후보의 점수도 낮고, 구성품 근거도 부족</strong>닫힌 케이스만으로는 이어폰 포함 여부를 알 수 없습니다. 다수결이나 신뢰도 평균으로 확정하지 않습니다.';
- $('blind-reveal-note').textContent=frontierPassed?'Codex 첫 판정의 신뢰도 92가 예시 기준 85를 넘고 근거도 충족했습니다. 추가 검토는 요청하지 않습니다.':!revealed?'각자 답을 따로 저장한 상태입니다. ‘세 답안 공개’를 누르면 모델별 판정과 비교용 신뢰도가 나타납니다.':debateStage===1?'독립 판정이 끝난 뒤 답안 A·B·C를 공개했습니다. 아래 막대는 모두 “무선 이어폰”이라는 동일 후보의 신뢰도입니다.':'공개된 근거와 비교 기준을 확인한 뒤 결론을 냅니다. 누적 2점 이상이면 이후 호출을 멈추고 사람 검수로 보냅니다.';
+ $('blind-compare-check').innerHTML=frontierPassed?'<strong>첫 판정에서 기준과 근거를 충족</strong>이 사례는 추가 모델의 판단이 필요하지 않습니다. OpenRouter 경로를 실행하지 않고 종료합니다.':!revealed?'<strong>아직 서로의 답을 보여 주지 않습니다.</strong>같은 원본 정보만 받고 각자 후보·근거·신뢰도를 저장합니다.':supported?'<strong>무선 이어폰 후보 일치 · 세 점수 모두 기준 통과</strong>사진 속 이어피스와 무선 연결·음악 재생 설명을 대조합니다. 비교 기준을 충족하면 사람검증 점수를 추가하지 않습니다.':'<strong>같은 후보의 점수도 낮고, 구성품 근거도 부족</strong>닫힌 케이스만으로는 이어폰 포함 여부를 알 수 없습니다. 다수결이나 신뢰도 평균으로 확정하지 않습니다.';
+ $('blind-reveal-note').textContent=frontierPassed?'Codex 첫 판정의 신뢰도 92가 예시 기준 85를 넘고 근거도 충족했습니다. 추가 검토는 요청하지 않습니다.':!revealed?'각자 답을 따로 저장한 상태입니다. ‘세 답안 공개’를 누르면 모델별 판정과 비교용 신뢰도가 나타납니다.':debateStage===1?'독립 판정이 끝난 뒤 답안 A·B·C를 공개했습니다. 아래 막대는 모두 “무선 이어폰”이라는 동일 후보의 신뢰도입니다.':'공개된 근거와 비교 기준을 확인한 뒤 결론을 냅니다. 누적 사람검증 점수가 2점 이상이면 이후 호출을 멈추고 사람 검수로 보냅니다.';
  $('debate-next').textContent=frontierPassed?'첫 판정에서 완료':debateStage===0?'세 답안 공개 →':debateStage===1?'비교 후 결론 보기 →':'봉인 단계로 다시 보기 ↺';
  ['debate-next','debate-autoplay','debate-speaker-next','debate-stage-0','debate-stage-1','debate-stage-2'].forEach(id=>$(id).disabled=frontierPassed);
- if(frontierPassed){$('debate-result').textContent='첫 판정 신뢰도·근거 충족 +0 = 0점 → 최종 분류';$('debate-verdict').className='debate-verdict resolved';}
+ if(frontierPassed){$('debate-result').textContent='첫 판정 신뢰도·근거 충족 · 사람검증 점수 +0 = 0점 → 최종 분류';$('debate-verdict').className='debate-verdict resolved';}
 }
 
 function renderDebate(){
@@ -1556,7 +1603,7 @@ function renderDebate(){
  [0,1,2].forEach(i=>$('debate-stage-'+i).setAttribute('aria-pressed',String(i===debateStage)));
  $('case-supported').setAttribute('aria-pressed',String(debateCase==='supported'));
  $('case-missing').setAttribute('aria-pressed',String(debateCase==='missing'));
- $('blind-reveal-note').textContent=debateStage===0?'같은 입력으로 따로 판정한 결과입니다. 각 모델은 첫 판정에서 다른 모델과 프론티어의 답을 보지 않습니다.':debateStage===1?'독립 판정이 끝난 뒤 세 답을 함께 공개합니다. 같은 최종 후보의 근거와 비교 점수를 확인합니다.':'점수와 근거를 함께 확인합니다. 누적 2점 이상이면 이후 호출을 멈추고 사람 검수로 이동합니다.';
+ $('blind-reveal-note').textContent=debateStage===0?'같은 입력으로 따로 판정한 결과입니다. 각 모델은 첫 판정에서 다른 모델과 프론티어의 답을 보지 않습니다.':debateStage===1?'독립 판정이 끝난 뒤 세 답을 함께 공개합니다. 같은 최종 후보의 근거와 비교 점수를 확인합니다.':'점수와 근거를 함께 확인합니다. 누적 사람검증 점수가 2점 이상이면 이후 호출을 멈추고 사람 검수로 이동합니다.';
  $('debate-next').textContent=debateStage===2?'검토 예시 처음부터 ↺':'다음 단계 →';
  [0,1,2].forEach(i=>{
   $('speech-'+i).classList.toggle('current-speaker',i===debateSpeaker);
@@ -1598,6 +1645,87 @@ document.addEventListener('visibilitychange',()=>{if(document.hidden&&debatePlay
 renderDebate();
 
 fitTree();render();requestAnimationFrame(frame);window.__ready=true;
+</script>
+<script id="future-learning-script">
+// A separate, authored explanation. This does not collect data or run model training.
+(()=>{
+ const root=document.getElementById('future-learning');
+ if(!root)return;
+ const get=id=>document.getElementById('future-'+id),duration=24;
+ const media=matchMedia('(prefers-reduced-motion: reduce)');
+ const params=new URLSearchParams(location.search),forcedReduce=params.get('futureReduce')==='1';
+ const marks=[0,8,15,24],passes=[14,17,20],starts=[10,12,14];
+ const captions=[
+  '처음에는 새 분야를 프론티어가 담당합니다. 판단 후보와 근거를 기록합니다.',
+  '프론티어의 판단 자료를 검수하고, 사람의 수정 결과와 함께 분야별 학습 자료로 모읍니다.',
+  '사전학습 모델을 분야별로 추가 학습하고, 학습에 쓰지 않은 자료로 평가합니다. 평가 전에는 전환하지 않습니다.',
+  '평가를 통과한 분야부터 작은 모델이 맡습니다. 새 분야와 어려운 상품은 계속 프론티어·추가 검토로 보냅니다.'
+ ];
+ let time=0,playing=false,frameId=null,last=0,lastDraw=0,manualReduced=false;
+ const clamp=n=>Math.min(1,Math.max(0,n));
+ const reduced=()=>forcedReduce||media.matches||manualReduced;
+ function snapshot(){
+  const models=starts.map((start,i)=>({name:['전자제품','의류','반려동물용품'][i],status:time<start?'waiting':time<start+2?'training':time<passes[i]?'evaluating':'ready',progress:Math.round(clamp((time-start)/(passes[i]-start))*100)}));
+  const small=Math.round(passes.reduce((total,pass)=>total+25*clamp((time-pass)/2),0));
+  return {time,playing,reduced:reduced(),data:Math.floor(18*clamp(time/10)),phase:time<4?0:time<10?1:time<16?2:3,models,small,frontier:100-small};
+ }
+ function render(){
+  const s=snapshot();
+  root.classList.toggle('is-reduced',s.reduced);
+  get('data-count').textContent=String(s.data);
+  for(let i=0;i<18;i++)get('data-'+i).classList.toggle('is-filled',i<s.data);
+  for(let i=0;i<4;i++)get('scene-'+i).setAttribute('aria-pressed',String(i===s.phase));
+  s.models.forEach((model,i)=>{
+   const row=get('model-'+i);
+   ['training','evaluating','ready'].forEach(status=>row.classList.toggle('is-'+status,model.status===status));
+   get('model-state-'+i).textContent={waiting:'자료 대기',training:'전이학습 중',evaluating:'별도 평가 중',ready:'평가 통과 · 전환'}[model.status];
+   get('model-progress-'+i).style.width=model.progress+'%';
+  });
+  get('ready-models').textContent=String(s.models.filter(m=>m.status==='ready').length);
+  get('frontier-percent').textContent=s.frontier+'%';get('small-percent').textContent=s.small+'%';
+  get('frontier-share').style.width=s.frontier+'%';get('small-share').style.width=s.small+'%';
+  get('frontier-status').textContent=s.small?'새 분야·어려운 상품을 계속 맡습니다.':'새 분야의 상품을 먼저 판단합니다.';
+  get('frontier-node').classList.toggle('is-active',s.phase===0);
+  get('data-node').classList.toggle('is-active',s.phase===1);
+  get('models-node').classList.toggle('is-active',s.phase>=2);
+  const caption=captions[s.phase];if(get('learning-caption').textContent!==caption)get('learning-caption').textContent=caption;
+  [0,1].forEach(i=>{
+   const active=i===0?time>0&&time<10:time>=10&&time<20;
+   get('packet-'+i).setAttribute('cx',String(5+46*((time*.7+i*.35)%1)));
+   get('packet-'+i).style.opacity=active&&!s.reduced?'1':'0';
+  });
+  get('timeline').value=String(Math.round(time*10)/10);
+  get('timeline').setAttribute('aria-valuetext',`${Math.round(time)}초, ${['프론티어 처리','판단 자료 축적','학습과 평가','점진적 전환'][s.phase]}`);
+  get('time').textContent=Math.floor(time)+' / '+duration+'초';
+  get('play').textContent=s.reduced?'장면 버튼으로 보기':playing?'Ⅱ 일시정지':time>=duration?'↻ 다시 재생':'▶ 흐름 재생';
+  get('play').disabled=s.reduced;get('play').setAttribute('aria-pressed',String(playing));
+  get('reduce').checked=s.reduced;get('reduce').disabled=forcedReduce||media.matches;
+ }
+ function stop(){playing=false;if(frameId!==null)cancelAnimationFrame(frameId);frameId=null;}
+ function seek(value){stop();const next=Number(value);time=Number.isFinite(next)?Math.min(duration,Math.max(0,next)):0;render();}
+ function frame(now){
+  if(!playing)return;
+  time=Math.min(duration,time+Math.min(200,Math.max(0,now-last))/1000);last=now;
+  if(time>=duration){stop();render();return;}
+  if(now-lastDraw>=45){render();lastDraw=now;}
+  frameId=requestAnimationFrame(frame);
+ }
+ get('play').addEventListener('click',()=>{
+  if(reduced())return;
+  if(playing){stop();render();return;}
+  if(time>=duration)time=0;
+  playing=true;last=performance.now();lastDraw=last;render();frameId=requestAnimationFrame(frame);
+ });
+ get('reset').addEventListener('click',()=>seek(0));
+ get('timeline').addEventListener('input',event=>seek(event.target.value));
+ marks.forEach((mark,i)=>get('scene-'+i).addEventListener('click',()=>seek(mark)));
+ get('reduce').addEventListener('change',event=>{manualReduced=event.target.checked;stop();render();});
+ media.addEventListener('change',()=>{stop();if(reduced())time=duration;render();});
+ document.addEventListener('visibilitychange',()=>{if(document.hidden){stop();render();}});
+ window.futureLearningDemo={seek,getState:snapshot};
+ if(params.has('futureAt'))seek(params.get('futureAt'));else {if(reduced())time=duration;render();}
+})();
+
 </script>
 </body>
 </html>

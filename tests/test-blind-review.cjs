@@ -27,7 +27,7 @@ for(let i=0;i<3;i++)assert.equal(getElement(`confidence-value-${i}`).textContent
 assert(!rows().includes('공개 전 · 따로 저장'));
 assert(!getElement('debate-result').textContent.includes('→ 최종 분류'), 'reveal alone must not claim the final decision');
 click('debate-next');
-assert.match(getElement('debate-result').textContent,/해결 \+0 = 1점 → 최종 분류/);
+assert.match(getElement('debate-result').textContent,/해결 \+0 = 누적 1점 → 최종 분류/);
 
 click('case-missing');
 sealed();
@@ -39,7 +39,7 @@ assert(rows().includes('추가 정보 필요'));
 assert(!rows().includes('근거 충족'));
 for(let i=0;i<3;i++)assert.equal(getElement(`confidence-value-${i}`).textContent,String([58,54,41][i]));
 click('debate-next');
-assert.match(getElement('debate-result').textContent,/미해결 \+2 = 3점 → 사람 검수/);
+assert.match(getElement('debate-result').textContent,/미해결 \+2 = 누적 3점 → 사람 검수/);
 click('debate-next');
 sealed();
 
