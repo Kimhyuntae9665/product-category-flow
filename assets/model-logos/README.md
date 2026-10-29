@@ -3,7 +3,7 @@
 Unmodified SVGs from [Lobe Icons](https://github.com/lobehub/lobe-icons), pinned at commit `8b7bbc433d38437fa2b0cca58ae896917162b812`, path `packages/static-svg/icons/`.
 
 Current classification diagrams:
-- `gemini-color.svg`: Gemini 3.1 Flash-Lite, frontier stage.
+- `gemini-color.svg`: Gemini 3.5 Flash-Lite, frontier stage.
 - `qwen-color.svg`: Qwen3.7 Flash, independent answer A.
 - `zai.svg`: Z.ai, GLM 5.3 Flash, independent answer B.
 - `reka.svg`: Reka Edge, independent answer C.

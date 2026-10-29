@@ -161,7 +161,7 @@ UI·UX 구성·조정을 포함한 최신 기여 목록은 [웹사이트 본문]
 
 ## AI 이용한 부분
 
-[‘내가 한 부분:’ 다음의 AI 활용 영역](https://product-category-flow.pages.dev/#ai-use)에 Walmart·Rakuten·Meta·Shopify 등 세계 여러 기업의 사례 조사와 의견 제공, Walmart 사례 조사 과정에서 AI가 제안한 복구 루트, 이미지 전용 분류기 아이디어와 각 단계의 구체적인 모델 서칭 및 추천을 명시했습니다. 모델 후보에는 KoELECTRA-Small-v3, EfficientNet-B0·ConvNeXt-Tiny, Gemini 3.1 Flash-Lite, Qwen3.7 Flash·GLM 5.3 Flash·Reka Edge가 포함됩니다. Codex Dot를 이용한 48시간 서칭, AI Agent를 활용한 웹 시뮬레이션 제작과 Cloudflare Pages 배포도 함께 담았습니다. 아이디어 출처와 48시간 서칭은 작성자의 설명에 따른 기록이며, 복구 루트가 Walmart의 실제 구현과 동일하다는 뜻은 아닙니다.
+[‘내가 한 부분:’ 다음의 AI 활용 영역](https://product-category-flow.pages.dev/#ai-use)에 Walmart·Rakuten·Meta·Shopify 등 세계 여러 기업의 사례 조사와 의견 제공, Walmart 사례 조사 과정에서 AI가 제안한 복구 루트, 이미지 전용 분류기 아이디어와 각 단계의 구체적인 모델 서칭 및 추천을 명시했습니다. 모델 후보에는 KoELECTRA-Small-v3, EfficientNet-B0·ConvNeXt-Tiny, Gemini 3.5 Flash-Lite, Qwen3.7 Flash·GLM 5.3 Flash·Reka Edge가 포함됩니다. Codex Dot를 이용한 48시간 서칭, AI Agent를 활용한 웹 시뮬레이션 제작과 Cloudflare Pages 배포도 함께 담았습니다. 아이디어 출처와 48시간 서칭은 작성자의 설명에 따른 기록이며, 복구 루트가 Walmart의 실제 구현과 동일하다는 뜻은 아닙니다.
 
 ![본인 기여 다음에 다른 색으로 구분한 AI 활용 내용](assets/ai-use.png)
 
