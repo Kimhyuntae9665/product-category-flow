@@ -4,7 +4,7 @@
 
 **[▶ 웹에서 직접 실행하기](https://product-category-flow.pages.dev/)**
 
-![AI Agent 활용 관점과 성능 기준별 최저 토큰 단가 그래프](assets/token-price-hero.png)
+![사람 검수 감소 목적을 맨 위에 두고, AI Agent 활용 관점과 토큰 단가 그래프를 이어 배치한 첫 화면](assets/token-price-hero.png)
 
 ## AI Agent를 적극 활용하는 이유
 
