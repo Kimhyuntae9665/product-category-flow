@@ -579,7 +579,8 @@ html{scroll-behavior:auto;scroll-padding-top:22px}body{background:#f5f8fc;color:
 .my-contribution .my-contribution-intro{color:#4c715e;margin-bottom:3px}
 .my-contribution-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:28px;list-style:none;margin:0;padding:0}
 .my-contribution-list li{display:flex;align-items:flex-start;gap:13px;margin:0;padding:17px 0;border-bottom:1px solid #c8e2d3;min-width:0}
-.my-contribution-list li:nth-last-child(-n+2){border-bottom:0;padding-bottom:0}
+.my-contribution-list li:last-child,.my-contribution-list li:nth-last-child(2):nth-child(odd){border-bottom:0;padding-bottom:0}
+.my-contribution-list li:last-child:nth-child(odd){grid-column:1/-1}
 .my-contribution-number{display:flex;flex:0 0 30px;align-items:center;justify-content:center;width:30px;height:30px;margin-top:1px;border:1px solid #add3bf;background:#fafffc;color:#347050;font-size:12px;font-weight:800;font-variant-numeric:tabular-nums}
 .my-contribution h3{margin:0 0 5px;color:#245e43;font-size:16px;line-height:1.5;letter-spacing:-.02em}
 .my-contribution h3 small{display:inline-block;vertical-align:middle;margin-left:5px;padding:2px 6px;border:1px solid #a4cdb6;background:#dcefe3;color:#286041;font-size:10px;line-height:1.5;white-space:nowrap}
@@ -1066,7 +1067,7 @@ SOFTWARE.
 <div class="landing-credits"><p>아이콘: <a href="https://lucide.dev/" target="_blank" rel="noopener noreferrer">Lucide</a> · ISC / MIT<br>모델 로고: <a href="https://github.com/lobehub/lobe-icons/tree/8b7bbc433d38437fa2b0cca58ae896917162b812" target="_blank" rel="noopener noreferrer">Lobe Icons</a> · MIT · 각 브랜드 식별용, 제휴·보증 의미 없음</p><p>분류도·상품 그림: 자체 제작 SVG<br>구현·수정: Codex 활용 · 설계 검토: PAL 무료 모델 검토 절차</p></div>
 <footer class="footer"><span>설명용 고정 시나리오 · 실제 바코드 조회 / 보상 지급 / 모델 실행 / API 호출 없음</span><span>이 파일은 인터넷 연결 없이 열립니다.</span></footer>
 <section class="my-contribution" id="my-contribution" aria-labelledby="my-contribution-title">
- <div class="my-contribution-heading"><h2 id="my-contribution-title">내가 한 부분:</h2><span>아이디어 · 설계 방향</span></div>
+ <div class="my-contribution-heading"><h2 id="my-contribution-title">내가 한 부분:</h2><span>아이디어 · 설계 방향 · UI·UX 조정</span></div>
  <p class="my-contribution-intro">제가 제안하고 이 설계에 반영한 부분입니다.</p>
  <ol class="my-contribution-list">
   <li><span class="my-contribution-number" aria-hidden="true">01</span><div><h3>AI Agent끼리 의견을 나누는 아이디어</h3><p>여러 AI Agent가 각자 판단한 결과와 근거를 비교하며, 애매한 분류를 함께 검토하는 방식을 제안했습니다.</p></div></li>
@@ -1077,6 +1078,7 @@ SOFTWARE.
   <li><span class="my-contribution-number" aria-hidden="true">06</span><div><h3>토큰 비용 감소를 고려한 AI 활용</h3><p>앞으로 토큰 비용이 더 낮아질 것이라는 전망을 바탕으로, AI Agent를 더 적극적으로 활용하자는 의견을 냈습니다.</p></div></li>
   <li><span class="my-contribution-number" aria-hidden="true">07</span><div><h3>초기에는 프론티어, 이후에는 작은 모델</h3><p>어렵거나 학습 데이터가 부족한 분야는 초기에는 프론티어 모델로 판별하며 데이터와 검증된 정답을 모으고, 충분히 쌓이면 작은 모델로 전환하는 아이디어를 제가 제안했습니다.</p></div></li>
   <li><span class="my-contribution-number" aria-hidden="true">08</span><div><h3>프론티어 API 사용을 최소화하는 구조</h3><p>텍스트나 작은 모델로 해결되는 상품은 먼저 처리하고, 어려운 상품에만 프론티어 API를 호출해 사용을 최소화하는 구조를 제가 제안했습니다.</p></div></li>
+  <li><span class="my-contribution-number" aria-hidden="true">09</span><div><h3>애니메이션 웹 서비스 UI·UX 구성·조정</h3><p>상품 분류 과정을 쉽게 이해할 수 있도록 화면 배치와 설명 순서, 재생·초기화 등 조작 방식을 검토하고 수정 방향을 제시했습니다. 상품 이동 애니메이션을 결과 비교보다 먼저 보여주고, 불필요한 영역을 줄이는 등 화면을 확인하며 구성을 조정했습니다.</p></div></li>
  </ol>
 </section>
 
