@@ -43,9 +43,9 @@
 
 [독립 검토 화면](https://product-category-flow.pages.dev/#agent-debate)은 **원본 이미지 1장과 텍스트 → Codex 프론티어 첫 판정 → 신뢰도가 기준보다 낮을 때 OpenRouter → 블라인드 독립 답안을 공개한 뒤 비교**를 보여줍니다. 첫 판정의 신뢰도와 예시 기준선 85를 표시하고, 근거와 기준을 충족하면 여기서 종료합니다. 주 시뮬레이션에서 프론티어 단계까지 온 상품을 설명하는 별도의 예시입니다.
 
-![무선 이어폰 이미지와 텍스트, Codex 신뢰도 기준, OpenRouter 블라인드 분기](assets/codex-confidence-flow.jpg)
+![Codex 첫 판정과 Qwen, NVIDIA Nemotron, Cohere 로고를 표시한 OpenRouter 블라인드 분기](assets/codex-model-logos.png)
 
-모델 A·B·C에는 같은 원본과 분류 기준을 전달하고, 앞선 프론티어의 후보·근거·점수와 다른 모델의 답은 전달하지 않습니다. **세 답안 공개**를 누른 뒤에만 판정과 신뢰도 막대가 나타납니다. 모든 막대는 동일한 ‘무선 이어폰’ 후보에 대한 비교용 점수입니다. 이미지·텍스트 근거는 접기 표에서 확인합니다.
+카드 A·B·C는 각각 Qwen·NVIDIA Nemotron·Cohere를 배치한 예시입니다. 같은 원본과 분류 기준을 전달하고, 앞선 프론티어의 후보·근거·점수와 다른 모델의 답은 전달하지 않는 설계를 보여줍니다. **세 답안 공개**를 누른 뒤에만 판정과 신뢰도 막대가 나타납니다. 모든 막대는 동일한 ‘무선 이어폰’ 후보에 대한 가상 비교 점수이며 해당 모델의 실제 성능이 아닙니다. 실제 연결에는 선택 모델의 이미지 입력 지원을 별도로 확인해야 합니다. 이미지·텍스트 근거는 접기 표에서 확인합니다.
 
 ![같은 후보의 모델별 신뢰도와 기준선 비교](assets/codex-confidence-comparison.jpg)
 
@@ -97,7 +97,7 @@ node tests/test-blind-review.cjs
 
 사용자가 문제와 처리 순서를 정하고, Codex를 활용해 화면·시뮬레이션·검사를 구현하고 수정했습니다. 2026.10.28의 PAL 설계 검토 기록은 접기 영역에 별도로 보존했습니다. 현재 상품 분류의 실제 모델 호출이나 이미지 모델 선정 기록이 아닙니다.
 
-아이콘은 [Lucide Static](https://lucide.dev/guide/static) 1.63.0입니다. 과거 검토 기록의 브랜드 로고는 [Lobe Icons](assets/model-logos/README.md)이며 라이선스를 보존했습니다. 상품 그림·분류도는 자체 SVG입니다.
+아이콘은 [Lucide Static](https://lucide.dev/guide/static) 1.63.0입니다. Codex·Qwen·NVIDIA·Cohere의 브랜드 로고는 [Lobe Icons](assets/model-logos/README.md)이며 원본 색상·형태와 라이선스를 보존했습니다. 상품 그림·분류도는 자체 SVG입니다.
 
 - [EfficientNet-B0 공식 문서](https://docs.pytorch.org/vision/main/models/generated/torchvision.models.efficientnet_b0.html)
 - [ConvNeXt-Tiny 공식 문서](https://docs.pytorch.org/vision/main/models/generated/torchvision.models.convnext_tiny.html)
