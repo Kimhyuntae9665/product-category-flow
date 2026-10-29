@@ -466,6 +466,8 @@ html{scroll-behavior:auto;scroll-padding-top:22px}body{background:#f5f8fc;color:
 .future-autoscale-flow li>span{font-size:10px;font-weight:750;letter-spacing:.02em;color:#6b87a7}.future-autoscale-flow h4{margin:9px 0 7px;font-size:16px;line-height:1.5;letter-spacing:-.035em;color:#31577e;word-break:keep-all}.future-autoscale-flow p{font-size:12px;line-height:1.85;color:#61758e;margin:0;word-break:keep-all}
 .future-autoscale-rule{border-top:1px solid #dbe5f0;padding-top:14px;margin:0;font-size:12px;line-height:1.8;color:#526c89;word-break:keep-all}.future-autoscale-rule strong{color:#365778}
 .future-autoscale-scope,.future-autoscale-source{font-size:10px;line-height:1.85;color:#74879d;margin:8px 0 0;word-break:keep-all}.future-autoscale-source a{color:#52779f;text-underline-offset:3px}
+.future-cache-note{margin:12px 0 0;padding:10px 12px;border-left:2px solid #a7bed6;background:#fff;font-size:12px;line-height:1.85;color:#526c89;word-break:keep-all}.future-cache-note strong{color:#365778;font-weight:650}
+@media(max-width:650px){.future-cache-note{font-size:11px}}
 @media(max-width:800px){.future-autoscale-flow{gap:20px}.future-autoscale-flow li{padding:13px}.future-autoscale-flow li+li:before{left:-18px;font-size:16px}.future-autoscale-flow h4{font-size:15px}}
 @media(max-width:650px){.future-autoscale{padding:19px 16px;margin:25px -2px 22px}.future-autoscale h3{font-size:21px}.future-autoscale-intro{font-size:12px;margin-top:12px}.future-autoscale-flow{grid-template-columns:1fr;gap:23px;margin:20px 0}.future-autoscale-flow li{padding:14px}.future-autoscale-flow li+li:before{content:'↓';left:calc(50% - 5px);top:-22px;font-size:17px}.future-autoscale-flow h4{font-size:16px;margin-top:6px}.future-autoscale-rule{font-size:11px}.future-autoscale-scope,.future-autoscale-source{font-size:10px}}
 @media(max-width:1000px){.future-steps{grid-template-columns:repeat(2,minmax(0,1fr));gap:25px 30px}.future-steps>li:nth-child(3):before{content:none}.future-steps h3{font-size:17px}}
@@ -1054,6 +1056,7 @@ SOFTWARE.
   <p class="future-autoscale-label">CACHE · 조건 충족 후 도입 계획</p>
   <h3 id="future-cache-title">3. 정답과 재사용 비율을 확인한 뒤<br>캐시를 단계적으로 도입합니다.</h3>
   <p class="future-autoscale-intro">상품 데이터와 검증된 정답이 충분히 쌓이면, <strong>이전에 확인한 분류 결과를 DB에서 찾아 재사용하는 캐시</strong>를 검토합니다. 전체 상품 중 중복 상품의 비율과 안전하게 결과를 재사용할 수 있는 비율을 측정하고, 정확도와 실제 비용 절감 효과가 확인된 범위부터 도입합니다.</p>
+  <p class="future-cache-note"><strong>현재 우선순위:</strong> 판정 결과·검증된 정답·단계별 처리비용을 먼저 기록하고, 그 자료로 경제성이 확인된 뒤 필요한 범위에만 캐시를 도입합니다.</p>
   <ol class="future-autoscale-flow" aria-label="검증된 정답 축적, 중복과 재사용 비율 측정, 정확도와 순비용 검증">
    <li><span>01 · 자료 확보</span><h4>검증된 정답을 DB에 축적</h4><p>상품명·설명·이미지 경로, 모델이 계산한 특징, 확인된 최하위 분류를 연결해 저장합니다. 입력·모델·분류 기준의 버전도 함께 관리합니다.</p></li>
    <li><span>02 · 적용 조건 확인</span><h4>중복·재사용 비율 측정</h4><p>전체 상품 중 동일한 입력이 반복되는 비율과, 기존 정답을 안전하게 재사용할 수 있는 비율을 구분해 확인합니다. 상품 수나 인기도만으로 효과를 가정하지 않습니다.</p></li>
