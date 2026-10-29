@@ -31,10 +31,12 @@ const visible=value=>onIntersection([{isIntersecting:value}]);
 assert.equal(pending.size,0);
 visible(true);assert.equal(anim.getState().playing,true);
 const phases=new Set();let wraps=0,previous=0;
-for(let i=0;i<380;i++){
+for(let i=0;i<270;i++){
  tick();const state=anim.getState();phases.add(state.phase);
  if(state.time<previous)wraps++;
  previous=state.time;
+ if(i===130)assert.equal(wraps,1,'first loop completes after 13 seconds');
+ if(i===260)assert.equal(wraps,2,'second loop completes after 26 seconds');
  assert.equal(pending.size,1,'only one scheduled frame');
  for(let j=0;j<3;j++){
   assert.equal(getElement('model-card-'+j).classList.contains('process-working'),state.phase===4,'all models review concurrently');

@@ -104,7 +104,7 @@
 
 비용 추세는 [Stanford AI Index 2025](https://hai.stanford.edu/ai-index/2025-ai-index-report)의 같은 성능 기준 추론비용 하락을 근거로 설명했습니다. 개별 모델의 모든 토큰 가격이나 미래 가격을 단정하지 않습니다. 이 서비스의 실제 비용 절감 실험 결과는 아닙니다.
 
-[독립 검토 화면](https://product-category-flow.pages.dev/#agent-debate)은 **원본 이미지 1장과 텍스트 → Gemini 프론티어 첫 판정 → 기준 미달 시 OpenRouter 독립 검토**의 구조를 설명합니다. 화면에 들어오면 입력 준비 → Gemini 판정 → 기준 미달 → 원본 동시 전달 → 세 모델 독립 검토 → 답안 수집을 18초마다 자동 반복합니다. 카드 색상·연결선·상태 문구·진행 막대가 함께 변합니다. 일시정지와 동작 줄이기를 지원하며, 주 시뮬레이션과 별개의 가상 예시로 실제 모델 호출이나 응답 시간 측정은 없습니다.
+[독립 검토 화면](https://product-category-flow.pages.dev/#agent-debate)은 **원본 이미지 1장과 텍스트 → Gemini 프론티어 첫 판정 → 기준 미달 시 OpenRouter 독립 검토**의 구조를 설명합니다. 화면에 들어오면 입력 준비 → Gemini 판정 → 기준 미달 → 원본 동시 전달 → 세 모델 독립 검토 → 답안 수집을 13초마다 자동 반복합니다. 카드 색상·연결선·상태 문구·진행 막대가 함께 변합니다. 일시정지와 동작 줄이기를 지원하며, 주 시뮬레이션과 별개의 가상 예시로 실제 모델 호출이나 응답 시간 측정은 없습니다.
 
 ![Qwen3.7 Flash, GLM 5.3 Flash, Reka Edge의 독립 검토 조합을 설명한 정적 설계도](assets/blind-selected-models.png)
 

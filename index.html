@@ -960,7 +960,7 @@ SOFTWARE.
  </aside>
 
  <div class="br-map" id="blind-process" data-process-phase="0" aria-label="같은 상품 입력에서 프론티어 판정과 조건부 독립 검토로 이어지는 흐름">
-  <div class="br-process-controls"><span><b>18초 자동 반복</b> · 기준 미달 상품의 처리 예시</span><button type="button" id="br-process-toggle" aria-pressed="false">Ⅱ 일시정지</button></div>
+  <div class="br-process-controls"><span><b>13초 자동 반복</b> · 기준 미달 상품의 처리 예시</span><button type="button" id="br-process-toggle" aria-pressed="false">Ⅱ 일시정지</button></div>
   <article class="br-input">
    <span class="br-number">01 · 공통 입력</span><h3>이미지 1장 + 텍스트</h3>
    <svg id="case-art" class="product-art" viewBox="0 0 220 150" role="img" aria-label="무선 이어폰과 충전 케이스의 설명용 그림"><ellipse cx="110" cy="137" rx="77" ry="9" fill="#d9e1ed"/><g id="case-art-supported"><path d="M43 82 Q43 65 62 65 H158 Q179 66 179 84 L176 112 Q172 133 150 133 H70 Q46 131 43 110Z" fill="#273448"/><ellipse cx="111" cy="80" rx="66" ry="19" fill="#0d1727"/><ellipse cx="81" cy="81" rx="19" ry="8" fill="#45576f"/><ellipse cx="141" cy="81" rx="19" ry="8" fill="#45576f"/><path d="M74 63 V30 Q66 21 54 25 Q41 29 45 43 Q49 55 61 49 V64 Q66 72 74 63Z" fill="#eff4fa" stroke="#778ba8" stroke-width="2"/><path d="M148 63 V30 Q156 21 168 25 Q181 29 177 43 Q173 55 161 49 V64 Q156 72 148 63Z" fill="#eff4fa" stroke="#778ba8" stroke-width="2"/><ellipse cx="53" cy="37" rx="4" ry="6" fill="#36485d"/><ellipse cx="169" cy="37" rx="4" ry="6" fill="#36485d"/><circle cx="111" cy="115" r="3" fill="#82d2a6"/><path d="M103 25 Q111 19 119 25 M99 16 Q111 7 123 16" fill="none" stroke="#549d89" stroke-width="2" stroke-linecap="round"/></g><g id="case-art-missing" visibility="hidden"><rect x="44" y="43" width="135" height="89" rx="32" fill="#34445a"/><path d="M46 78 Q110 86 176 78" fill="none" stroke="#899bb5" stroke-width="2"/><path d="M62 60 Q74 51 89 53" fill="none" stroke="#647b99" stroke-width="4" stroke-linecap="round"/></g></svg>
@@ -1946,7 +1946,7 @@ fitTree();render();requestAnimationFrame(frame);window.__ready=true;
 (()=>{
  const root=document.getElementById('blind-process');
  if(!root)return;
- const get=id=>document.getElementById(id),duration=18;
+ const get=id=>document.getElementById(id),duration=13;
  const motion=matchMedia('(prefers-reduced-motion: reduce)');
  const labels=[
   '01 · 같은 상품의 이미지와 텍스트를 준비합니다.',
@@ -1957,7 +1957,8 @@ fitTree();render();requestAnimationFrame(frame);window.__ready=true;
   '06 · 세 답안 수집 완료. 이후 근거 비교로 연결하고 처음부터 반복합니다.'
  ];
  let time=0,playing=false,paused=false,inView=typeof IntersectionObserver==='undefined',frameId=null,last=0,lastDraw=0;
- const phase=()=>time<2?0:time<6?1:time<8?2:time<10?3:time<15?4:5;
+ const sceneTime=()=>time*18/duration;
+ const phase=()=>sceneTime()<2?0:sceneTime()<6?1:sceneTime()<8?2:sceneTime()<10?3:sceneTime()<15?4:5;
  function render(){
   const p=phase(),result=p>=2;
   root.setAttribute('data-process-phase',String(p));
@@ -1976,7 +1977,7 @@ fitTree();render();requestAnimationFrame(frame);window.__ready=true;
    get('model-card-'+i).classList.toggle('process-working',p===4);
    get('model-card-'+i).classList.toggle('process-done',p===5);
    get('blind-seal-'+i).textContent=p===5?'✓ 답안 저장 · 봉인':p===4?'독립 검토 중':p===3?'동일 원본 수신':'요청 대기';
-   get('br-model-progress-'+i).style.width=(p===5?100:p===4?(time-10)/5*100:0)+'%';
+   get('br-model-progress-'+i).style.width=(p===5?100:p===4?(sceneTime()-10)/5*100:0)+'%';
   }
  }
  function stop(){playing=false;if(frameId!==null)cancelAnimationFrame(frameId);frameId=null;}
@@ -1992,9 +1993,9 @@ fitTree();render();requestAnimationFrame(frame);window.__ready=true;
   render();
  }
  get('br-process-toggle').addEventListener('click',()=>{if(!motion.matches){paused=!paused;sync();}});
- motion.addEventListener('change',()=>{if(motion.matches)time=15;sync();});
+ motion.addEventListener('change',()=>{if(motion.matches)time=duration*15/18;sync();});
  document.addEventListener('visibilitychange',sync);
- if(motion.matches)time=15;
+ if(motion.matches)time=duration*15/18;
  sync();
  if(typeof IntersectionObserver!=='undefined'){
   const observer=new IntersectionObserver(entries=>{inView=entries.some(entry=>entry.isIntersecting);sync();},{threshold:0});
