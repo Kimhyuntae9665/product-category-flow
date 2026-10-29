@@ -170,3 +170,5 @@ node tests/test-token-price.cjs
 [페이지 마지막의 의견](https://product-category-flow.pages.dev/#my-thoughts)에는 비슷하거나 지나치게 세분화된 항목을 묶어 카테고리 수를 줄이면 분류 비용을 낮출 가능성이 있다는 생각을 담았습니다. 다만 **1만 개 카테고리로 분류한다는 과제 규칙을 바꾸는 방안이므로 이번에는 보류**했습니다. 현재 설계는 주어진 1만 개 카테고리를 유지하는 전제입니다.
 
 ![카테고리 수 축소에 관한 개인 의견과 과제 조건에 따른 보류](assets/personal-thought.png)
+
+화면은 전체 흐름 → 상품 이동 애니메이션 → 독립 검토 설명·결과 비교 순서로 배치했습니다. 1단계 텍스트 모델은 `monologg/koelectra-small-v3-discriminator`를 우선 추가 학습 후보로 명시했으며, 아직 이번 상품 분류용으로 학습·성능 측정한 결과는 아닙니다.
