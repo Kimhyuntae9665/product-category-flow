@@ -39,6 +39,17 @@
 
 모델이 스스로 매긴 확신도 숫자를 그대로 평균 내지는 않습니다. 같은 후보를 기준으로 정답 데이터에 맞춰 보정한 점수와 근거 일치 여부를 함께 확인하는 설계입니다. **현재 가상 점수는 보정된 확률이나 모델 평가 결과가 아닙니다.**
 
+## 추후 개선 방향: 전이학습과 분야별 소형 모델
+
+[시뮬레이션 아래의 개선 계획](https://product-category-flow.pages.dev/#future-improvements)에 초기 전이학습과 장기 전환 흐름을 추가했습니다. 공개 이미지 모델의 학습된 특징을 재사용하고, 상품 분류표에 맞게 마지막 분류층과 필요한 부분을 추가 학습하는 계획입니다.
+
+1. 기존 모델이 아직 배우지 못한 분야는 프론티어 모델이 우선 처리합니다.
+2. 이미지·분류 후보·근거·점수·사람의 수정 결과를 모으고, 검수한 자료를 학습에 사용합니다.
+3. 해당 분야의 충분하고 다양한 자료로 자체 소형 이미지 모델을 학습합니다.
+4. 별도로 보관한 정답 상품에서 정확도와 총비용을 평가해 통과한 분야부터 전환합니다. 불확실하거나 이미지로 구분하기 어려운 사례에는 추가 검토 경로를 유지합니다.
+
+초기 프론티어 비용을 검증된 학습 자료와 분야별 모델로 연결해, 정확도를 지키면서 사람 검수와 반복 분류 비용을 줄이는 것이 목표입니다. **향후 계획이며 실제 수집·학습·성능 및 비용 검증을 수행한 결과가 아닙니다.** 데이터 수량만으로 전환하거나 모델의 답을 그대로 정답으로 사용하는 방식을 제안하지 않습니다.
+
 ## 프론티어 이후의 블라인드 검토
 
 [독립 검토 화면](https://product-category-flow.pages.dev/#agent-debate)은 **원본 이미지 1장과 텍스트 → Codex 프론티어 첫 판정 → 신뢰도가 기준보다 낮을 때 OpenRouter → 블라인드 독립 답안을 공개한 뒤 비교**를 보여줍니다. 첫 판정의 신뢰도와 예시 기준선 85를 표시하고, 근거와 기준을 충족하면 여기서 종료합니다. 주 시뮬레이션에서 프론티어 단계까지 온 상품을 설명하는 별도의 예시입니다.
@@ -103,5 +114,7 @@ node tests/test-blind-review.cjs
 - [ConvNeXt-Tiny 공식 문서](https://docs.pytorch.org/vision/main/models/generated/torchvision.models.convnext_tiny.html)
 - [OpenRouter 이미지 입력 문서](https://github.com/OpenRouterTeam/docs/blob/main/guides/overview/multimodal/image-understanding.mdx)
 - [On Calibration of Modern Neural Networks](https://proceedings.mlr.press/v70/guo17a.html)
+- [PyTorch 전이학습 가이드](https://docs.pytorch.org/tutorials/beginner/transfer_learning_tutorial.html)
+- [예측 라벨을 학습 자료로 활용한 Noisy Student 연구](https://research.google/pubs/self-training-with-noisy-student-improves-imagenet-classification/)
 - [AWS 대기열 기반 작업자 확장](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-autoscaling-queue.html)
 - [Kaufland 상품 정보 가이드](https://www.kauflandglobalmarketplace.com/en/seller-university/selling/product-data/product-data-guideline/)
