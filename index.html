@@ -474,7 +474,7 @@ html{scroll-behavior:auto;scroll-padding-top:22px}body{background:#f5f8fc;color:
 @media(max-width:650px){.future-improvements{padding:23px 19px;margin-top:26px}.future-heading{display:block}.future-heading h2{font-size:25px}.future-status{display:inline-block;margin-top:12px;font-size:10px}.future-lead{font-size:22px;margin:20px 0 17px}.transfer-primer{padding:14px 14px}.transfer-primer>strong{font-size:14px}.transfer-primer p{font-size:12px;line-height:1.85}.future-steps{grid-template-columns:1fr;gap:25px;margin:25px 0}.future-steps>li{padding-top:15px}.future-steps>li+li:before{content:'↓';left:auto;right:4px;top:-17px;font-size:19px;padding:0 6px}.future-steps h3{margin-top:7px;font-size:17px}.future-steps p{font-size:13px;line-height:1.9;margin-bottom:12px}.future-stage-note{font-size:11px}.future-goal{padding:15px}.future-goal>strong{font-size:15px}.future-goal p{font-size:12px;line-height:1.9}.future-footnote,.future-sources{font-size:10px}}
 
 .future-learning{margin:23px 0 26px;padding:23px;background:#f7f9fd;border:1px solid #d3deed;border-radius:12px;scroll-margin-top:20px}
-.fl-heading{display:flex;align-items:center;justify-content:space-between;gap:15px}.fl-eyebrow{display:block;font-size:11px;font-weight:750;color:#7085a0;letter-spacing:.025em}.fl-heading h3{font-size:21px;line-height:1.5;letter-spacing:-.04em;color:#2e4665;margin:3px 0 0;word-break:keep-all}.fl-demo-tag{font-size:10px;color:#7a7892;white-space:nowrap;border:1px solid #dcd9e8;background:#f7f5fb;border-radius:4px;padding:5px 7px}
+.fl-heading{display:flex;align-items:center;justify-content:space-between;gap:15px}.fl-eyebrow{display:block;font-size:11px;font-weight:750;color:#7085a0;letter-spacing:.025em}.fl-heading h3{font-size:21px;line-height:1.5;letter-spacing:-.04em;color:#2e4665;margin:3px 0 0;word-break:keep-all}.fl-demo-tag{font-size:10px;color:#7a7892;white-space:normal;word-break:keep-all;border:1px solid #dcd9e8;background:#f7f5fb;border-radius:4px;padding:5px 7px}
 .fl-scenes{display:grid;grid-template-columns:repeat(4,1fr);gap:7px;margin:20px 0}.fl-scenes button{border:1px solid #d8e2ef;background:#fff;color:#7486a0;border-radius:6px;padding:9px 6px;font-size:12px;line-height:1.5;cursor:pointer}.fl-scenes b{font:750 11px Consolas,monospace;margin-right:5px;color:#9bacbd}.fl-scenes button[aria-pressed=true]{color:#285e9d;border-color:#94b2d3;background:#edf4ff;font-weight:750}.fl-scenes button[aria-pressed=true] b{color:#3c6ca4}
 .fl-flow{display:grid;grid-template-columns:minmax(0,1fr) 54px minmax(0,1fr) 54px minmax(0,1.2fr);align-items:stretch}
 .fl-node{min-width:0;display:flex;flex-direction:column;padding:16px;border:1px solid #d5dfed;border-radius:9px;background:white;transition:border-color .18s,background-color .18s;position:relative}.fl-node-kind{font-size:10px;line-height:1.5;color:#7a8ba2;word-break:keep-all}.fl-node h4{margin:5px 0 12px;font-size:17px;line-height:1.5;letter-spacing:-.035em;color:#355273}.fl-node-footer{display:block;border-top:1px solid #e6eaf2;padding-top:10px;margin-top:auto;font-size:10px;line-height:1.6;color:#7b8ca2;word-break:keep-all}
@@ -1001,7 +1001,7 @@ SOFTWARE.
 <small>가격 하락은 전망입니다. 실제 정확도와 총비용의 우위는 도입 전에 검증합니다.</small></div>
 </aside>
  <section class="future-learning" id="future-learning" aria-labelledby="future-learning-title">
- <div class="fl-heading"><div><span class="fl-eyebrow">판단 기록이 쌓여, 자체 모델로</span><h3 id="future-learning-title">데이터 축적에서 소형 모델 전환까지</h3></div><span class="fl-demo-tag">24초 흐름 예시 · 실제 학습 아님</span></div>
+ <div class="fl-heading"><div><span class="fl-eyebrow">판단 기록이 쌓여, 자체 모델로</span><h3 id="future-learning-title">데이터 축적에서 소형 모델 전환까지</h3></div><span class="fl-demo-tag">1 → 2 → 3 → 4 · 24초 자동 반복 · 실제 학습 아님</span></div>
  <div class="fl-scenes" role="group" aria-label="개선 애니메이션 장면 선택">
   <button type="button" id="future-scene-0" aria-pressed="true"><b>01</b> 프론티어 처리</button>
   <button type="button" id="future-scene-1" aria-pressed="false"><b>02</b> 판단 자료 축적</button>
@@ -1024,8 +1024,8 @@ SOFTWARE.
    <span class="fl-node-footer"><b id="future-ready-models">0</b> / 3개 분야 전환 가능 · 가상 평가</span>
   </article>
  </div>
- <div class="fl-share-panel"><div class="fl-share-heading"><strong>새 상품의 예시 처리 비중</strong><span>평가를 통과한 분야부터 전환</span></div><div class="fl-share-bar" aria-hidden="true"><i id="future-frontier-share"></i><i id="future-small-share"></i></div><div class="fl-share-labels"><span class="fl-frontier-label"><i></i>프론티어 <b id="future-frontier-percent">100%</b></span><span class="fl-small-label"><i></i>분야별 소형 모델 <b id="future-small-percent">0%</b></span></div><p id="future-learning-caption" role="status" aria-live="polite">처음에는 새 분야를 프론티어가 담당합니다. 재생하면 전환 흐름을 볼 수 있습니다.</p></div>
- <div class="fl-controls"><button type="button" id="future-play" class="fl-play" aria-pressed="false">▶ 흐름 재생</button><button type="button" id="future-reset">처음부터</button><label class="fl-seek-label" for="future-timeline">진행<input id="future-timeline" type="range" min="0" max="24" step="0.1" value="0" aria-label="개선 애니메이션 진행 시점"></label><output id="future-time" for="future-timeline">0 / 24초</output><label class="fl-motion"><input id="future-reduce" type="checkbox">동작 줄이기</label></div>
+ <div class="fl-share-panel"><div class="fl-share-heading"><strong>새 상품의 예시 처리 비중</strong><span>평가를 통과한 분야부터 전환</span></div><div class="fl-share-bar" aria-hidden="true"><i id="future-frontier-share"></i><i id="future-small-share"></i></div><div class="fl-share-labels"><span class="fl-frontier-label"><i></i>프론티어 <b id="future-frontier-percent">100%</b></span><span class="fl-small-label"><i></i>분야별 소형 모델 <b id="future-small-percent">0%</b></span></div><p id="future-learning-caption" role="status" aria-live="polite">처음에는 새 분야를 프론티어가 담당합니다. 1~4단계가 자동으로 진행되고 반복됩니다.</p></div>
+ <div class="fl-controls"><button type="button" id="future-play" class="fl-play" aria-pressed="false">Ⅱ 일시정지</button><button type="button" id="future-reset">처음부터</button><label class="fl-seek-label" for="future-timeline">진행<input id="future-timeline" type="range" min="0" max="24" step="0.1" value="0" aria-label="개선 애니메이션 진행 시점"></label><output id="future-time" for="future-timeline">0 / 24초</output><label class="fl-motion"><input id="future-reduce" type="checkbox">동작 줄이기</label></div>
  <p class="fl-note">자료 묶음·처리 비중·평가 통과 시점은 설명용 가정입니다. 실제 학습 기준이나 정확도·절감률을 뜻하지 않습니다. 처음 보는 상품과 낮은 신뢰도 사례는 계속 프론티어·추가 검토로 보냅니다.</p>
 </section>
 
@@ -1825,7 +1825,7 @@ fitTree();render();requestAnimationFrame(frame);window.__ready=true;
  const get=id=>document.getElementById('future-'+id),duration=24;
  const media=matchMedia('(prefers-reduced-motion: reduce)');
  const params=new URLSearchParams(location.search),forcedReduce=params.get('futureReduce')==='1';
- const marks=[0,8,15,24],passes=[14,17,20],starts=[10,12,14];
+ const marks=[0,4,10,16],passes=[14,17,20],starts=[10,12,14];
  const captions=[
   '처음에는 새 분야를 프론티어가 담당합니다. 판단 후보와 근거를 기록합니다.',
   '프론티어의 판단 자료를 검수하고, 사람의 수정 결과와 함께 분야별 학습 자료로 모읍니다.',
@@ -1833,6 +1833,7 @@ fitTree();render();requestAnimationFrame(frame);window.__ready=true;
   '평가를 통과한 분야부터 작은 모델이 맡습니다. 새 분야와 어려운 상품은 계속 프론티어·추가 검토로 보냅니다.'
  ];
  let time=0,playing=false,frameId=null,last=0,lastDraw=0,manualReduced=false;
+ let userPaused=params.has('futureAt'),inView=typeof IntersectionObserver==='undefined';
  const clamp=n=>Math.min(1,Math.max(0,n));
  const reduced=()=>forcedReduce||media.matches||manualReduced;
  function snapshot(){
@@ -1868,33 +1869,45 @@ fitTree();render();requestAnimationFrame(frame);window.__ready=true;
   get('timeline').value=String(Math.round(time*10)/10);
   get('timeline').setAttribute('aria-valuetext',`${Math.round(time)}초, ${['프론티어 처리','판단 자료 축적','학습과 평가','점진적 전환'][s.phase]}`);
   get('time').textContent=Math.floor(time)+' / '+duration+'초';
-  get('play').textContent=s.reduced?'장면 버튼으로 보기':playing?'Ⅱ 일시정지':time>=duration?'↻ 다시 재생':'▶ 흐름 재생';
+  get('play').textContent=s.reduced?'장면 버튼으로 보기':userPaused?'▶ 자동 반복 재개':'Ⅱ 일시정지';
   get('play').disabled=s.reduced;get('play').setAttribute('aria-pressed',String(playing));
   get('reduce').checked=s.reduced;get('reduce').disabled=forcedReduce||media.matches;
  }
  function stop(){playing=false;if(frameId!==null)cancelAnimationFrame(frameId);frameId=null;}
- function seek(value){stop();const next=Number(value);time=Number.isFinite(next)?Math.min(duration,Math.max(0,next)):0;render();}
+ function syncPlayback(){
+  const shouldPlay=!userPaused&&!reduced()&&inView&&!document.hidden;
+  if(!shouldPlay)stop();
+  else if(!playing){
+   if(time>=duration)time=0;
+   playing=true;last=performance.now();lastDraw=last;frameId=requestAnimationFrame(frame);
+  }
+  render();
+ }
+ function seek(value){stop();const next=Number(value);time=Number.isFinite(next)?Math.min(duration,Math.max(0,next)):0;syncPlayback();}
  function frame(now){
   if(!playing)return;
-  time=Math.min(duration,time+Math.min(200,Math.max(0,now-last))/1000);last=now;
-  if(time>=duration){stop();render();return;}
+  time=(time+Math.min(200,Math.max(0,now-last))/1000)%duration;last=now;
   if(now-lastDraw>=45){render();lastDraw=now;}
   frameId=requestAnimationFrame(frame);
  }
  get('play').addEventListener('click',()=>{
   if(reduced())return;
-  if(playing){stop();render();return;}
-  if(time>=duration)time=0;
-  playing=true;last=performance.now();lastDraw=last;render();frameId=requestAnimationFrame(frame);
+  userPaused=!userPaused;syncPlayback();
  });
  get('reset').addEventListener('click',()=>seek(0));
  get('timeline').addEventListener('input',event=>seek(event.target.value));
  marks.forEach((mark,i)=>get('scene-'+i).addEventListener('click',()=>seek(mark)));
- get('reduce').addEventListener('change',event=>{manualReduced=event.target.checked;stop();render();});
- media.addEventListener('change',()=>{stop();if(reduced())time=duration;render();});
- document.addEventListener('visibilitychange',()=>{if(document.hidden){stop();render();}});
+ get('reduce').addEventListener('change',event=>{manualReduced=event.target.checked;syncPlayback();});
+ media.addEventListener('change',()=>{if(reduced())time=duration;syncPlayback();});
+ document.addEventListener('visibilitychange',syncPlayback);
  window.futureLearningDemo={seek,getState:snapshot};
- if(params.has('futureAt'))seek(params.get('futureAt'));else {if(reduced())time=duration;render();}
+ if(params.has('futureAt'))seek(params.get('futureAt'));else {if(reduced())time=duration;syncPlayback();}
+ if(typeof IntersectionObserver!=='undefined'){
+  const observer=new IntersectionObserver(entries=>{
+   inView=entries.some(entry=>entry.isIntersecting);syncPlayback();
+  },{threshold:0});
+  observer.observe(root);
+ }
 })();
 
 </script>
