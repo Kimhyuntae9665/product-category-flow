@@ -559,6 +559,20 @@ html{scroll-behavior:auto;scroll-padding-top:22px}body{background:#f5f8fc;color:
 .ai-use p{margin:0;max-width:1080px;font-size:14px;line-height:1.85;word-break:keep-all}
 @media(max-width:650px){.ai-use{margin-top:18px;padding:20px 17px}.ai-use-heading{align-items:flex-start;flex-wrap:wrap;gap:9px;margin-bottom:4px}.ai-use h2{font-size:23px}.ai-use-heading>span{font-size:10px;padding:4px 7px}.ai-use-list li{gap:11px;padding:14px 0}.ai-use-number{flex-basis:26px;width:26px;height:26px;font-size:11px}.ai-use h3{font-size:15px}.ai-use p{font-size:13px;line-height:1.9}}
 
+.my-contribution{margin:20px 0 0;padding:25px 28px;background:#edf8f2;border:2px solid #83b9a0;border-radius:3px;scroll-margin-top:24px;color:#385e4c}
+.my-contribution-heading{display:flex;align-items:center;justify-content:space-between;gap:15px;margin-bottom:9px}
+.my-contribution h2{font-size:25px;line-height:1.35;letter-spacing:-.04em;color:#205b40;margin:0}
+.my-contribution-heading>span{font-size:11px;font-weight:700;color:#397157;border:1px solid #add3bf;background:#fafffc;padding:5px 9px;line-height:1.5;white-space:nowrap}
+.my-contribution p{margin:0;font-size:14px;line-height:1.85;word-break:keep-all}
+.my-contribution .my-contribution-intro{color:#4c715e;margin-bottom:3px}
+.my-contribution-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:28px;list-style:none;margin:0;padding:0}
+.my-contribution-list li{display:flex;align-items:flex-start;gap:13px;margin:0;padding:17px 0;border-bottom:1px solid #c8e2d3;min-width:0}
+.my-contribution-list li:nth-last-child(-n+2){border-bottom:0;padding-bottom:0}
+.my-contribution-number{display:flex;flex:0 0 30px;align-items:center;justify-content:center;width:30px;height:30px;margin-top:1px;border:1px solid #add3bf;background:#fafffc;color:#347050;font-size:12px;font-weight:800;font-variant-numeric:tabular-nums}
+.my-contribution h3{margin:0 0 5px;color:#245e43;font-size:16px;line-height:1.5;letter-spacing:-.02em}
+.my-contribution h3 small{display:inline-block;vertical-align:middle;margin-left:5px;padding:2px 6px;border:1px solid #a4cdb6;background:#dcefe3;color:#286041;font-size:10px;line-height:1.5;white-space:nowrap}
+@media(max-width:650px){.my-contribution{margin-top:18px;padding:20px 17px}.my-contribution-heading{align-items:flex-start;flex-wrap:wrap;gap:9px}.my-contribution h2{font-size:23px}.my-contribution-heading>span{font-size:10px;padding:4px 7px}.my-contribution-list{grid-template-columns:1fr}.my-contribution-list li{gap:11px;padding:14px 0}.my-contribution-list li:nth-last-child(2){border-bottom:1px solid #c8e2d3;padding-bottom:14px}.my-contribution-number{flex-basis:26px;width:26px;height:26px;font-size:11px}.my-contribution h3{font-size:15px}.my-contribution p{font-size:13px;line-height:1.9}}
+
 </style>
 <!-- Lucide static 1.63.0 icon license
 ISC License
@@ -1043,6 +1057,19 @@ SOFTWARE.
   <li><span class="ai-use-number" aria-hidden="true">01</span><div><h3>비슷한 사례·자료 조사</h3><p>상품 분류 방식과 비용 절감에 참고할 만한 비슷한 사례와 관련 자료를 AI로 조사했습니다.</p></div></li>
   <li><span class="ai-use-number" aria-hidden="true">02</span><div><h3>Codex Dot를 이용한 48시간 서칭</h3><p>Codex Dot를 이용해 48시간 동안 관련 자료와 다양한 접근 방식을 찾아보았습니다.</p></div></li>
   <li><span class="ai-use-number" aria-hidden="true">03</span><div><h3>웹 시뮬레이션 제작·Cloudflare 배포</h3><p>AI Agent를 이용해 이 웹 시뮬레이션 사이트를 제작하고, Cloudflare Pages에 배포했습니다.</p></div></li>
+ </ol>
+</section>
+
+<section class="my-contribution" id="my-contribution" aria-labelledby="my-contribution-title">
+ <div class="my-contribution-heading"><h2 id="my-contribution-title">내가 한 부분:</h2><span>아이디어 · 설계 방향</span></div>
+ <p class="my-contribution-intro">제가 제안하고 이 설계에 반영한 부분입니다.</p>
+ <ol class="my-contribution-list">
+  <li><span class="my-contribution-number" aria-hidden="true">01</span><div><h3>AI Agent끼리 의견을 나누는 아이디어</h3><p>여러 AI Agent가 각자 판단한 결과와 근거를 비교하며, 애매한 분류를 함께 검토하는 방식을 제안했습니다.</p></div></li>
+  <li><span class="my-contribution-number" aria-hidden="true">02</span><div><h3>OpenRouter 적극 활용 <small>실제 사용 중</small></h3><p>제가 실제로 사용 중인 OpenRouter의 가성비가 좋다고 판단해, 다양한 모델을 적극 활용하자는 의견을 냈습니다.</p></div></li>
+  <li><span class="my-contribution-number" aria-hidden="true">03</span><div><h3>사람 검수 누적점수제 도입</h3><p>불확실한 결과에 점수를 누적해 사람 검수 여부를 정하는 시스템을 제안하고, 이 시뮬레이션에 반영했습니다.</p></div></li>
+  <li><span class="my-contribution-number" aria-hidden="true">04</span><div><h3>오픈소스·전이학습 적극 활용</h3><p>오픈소스 모델과, 이미 학습된 모델을 상품 분류에 맞게 추가 학습하는 전이학습을 적극 이용하자는 의견을 냈습니다.</p></div></li>
+  <li><span class="my-contribution-number" aria-hidden="true">05</span><div><h3>사람 검수에 드는 인건비 최소화</h3><p>사람이 직접 검수해야 할 상품을 최대한 줄여 인건비를 낮추는 것을 이 설계의 핵심 목표로 정했습니다.</p></div></li>
+  <li><span class="my-contribution-number" aria-hidden="true">06</span><div><h3>토큰 비용 감소를 고려한 AI 활용</h3><p>앞으로 토큰 비용이 더 낮아질 것이라는 전망을 바탕으로, AI Agent를 더 적극적으로 활용하자는 의견을 냈습니다.</p></div></li>
  </ol>
 </section>
 
