@@ -588,6 +588,21 @@ html{scroll-behavior:auto;scroll-padding-top:22px}body{background:#f5f8fc;color:
 .my-contribution h3 small{display:inline-block;vertical-align:middle;margin-left:5px;padding:2px 6px;border:1px solid #a4cdb6;background:#dcefe3;color:#286041;font-size:10px;line-height:1.5;white-space:nowrap}
 @media(max-width:650px){.my-contribution{margin-top:18px;padding:20px 17px}.my-contribution-heading{align-items:flex-start;flex-wrap:wrap;gap:9px}.my-contribution h2{font-size:23px}.my-contribution-heading>span{font-size:10px;padding:4px 7px}.my-contribution-list{grid-template-columns:1fr}.my-contribution-list li{gap:11px;padding:14px 0}.my-contribution-list li:nth-last-child(2){border-bottom:1px solid #c8e2d3;padding-bottom:14px}.my-contribution-number{flex-basis:26px;width:26px;height:26px;font-size:11px}.my-contribution h3{font-size:15px}.my-contribution p{font-size:13px;line-height:1.9}}
 
+.depth-routing{margin:24px 0;padding:24px;border:1px solid #cbdbe9;border-radius:16px;background:#fff;color:#24415e;scroll-margin-top:22px;min-width:0}
+.depth-eyebrow{margin:0 0 9px;font-size:12px;font-weight:750;color:#486e97}
+.depth-routing h2{margin:0;font-size:clamp(23px,2.1vw,30px);line-height:1.4;letter-spacing:-.045em;color:#183b62;word-break:keep-all}
+.depth-intro{margin:14px 0;font-size:14px;line-height:1.85;word-break:keep-all}
+.depth-key{display:grid;gap:6px;margin:18px 0;padding:14px 16px;border-left:3px solid #3264b3;background:#f0f5fc;font-size:13px;line-height:1.7;word-break:keep-all}.depth-key strong{color:#13765e}
+.depth-examples{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;align-items:stretch}
+.depth-example{min-width:0;padding:18px;border:1px solid #d6e1ed;border-top:3px solid #277e69;border-radius:10px;background:#f9fcfb;display:flex;flex-direction:column}.depth-partial{border-top-color:#3f6db2;background:#f8faff}.depth-review{border-top-color:#9a7136;background:#fffaf3}
+.depth-example-label{margin:0 0 9px;font-size:12px;font-weight:750;color:#4e6d86}.depth-example h3{margin:0 0 16px;font-size:18px;line-height:1.5;letter-spacing:-.035em;word-break:keep-all;color:#24496b}
+.depth-example ol{margin:0 0 16px;padding-left:20px;flex:1}.depth-example li{padding-left:3px;margin-bottom:16px;font-size:13px;line-height:1.75;word-break:keep-all}.depth-example li:last-child{margin-bottom:0}.depth-example li::marker{color:#5279a0;font-weight:750}.depth-example li p{margin:5px 0 0;color:#516980}
+.depth-path{margin:0;padding:12px 0;border-top:1px solid #cedde8;font-size:13px;line-height:1.9;word-break:keep-all}.depth-path strong{color:#176d59}.depth-partial .depth-path strong{color:#315da2}.depth-review .depth-path strong{color:#805323}.depth-outcome{font-size:12px;line-height:1.7;margin:0;color:#516b81;word-break:keep-all}
+.depth-rules{margin-top:23px;padding-top:20px;border-top:1px solid #d6e2ee}.depth-rules h3{font-size:18px;margin:0 0 12px;color:#24496b}.depth-rules ol{margin:0;padding-left:22px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:32px;row-gap:14px}.depth-rules li{padding-left:3px;font-size:13px;line-height:1.85;word-break:keep-all}.depth-rules li strong{color:#254c74}
+.depth-scope{margin:20px 0 8px;padding:12px 14px;background:#f0f4f8;border-radius:6px;font-size:12px;line-height:1.85;color:#536a81;word-break:keep-all}.depth-source{font-size:12px;line-height:1.8;color:#536a81;margin:0;word-break:keep-all}.depth-source a{color:#3d6593;text-underline-offset:3px}
+@media(max-width:1000px){.depth-examples{grid-template-columns:1fr}.depth-example{padding:19px}.depth-example h3 br{display:none}.depth-rules ol{grid-template-columns:1fr}}
+@media(max-width:650px){.depth-routing{padding:20px 16px;margin:20px 0}.depth-routing h2{font-size:23px}.depth-intro{font-size:13px}.depth-example{padding:16px}.depth-example h3{font-size:18px}.depth-key{padding:12px}.depth-rules ol{padding-left:20px}}
+
 </style>
 <!-- Lucide static 1.63.0 icon license
 ISC License
@@ -783,6 +798,59 @@ SOFTWARE.
 </svg><div><strong>누적 사람검증 점수 <b>2점 이상</b> → 사람 검수</strong><span>점수가 쌓일 때마다 확인 · 뒤의 모델 호출을 건너뜀</span></div></div>
   </div>
  </div>
+ <section class="depth-routing" id="classification-depth" aria-labelledby="depth-routing-title">
+ <p class="depth-eyebrow">분류 규칙 · 어디까지 한 번에 판단하는가?</p>
+ <h2 id="depth-routing-title">확실한 깊이까지 한 번에 이동하고,<br>멈춘 곳에서 하위 분류를 이어갑니다.</h2>
+ <p class="depth-intro"><strong>한 번의 판단으로 이동할 수 있는 카테고리 층수에는 제한을 두지 않습니다.</strong> 텍스트·전용 이미지 모델·프론티어 AI가 최하위까지 구분할 근거를 확보하면 바로 확정합니다. ‘전자제품 → 음향기기’까지만 근거가 충분하면 거기서 멈추고, 이어폰·스피커 등 남은 하위 후보를 추가로 검토합니다.</p>
+ <p class="depth-key"><strong>최하위 근거 충분 → 바로 완료</strong><span>중간까지만 충분 → 그 위치를 보존하고 추가 판단</span><span>상위 분류도 불명확 → 여러 후보 유지·재검토</span></p>
+ <div class="depth-examples" aria-label="한 번에 최하위 확정, 중간 분류 후 추가 판단, 독립 검토의 세 가지 가상 예시">
+  <article class="depth-example depth-complete">
+   <p class="depth-example-label">예시 1 · 최하위까지 바로 판단</p>
+   <h3>‘무선 이어폰’까지 알 수 있다면<br>중간마다 다시 묻지 않습니다.</h3>
+   <ol>
+    <li><strong>텍스트만으로는 부족</strong><p>상품명·설명만으로 본품인지 관련 액세서리인지 구분하기 어렵습니다.</p></li>
+    <li><strong>사진으로 보완</strong><p>전용 이미지 모델이 사진에서 최하위 분류의 근거를 확보하고 앞선 텍스트와도 충돌하지 않으면 바로 확정합니다. 사진만으로 부족하면 프론티어가 원본 사진과 글을 함께 판단합니다.</p></li>
+    <li><strong>최하위 근거 충족 → 종료</strong><p>‘무선 이어폰 본품’이라는 근거와 검증 기준을 충족한 경우, 한 번에 해당 최하위 카테고리로 이동합니다.</p></li>
+   </ol>
+   <p class="depth-path">전자제품 → 음향기기 → 이어폰 → <strong>무선 이어폰 ✓</strong></p>
+   <p class="depth-outcome">확정 후 경로를 따라 내려가는 동안 추가 모델 호출 없음</p>
+  </article>
+  <article class="depth-example depth-partial">
+   <p class="depth-example-label">예시 2 · 중간까지만 판단 가능</p>
+   <h3>‘음향기기’에서 멈추고,<br>프론티어가 남은 후보를 판단합니다.</h3>
+   <ol>
+    <li><strong>텍스트 미해결 → 전용 이미지 모델</strong><p>전용 모델이 ‘전자제품 → 음향기기’까지는 구분하지만 이어폰·스피커 중 무엇인지는 구분하지 못합니다.</p></li>
+    <li><strong>음향기기에 잠정 배치</strong><p>확인한 경로와 남은 후보를 보존합니다. 아직 분류 완료가 아니며, 근거 없이 이어폰 가지로 내려가지 않습니다.</p></li>
+    <li><strong>프론티어가 사진 + 글을 함께 확인</strong><p>사진 속 본품 구성과 설명의 용도·연결 방식 등을 대조합니다. ‘무선 이어폰’까지 확인되면 남은 여러 층을 한 번에 이동해 종료합니다.</p></li>
+   </ol>
+   <p class="depth-path">전자제품 → <strong>음향기기 ⏸</strong><br>사진 + 글 추가 판단 → <strong>무선 이어폰 ✓</strong></p>
+   <p class="depth-outcome">멈춘 위치에서 이어서 판단 · 층마다 새 모델을 두지는 않음</p>
+  </article>
+  <article class="depth-example depth-review">
+   <p class="depth-example-label">예시 3 · 프론티어도 세부 분류 미해결</p>
+   <h3>독립 판단을 받은 뒤,<br>근거를 비교해 더 아래로 갑니다.</h3>
+   <ol>
+    <li><strong>프론티어도 음향기기까지만 판단</strong><p>중간 경로는 보존하고, 최하위 미해결에 따른 사람검증 점수 +1을 기록합니다. 누적 2점 미만일 때만 독립 검토를 진행합니다.</p></li>
+    <li><strong>AI Agent들이 먼저 각각 판단</strong><p>같은 원본 사진·글·분류 기준을 주고 서로의 답과 앞선 프론티어의 답을 숨깁니다. ‘음향기기’라는 이전 판단도 강제하지 않아 상위 분류부터 다시 확인할 수 있습니다.</p></li>
+    <li><strong>답 공개 후 의견·근거 비교</strong><p>각 후보의 사진·텍스트 근거와 반례를 비교합니다. 최하위 근거가 충족되면 확정하고, 여전히 불명확하면 +2를 더해 사람 검수로 보냅니다.</p></li>
+   </ol>
+   <p class="depth-path">음향기기에서 보류 → <strong>독립 판단 → 근거 비교</strong><br>최하위 확정 또는 <strong>사람 검수</strong></p>
+   <p class="depth-outcome">단순 다수결·자기확신 점수 평균으로 최종 확정하지 않음</p>
+  </article>
+ </div>
+ <div class="depth-rules">
+  <h3>모든 판단 단계에 적용할 규칙</h3>
+  <ol>
+   <li><strong>확실한 가장 깊은 위치를 선택합니다.</strong> 정해진 분류표 안에서 근거가 충분한 깊이까지 이동합니다. ‘한 번에 한 층’ 제한은 없지만, 애매하다고 자동으로 다음 층에 진입하지도 않습니다. 판정 기준은 별도 정답 자료로 검증합니다.</li>
+   <li><strong>중간 분류는 완료가 아닌 진행 상태입니다.</strong> 원본 입력, 현재 경로·분류표 버전, 남은 후보, 판단 근거와 부족한 정보를 기록합니다. 프론티어는 이를 보조 정보로 활용하면서 원본을 확인하고, 독립 검토의 첫 판단에는 이전 답을 노출하지 않습니다.</li>
+   <li><strong>추가 판단은 부족한 근거를 보완할 때 진행합니다.</strong> 사진만으로 부족하면 텍스트까지 함께 보고, 프론티어도 해결하지 못하면 독립 판단 후 근거를 비교합니다. 같은 입력·같은 질문을 카테고리 층마다 반복 호출하지 않습니다. 전용 이미지 모델 자체는 사진만 입력받습니다.</li>
+   <li><strong>잘못된 가지는 되돌리고, 반복 검토는 제한합니다.</strong> 후속 근거와 상위 분류가 충돌하면 상위로 돌아가 대체 후보를 비교합니다. 복구는 1회이며 +1을 기록합니다. 프론티어 미해결 +1, 독립 검토 미해결 +2의 기존 규칙을 유지하고, 누적 2점 이상이면 이후 AI 호출을 중단합니다. 중간에서 멈췄다는 이유만으로 점수를 중복 가산하지 않습니다.</li>
+  </ol>
+ </div>
+ <p class="depth-scope">위 내용은 적용할 분류 정책을 설명하는 가상 예시입니다. 현재 500개 상품 애니메이션에는 중간 분류를 보존하고 이어서 판단하는 새 동작이 아직 연결되어 있지 않습니다. 실제 모델 호출·정답 기반 기준 검증·비용 측정도 수행 전입니다.</p>
+ <p class="depth-source">설계 참고: <a href="https://papers.neurips.cc/paper_files/paper/2024/hash/c8b100b376a7b338c84801b699935098-Abstract-Conference.html" target="_blank" rel="noopener noreferrer">NeurIPS 2024 · Hierarchical Selective Classification</a> — 불확실할 때 더 넓은 범주까지 판단하는 연구입니다. 위 Agent 검토 흐름은 이를 참고한 본 설계의 적용안입니다.</p>
+</section>
+
  <div class="classifier-pilot"><span class="pilot-label">도입 전 비교 실험</span><strong>EfficientNet-B0 <span>↔</span> ConvNeXt-Tiny</strong><p>같은 상품·정답으로 정확도와 처리비용 비교 → 사용할 모델 선택</p><span class="pilot-note">매 상품에 두 모델을 차례로 실행하지 않습니다.</span></div>
  <div class="cascade-live-row"><div class="landing-actions"><button type="button" class="landing-play" id="hero-play" aria-pressed="false"><span class="play-disk" aria-hidden="true"><span class="play-symbol"><svg class="landing-icon" viewBox="0 0 24 24" aria-hidden="true">
   <path d="M5 5a2 2 0 0 1 3.008-1.728l11.997 6.998a2 2 0 0 1 .003 3.458l-12 7A2 2 0 0 1 5 19z" />
