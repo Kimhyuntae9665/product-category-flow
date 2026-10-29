@@ -254,10 +254,9 @@ function selectSellerCard(p, expectedText) {
   assert.equal(getElement('seller-current').innerHTMLWrites, writesBeforeClick, `${p.id}: selection must preserve the focused button DOM`);
   const detail = String(getElement('seller-selected-inline').textContent);
   assert(detail.startsWith('선택 ' + p.id + ' · '), `${p.id}: click updates inline selection`);
-  assert(String(getElement('selected-id').textContent).startsWith(p.id + ' · '), `${p.id}: sidebar follows the same selection`);
+  assert(String(getElement('review-focus').textContent).startsWith(p.id + ' · '), `${p.id}: review monitor follows the same selection`);
   for (const text of expectedText) {
     assert(detail.includes(text), `${p.id}: inline detail includes ${text}`);
-    assert(String(getElement('selected-seller').textContent).includes(text), `${p.id}: sidebar detail includes ${text}`);
   }
   if (p.seller.inputValue) assert(detail.includes(p.seller.inputValue + ' (가상)'), `${p.id}: actual fictional identifier is visible`);
   return detail;

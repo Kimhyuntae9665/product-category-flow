@@ -15,7 +15,7 @@ for(const kind of ['resolved','conflict','low']){
  assert.equal(focus.state.kind,kind==='conflict'?'recoverUp':'blind');
  assert.equal(focus.route.at(-1).reviewScore,kind==='resolved'?1:kind==='conflict'?2:3);
  if(kind==='conflict'){assert(getElement('recovery-lines').innerHTML.includes('recovery-arrow'));assert.equal(getElement('recovery-callout').hidden,false);assert(!focus.route.some(s=>s.kind==='blind'));}
- demo.seek(focus.route.at(-1).start);assert(getElement('selected-review-score').textContent.includes(String(focus.route.at(-1).reviewScore)));assert.equal(focus.route.at(-1).kind,kind==='resolved'?'done':'human');
- getElement('quick-reset').click();assert.equal(demo.getState().time,0);assert.equal(+getElement('recovery-count').textContent,0);assert(getElement('selected-review-score').textContent.includes('0 / 2'));
+ demo.seek(focus.route.at(-1).start);assert(getElement('review-focus').textContent.includes('점수 '+focus.route.at(-1).reviewScore+' / 2점'));assert.equal(focus.route.at(-1).kind,kind==='resolved'?'done':'human');
+ getElement('quick-reset').click();assert.equal(demo.getState().time,0);assert.equal(+getElement('recovery-count').textContent,0);assert(getElement('review-focus').textContent.includes('0 / 2점'));
 }
 console.log('PASS: retry dedup, additive causes, immutable snapshots, bounded actual branch recovery, immediate gate example buttons and reset.');

@@ -19,7 +19,10 @@ for(let t=0;t<=demo.maxTime;t++){
 for(const kind of ['specialist','frontier','blind','compare','descend']){
  let entry;for(let t=0;t<=demo.maxTime&&!entry;t++)entry=demo.simulate(t,70).find(e=>e.state.kind===kind);
  assert(entry,kind+' has a real visible state');context.testSelected=entry.product.id;vm.runInContext('selected=testSelected',context);demo.seek(entry.state.start);const visible=vm.runInContext('selectVisible(simulate(time,threshold))',context);assert(visible.some(e=>e.state.kind===kind));
- assert(getElement('parallel-stages').innerHTML.includes(demo.scoreFor(visible.find(e=>e.state.kind===kind)).mode));
+ const token=getElement('token-'+entry.product.id);
+ assert.equal(token['aria-pressed'],'true',kind+' remains selected in the diagram');
+ assert(!token.className.includes(' hidden'),kind+' remains visible without the parallel list');
+ assert(getElement('review-focus').textContent.startsWith(entry.product.id+' · '),kind+' updates the retained review monitor');
 }
 for(const enabled of [true,false])for(const max of [10,15,20]){
  demo.setScaleOptions(enabled,max);const prior=new Set();for(let t=0;t<=demo.maxTime;t++){
