@@ -25,10 +25,12 @@ visible(true);
 assert.equal(anim.getState().playing,true,'entering the viewport starts automatically');
 assert.equal(pending.size,1);
 const phases=new Set();let wraps=0,lastTime=0;
-for(let i=0;i<500;i++){
+for(let i=0;i<270;i++){
  tick(100);const state=anim.getState();phases.add(state.phase);
  if(state.time<lastTime)wraps++;
  lastTime=state.time;
+ if(i===130)assert.equal(wraps,1,'first cycle finishes in 13 seconds');
+ if(i===260)assert.equal(wraps,2,'second cycle finishes in 26 seconds');
  assert.equal(pending.size,1,'loop must keep exactly one animation frame scheduled');
 }
 assert.deepEqual([...phases].sort(),[0,1,2,3]);
@@ -39,7 +41,7 @@ visible(true);tick(100);assert(anim.getState().time>offscreenTime);
 click('play');assert.equal(anim.getState().playing,false);
 visible(false);visible(true);assert.equal(pending.size,0,'manual pause survives scrolling away and back');
 let previousData=0,previousSmall=0;
-for(let t=0;t<=24;t+=.25){
+for(let t=0;t<=13;t+=.25){
  anim.seek(t);const state=anim.getState();
  assert.equal(state.frontier+state.small,100,'the displayed shares must conserve 100 percent');
  assert(state.data>=previousData&&state.data<=18,'the authored data reservoir must be bounded and monotone');
@@ -53,7 +55,7 @@ for(let t=0;t<=24;t+=.25){
 assert.equal(anim.getState().frontier,25,'hard cases keep a frontier path in this fictional example');
 assert.equal(anim.getState().small,75);
 click('scene-2');
-assert.equal(anim.getState().time,10);
+assert.equal(anim.getState().time,10*13/24);
 assert.deepEqual(Array.from(anim.getState().models,m=>m.status),['training','waiting','waiting']);
 click('reset');
 assert.equal(anim.getState().data,0);
@@ -66,26 +68,26 @@ tick(1000);assert.equal(anim.getState().time,paused);assert.equal(pending.size,0
 click('play');tick(100);assert(anim.getState().time>paused);
 el('timeline').handlers.input({target:{value:'8'}});
 assert.equal(anim.getState().time,8);assert.equal(anim.getState().playing,true);assert.equal(pending.size,1);
-click('scene-3');assert.equal(anim.getState().time,16);tick(100);assert(anim.getState().time>16,'optional scene selection continues automatic playback');
+click('scene-3');assert.equal(anim.getState().time,16*13/24);tick(100);assert(anim.getState().time>16*13/24,'optional scene selection continues automatic playback');
 el('reduce').handlers.change({target:{checked:true}});
 assert.equal(anim.getState().playing,false);assert.equal(el('play').disabled,true);assert.equal(pending.size,0);
 assert.equal(getElement('future-learning').classList.contains('is-reduced'),true);
-click('scene-2');assert.equal(anim.getState().time,10,'manual scenes stay accessible with motion reduced');
+click('scene-2');assert.equal(anim.getState().time,10*13/24,'manual scenes stay accessible with motion reduced');
 assert.equal(el('packet-1').style.opacity,'0');
 el('reduce').handlers.change({target:{checked:false}});
 assert.equal(anim.getState().playing,true);preference.matches=true;motionChanged();
-assert.equal(anim.getState().time,24);assert.equal(pending.size,0);assert.equal(el('play').disabled,true);
+assert.equal(anim.getState().time,13);assert.equal(pending.size,0);assert.equal(el('play').disabled,true);
 preference.matches=false;motionChanged();
-anim.seek(23.5);for(let i=0;i<10;i++)tick(100);
+anim.seek(12.5);for(let i=0;i<10;i++)tick(100);
 assert(anim.getState().time<1);assert.equal(anim.getState().playing,true);assert.equal(pending.size,1);
 context.document.hidden=true;documentEvents.visibilitychange();
 assert.equal(anim.getState().playing,false);assert.equal(pending.size,0);
 const hiddenTime=anim.getState().time;tick(1000);context.document.hidden=false;documentEvents.visibilitychange();
 tick(100);assert(anim.getState().time>hiddenTime,'returning to the tab resumes without a time jump');
 click('play');assert.equal(pending.size,0);
-anim=mount('?futureReduce=1');assert.equal(anim.getState().time,24);assert.equal(anim.getState().reduced,true);
+anim=mount('?futureReduce=1');assert.equal(anim.getState().time,13);assert.equal(anim.getState().reduced,true);
 anim=mount('?futureAt=12&futureReduce=1');assert.equal(anim.getState().time,12);assert.equal(anim.getState().reduced,true);
 anim=mount('?futureAt=not-a-number');assert.equal(anim.getState().time,0);
-anim.seek(-1);assert.equal(anim.getState().time,0);anim.seek(100);assert.equal(anim.getState().time,24);
+anim.seek(-1);assert.equal(anim.getState().time,0);anim.seek(100);assert.equal(anim.getState().time,13);
 assert.equal(JSON.stringify(demo.getState()),before,'the future plan must not change the existing classification simulation');
 console.log('PASS: automatic viewport playback, two full 1-4 loops, one frame scheduler, offscreen/tab pause and resume, persistent manual pause, evaluation gates, shares, seeking, reduced motion, and independent simulation.');

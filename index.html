@@ -960,7 +960,7 @@ SOFTWARE.
  </aside>
 
  <div class="br-map" id="blind-process" data-process-phase="0" aria-label="같은 상품 입력에서 프론티어 판정과 조건부 독립 검토로 이어지는 흐름">
-  <div class="br-process-controls"><span><b>13초 자동 반복</b> · 기준 미달 상품의 처리 예시</span><button type="button" id="br-process-toggle" aria-pressed="false">Ⅱ 일시정지</button></div>
+  <div class="br-process-controls"><span><b>9초 자동 반복</b> · 기준 미달 상품의 처리 예시</span><button type="button" id="br-process-toggle" aria-pressed="false">Ⅱ 일시정지</button></div>
   <article class="br-input">
    <span class="br-number">01 · 공통 입력</span><h3>이미지 1장 + 텍스트</h3>
    <svg id="case-art" class="product-art" viewBox="0 0 220 150" role="img" aria-label="무선 이어폰과 충전 케이스의 설명용 그림"><ellipse cx="110" cy="137" rx="77" ry="9" fill="#d9e1ed"/><g id="case-art-supported"><path d="M43 82 Q43 65 62 65 H158 Q179 66 179 84 L176 112 Q172 133 150 133 H70 Q46 131 43 110Z" fill="#273448"/><ellipse cx="111" cy="80" rx="66" ry="19" fill="#0d1727"/><ellipse cx="81" cy="81" rx="19" ry="8" fill="#45576f"/><ellipse cx="141" cy="81" rx="19" ry="8" fill="#45576f"/><path d="M74 63 V30 Q66 21 54 25 Q41 29 45 43 Q49 55 61 49 V64 Q66 72 74 63Z" fill="#eff4fa" stroke="#778ba8" stroke-width="2"/><path d="M148 63 V30 Q156 21 168 25 Q181 29 177 43 Q173 55 161 49 V64 Q156 72 148 63Z" fill="#eff4fa" stroke="#778ba8" stroke-width="2"/><ellipse cx="53" cy="37" rx="4" ry="6" fill="#36485d"/><ellipse cx="169" cy="37" rx="4" ry="6" fill="#36485d"/><circle cx="111" cy="115" r="3" fill="#82d2a6"/><path d="M103 25 Q111 19 119 25 M99 16 Q111 7 123 16" fill="none" stroke="#549d89" stroke-width="2" stroke-linecap="round"/></g><g id="case-art-missing" visibility="hidden"><rect x="44" y="43" width="135" height="89" rx="32" fill="#34445a"/><path d="M46 78 Q110 86 176 78" fill="none" stroke="#899bb5" stroke-width="2"/><path d="M62 60 Q74 51 89 53" fill="none" stroke="#647b99" stroke-width="4" stroke-linecap="round"/></g></svg>
@@ -1030,7 +1030,7 @@ SOFTWARE.
 <small>가격 하락은 전망입니다. 실제 정확도와 총비용의 우위는 도입 전에 검증합니다.</small></div>
 </aside>
  <section class="future-learning" id="future-learning" aria-labelledby="future-learning-title">
- <div class="fl-heading"><div><span class="fl-eyebrow">판단 기록이 쌓여, 자체 모델로</span><h3 id="future-learning-title">데이터 축적에서 소형 모델 전환까지</h3></div><span class="fl-demo-tag">1 → 2 → 3 → 4 · 24초 자동 반복 · 실제 학습 아님</span></div>
+ <div class="fl-heading"><div><span class="fl-eyebrow">판단 기록이 쌓여, 자체 모델로</span><h3 id="future-learning-title">데이터 축적에서 소형 모델 전환까지</h3></div><span class="fl-demo-tag">1 → 2 → 3 → 4 · 13초 자동 반복 · 실제 학습 아님</span></div>
  <div class="fl-scenes" role="group" aria-label="개선 애니메이션 장면 선택">
   <button type="button" id="future-scene-0" aria-pressed="true"><b>01</b> 프론티어 처리</button>
   <button type="button" id="future-scene-1" aria-pressed="false"><b>02</b> 판단 자료 축적</button>
@@ -1054,7 +1054,7 @@ SOFTWARE.
   </article>
  </div>
  <div class="fl-share-panel"><div class="fl-share-heading"><strong>새 상품의 예시 처리 비중</strong><span>평가를 통과한 분야부터 전환</span></div><div class="fl-share-bar" aria-hidden="true"><i id="future-frontier-share"></i><i id="future-small-share"></i></div><div class="fl-share-labels"><span class="fl-frontier-label"><i></i>프론티어 <b id="future-frontier-percent">100%</b></span><span class="fl-small-label"><i></i>분야별 소형 모델 <b id="future-small-percent">0%</b></span></div><p id="future-learning-caption" role="status" aria-live="polite">처음에는 새 분야를 프론티어가 담당합니다. 1~4단계가 자동으로 진행되고 반복됩니다.</p></div>
- <div class="fl-controls"><button type="button" id="future-play" class="fl-play" aria-pressed="false">Ⅱ 일시정지</button><button type="button" id="future-reset">처음부터</button><label class="fl-seek-label" for="future-timeline">진행<input id="future-timeline" type="range" min="0" max="24" step="0.1" value="0" aria-label="개선 애니메이션 진행 시점"></label><output id="future-time" for="future-timeline">0 / 24초</output><label class="fl-motion"><input id="future-reduce" type="checkbox">동작 줄이기</label></div>
+ <div class="fl-controls"><button type="button" id="future-play" class="fl-play" aria-pressed="false">Ⅱ 일시정지</button><button type="button" id="future-reset">처음부터</button><label class="fl-seek-label" for="future-timeline">진행<input id="future-timeline" type="range" min="0" max="13" step="0.1" value="0" aria-label="개선 애니메이션 진행 시점"></label><output id="future-time" for="future-timeline">0 / 13초</output><label class="fl-motion"><input id="future-reduce" type="checkbox">동작 줄이기</label></div>
  <p class="fl-note">자료 묶음·처리 비중·평가 통과 시점은 설명용 가정입니다. 실제 학습 기준이나 정확도·절감률을 뜻하지 않습니다. 처음 보는 상품과 낮은 신뢰도 사례는 계속 프론티어·추가 검토로 보냅니다.</p>
 </section>
 
@@ -1852,7 +1852,7 @@ fitTree();render();requestAnimationFrame(frame);window.__ready=true;
 (()=>{
  const root=document.getElementById('future-learning');
  if(!root)return;
- const get=id=>document.getElementById('future-'+id),duration=24;
+ const get=id=>document.getElementById('future-'+id),duration=13;
  const media=matchMedia('(prefers-reduced-motion: reduce)');
  const params=new URLSearchParams(location.search),forcedReduce=params.get('futureReduce')==='1';
  const marks=[0,4,10,16],passes=[14,17,20],starts=[10,12,14];
@@ -1866,10 +1866,12 @@ fitTree();render();requestAnimationFrame(frame);window.__ready=true;
  let userPaused=params.has('futureAt'),inView=typeof IntersectionObserver==='undefined';
  const clamp=n=>Math.min(1,Math.max(0,n));
  const reduced=()=>forcedReduce||media.matches||manualReduced;
+ const sceneTime=()=>time*24/duration;
  function snapshot(){
-  const models=starts.map((start,i)=>({name:['전자제품','의류','반려동물용품'][i],status:time<start?'waiting':time<start+2?'training':time<passes[i]?'evaluating':'ready',progress:Math.round(clamp((time-start)/(passes[i]-start))*100)}));
-  const small=Math.round(passes.reduce((total,pass)=>total+25*clamp((time-pass)/2),0));
-  return {time,playing,reduced:reduced(),data:Math.floor(18*clamp(time/10)),phase:time<4?0:time<10?1:time<16?2:3,models,small,frontier:100-small};
+  const t=sceneTime();
+  const models=starts.map((start,i)=>({name:['전자제품','의류','반려동물용품'][i],status:t<start?'waiting':t<start+2?'training':t<passes[i]?'evaluating':'ready',progress:Math.round(clamp((t-start)/(passes[i]-start))*100)}));
+  const small=Math.round(passes.reduce((total,pass)=>total+25*clamp((t-pass)/2),0));
+  return {time,playing,reduced:reduced(),data:Math.floor(18*clamp(t/10)),phase:t<4?0:t<10?1:t<16?2:3,models,small,frontier:100-small};
  }
  function render(){
   const s=snapshot();
@@ -1892,8 +1894,8 @@ fitTree();render();requestAnimationFrame(frame);window.__ready=true;
   get('models-node').classList.toggle('is-active',s.phase>=2);
   const caption=captions[s.phase];if(get('learning-caption').textContent!==caption)get('learning-caption').textContent=caption;
   [0,1].forEach(i=>{
-   const active=i===0?time>0&&time<10:time>=10&&time<20;
-   get('packet-'+i).setAttribute('cx',String(5+46*((time*.7+i*.35)%1)));
+   const t=sceneTime(),active=i===0?t>0&&t<10:t>=10&&t<20;
+   get('packet-'+i).setAttribute('cx',String(5+46*((t*.7+i*.35)%1)));
    get('packet-'+i).style.opacity=active&&!s.reduced?'1':'0';
   });
   get('timeline').value=String(Math.round(time*10)/10);
@@ -1926,7 +1928,7 @@ fitTree();render();requestAnimationFrame(frame);window.__ready=true;
  });
  get('reset').addEventListener('click',()=>seek(0));
  get('timeline').addEventListener('input',event=>seek(event.target.value));
- marks.forEach((mark,i)=>get('scene-'+i).addEventListener('click',()=>seek(mark)));
+ marks.forEach((mark,i)=>get('scene-'+i).addEventListener('click',()=>seek(mark*duration/24)));
  get('reduce').addEventListener('change',event=>{manualReduced=event.target.checked;syncPlayback();});
  media.addEventListener('change',()=>{if(reduced())time=duration;syncPlayback();});
  document.addEventListener('visibilitychange',syncPlayback);
@@ -1946,7 +1948,7 @@ fitTree();render();requestAnimationFrame(frame);window.__ready=true;
 (()=>{
  const root=document.getElementById('blind-process');
  if(!root)return;
- const get=id=>document.getElementById(id),duration=13;
+ const get=id=>document.getElementById(id),duration=9;
  const motion=matchMedia('(prefers-reduced-motion: reduce)');
  const labels=[
   '01 · 같은 상품의 이미지와 텍스트를 준비합니다.',
