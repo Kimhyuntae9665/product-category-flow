@@ -964,7 +964,7 @@ SOFTWARE.
 
 <section class="future-improvements" id="future-improvements" aria-labelledby="future-title">
  <div class="future-heading"><div><p class="section-eyebrow">TRANSFER LEARNING · NEXT STEPS</p><h2 id="future-title">추후 개선 방향:</h2></div><span class="future-status">향후 설계 · 학습·클라우드 연동 전</span></div>
- <p class="future-lead">새 분야는 프론티어가 먼저 맡고,<br><strong>데이터가 쌓이면 자체 소형 모델로 전환합니다.</strong></p>
+ <h3 class="future-lead">1. 새 분야는 프론티어가 먼저 맡고,<br><strong>데이터가 쌓이면 자체 소형 모델로 전환합니다.</strong></h3>
  <aside class="token-price-compact" id="future-token-price" aria-labelledby="future-price-title">
 <div class="token-price-future-copy"><p class="token-price-eyebrow">낮아지는 단가 + 분야별 소형 모델</p><h3 id="future-price-title">더 저렴해질 AI를,<br> 더 잘 활용하는 구조로.</h3><p>GPT-4 수준의 최저 토큰 단가는 2023년 10월보다 <strong>약 652분의 1</strong>로 낮아졌습니다. 장기적인 단가 하락을 기대하며, 필요한 AI Agent 검토를 적극 활용합니다.</p><p>동시에 검증된 학습 자료를 쌓아 소형 모델로 전환합니다. <strong>단가 변화와 자체 모델의 실제 총비용을 함께 비교</strong>해 처리 비중을 조정합니다.</p><small>향후 하락은 전망이며, 계속 내려간다고 보장하지 않습니다.</small></div>
 <figure class="token-price-chart" aria-labelledby="token-future-heading">
@@ -1039,7 +1039,7 @@ SOFTWARE.
  </ol>
  <section class="future-autoscale" id="future-autoscaling" aria-labelledby="future-autoscale-title">
   <p class="future-autoscale-label">AUTOSCALING · 추가 도입 계획</p>
-  <h3 id="future-autoscale-title">유휴 클라우드 자원과 모델을 찾아<br>자동으로 정리합니다.</h3>
+  <h3 id="future-autoscale-title">2. 유휴 클라우드 자원과 모델을 찾아<br>자동으로 정리합니다.</h3>
   <p class="future-autoscale-intro">사용량에 맞춰 자원을 줄이고, 필요하면 다시 늘리는 <strong>자동 스케일링 기능을 추가합니다.</strong> 호출이 없는 모델 실행 인스턴스와 사용하지 않는 서버·GPU를 계속 켜 두는 비용을 줄이겠습니다.</p>
   <ol class="future-autoscale-flow" aria-label="사용량 관찰, 유휴 자원 정리, 수요에 따른 재확장">
    <li><span>01 · 관찰</span><h4>유휴 자원 찾기</h4><p>요청 대기량·처리 지연·CPU/GPU 사용률·마지막 모델 호출 시각을 함께 확인합니다.</p></li>
@@ -1050,9 +1050,22 @@ SOFTWARE.
   <p class="future-autoscale-scope">직접 운영하는 클라우드·모델 실행 자원을 대상으로 한 계획입니다. 외부 모델 API는 호출량과 동시 요청 수를 조절하며, 모델 복제본 조절과 서버·GPU 인스턴스 정리는 각각 연동합니다.</p>
   <p class="future-autoscale-source">설계 참고: <a href="https://kubernetes.io/docs/concepts/workloads/autoscaling/horizontal-pod-autoscale/" target="_blank" rel="noopener noreferrer">Kubernetes 사용량 기반 확장·축소</a> · <a href="https://keda.sh/docs/2.21/concepts/scaling-deployments/" target="_blank" rel="noopener noreferrer">KEDA 요청·이벤트 기반 스케일링</a> · 확인 2026.10.29</p>
  </section>
- <div class="future-goal"><strong>목표는 정확도를 지키면서, 반복 분류와 사람 검수에 드는 비용을 줄이는 것입니다.</strong><p>초기 프론티어 호출비용을 검증된 학습 자료와 분야별 모델로 연결하고, 유휴 클라우드·모델 자원은 자동으로 정리하는 방향으로 개선합니다. 실제 총비용을 평가하며 소형 모델의 담당 범위와 실행 자원 규모를 함께 조정하겠습니다.</p></div>
+ <section class="future-cache future-autoscale" id="future-cache" aria-labelledby="future-cache-title">
+  <p class="future-autoscale-label">CACHE · 조건 충족 후 도입 계획</p>
+  <h3 id="future-cache-title">3. 정답과 재사용 비율을 확인한 뒤<br>캐시를 단계적으로 도입합니다.</h3>
+  <p class="future-autoscale-intro">상품 데이터와 검증된 정답이 충분히 쌓이면, <strong>이전에 확인한 분류 결과를 DB에서 찾아 재사용하는 캐시</strong>를 검토합니다. 전체 상품 중 중복 상품의 비율과 안전하게 결과를 재사용할 수 있는 비율을 측정하고, 정확도와 실제 비용 절감 효과가 확인된 범위부터 도입합니다.</p>
+  <ol class="future-autoscale-flow" aria-label="검증된 정답 축적, 중복과 재사용 비율 측정, 정확도와 순비용 검증">
+   <li><span>01 · 자료 확보</span><h4>검증된 정답을 DB에 축적</h4><p>상품명·설명·이미지 경로, 모델이 계산한 특징, 확인된 최하위 분류를 연결해 저장합니다. 입력·모델·분류 기준의 버전도 함께 관리합니다.</p></li>
+   <li><span>02 · 적용 조건 확인</span><h4>중복·재사용 비율 측정</h4><p>전체 상품 중 동일한 입력이 반복되는 비율과, 기존 정답을 안전하게 재사용할 수 있는 비율을 구분해 확인합니다. 상품 수나 인기도만으로 효과를 가정하지 않습니다.</p></li>
+   <li><span>03 · 검증 후 도입</span><h4>정확도와 순절감 확인</h4><p>기존 분류와 나란히 비교해 오분류 기준을 충족하고, 생략한 처리비가 구축·저장·검색·검증·오류 수정의 추가 비용보다 클 때 일부 분야부터 적용합니다.</p></li>
+  </ol>
+  <p class="future-autoscale-rule"><strong>검증된 동일 입력은 앞단에서 결과 재사용을 검토합니다.</strong> 텍스트·이미지 일부가 비슷한 상품은 후보만 찾고, 같은 최하위 분류가 맞는지 확인한 뒤 재사용합니다. 근거가 부족하면 기존 분류 경로로 보냅니다.</p>
+  <p class="future-autoscale-scope">유사 사례 검색은 기존 텍스트·이미지 분류에서 계산한 특징을 활용할 수 있는지 먼저 확인하고, 비싼 API 호출 직전에 작은 정답·반례 저장소로 시험합니다. 새 상품의 특징 계산 비용은 남으며, 모델·분류 기준이 바뀌면 저장 결과도 다시 확인합니다.</p>
+  <p class="future-autoscale-source">설계 참고: <a href="https://docs.aws.amazon.com/solutions/visual-search-on-aws/" target="_blank" rel="noopener noreferrer">AWS 이미지·설명 특징의 DB 저장·검색 구현안</a> · <a href="https://shopify.engineering/leveraging-multimodal-llms" target="_blank" rel="noopener noreferrer">Shopify 유사 상품 검색 후 일치 검증 사례</a> · 실제 재사용률·절감률은 미측정</p>
+ </section>
+ <div class="future-goal"><strong>목표는 정확도를 지키면서, 반복 분류와 사람 검수에 드는 비용을 줄이는 것입니다.</strong><p>초기 프론티어 호출비용을 검증된 학습 자료와 분야별 모델로 연결하고, 유휴 자원을 정리하며, 조건을 충족한 분류 결과는 재사용하는 방향으로 개선합니다. 실제 총비용과 정확도를 평가하며 소형 모델의 담당 범위·실행 자원·캐시 적용 범위를 조정하겠습니다.</p></div>
  <details class="future-validation"><summary>전환 시점과 비용을 판단하는 기준</summary><div><p><strong>데이터 개수만으로 전환하지 않습니다.</strong> 희귀 카테고리와 사진의 다양성을 확보하고, 같은 상품·유사 사진이 학습 자료와 평가 자료에 함께 들어가지 않도록 나눕니다. 별도 검증 자료로 신뢰도 기준을 정하고, 최종 평가 자료에서 세부 분류 정확도·오분류·자동 처리 비율·사람 검수율을 확인합니다.</p><p><strong>전체 비용으로 비교합니다.</strong> 프론티어 호출비뿐 아니라 자료 검수·학습·서버 운영·추가 호출·오분류 수정 비용까지 포함해, 예상 처리량에서 전환할 이점이 있는지 판단합니다. 학습 투자비와 운영비를 실제로 측정하기 전에는 절감률을 확정하지 않습니다.</p><p><strong>이미지로 구분할 수 있는 범위부터 맡깁니다.</strong> 설명문에만 있는 규격·성분·호환성은 이미지 모델만으로 배우기 어려우므로 텍스트·프론티어 경로를 유지합니다. 새 분야나 품질 저하가 나타나면 해당 분야를 다시 추가 검토로 보내고 재학습합니다.</p></div></details>
- <p class="future-footnote">위 내용은 추후 개선 계획입니다. 현재 시뮬레이션에서 실제 데이터 수집·모델 학습·클라우드 자원 정리·성능 및 비용 검증을 수행한 것은 아닙니다.</p>
+ <p class="future-footnote">위 내용은 추후 개선 계획입니다. 현재 시뮬레이션에서 실제 데이터 수집·모델 학습·클라우드 자원 정리·DB 캐시 연동·중복률 측정·성능 및 비용 검증을 수행한 것은 아닙니다.</p>
  <p class="future-sources">설계 참고: <a href="https://docs.pytorch.org/tutorials/beginner/transfer_learning_tutorial.html" target="_blank" rel="noopener noreferrer">PyTorch 전이학습 가이드</a> · <a href="https://research.google/pubs/self-training-with-noisy-student-improves-imagenet-classification/" target="_blank" rel="noopener noreferrer">모델의 예측을 학습 자료로 활용한 연구</a><span>공개 방법을 바탕으로 구성한 적용안이며, 해당 연구의 성능을 이 서비스의 성과로 사용하지 않습니다.</span></p>
 </section>
 
