@@ -53,6 +53,10 @@
 
 이번 변경은 정책 설명·가상 예시입니다. 현재 500개 애니메이션의 실행 로직에 중간 분류 보존·후속 판정을 새로 연결하지 않았으며, 실제 모델 추론·기준 보정·성능 검증을 구현한 것으로 표시하지 않습니다.
 
+## 텍스트 모델 비교 계획
+
+**KoELECTRA-Small-v3·Jev·Laya Multilingual을 같은 한국어 상품·정답으로 비교해 정확도와 전체 처리비용을 보고 선정**합니다. KoELECTRA와 Laya는 상품 분류에 맞춘 추가 학습·자체 운영 후보, Jev는 외부 API 후보입니다. 학습·서버·API·후속 분류·사람 검수까지 포함해 비용을 비교하며, 매 상품에 세 모델을 모두 실행하는 구조는 아닙니다. 실제 추가 학습·비교 실험은 아직 실행하지 않았습니다.
+
 ## 이미지 모델 비교 계획
 
 **EfficientNet-B0와 ConvNeXt-Tiny를 같은 상품·정답으로 비교한 뒤 사용할 모델을 선택**합니다. 운영 중 모든 상품에 두 모델을 연달아 실행하는 구성이 아닙니다. 현재 데모는 EfficientNet-B0 한 개를 쓰는 상황을 표시합니다. 실제 두 모델의 학습·추론·비교 실험은 아직 실행하지 않았습니다.
@@ -199,7 +203,7 @@ UI·UX 구성·조정을 포함한 최신 기여 목록은 [웹사이트 본문]
 
 ## AI 이용한 부분
 
-[‘내가 한 부분:’ 다음의 AI 활용 영역](https://product-category-flow.pages.dev/#ai-use)에 Walmart·Rakuten·Meta·Shopify 등 세계 여러 기업의 사례 조사와 의견 제공, Walmart 사례 조사 과정에서 AI가 제안한 복구 루트, 이미지 전용 분류기 아이디어와 각 단계의 구체적인 모델 서칭 및 추천을 명시했습니다. 모델 후보에는 KoELECTRA-Small-v3, EfficientNet-B0·ConvNeXt-Tiny, Gemini 3.5 Flash-Lite, Qwen3.7 Flash·GLM 5.3 Flash·Reka Edge가 포함됩니다. Codex Dot를 이용한 48시간 서칭, AI Agent를 활용한 웹 시뮬레이션 제작과 Cloudflare Pages 배포도 함께 담았습니다. 아이디어 출처와 48시간 서칭은 작성자의 설명에 따른 기록이며, 복구 루트가 Walmart의 실제 구현과 동일하다는 뜻은 아닙니다.
+[‘내가 한 부분:’ 다음의 AI 활용 영역](https://product-category-flow.pages.dev/#ai-use)에 Walmart·Rakuten·Meta·Shopify 등 세계 여러 기업의 사례 조사와 의견 제공, Walmart 사례 조사 과정에서 AI가 제안한 복구 루트, 이미지 전용 분류기 아이디어와 각 단계의 구체적인 모델 서칭 및 추천을 명시했습니다. 모델 후보에는 KoELECTRA-Small-v3·Jev·Laya Multilingual, EfficientNet-B0·ConvNeXt-Tiny, Gemini 3.5 Flash-Lite, Qwen3.7 Flash·GLM 5.3 Flash·Reka Edge가 포함됩니다. Codex Dot를 이용한 48시간 서칭, AI Agent를 활용한 웹 시뮬레이션 제작과 Cloudflare Pages 배포도 함께 담았습니다. 아이디어 출처와 48시간 서칭은 작성자의 설명에 따른 기록이며, 복구 루트가 Walmart의 실제 구현과 동일하다는 뜻은 아닙니다.
 
 ![본인 기여 다음에 다른 색으로 구분한 AI 활용 내용](assets/ai-use.png)
 
